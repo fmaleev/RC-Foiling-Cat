@@ -1,0 +1,264 @@
+{
+ "displacement": {
+  "mass_g": 754.8,
+  "lcg_mm": 258.5,
+  "vcg_mm": 48.4,
+  "by_component_g": {
+   "Crossbeams": 31.6,
+   "RC Electronics": 202.0,
+   "Electronics Box": 99.8,
+   "Rudders": 38.2,
+   "Daggerboards": 42.6,
+   "Rig Standing": 25.5,
+   "Mainsail": 11.7,
+   "Jib": 2.8,
+   "Hull Port": 145.3,
+   "Hull Stbd": 145.4,
+   "Wiring allowance": 10
+  },
+  "items": [
+   [
+    "Crossbeams",
+    "Front Beam",
+    15.8,
+    "CF tube 10x8 (CST CS-525)"
+   ],
+   [
+    "Crossbeams",
+    "Rear Beam",
+    15.8,
+    "CF tube 10x8 (CST CS-525)"
+   ],
+   [
+    "RC Electronics",
+    "Sail Winch Servo",
+    45,
+    "JX W4505 spec"
+   ],
+   [
+    "RC Electronics",
+    "Winch Drum",
+    5,
+    "printed, assumed"
+   ],
+   [
+    "RC Electronics",
+    "Rudder Servo",
+    12.2,
+    "MG90S spec"
+   ],
+   [
+    "RC Electronics",
+    "Receiver",
+    14.9,
+    "FS-iA6B spec"
+   ],
+   [
+    "RC Electronics",
+    "Battery 4xAAA NiMH",
+    123,
+    "4 x 27 g eneloop + 15 g holder (assumed)"
+   ],
+   [
+    "RC Electronics",
+    "Rudder Pushrod",
+    1.9,
+    "music wire"
+   ],
+   [
+    "Electronics Box",
+    "Box",
+    78.9,
+    "PETG as modeled"
+   ],
+   [
+    "Electronics Box",
+    "Box Lid",
+    20.9,
+    "PETG as modeled"
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Port",
+    7.8,
+    "print, eff 1.0 g/cm3"
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Stbd",
+    7.8,
+    "print, eff 1.0 g/cm3"
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Port",
+    2.2,
+    "music wire"
+   ],
+   [
+    "Rudders",
+    "Gudgeon Port",
+    2.3,
+    "PETG"
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Port",
+    0.7,
+    "music wire"
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Stbd",
+    2.2,
+    "music wire"
+   ],
+   [
+    "Rudders",
+    "Gudgeon Stbd",
+    2.3,
+    "PETG"
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Stbd",
+    0.7,
+    "music wire"
+   ],
+   [
+    "Rudders",
+    "Tie Bar",
+    12.2,
+    "music wire"
+   ],
+   [
+    "Daggerboards",
+    "Daggerboard Port",
+    21.3,
+    "print, eff 1.0 g/cm3"
+   ],
+   [
+    "Daggerboards",
+    "Daggerboard Stbd",
+    21.3,
+    "print, eff 1.0 g/cm3"
+   ],
+   [
+    "Rig Standing",
+    "Mast",
+    19.5,
+    "CF tube 6x4 (CST CS-518)"
+   ],
+   [
+    "Rig Standing",
+    "Mast Cap",
+    1,
+    "allowance"
+   ],
+   [
+    "Rig Standing",
+    "Forestay",
+    1,
+    "allowance"
+   ],
+   [
+    "Rig Standing",
+    "Shroud Port",
+    1,
+    "allowance"
+   ],
+   [
+    "Rig Standing",
+    "Shroud Stbd",
+    1,
+    "allowance"
+   ],
+   [
+    "Rig Standing",
+    "Bridle Port",
+    1,
+    "allowance"
+   ],
+   [
+    "Rig Standing",
+    "Bridle Stbd",
+    1,
+    "allowance"
+   ],
+   [
+    "Mainsail",
+    "Mainsail",
+    7.0,
+    "Icarex 36 g/m2 + tape"
+   ],
+   [
+    "Mainsail",
+    "Batten 1",
+    0.4,
+    "1.2 mm CF rod"
+   ],
+   [
+    "Mainsail",
+    "Batten 2",
+    0.4,
+    "1.2 mm CF rod"
+   ],
+   [
+    "Mainsail",
+    "Batten 3",
+    0.4,
+    "1.2 mm CF rod"
+   ],
+   [
+    "Mainsail",
+    "Main Boom",
+    3.0,
+    "CF tube 4 mm OD, ID assumed 2"
+   ],
+   [
+    "Mainsail",
+    "Mainsheet",
+    0.5,
+    "allowance"
+   ],
+   [
+    "Jib",
+    "Jib",
+    2.3,
+    "Icarex 36 g/m2 + tape"
+   ],
+   [
+    "Jib",
+    "Jib Sheet",
+    0.5,
+    "allowance"
+   ],
+   [
+    "Hull Port",
+    "Hull Port",
+    145.3,
+    "PETG 0.8 mm skin as modeled +5%"
+   ],
+   [
+    "Hull Stbd",
+    "Hull Stbd",
+    145.4,
+    "PETG 0.8 mm skin as modeled +5%"
+   ]
+  ]
+ },
+ "sails": [
+  {
+   "name": "Mainsail",
+   "area_m2": 0.10883790189283017,
+   "x_mm": 286.73349871924603,
+   "z_mm": 406.02222024984223
+  },
+  {
+   "name": "Jib",
+   "area_m2": 0.03464999999999999,
+   "x_mm": 404.89922932038854,
+   "z_mm": 285.257425
+  }
+ ]
+}

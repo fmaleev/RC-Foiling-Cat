@@ -1,0 +1,41 @@
+{
+ "rig": {
+  "forestay_mm": 872.8,
+  "bridle_leg_mm": 335.7,
+  "shroud_mm": 973.8,
+  "hounds_above_mast_foot_mm": 928.0,
+  "mast_length_mm": 1298.0,
+  "boom_length_mm": 345.0
+ },
+ "travel": {
+  "jib_sheet_mm": 92.8,
+  "traveler_mm": 231.3
+ },
+ "battens_height_mm": [
+  132.2,
+  264.4,
+  396.7,
+  528.9,
+  661.1,
+  793.3,
+  925.6,
+  1057.8
+ ],
+ "battens_length_mm": [
+  331.3,
+  318.4,
+  299.9,
+  276.5,
+  248.6,
+  216.5,
+  180.4,
+  140.5
+ ],
+ "jib_luff_mm": 849.1,
+ "main": {
+  "foot": 345.0,
+  "luff": 1190.0,
+  "head": 105.0
+ },
+ "jib_foot": 221.0
+}

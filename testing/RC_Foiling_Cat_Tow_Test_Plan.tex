@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.9in]{geometry}
+\usepackage{booktabs,amsmath,siunitx,xurl,graphicx,caption}
+\usepackage[hidelinks]{hyperref}
+\title{\textbf{Tow-Test Plan for the 1\,m Foiling Catamaran (v2.2 foils)}}
+\author{Filip Maleev}
+\date{September 2026}
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+The foiling version has only been analysed, not tested. This plan checks the numbers the design depends on before the boat sails on its foils: take-off speed, drag, pitch trim, flap angle and ride height, and whether the wand holds height without oscillating. Every prediction below comes from the same model as the paper (\texttt{analysis/vpp.py}, flying trim in heave and pitch) for the v2.2 foils in the CAD model. The pass bands are engineering judgment, not model outputs.
+
+Towing replaces the sails. The tow force equals the drag, just as the sail drive does, and the height of the tow point sets the bow-down couple. Two tow points are used:
+\begin{itemize}
+\item \textbf{A: at the sail's centre of effort}, a bridle on the mast 469\,mm above its foot. This reproduces the couple the sails make, so the boat should trim as it would under sail (without heel).
+\item \textbf{B: at the mast foot.} The couple is much smaller.
+\end{itemize}
+The pitch difference between A and B measures the couple directly, which is the model's largest uncertainty.
+
+\section*{1. Bench checks (before the water)}
+\begin{enumerate}
+\item \textbf{Weight and balance.} Fully rigged without sails but with sails, battery and radio installed: 2242\,g. Balance point (centre of gravity) 462\,mm forward of the transoms. Move the battery to correct it.
+\item \textbf{Foil angles}, measured with a phone inclinometer against the deck: main wing $+1.5^\circ$, elevators $-1^\circ$ (nose down is negative).
+\item \textbf{Wand and flap.} With the wand at 49$^\circ$ below the deck line (the design ride height, hinge 226\,mm above the water), the flap should be at $0^\circ$. Each degree of wand should move the flap 1.5$^\circ$ (wand down, flap down). Travel to both $\pm15^\circ$ stops without binding.
+\item \textbf{Free play.} Less than about $0.5^\circ$ at the flap when the wand is held still (judgment: play acts like a dead band in the height control).
+\end{enumerate}
+
+\section*{2. Equipment}
+A tow line of 3--5\,m with a weak link; a hanging scale with a 1--2\,kg range and 5\,g resolution in the line, filmed so the reading can be taken frame by frame; phone GPS for speed (average a steady 10\,s run); a camera filming the boat side-on from the tow vehicle, with a 50\,mm grid taped to the hull, for pitch and ride height; a bridle for tow point A. For speeds up to about 2\,m/s a kayak works; above that, a bicycle on a straight towpath with a short outrigger pole, or a slow powerboat. Wear a buoyancy aid, and stay away from boat traffic.
+
+\section*{3. Tow runs and predictions}
+Run each speed for at least 10\,s after it settles, first at tow point A, then at B. Record the tow force, speed, pitch and bow height from the video, and whether the hulls are clear. Predictions (no side force, no heel):
+
+\begin{table}[h]
+\centering\small
+\caption*{\textbf{Tow point A (sail centre of effort).} Take-off at 1.99\,m/s. Pitch nose up $+$; flap down $+$; bow height relative to the design ride height; elevator depth at its quarter chord.}
+\resizebox{\textwidth}{!}{\begin{tabular}{llccccc}
+\toprule
+Speed (m/s) & State & Tow force (N) & Pitch ($^\circ$) & Flap ($^\circ$) & Bow (mm) & Elevator depth (mm) \\
+\midrule
+1.5 & foils lifting (57\,\% of weight) & 3.3 & -- & $+15$ (stop) & -- & -- \\
+2.0 & flying & 3.8 & $+0.1$ & $+13.0$ & $-32$ & 91 \\
+2.5 & flying & 3.7 & $+0.4$ & $+3.3$ & $-9$ & 74 \\
+3.0 & flying & 4.1 & $+0.3$ & $-1.1$ & $+1$ & 62 \\
+3.5 & flying & 4.8 & $+0.2$ & $-3.5$ & $+7$ & 54 \\
+4.0 & flying & 5.6 & $+0.1$ & $-5.0$ & $+11$ & 49 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption*{\textbf{Tow point B (mast foot).} Take-off at 1.85\,m/s.}
+\resizebox{\textwidth}{!}{\begin{tabular}{llccccc}
+\toprule
+Speed (m/s) & State & Tow force (N) & Pitch ($^\circ$) & Flap ($^\circ$) & Bow (mm) & Elevator depth (mm) \\
+\midrule
+1.5 & foils lifting (57\,\% of weight) & 3.3 & -- & $+15$ (stop) & -- & -- \\
+2.0 & flying & 3.6 & $+3.4$ & $+2.7$ & $-19$ & 136 \\
+2.5 & flying & 3.7 & $+2.5$ & $-3.0$ & $-2$ & 103 \\
+3.0 & flying & 4.1 & $+1.9$ & $-5.9$ & $+7$ & 84 \\
+3.5 & flying & 4.8 & $+1.5$ & $-7.5$ & $+12$ & 73 \\
+4.0 & flying & 5.7 & $+1.3$ & $-8.6$ & $+15$ & 65 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\noindent Predicted pitch difference, A minus B: $-3.3$$^\circ$ at 2.0\,m/s, $-2.0$$^\circ$ at 2.5\,m/s, $-1.6$$^\circ$ at 3.0\,m/s, $-1.3$$^\circ$ at 3.5\,m/s, $-1.2$$^\circ$ at 4.0\,m/s.
+
+\section*{4. Disturbance test}
+At 3 and 4\,m/s (tow point A), push the bow down about 20\,mm with a pole and let go, or tow across a small wake. The model predicts the height returns within 0.22--0.54\,s with no overshoot (heave alone) and a coupled heave--pitch mode at 1.8--7.0\,Hz that is well damped (damping ratio at least 0.64). A visible oscillation that keeps going (porpoising) is a failure.
+
+\section*{5. Roll near take-off (under sail)}
+Straight towing does not load the foils sideways, so it cannot test roll. Near take-off both main wings are at their lift limit, and the leeward hull has to carry what the foils cannot of the sails' heeling moment (the paper, Section 3.4). The model has the boat flying from 7.2\,kn on a beam reach but only from 10.7\,kn at 60$^\circ$, where the side force is larger. Under sail at 60$^\circ$, note the wind at which the leeward hull stops touching after the windward one lifts. Much earlier than predicted means the foils have more roll authority than modelled; much later points to the flap limit or to foil lift at low speed.
+
+\section*{6. Pass bands and what to change}
+Pass bands (judgment): take-off speed within $\pm15\,\%$ of the prediction; tow force within $\pm30\,\%$; pitch within $\pm1^\circ$; flap within $\pm3^\circ$; no sustained oscillation. The model gives the direction and size of each correction:
+\begin{itemize}
+\item \textbf{Pitch off at speed:} change the elevator angle. Pitch follows it one for one: each $0.5^\circ$ more elevator nose-down brings the boat about $0.5^\circ$ more nose-down.
+\item \textbf{Flap near a stop at speed:} change the main-wing angle. The flap compensates by about $1/\tau=2.1^\circ$ per degree of wing ($\tau=0.487$ is the flap effectiveness).
+\item \textbf{Take-off later than predicted:} foil lift is lower than modelled (the sensitivity study with foil lift $-20\,\%$ gives a later take-off). Add $0.5^\circ$ of main-wing angle.
+\item \textbf{Pitch difference A$-$B much larger or smaller than predicted:} the drag model, and so the couple, is off. Re-run \texttt{analysis/pitch\_trim.py} with \texttt{vpp.COUPLE\_FACTOR} fitted to the measured difference, then re-check the elevator angle.
+\item \textbf{Porpoising:} reduce the wand gearing (a shorter horn on the bellcrank), then re-check the height hold.
+\item \textbf{Tow force much higher than predicted:} look for flow separation or ventilation at the strut roots and the flap gaps before changing the foils.
+\end{itemize}
+
+\section*{7. Data sheet}
+\begin{tabular}{lllllll}
+\toprule
+Run & Tow point & Speed (m/s) & Force (N) & Pitch ($^\circ$) & Bow (mm) & Notes \\
+\midrule
+1 & & & & & & \\[6pt]
+2 & & & & & & \\[6pt]
+3 & & & & & & \\[6pt]
+4 & & & & & & \\[6pt]
+5 & & & & & & \\[6pt]
+6 & & & & & & \\[6pt]
+7 & & & & & & \\[6pt]
+8 & & & & & & \\[6pt]
+9 & & & & & & \\[6pt]
+10 & & & & & & \\[6pt]
+11 & & & & & & \\[6pt]
+12 & & & & & & \\[6pt]
+13 & & & & & & \\[6pt]
+14 & & & & & & \\[6pt]
+\bottomrule
+\end{tabular}
+\end{document}

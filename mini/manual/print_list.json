@@ -1,0 +1,94 @@
+{
+ "Hull Port Seg 1": {
+  "g": 44.1,
+  "size": [
+   200,
+   54,
+   78
+  ]
+ },
+ "Hull Port Seg 2": {
+  "g": 56.0,
+  "size": [
+   200,
+   55,
+   78
+  ]
+ },
+ "Hull Port Seg 3": {
+  "g": 38.3,
+  "size": [
+   200,
+   52,
+   83
+  ]
+ },
+ "Hull Stbd Seg 1": {
+  "g": 44.1,
+  "size": [
+   200,
+   54,
+   78
+  ]
+ },
+ "Hull Stbd Seg 2": {
+  "g": 56.0,
+  "size": [
+   200,
+   55,
+   78
+  ]
+ },
+ "Hull Stbd Seg 3": {
+  "g": 38.3,
+  "size": [
+   200,
+   52,
+   83
+  ]
+ },
+ "Box Half 1": {
+  "g": 36.7,
+  "size": [
+   144,
+   60,
+   56
+  ]
+ },
+ "Box Half 2": {
+  "g": 42.1,
+  "size": [
+   144,
+   60,
+   56
+  ]
+ },
+ "Box Lid Half 1": {
+  "g": 10.5,
+  "size": [
+   144,
+   60,
+   1
+  ]
+ },
+ "Box Lid Half 2": {
+  "g": 10.4,
+  "size": [
+   144,
+   60,
+   1
+  ]
+ },
+ "Rudder Blade Port": {
+  "g": 9.9
+ },
+ "Gudgeon Port": {
+  "g": 2.3
+ },
+ "Daggerboard Port": {
+  "g": 27.1
+ },
+ "Winch Drum": {
+  "g": 6.6
+ }
+}

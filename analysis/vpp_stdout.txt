@@ -1,0 +1,130 @@
+{
+ "hull_volume_check": {
+  "analytic_cm3": 5342.5,
+  "cad_cm3": 5350.6,
+  "error_pct": -0.15
+ },
+ "wigley_michell_Cw_x1e3": {
+  "S_m2": 0.1488,
+  "rows": [
+   [
+    0.25,
+    1.064
+   ],
+   [
+    0.3,
+    2.142
+   ],
+   [
+    0.35,
+    1.248
+   ],
+   [
+    0.4,
+    2.735
+   ],
+   [
+    0.5,
+    4.519
+   ]
+  ]
+ },
+ "foil": {
+  "cl_main": 0.396,
+  "cl_el": 0.21,
+  "elevator_share": 0.204,
+  "takeoff_speed_ms": 2.008
+ },
+ "meta": {
+  "displacement": {
+   "mass_kg": 1.9772,
+   "RM_Nm": 5.431,
+   "sail_area": 0.4006,
+   "AR": 3.53,
+   "heel_arm_disp": 0.672,
+   "heel_arm_fly": 0.782
+  },
+  "foiling": {
+   "mass_kg": 2.2914,
+   "RM_Nm": 6.294,
+   "sail_area": 0.4006,
+   "AR": 3.53,
+   "heel_arm_disp": 0.665,
+   "heel_arm_fly": 0.782
+  }
+ }
+}
+
+== displacement resistance (N) at zero side force
+0.2 0.066 0.064 displacement wave 0.0 fric 0.025 app 0.037
+0.3 0.098 0.128 displacement wave 0.0 fric 0.051 app 0.072
+0.4 0.131 0.207 displacement wave 0.001 fric 0.084 app 0.116
+0.5 0.164 0.303 displacement wave 0.003 fric 0.124 app 0.166
+0.6 0.197 0.414 displacement wave 0.005 fric 0.172 app 0.225
+0.7 0.229 0.545 displacement wave 0.014 fric 0.226 app 0.29
+0.8 0.262 0.688 displacement wave 0.021 fric 0.286 app 0.363
+0.9 0.295 0.866 displacement wave 0.052 fric 0.353 app 0.442
+1.0 0.328 1.02 displacement wave 0.046 fric 0.425 app 0.528
+1.1 0.36 1.21 displacement wave 0.064 fric 0.504 app 0.62
+1.2 0.393 1.441 displacement wave 0.114 fric 0.589 app 0.719
+1.3 0.426 1.687 displacement wave 0.166 fric 0.679 app 0.823
+1.4 0.459 1.933 displacement wave 0.209 fric 0.776 app 0.934
+1.5 0.491 2.176 displacement wave 0.239 fric 0.878 app 1.05
+1.6 0.524 2.42 displacement wave 0.26 fric 0.985 app 1.172
+1.7 0.557 2.675 displacement wave 0.276 fric 1.099 app 1.3
+1.8 0.59 2.939 displacement wave 0.288 fric 1.217 app 1.434
+1.9 0.622 3.214 displacement wave 0.299 fric 1.341 app 1.573
+2.0 0.655 3.498 displacement wave 0.309 fric 1.471 app 1.718
+2.1 0.688 3.793 displacement wave 0.32 fric 1.605 app 1.868
+2.2 0.721 4.099 displacement wave 0.33 fric 1.746 app 2.024
+2.3 0.753 4.415 displacement wave 0.34 fric 1.891 app 2.185
+2.4 0.786 4.742 displacement wave 0.35 fric 2.041 app 2.351
+2.5 0.819 5.08 displacement wave 0.36 fric 2.197 app 2.523
+2.6 0.852 5.428 displacement wave 0.37 fric 2.358 app 2.7
+2.7 0.884 5.785 displacement wave 0.38 fric 2.524 app 2.882
+2.8 0.917 6.153 displacement wave 0.389 fric 2.695 app 3.069
+2.9 0.95 6.531 displacement wave 0.399 fric 2.871 app 3.261
+3.0 0.983 6.919 displacement wave 0.408 fric 3.052 app 3.459
+
+== displacement VPP boat speed m/s (mode)
+TWA 60 3kn:0.81 4kn:1.11 5kn:1.41 6kn:1.75 7kn:2.13 8kn:2.25* 9kn:2.35* 10kn:2.41* 11kn:2.47* 12kn:2.51* 13kn:2.55* 14kn:2.57* 15kn:2.59* 16kn:2.61*
+TWA 75 3kn:0.85 4kn:1.19 5kn:1.51 6kn:1.91 7kn:2.29 8kn:2.63* 9kn:2.77* 10kn:2.87* 11kn:2.95* 12kn:3.03* 13kn:3.09* 14kn:3.15* 15kn:3.19* 16kn:3.23*
+TWA 90 3kn:0.85 4kn:1.19 5kn:1.51 6kn:1.89 7kn:2.29 8kn:2.69 9kn:3.09 10kn:3.29* 11kn:3.43* 12kn:3.55* 13kn:3.65* 14kn:3.75* 15kn:3.85* 16kn:3.93*
+TWA 105 3kn:0.81 4kn:1.11 5kn:1.41 6kn:1.75 7kn:2.11 8kn:2.49 9kn:2.85 10kn:3.23 11kn:3.63 12kn:4.01 13kn:4.23* 14kn:4.39* 15kn:4.53* 16kn:4.67*
+
+== foiling resistance (N) at zero side force
+0.2 0.066 0.103 lifting wave 0.0 fric 0.026 app 0.075
+0.3 0.098 0.207 lifting wave 0.0 fric 0.052 app 0.15
+0.4 0.131 0.336 lifting wave 0.001 fric 0.086 app 0.242
+0.5 0.164 0.491 lifting wave 0.003 fric 0.126 app 0.353
+0.6 0.197 0.668 lifting wave 0.005 fric 0.17 app 0.481
+0.7 0.229 0.87 lifting wave 0.012 fric 0.219 app 0.626
+0.8 0.262 1.09 lifting wave 0.02 fric 0.27 app 0.788
+0.9 0.295 1.34 lifting wave 0.043 fric 0.323 app 0.966
+1.0 0.328 1.574 lifting wave 0.035 fric 0.375 app 1.159
+1.1 0.36 1.844 lifting wave 0.051 fric 0.425 app 1.367
+1.2 0.393 2.14 lifting wave 0.08 fric 0.47 app 1.591
+1.3 0.426 2.432 lifting wave 0.096 fric 0.508 app 1.828
+1.4 0.459 2.707 lifting wave 0.096 fric 0.532 app 2.079
+1.5 0.491 2.962 lifting wave 0.081 fric 0.538 app 2.343
+1.6 0.524 3.193 lifting wave 0.058 fric 0.516 app 2.619
+1.7 0.557 3.381 lifting wave 0.03 fric 0.445 app 2.906
+1.8 0.59 3.428 lifting wave 0.004 fric 0.226 app 3.198
+1.9 0.622 3.503 lifting wave 0.0 fric 0.0 app 3.503
+2.0 0.655 3.744 lifting wave 0.0 fric 0.0 app 3.744
+2.1 0.688 2.914 foiling wave 0.0 fric 0 app 0
+2.2 0.721 3.026 foiling wave 0.0 fric 0 app 0
+2.3 0.753 3.154 foiling wave 0.0 fric 0 app 0
+2.4 0.786 3.295 foiling wave 0.0 fric 0 app 0
+2.5 0.819 3.448 foiling wave 0.0 fric 0 app 0
+2.6 0.852 3.612 foiling wave 0.0 fric 0 app 0
+2.7 0.884 3.787 foiling wave 0.0 fric 0 app 0
+2.8 0.917 3.971 foiling wave 0.0 fric 0 app 0
+2.9 0.95 4.165 foiling wave 0.0 fric 0 app 0
+3.0 0.983 4.368 foiling wave 0.0 fric 0 app 0
+
+== foiling VPP boat speed m/s (mode)
+TWA 60 3kn:0.59 4kn:0.83 5kn:1.11 6kn:1.39 7kn:2.31F* 8kn:2.55F* 9kn:2.69F* 10kn:2.81F* 11kn:2.91F* 12kn:2.97F* 13kn:3.03F* 14kn:3.07F* 15kn:3.09F* 16kn:3.11F*
+TWA 75 3kn:0.65 4kn:0.91 5kn:1.19 6kn:1.55 7kn:2.93F* 8kn:3.13F* 9kn:3.31F* 10kn:3.45F* 11kn:3.57F* 12kn:3.67F* 13kn:3.75F* 14kn:3.81F* 15kn:3.87F* 16kn:3.93F*
+TWA 90 3kn:0.65 4kn:0.91 5kn:1.19 6kn:1.55 7kn:3.03F 8kn:3.59F* 9kn:3.79F* 10kn:3.97F* 11kn:4.13F* 12kn:4.29F* 13kn:4.41F* 14kn:4.53F* 15kn:4.63F* 16kn:4.73F*
+TWA 105 3kn:0.61 4kn:0.85 5kn:1.13 6kn:1.43 7kn:2.75F 8kn:3.35F 9kn:3.91F 10kn:4.43F* 11kn:4.65F* 12kn:4.85F* 13kn:5.0 14kn:5.0 15kn:5.0 16kn:5.0

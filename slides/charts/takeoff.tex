@@ -1,0 +1,15 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}
+\usepackage[scaled]{helvet}\renewcommand{\familydefault}{\sfdefault}\usepackage{sansmath}\sansmath
+\definecolor{navy}{HTML}{1B2F4B}\definecolor{sea}{HTML}{2E7DB5}\definecolor{coral}{HTML}{D9653B}\definecolor{greyc}{HTML}{8A94A3}
+\pgfplotsset{every axis/.style={width=16cm, height=9cm, grid=major, grid style={greyc!30}, axis line style={greyc}, tick style={greyc},
+  tick label style={font=\Large, text=navy}, label style={font=\Large, text=navy}, legend style={font=\Large, draw=none, fill=none, text=navy}}}
+\begin{document}\begin{tikzpicture}[font=\sffamily]
+\begin{axis}[xlabel={Time (s)}, ylabel={Boat speed (m/s)}, xmin=0, xmax=12, ymin=0, axis y line*=left, legend style={at={(0.97,0.3)}, anchor=east}]
+\addplot[line width=2.5pt, sea] table[x=t, y=V] {/Users/fmaleev/RC-Foiling-Cat/paper/data/takeoff_ts.dat}; \addlegendentry{speed}
+\end{axis}
+\begin{axis}[xmin=0, xmax=12, axis y line*=right, axis x line=none, ylabel={Bow height (mm), flap ($^\circ$)}, grid=none, legend style={at={(0.97,0.12)}, anchor=east}]
+\addplot[line width=2.5pt, coral] table[x=t, y=bow] {/Users/fmaleev/RC-Foiling-Cat/paper/data/takeoff_ts.dat}; \addlegendentry{bow height}
+\addplot[line width=2pt, greyc, dashed] table[x=t, y=flap] {/Users/fmaleev/RC-Foiling-Cat/paper/data/takeoff_ts.dat}; \addlegendentry{flap}
+\end{axis}
+\end{tikzpicture}\end{document}

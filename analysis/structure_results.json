@@ -1,0 +1,116 @@
+{
+ "build_first_1m": {
+  "side_force_N": 8.04,
+  "ce_above_step_mm": 521.9,
+  "shroud_N": 16.0,
+  "forestay_N": 12.1,
+  "mainsheet_stall_N": 91.5,
+  "sheet_servo": "Feetech FS5115M, 14 kg cm at 4.8 V, 15 mm arm (CAD)",
+  "mast_compression_N": {
+   "sailing": 27.1,
+   "servo_stall": 118.7
+  },
+  "mast_buckling_N": 422.8,
+  "mast_buckling_length_mm": 928.0,
+  "buckling_safety": {
+   "sailing": 15.6,
+   "servo_stall": 3.6
+  },
+  "front_beam": {
+   "load_N": 118.66,
+   "stress_MPa": 99.8,
+   "deflection_mm": 4.66,
+   "safety_factor": 3.0
+  },
+  "rear_beam": {
+   "load_N": 91.53,
+   "stress_MPa": 77.0,
+   "deflection_mm": 3.59,
+   "safety_factor": 3.9
+  },
+  "pod_beam": {
+   "load_N": 14.33,
+   "stress_MPa": 34.6,
+   "deflection_mm": 2.58,
+   "safety_factor": 8.7,
+   "static_reaction_N": 2.87,
+   "slam_g": 5.0
+  }
+ },
+ "foiling_1m": {
+  "side_force_N": 9.01,
+  "ce_above_step_mm": 521.9,
+  "shroud_N": 17.9,
+  "forestay_N": 13.5,
+  "mainsheet_stall_N": 91.5,
+  "sheet_servo": "Feetech FS5115M, 14 kg cm at 4.8 V, 15 mm arm (CAD)",
+  "mast_compression_N": {
+   "sailing": 30.4,
+   "servo_stall": 121.9
+  },
+  "mast_buckling_N": 422.8,
+  "mast_buckling_length_mm": 928.0,
+  "buckling_safety": {
+   "sailing": 13.9,
+   "servo_stall": 3.5
+  },
+  "front_beam": {
+   "load_N": 121.91,
+   "stress_MPa": 102.6,
+   "deflection_mm": 4.79,
+   "safety_factor": 2.9
+  },
+  "rear_beam": {
+   "load_N": 91.53,
+   "stress_MPa": 77.0,
+   "deflection_mm": 3.59,
+   "safety_factor": 3.9
+  },
+  "pod_beam": {
+   "load_N": 14.33,
+   "stress_MPa": 34.6,
+   "deflection_mm": 2.58,
+   "safety_factor": 8.7,
+   "static_reaction_N": 2.87,
+   "slam_g": 5.0
+  }
+ },
+ "mini_600": {
+  "side_force_N": 2.85,
+  "ce_above_step_mm": 330.7,
+  "shroud_N": 5.9,
+  "forestay_N": 4.3,
+  "mainsheet_stall_N": 34.3,
+  "sheet_servo": "JX W4505-2T, 5.25 kg cm at 4.8 V, 15 mm radius drum groove",
+  "mast_compression_N": {
+   "sailing": 9.8,
+   "servo_stall": 44.2
+  },
+  "mast_buckling_N": 107.1,
+  "mast_buckling_length_mm": 573.8,
+  "buckling_safety": {
+   "sailing": 10.9,
+   "servo_stall": 2.4
+  },
+  "front_beam": {
+   "load_N": 36.75,
+   "stress_MPa": 53.9,
+   "deflection_mm": 1.48,
+   "safety_factor": 5.6
+  },
+  "rear_beam": {
+   "load_N": 26.91,
+   "stress_MPa": 39.5,
+   "deflection_mm": 1.09,
+   "safety_factor": 7.6
+  }
+ },
+ "assumptions": {
+  "E_carbon_MPa": 70000.0,
+  "carbon_bending_strength_MPa": 300.0,
+  "forestay_sag_ratio": 0.02,
+  "pod_slam_g": 5.0,
+  "mast": "pinned at the step and the hounds",
+  "beams": "simply supported between hull centres, load at mid-span"
+ }
+}

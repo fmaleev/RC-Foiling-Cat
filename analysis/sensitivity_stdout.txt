@@ -1,0 +1,6 @@
+{'scenario': 'baseline', 'takeoff_speed_ms': 2.01, 'TWA60_takeoff_tws_kn': 7.0, 'TWA60_speed_after_ms': 2.31, 'TWA90_takeoff_tws_kn': 6.75, 'TWA90_speed_after_ms': 2.87}
+{'scenario': 'sail CLmax 1.1', 'takeoff_speed_ms': 2.01, 'TWA60_takeoff_tws_kn': 7.75, 'TWA60_speed_after_ms': 2.49, 'TWA90_takeoff_tws_kn': 7.25, 'TWA90_speed_after_ms': 2.81}
+{'scenario': 'sail CLmax 1.5', 'takeoff_speed_ms': 2.01, 'TWA60_takeoff_tws_kn': 6.75, 'TWA60_speed_after_ms': 2.23, 'TWA90_takeoff_tws_kn': 6.25, 'TWA90_speed_after_ms': 2.81}
+{'scenario': 'foil lift -20% (low Re, free surface)', 'takeoff_speed_ms': 2.24, 'TWA60_takeoff_tws_kn': 7.5, 'TWA60_speed_after_ms': 2.43, 'TWA90_takeoff_tws_kn': 7.0, 'TWA90_speed_after_ms': 3.03}
+{'scenario': 'mass +10%', 'takeoff_speed_ms': 2.11, 'TWA60_takeoff_tws_kn': 7.25, 'TWA60_speed_after_ms': 2.41, 'TWA90_takeoff_tws_kn': 7.0, 'TWA90_speed_after_ms': 2.97}
+{'scenario': 'mass -10%', 'takeoff_speed_ms': 1.9, 'TWA60_takeoff_tws_kn': 6.75, 'TWA60_speed_after_ms': 2.21, 'TWA90_takeoff_tws_kn': 6.25, 'TWA90_speed_after_ms': 2.59}

@@ -1,0 +1,13 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}
+\usepackage[scaled]{helvet}\renewcommand{\familydefault}{\sfdefault}\usepackage{sansmath}\sansmath
+\definecolor{navy}{HTML}{1B2F4B}\definecolor{sea}{HTML}{2E7DB5}\definecolor{coral}{HTML}{D9653B}\definecolor{greyc}{HTML}{8A94A3}
+\pgfplotsset{every axis/.style={width=16cm, height=9cm, grid=major, grid style={greyc!30}, axis line style={greyc}, tick style={greyc},
+  tick label style={font=\Large, text=navy}, label style={font=\Large, text=navy}, legend style={font=\Large, draw=none, fill=none, text=navy}}}
+\begin{document}\begin{tikzpicture}[font=\sffamily]
+\begin{axis}[xlabel={Boat speed (m/s)}, ylabel={Elevator depth (mm)}, xmin=2, xmax=5, xtick={2,2.5,...,5}, ymin=-60, ymax=100, legend pos=north east]
+\addplot[line width=2.5pt, coral, dashed] table[x=V, y=eldepth] {/Users/fmaleev/RC-Foiling-Cat/paper/data/trim_v21.dat}; \addlegendentry{v2.1: elevators at +4$^\circ$}
+\addplot[line width=2.5pt, sea] table[x=V, y=eldepth] {/Users/fmaleev/RC-Foiling-Cat/paper/data/trim_CAD.dat}; \addlegendentry{adopted: elevators at $-1^\circ$}
+\addplot[line width=1.2pt, navy] coordinates {(2,0) (5,0)}; \addlegendentry{water surface}
+\end{axis}
+\end{tikzpicture}\end{document}

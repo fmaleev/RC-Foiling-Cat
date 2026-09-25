@@ -1,0 +1,82 @@
+[
+ {
+  "scenario": "baseline",
+  "takeoff_speed_ms": 1.99,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 10.75,
+  "TWA60_speed_after_ms": 2.97,
+  "TWA90_takeoff_tws_kn": 7.25,
+  "TWA90_speed_after_ms": 3.59
+ },
+ {
+  "scenario": "sail CLmax 1.1",
+  "takeoff_speed_ms": 1.99,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 10.75,
+  "TWA60_speed_after_ms": 2.97,
+  "TWA90_takeoff_tws_kn": 8.0,
+  "TWA90_speed_after_ms": 3.69
+ },
+ {
+  "scenario": "sail CLmax 1.5",
+  "takeoff_speed_ms": 1.99,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 10.75,
+  "TWA60_speed_after_ms": 2.97,
+  "TWA90_takeoff_tws_kn": 6.75,
+  "TWA90_speed_after_ms": 3.45
+ },
+ {
+  "scenario": "foil lift -20% (low Re, free surface)",
+  "takeoff_speed_ms": 2.16,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 14.0,
+  "TWA60_speed_after_ms": 3.19,
+  "TWA90_takeoff_tws_kn": 7.5,
+  "TWA90_speed_after_ms": 3.69
+ },
+ {
+  "scenario": "mass +10%",
+  "takeoff_speed_ms": 2.09,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 11.25,
+  "TWA60_speed_after_ms": 3.13,
+  "TWA90_takeoff_tws_kn": 7.75,
+  "TWA90_speed_after_ms": 3.85
+ },
+ {
+  "scenario": "mass -10%",
+  "takeoff_speed_ms": 1.89,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 10.25,
+  "TWA60_speed_after_ms": 2.81,
+  "TWA90_takeoff_tws_kn": 7.0,
+  "TWA90_speed_after_ms": 3.45
+ },
+ {
+  "scenario": "sail-drive pitch couple x0.5",
+  "takeoff_speed_ms": 1.87,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 9.5,
+  "TWA60_speed_after_ms": 2.85,
+  "TWA90_takeoff_tws_kn": 7.25,
+  "TWA90_speed_after_ms": 3.59
+ },
+ {
+  "scenario": "sail-drive pitch couple x1.5",
+  "takeoff_speed_ms": 2.24,
+  "flying_range_top_ms": 5.91,
+  "flying_range_limit": "rudder immersion",
+  "TWA60_takeoff_tws_kn": null,
+  "TWA60_speed_after_ms": null,
+  "TWA90_takeoff_tws_kn": 7.5,
+  "TWA90_speed_after_ms": 3.65
+ }
+]

@@ -1,0 +1,184 @@
+[
+ {
+  "rule": "one hull floats the 1 m build-first boat",
+  "value": 2.74,
+  "limit": ">= 2",
+  "unit": "x weight",
+  "ok": true
+ },
+ {
+  "rule": "one hull floats the 1 m foiling boat",
+  "value": 2.49,
+  "limit": ">= 2",
+  "unit": "x weight",
+  "ok": true
+ },
+ {
+  "rule": "one hull floats the mini",
+  "value": 2.05,
+  "limit": ">= 2",
+  "unit": "x weight",
+  "ok": true
+ },
+ {
+  "rule": "station-table hull volume vs CAD loft",
+  "value": 0.2,
+  "limit": "<= 1",
+  "unit": "%",
+  "ok": true
+ },
+ {
+  "rule": "rudder angle needed, 1 m displacement",
+  "value": 2.6,
+  "limit": "<= 9 (half the throw)",
+  "unit": "deg",
+  "ok": true
+ },
+ {
+  "rule": "rudder angle needed, 1 m foiling",
+  "value": 4.6,
+  "limit": "<= 9 (half the throw)",
+  "unit": "deg",
+  "ok": true
+ },
+ {
+  "rule": "rudder angle needed, mini",
+  "value": 1.6,
+  "limit": "<= 9.95",
+  "unit": "deg",
+  "ok": true
+ },
+ {
+  "rule": "foil pitch static margin (no downwash)",
+  "value": 83.7,
+  "limit": "> 0",
+  "unit": "mm",
+  "ok": true
+ },
+ {
+  "rule": "foil pitch static margin (elevator efficiency 0.65 (downwash/wake))",
+  "value": 31.8,
+  "limit": "> 0",
+  "unit": "mm",
+  "ok": true
+ },
+ {
+  "rule": "heave damping with wand-driven flaps",
+  "value": 1.36,
+  "limit": ">= 0.5",
+  "unit": "",
+  "ok": true
+ },
+ {
+  "rule": "take-off wind, beam reach",
+  "value": 7.25,
+  "limit": "<= 8",
+  "unit": "kn",
+  "ok": true
+ },
+ {
+  "rule": "clew over the pod stays aft of the transom",
+  "value": 8.19,
+  "limit": ">= 5",
+  "unit": "mm margin",
+  "ok": true
+ },
+ {
+  "rule": "jib car stays on the lid",
+  "value": 2.0,
+  "limit": ">= 0",
+  "unit": "mm margin",
+  "ok": true
+ },
+ {
+  "rule": "jib car under the boom",
+  "value": 0.8,
+  "limit": "> 0",
+  "unit": "mm margin",
+  "ok": true
+ },
+ {
+  "rule": "mainsheet clears the pod beam",
+  "value": 57.71,
+  "limit": ">= 10",
+  "unit": "mm",
+  "ok": true
+ },
+ {
+  "rule": "servo bracket clamp under the traveler track",
+  "value": 2.4,
+  "limit": ">= 1",
+  "unit": "mm",
+  "ok": true
+ },
+ {
+  "rule": "mast buckling, build_first_1m",
+  "value": 3.6,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "crossbeam bending, build_first_1m",
+  "value": 3.0,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "mast buckling, foiling_1m",
+  "value": 3.5,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "crossbeam bending, foiling_1m",
+  "value": 2.9,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "mast buckling, mini_600",
+  "value": 2.4,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "crossbeam bending, mini_600",
+  "value": 5.6,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "std servo case between its rails",
+  "value": 0.4,
+  "limit": ">= 0.3",
+  "unit": "mm per side",
+  "ok": true
+ },
+ {
+  "rule": "micro servo case between its rails",
+  "value": 0.3,
+  "limit": ">= 0.3",
+  "unit": "mm per side",
+  "ok": true
+ },
+ {
+  "rule": "winch drum under the lid (full)",
+  "value": 5.85,
+  "limit": ">= 3",
+  "unit": "mm",
+  "ok": true
+ },
+ {
+  "rule": "winch drum under the lid (mini)",
+  "value": 5.6,
+  "limit": ">= 3",
+  "unit": "mm",
+  "ok": true
+ }
+]

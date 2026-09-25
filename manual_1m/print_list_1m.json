@@ -1,0 +1,288 @@
+{
+ "Rudder Blade Port": {
+  "stl": "Rudder_Blade_x2.stl",
+  "qty": 2,
+  "cm3": 37.62,
+  "size_mm": [
+   226,
+   45,
+   5
+  ],
+  "exists": true
+ },
+ "Daggerboard Port": {
+  "stl": "Daggerboard_x2.stl",
+  "qty": 2,
+  "cm3": 96.19,
+  "size_mm": [
+   325,
+   60,
+   7
+  ],
+  "exists": true
+ },
+ "Hull Port Seg 1 (x0-200)": {
+  "stl": "Hull_Port_Seg_1_x0_200.stl",
+  "qty": 1,
+  "cm3": 54.48,
+  "size_mm": [
+   200,
+   117,
+   82
+  ],
+  "exists": true
+ },
+ "Hull Port Seg 2 (x200-400)": {
+  "stl": "Hull_Port_Seg_2_x200_400.stl",
+  "qty": 1,
+  "cm3": 62.85,
+  "size_mm": [
+   200,
+   120,
+   84
+  ],
+  "exists": true
+ },
+ "Hull Port Seg 3 (x400-600)": {
+  "stl": "Hull_Port_Seg_3_x400_600.stl",
+  "qty": 1,
+  "cm3": 71.83,
+  "size_mm": [
+   200,
+   117,
+   81
+  ],
+  "exists": true
+ },
+ "Hull Port Seg 4 (x600-800)": {
+  "stl": "Hull_Port_Seg_4_x600_800.stl",
+  "qty": 1,
+  "cm3": 61.81,
+  "size_mm": [
+   200,
+   118,
+   83
+  ],
+  "exists": true
+ },
+ "Hull Port Seg 5 (x800-1000)": {
+  "stl": "Hull_Port_Seg_5_x800_1000.stl",
+  "qty": 1,
+  "cm3": 42.45,
+  "size_mm": [
+   200,
+   115,
+   65
+  ],
+  "exists": true
+ },
+ "Hull Stbd Seg 1 (x0-200)": {
+  "stl": "Hull_Stbd_Seg_1_x0_200.stl",
+  "qty": 1,
+  "cm3": 54.48,
+  "size_mm": [
+   200,
+   117,
+   82
+  ],
+  "exists": true
+ },
+ "Hull Stbd Seg 2 (x200-400)": {
+  "stl": "Hull_Stbd_Seg_2_x200_400.stl",
+  "qty": 1,
+  "cm3": 62.86,
+  "size_mm": [
+   200,
+   120,
+   84
+  ],
+  "exists": true
+ },
+ "Hull Stbd Seg 3 (x400-600)": {
+  "stl": "Hull_Stbd_Seg_3_x400_600.stl",
+  "qty": 1,
+  "cm3": 71.83,
+  "size_mm": [
+   200,
+   117,
+   81
+  ],
+  "exists": true
+ },
+ "Hull Stbd Seg 4 (x600-800)": {
+  "stl": "Hull_Stbd_Seg_4_x600_800.stl",
+  "qty": 1,
+  "cm3": 61.81,
+  "size_mm": [
+   200,
+   118,
+   83
+  ],
+  "exists": true
+ },
+ "Hull Stbd Seg 5 (x800-1000)": {
+  "stl": "Hull_Stbd_Seg_5_x800_1000.stl",
+  "qty": 1,
+  "cm3": 42.45,
+  "size_mm": [
+   200,
+   115,
+   65
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 1 (x270-380)": {
+  "stl": "Pod_Shell_Seg_1_x270_380.stl",
+  "qty": 1,
+  "cm3": 37.4,
+  "size_mm": [
+   110,
+   90,
+   57
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 2 (x380-600)": {
+  "stl": "Pod_Shell_Seg_2_x380_600.stl",
+  "qty": 1,
+  "cm3": 72.47,
+  "size_mm": [
+   220,
+   90,
+   54
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 3 (x600-840)": {
+  "stl": "Pod_Shell_Seg_3_x600_840.stl",
+  "qty": 1,
+  "cm3": 62.56,
+  "size_mm": [
+   240,
+   90,
+   60
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 1 (x270-380)": {
+  "stl": "Pod_Lid_Seg_1_x270_380.stl",
+  "qty": 1,
+  "cm3": 11.88,
+  "size_mm": [
+   110,
+   90,
+   1
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 2 (x380-600)": {
+  "stl": "Pod_Lid_Seg_2_x380_600.stl",
+  "qty": 1,
+  "cm3": 23.73,
+  "size_mm": [
+   220,
+   90,
+   1
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 3 (x600-840)": {
+  "stl": "Pod_Lid_Seg_3_x600_840.stl",
+  "qty": 1,
+  "cm3": 26.97,
+  "size_mm": [
+   240,
+   90,
+   11
+  ],
+  "exists": true
+ },
+ "Rudder Servo Bracket (print)": {
+  "stl": "Rudder_Servo_Bracket.stl",
+  "qty": 1,
+  "cm3": 18.21,
+  "size_mm": [
+   73,
+   46,
+   26
+  ],
+  "exists": true
+ },
+ "Rudder Servo Cover (print)": {
+  "stl": "Rudder_Servo_Cover.stl",
+  "qty": 1,
+  "cm3": 11.04,
+  "size_mm": [
+   45,
+   44,
+   43
+  ],
+  "exists": true
+ },
+ "Rudder Extension Port": {
+  "stl": "Foiling_Rudder_Extension_x2.stl",
+  "qty": 2,
+  "cm3": 0.5,
+  "size_mm": [
+   45,
+   5,
+   3
+  ],
+  "exists": true
+ },
+ "Elevator Trim Pod Port": {
+  "stl": "Elevator_Trim_Pod_x2.stl",
+  "qty": 2,
+  "cm3": 2.8,
+  "size_mm": [
+   45,
+   14,
+   9
+  ],
+  "exists": true
+ },
+ "Core L-Foil Port": {
+  "stl": "Foil_Core_L_Port.stl",
+  "qty": 1,
+  "cm3": 98.71,
+  "size_mm": [
+   296,
+   164,
+   60
+  ],
+  "exists": true
+ },
+ "Core Elevator Port": {
+  "stl": "Foil_Core_Elevator_x2.stl",
+  "qty": 2,
+  "cm3": 5.32,
+  "size_mm": [
+   120,
+   28,
+   3
+  ],
+  "exists": true
+ },
+ "Core Flap Port": {
+  "stl": "Foil_Flap_x2.stl",
+  "qty": 2,
+  "cm3": 2.45,
+  "size_mm": [
+   146,
+   11,
+   3
+  ],
+  "exists": true
+ },
+ "Core L-Foil Stbd": {
+  "stl": "Foil_Core_L_Stbd.stl",
+  "qty": 1,
+  "cm3": 98.7,
+  "size_mm": [
+   296,
+   164,
+   60
+  ],
+  "exists": true
+ }
+}

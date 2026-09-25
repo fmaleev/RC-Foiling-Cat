@@ -1,0 +1,711 @@
+{
+ "displacement": {
+  "mass_g": 2037.2,
+  "lcg_mm": 457.3,
+  "vcg_mm": 70.8,
+  "by_component_g": {
+   "Crossbeams": 113.9,
+   "Center Pod": 335.6,
+   "Rudders": 120.2,
+   "RC Electronics": 313.2,
+   "Displacement Kit": 192.4,
+   "Rig Standing": 35,
+   "Mast": 79.5,
+   "Mainsail": 35.1,
+   "Jib": 9.6,
+   "Hull Port": 391.3,
+   "Hull Stbd": 391.3,
+   "Wiring allowance": 20
+  },
+  "items": [
+   [
+    "Crossbeams",
+    "Front Beam",
+    43.8
+   ],
+   [
+    "Crossbeams",
+    "Rear Beam",
+    43.8
+   ],
+   [
+    "Crossbeams",
+    "Pod Beam",
+    26.3
+   ],
+   [
+    "Center Pod",
+    "Pod Shell",
+    219.0
+   ],
+   [
+    "Center Pod",
+    "Pod Lid",
+    79.5
+   ],
+   [
+    "Center Pod",
+    "Rudder Servo Bracket",
+    23.1
+   ],
+   [
+    "Center Pod",
+    "Rudder Servo Cover",
+    14.0
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Port",
+    37.6
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Stbd",
+    37.6
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Port",
+    2.5
+   ],
+   [
+    "Rudders",
+    "Gudgeon Port",
+    9.1
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Port",
+    1.2
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Stbd",
+    2.5
+   ],
+   [
+    "Rudders",
+    "Gudgeon Stbd",
+    9.1
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Stbd",
+    1.2
+   ],
+   [
+    "Rudders",
+    "Tie Bar",
+    19.3
+   ],
+   [
+    "RC Electronics",
+    "Traveler Winch Servo",
+    45
+   ],
+   [
+    "RC Electronics",
+    "Winch Drum",
+    5
+   ],
+   [
+    "RC Electronics",
+    "Mainsheet Tail",
+    1
+   ],
+   [
+    "RC Electronics",
+    "Rudder Servo",
+    12.2
+   ],
+   [
+    "RC Electronics",
+    "Receiver",
+    14.9
+   ],
+   [
+    "RC Electronics",
+    "Battery 2S",
+    123
+   ],
+   [
+    "RC Electronics",
+    "Rudder Pushrod",
+    1.1
+   ],
+   [
+    "RC Electronics",
+    "Mainsheet Servo",
+    62
+   ],
+   [
+    "RC Electronics",
+    "Jib Sheet Winch Servo",
+    45
+   ],
+   [
+    "RC Electronics",
+    "Jib Winch Drum",
+    4
+   ],
+   [
+    "Displacement Kit",
+    "Daggerboard Port",
+    96.2
+   ],
+   [
+    "Displacement Kit",
+    "Daggerboard Stbd",
+    96.2
+   ],
+   [
+    "Rig Standing",
+    "Mast Tube Base",
+    0
+   ],
+   [
+    "Rig Standing",
+    "Mast Cap",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Forestay",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Shroud Port",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Shroud Stbd",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Bridle Port",
+    2
+   ],
+   [
+    "Rig Standing",
+    "Bridle Stbd",
+    2
+   ],
+   [
+    "Rig Standing",
+    "Bridle Post",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Traveler Track",
+    10
+   ],
+   [
+    "Rig Standing",
+    "Jib Track",
+    6
+   ],
+   [
+    "Mast",
+    "Wing Mast",
+    79.5
+   ],
+   [
+    "Mainsail",
+    "Mainsail",
+    14.2
+   ],
+   [
+    "Mainsail",
+    "Batten 1",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 2",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 3",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 4",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 5",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 6",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 7",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 8",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Main Boom",
+    11.8
+   ],
+   [
+    "Mainsail",
+    "Mainsheet",
+    1
+   ],
+   [
+    "Mainsail",
+    "Traveler Car",
+    5
+   ],
+   [
+    "Jib",
+    "Jib",
+    4.6
+   ],
+   [
+    "Jib",
+    "Jib Sheet",
+    1
+   ],
+   [
+    "Jib",
+    "Jib Car",
+    4
+   ],
+   [
+    "Hull Port",
+    "Hull Port",
+    391.3
+   ],
+   [
+    "Hull Stbd",
+    "Hull Stbd",
+    391.3
+   ]
+  ],
+  "note": "winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder"
+ },
+ "foiling": {
+  "mass_g": 2241.5,
+  "lcg_mm": 461.9,
+  "vcg_mm": 52.9,
+  "by_component_g": {
+   "Crossbeams": 113.9,
+   "Center Pod": 335.6,
+   "Rudders": 120.2,
+   "RC Electronics": 313.2,
+   "Rig Standing": 35,
+   "Mast": 79.5,
+   "Mainsail": 35.1,
+   "Jib": 9.6,
+   "Ride Height Control": 20.4,
+   "Hull Port": 391.3,
+   "Hull Stbd": 391.3,
+   "Foiling Kit": 376.3,
+   "Wiring allowance": 20
+  },
+  "items": [
+   [
+    "Crossbeams",
+    "Front Beam",
+    43.8
+   ],
+   [
+    "Crossbeams",
+    "Rear Beam",
+    43.8
+   ],
+   [
+    "Crossbeams",
+    "Pod Beam",
+    26.3
+   ],
+   [
+    "Center Pod",
+    "Pod Shell",
+    219.0
+   ],
+   [
+    "Center Pod",
+    "Pod Lid",
+    79.5
+   ],
+   [
+    "Center Pod",
+    "Rudder Servo Bracket",
+    23.1
+   ],
+   [
+    "Center Pod",
+    "Rudder Servo Cover",
+    14.0
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Port",
+    37.6
+   ],
+   [
+    "Rudders",
+    "Rudder Blade Stbd",
+    37.6
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Port",
+    2.5
+   ],
+   [
+    "Rudders",
+    "Gudgeon Port",
+    9.1
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Port",
+    1.2
+   ],
+   [
+    "Rudders",
+    "Rudder Stock Stbd",
+    2.5
+   ],
+   [
+    "Rudders",
+    "Gudgeon Stbd",
+    9.1
+   ],
+   [
+    "Rudders",
+    "Tiller Arm Stbd",
+    1.2
+   ],
+   [
+    "Rudders",
+    "Tie Bar",
+    19.3
+   ],
+   [
+    "RC Electronics",
+    "Traveler Winch Servo",
+    45
+   ],
+   [
+    "RC Electronics",
+    "Winch Drum",
+    5
+   ],
+   [
+    "RC Electronics",
+    "Mainsheet Tail",
+    1
+   ],
+   [
+    "RC Electronics",
+    "Rudder Servo",
+    12.2
+   ],
+   [
+    "RC Electronics",
+    "Receiver",
+    14.9
+   ],
+   [
+    "RC Electronics",
+    "Battery 2S",
+    123
+   ],
+   [
+    "RC Electronics",
+    "Rudder Pushrod",
+    1.1
+   ],
+   [
+    "RC Electronics",
+    "Mainsheet Servo",
+    62
+   ],
+   [
+    "RC Electronics",
+    "Jib Sheet Winch Servo",
+    45
+   ],
+   [
+    "RC Electronics",
+    "Jib Winch Drum",
+    4
+   ],
+   [
+    "Rig Standing",
+    "Mast Tube Base",
+    0
+   ],
+   [
+    "Rig Standing",
+    "Mast Cap",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Forestay",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Shroud Port",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Shroud Stbd",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Bridle Port",
+    2
+   ],
+   [
+    "Rig Standing",
+    "Bridle Stbd",
+    2
+   ],
+   [
+    "Rig Standing",
+    "Bridle Post",
+    3
+   ],
+   [
+    "Rig Standing",
+    "Traveler Track",
+    10
+   ],
+   [
+    "Rig Standing",
+    "Jib Track",
+    6
+   ],
+   [
+    "Mast",
+    "Wing Mast",
+    79.5
+   ],
+   [
+    "Mainsail",
+    "Mainsail",
+    14.2
+   ],
+   [
+    "Mainsail",
+    "Batten 1",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 2",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 3",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 4",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 5",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 6",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 7",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Batten 8",
+    0.4
+   ],
+   [
+    "Mainsail",
+    "Main Boom",
+    11.8
+   ],
+   [
+    "Mainsail",
+    "Mainsheet",
+    1
+   ],
+   [
+    "Mainsail",
+    "Traveler Car",
+    5
+   ],
+   [
+    "Jib",
+    "Jib",
+    4.6
+   ],
+   [
+    "Jib",
+    "Jib Sheet",
+    1
+   ],
+   [
+    "Jib",
+    "Jib Car",
+    4
+   ],
+   [
+    "Ride Height Control",
+    "Wand Port",
+    1.5
+   ],
+   [
+    "Ride Height Control",
+    "Wand Pivot Port",
+    2
+   ],
+   [
+    "Ride Height Control",
+    "Deck Pushrod Port",
+    3.7
+   ],
+   [
+    "Ride Height Control",
+    "Strut Bellcrank Port",
+    1
+   ],
+   [
+    "Ride Height Control",
+    "Strut Pushrod Port",
+    1.5
+   ],
+   [
+    "Ride Height Control",
+    "Flap Horn Port",
+    0.5
+   ],
+   [
+    "Ride Height Control",
+    "Wand Stbd",
+    1.5
+   ],
+   [
+    "Ride Height Control",
+    "Wand Pivot Stbd",
+    2
+   ],
+   [
+    "Ride Height Control",
+    "Deck Pushrod Stbd",
+    3.7
+   ],
+   [
+    "Ride Height Control",
+    "Strut Bellcrank Stbd",
+    1
+   ],
+   [
+    "Ride Height Control",
+    "Strut Pushrod Stbd",
+    1.5
+   ],
+   [
+    "Ride Height Control",
+    "Flap Horn Stbd",
+    0.5
+   ],
+   [
+    "Hull Port",
+    "Hull Port",
+    391.3
+   ],
+   [
+    "Hull Stbd",
+    "Hull Stbd",
+    391.3
+   ],
+   [
+    "Foiling Kit",
+    "L-Foil Port",
+    170.2
+   ],
+   [
+    "Foiling Kit",
+    "Elevator Port",
+    12.0
+   ],
+   [
+    "Foiling Kit",
+    "L-Foil Stbd",
+    170.2
+   ],
+   [
+    "Foiling Kit",
+    "Elevator Stbd",
+    12.0
+   ],
+   [
+    "Foiling Kit",
+    "Flap Port",
+    3.8
+   ],
+   [
+    "Foiling Kit",
+    "Flap Stbd",
+    3.8
+   ],
+   [
+    "Foiling Kit",
+    "Rudder Extension Port",
+    2.2
+   ],
+   [
+    "Foiling Kit",
+    "Rudder Extension Stbd",
+    2.2
+   ]
+  ],
+  "note": "winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder"
+ },
+ "sails": [
+  {
+   "name": "Mainsail",
+   "area_m2": 0.30428216545212045,
+   "x_mm": 465.6100350984933,
+   "z_mm": 640.1198311323569
+  },
+  {
+   "name": "Jib",
+   "area_m2": 0.09634549999999999,
+   "x_mm": 674.7418405263819,
+   "z_mm": 447.8703995138826
+  }
+ ]
+}

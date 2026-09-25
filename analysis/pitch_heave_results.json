@@ -1,0 +1,1169 @@
+{
+ "inertia": {
+  "mass_kg": 2.2415,
+  "lcg_mm": 461.3,
+  "vcg_mm": 51.9,
+  "Iyy_kgm2": 0.20661,
+  "Ixx_kgm2": 0.18525,
+  "k_pitch_m": 0.3036,
+  "note": "cad_scripts/export_inertia.py: foiling configuration, masses as in cad_data.json"
+ },
+ "all_stable": true,
+ "min_damping": 0.638,
+ "min_damping_eta065": 0.619,
+ "fixed_foils_all_stable": false,
+ "rows": [
+  {
+   "V": 1.99,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.727,
+    "modes": [
+     {
+      "freq_hz": 1.841,
+      "damping": 0.727,
+      "real": -12.257
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -1.941
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -43.16
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.697,
+    "modes": [
+     {
+      "freq_hz": 1.82,
+      "damping": 0.697,
+      "real": -11.119
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -1.982
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -30.681
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -40.888
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -28.726
+     }
+    ]
+   }
+  },
+  {
+   "V": 2.24,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.707,
+    "modes": [
+     {
+      "freq_hz": 2.194,
+      "damping": 0.707,
+      "real": -13.772
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.193
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -48.606
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.679,
+    "modes": [
+     {
+      "freq_hz": 2.156,
+      "damping": 0.679,
+      "real": -12.54
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.239
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -34.465
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -46.014
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -32.328
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  },
+  {
+   "V": 2.49,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.692,
+    "modes": [
+     {
+      "freq_hz": 2.539,
+      "damping": 0.692,
+      "real": -15.289
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.443
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -54.051
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.666,
+    "modes": [
+     {
+      "freq_hz": 2.487,
+      "damping": 0.666,
+      "real": -13.96
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.495
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -38.252
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -51.141
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -35.93
+     }
+    ]
+   }
+  },
+  {
+   "V": 2.74,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.681,
+    "modes": [
+     {
+      "freq_hz": 2.878,
+      "damping": 0.681,
+      "real": -16.806
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.693
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -59.494
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.657,
+    "modes": [
+     {
+      "freq_hz": 2.812,
+      "damping": 0.657,
+      "real": -15.379
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.751
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -42.043
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -56.268
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -39.532
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  },
+  {
+   "V": 2.99,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.672,
+    "modes": [
+     {
+      "freq_hz": 3.212,
+      "damping": 0.672,
+      "real": -18.325
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -2.942
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -64.936
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.649,
+    "modes": [
+     {
+      "freq_hz": 3.133,
+      "damping": 0.649,
+      "real": -16.797
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.006
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -45.836
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -61.394
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -43.133
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  },
+  {
+   "V": 3.24,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.666,
+    "modes": [
+     {
+      "freq_hz": 3.542,
+      "damping": 0.666,
+      "real": -19.844
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.191
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -70.377
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.643,
+    "modes": [
+     {
+      "freq_hz": 3.451,
+      "damping": 0.643,
+      "real": -18.214
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.261
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -49.631
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -66.521
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -46.735
+     }
+    ]
+   }
+  },
+  {
+   "V": 3.49,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.66,
+    "modes": [
+     {
+      "freq_hz": 3.869,
+      "damping": 0.66,
+      "real": -21.364
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.44
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -75.817
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.639,
+    "modes": [
+     {
+      "freq_hz": 3.766,
+      "damping": 0.639,
+      "real": -19.63
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.515
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -53.428
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -71.648
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -50.337
+     }
+    ]
+   }
+  },
+  {
+   "V": 3.74,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.656,
+    "modes": [
+     {
+      "freq_hz": 4.192,
+      "damping": 0.656,
+      "real": -22.884
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.688
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -81.256
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.635,
+    "modes": [
+     {
+      "freq_hz": 4.078,
+      "damping": 0.635,
+      "real": -21.045
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.77
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -57.227
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -76.774
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -53.939
+     }
+    ]
+   }
+  },
+  {
+   "V": 3.99,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.652,
+    "modes": [
+     {
+      "freq_hz": 4.514,
+      "damping": 0.652,
+      "real": -24.405
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -3.937
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -86.695
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.632,
+    "modes": [
+     {
+      "freq_hz": 4.388,
+      "damping": 0.632,
+      "real": -22.46
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.024
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -61.026
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -81.901
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -57.54
+     }
+    ]
+   }
+  },
+  {
+   "V": 4.24,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.649,
+    "modes": [
+     {
+      "freq_hz": 4.833,
+      "damping": 0.649,
+      "real": -25.926
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.185
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -92.133
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.629,
+    "modes": [
+     {
+      "freq_hz": 4.697,
+      "damping": 0.629,
+      "real": -23.875
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.278
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -64.827
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -87.027
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -61.142
+     }
+    ]
+   }
+  },
+  {
+   "V": 4.49,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.647,
+    "modes": [
+     {
+      "freq_hz": 5.151,
+      "damping": 0.647,
+      "real": -27.447
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.433
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -97.571
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.627,
+    "modes": [
+     {
+      "freq_hz": 5.004,
+      "damping": 0.627,
+      "real": -25.289
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.532
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -68.629
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -92.154
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -64.744
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  },
+  {
+   "V": 4.74,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.645,
+    "modes": [
+     {
+      "freq_hz": 5.468,
+      "damping": 0.645,
+      "real": -28.969
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.681
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -103.008
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.625,
+    "modes": [
+     {
+      "freq_hz": 5.31,
+      "damping": 0.625,
+      "real": -26.702
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.785
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -72.431
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -97.281
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -68.346
+     }
+    ]
+   }
+  },
+  {
+   "V": 4.99,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.643,
+    "modes": [
+     {
+      "freq_hz": 5.783,
+      "damping": 0.643,
+      "real": -30.491
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -4.929
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -108.445
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.623,
+    "modes": [
+     {
+      "freq_hz": 5.615,
+      "damping": 0.623,
+      "real": -28.116
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.039
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -76.234
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -102.407
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -71.948
+     }
+    ]
+   }
+  },
+  {
+   "V": 5.24,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.641,
+    "modes": [
+     {
+      "freq_hz": 6.097,
+      "damping": 0.641,
+      "real": -32.013
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.177
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -113.881
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.622,
+    "modes": [
+     {
+      "freq_hz": 5.919,
+      "damping": 0.622,
+      "real": -29.529
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.293
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -80.038
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -107.534
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -75.549
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  },
+  {
+   "V": 5.49,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.64,
+    "modes": [
+     {
+      "freq_hz": 6.411,
+      "damping": 0.64,
+      "real": -33.535
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.425
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -119.317
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.621,
+    "modes": [
+     {
+      "freq_hz": 6.222,
+      "damping": 0.621,
+      "real": -30.942
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.546
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -83.841
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -112.66
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -79.151
+     }
+    ]
+   }
+  },
+  {
+   "V": 5.74,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.639,
+    "modes": [
+     {
+      "freq_hz": 6.724,
+      "damping": 0.639,
+      "real": -35.057
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.673
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -124.753
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.62,
+    "modes": [
+     {
+      "freq_hz": 6.524,
+      "damping": 0.62,
+      "real": -32.355
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.8
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -87.646
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -0.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -0.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -117.787
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -82.753
+     }
+    ]
+   }
+  },
+  {
+   "V": 5.99,
+   "wand": {
+    "stable": true,
+    "min_damping": 0.638,
+    "modes": [
+     {
+      "freq_hz": 7.036,
+      "damping": 0.638,
+      "real": -36.579
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -5.921
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -130.189
+     }
+    ]
+   },
+   "wand_eta065": {
+    "stable": true,
+    "min_damping": 0.619,
+    "modes": [
+     {
+      "freq_hz": 6.826,
+      "damping": 0.619,
+      "real": -33.768
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -6.053
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -91.451
+     }
+    ]
+   },
+   "fixed": {
+    "stable": false,
+    "min_damping": -1.0,
+    "modes": [
+     {
+      "freq_hz": 0.0,
+      "damping": -1.0,
+      "real": 0.0
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -122.914
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -86.355
+     },
+     {
+      "freq_hz": 0.0,
+      "damping": 1.0,
+      "real": -0.0
+     }
+    ]
+   }
+  }
+ ]
+}

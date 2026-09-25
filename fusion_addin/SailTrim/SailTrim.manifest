@@ -1,0 +1,13 @@
+{
+	"autodeskProduct": "Fusion",
+	"type": "addin",
+	"id": "5b0c7a52-6d1e-4f7e-9f3a-2c8d1e4a7b61",
+	"author": "Filip Maleev",
+	"description": {
+		"": "Sail Trim: jib sheet, main traveler and mainsheet tension sliders for the RC catamaran rig."
+	},
+	"version": "1.0.0",
+	"runOnStartup": true,
+	"supportedOS": "windows|mac",
+	"editEnabled": true
+}

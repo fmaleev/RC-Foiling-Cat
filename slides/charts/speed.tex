@@ -1,0 +1,12 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}
+\usepackage[scaled]{helvet}\renewcommand{\familydefault}{\sfdefault}\usepackage{sansmath}\sansmath
+\definecolor{navy}{HTML}{1B2F4B}\definecolor{sea}{HTML}{2E7DB5}\definecolor{coral}{HTML}{D9653B}\definecolor{greyc}{HTML}{8A94A3}
+\pgfplotsset{every axis/.style={width=16cm, height=9cm, grid=major, grid style={greyc!30}, axis line style={greyc}, tick style={greyc},
+  tick label style={font=\Large, text=navy}, label style={font=\Large, text=navy}, legend style={font=\Large, draw=none, fill=none, text=navy}}}
+\begin{document}\begin{tikzpicture}[font=\sffamily]
+\begin{axis}[xlabel={True wind speed (kn)}, ylabel={Boat speed, beam reach (m/s)}, xmin=3, xmax=16, ymin=0, legend pos=north west]
+\addplot[line width=2.5pt, sea] table[x=tws, y=V] {/Users/fmaleev/RC-Foiling-Cat/paper/data/vpp_displacement_90.dat}; \addlegendentry{build-first (daggerboards)}
+\addplot[line width=2.5pt, coral] table[x=tws, y=V] {/Users/fmaleev/RC-Foiling-Cat/paper/data/vpp_foiling_90.dat}; \addlegendentry{foiling}
+\end{axis}
+\end{tikzpicture}\end{document}

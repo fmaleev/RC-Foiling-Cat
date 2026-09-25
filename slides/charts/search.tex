@@ -1,0 +1,13 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgfplots}\pgfplotsset{compat=1.17}
+\usepackage[scaled]{helvet}\renewcommand{\familydefault}{\sfdefault}\usepackage{sansmath}\sansmath
+\definecolor{navy}{HTML}{1B2F4B}\definecolor{sea}{HTML}{2E7DB5}\definecolor{coral}{HTML}{D9653B}\definecolor{greyc}{HTML}{8A94A3}
+\pgfplotsset{every axis/.style={width=16cm, height=9cm, grid=major, grid style={greyc!30}, axis line style={greyc}, tick style={greyc},
+  tick label style={font=\Large, text=navy}, label style={font=\Large, text=navy}, legend style={font=\Large, draw=none, fill=none, text=navy}}}
+\begin{document}\begin{tikzpicture}[font=\sffamily]
+\begin{axis}[xlabel={Wind needed to fly, beam reach (kn)}, ylabel={Boat speed at 12 kn (m/s)}, legend pos=south east]
+\addplot[only marks, mark=*, mark size=0.8pt, greyc!60] table[x=tws90, y=v12] {/Users/fmaleev/RC-Foiling-Cat/paper/data/opt_cloud_thin.dat}; \addlegendentry{feasible designs}
+\addplot[only marks, mark=*, mark size=0.9pt, sea!55] table[x=tws90, y=v12] {/Users/fmaleev/RC-Foiling-Cat/paper/data/opt_cloud_robust_thin.dat}; \addlegendentry{robust, with margins}
+\addplot[line width=2.5pt, navy] table[x=tws90, y=v12] {/Users/fmaleev/RC-Foiling-Cat/paper/data/opt_front_robust.dat}; \addlegendentry{best robust trade-off}
+\end{axis}
+\end{tikzpicture}\end{document}

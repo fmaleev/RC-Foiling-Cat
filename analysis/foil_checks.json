@@ -1,0 +1,238 @@
+{
+ "rules": [
+  {
+   "rule": "pitch static margin (no downwash)",
+   "value": 83.7,
+   "limit": "> 0 mm (neutral point aft of CG)",
+   "unit": "mm",
+   "ok": true
+  },
+  {
+   "rule": "pitch static margin (elevator efficiency 0.65 (downwash/wake))",
+   "value": 31.8,
+   "limit": "> 0 mm (neutral point aft of CG)",
+   "unit": "mm",
+   "ok": true
+  },
+  {
+   "rule": "heave, fixed foils: 20 mm disturbance after 3 s (expected: does not return)",
+   "value": 20.0,
+   "limit": "neutral (k = 0)",
+   "unit": "mm left",
+   "ok": true
+  },
+  {
+   "rule": "heave with wand flaps: damping ratio over the flying range",
+   "value": "1.36-1.36",
+   "limit": ">= 0.5 everywhere",
+   "unit": "",
+   "ok": true
+  },
+  {
+   "rule": "heave with wand flaps: 20 mm disturbance settles (5 %) across the flying range",
+   "value": 0.544,
+   "limit": "<= 1 s, overshoot <= 10 %",
+   "unit": "s",
+   "ok": true
+  },
+  {
+   "rule": "coupled heave-pitch modes over the flying range (elevator efficiency 1 and 0.65)",
+   "value": "0.62",
+   "limit": "all stable (value: least damping ratio)",
+   "unit": "",
+   "ok": true
+  },
+  {
+   "rule": "flying range (take-off to top)",
+   "value": "1.99-6.00",
+   "limit": "info; ends by: end of scan (6 m/s)",
+   "unit": "m/s",
+   "ok": true
+  },
+  {
+   "rule": "flying range covers the 12 kn beam-reach speed",
+   "value": 1.29,
+   "limit": ">= 1.05 and not trim-limited",
+   "unit": "x speed",
+   "ok": true
+  },
+  {
+   "rule": "same, sail-drive pitch couple x0.5 and x1.5",
+   "value": 1.271,
+   "limit": ">= 1.0",
+   "unit": "x speed",
+   "ok": true
+  },
+  {
+   "rule": "elevator depth over the flying range (to the 12 kn speed)",
+   "value": 1.569,
+   "limit": ">= 0.5 chord",
+   "unit": "chords",
+   "ok": true
+  },
+  {
+   "rule": "main foil depth over the flying range",
+   "value": 1.198,
+   "limit": ">= 0.5 chord",
+   "unit": "chords",
+   "ok": true
+  },
+  {
+   "rule": "rudder immersion over the flying range",
+   "value": 46.92,
+   "limit": ">= 30 mm",
+   "unit": "mm",
+   "ok": true
+  },
+  {
+   "rule": "steering over the whole flying range, heel-limited side force",
+   "value": 4.67,
+   "limit": "<= 14.4 deg (0.8 x throw)",
+   "unit": "deg",
+   "ok": true
+  },
+  {
+   "rule": "hull clearance over the flying range",
+   "value": 74.083,
+   "limit": ">= 50 mm",
+   "unit": "mm",
+   "ok": true
+  },
+  {
+   "rule": "flap angle over the flying range",
+   "value": 13.203,
+   "limit": "<= 15 deg",
+   "unit": "deg",
+   "ok": true
+  },
+  {
+   "rule": "pitch attitude over the flying range",
+   "value": "+0.0 to +0.4",
+   "limit": "info (nose up +)",
+   "unit": "deg",
+   "ok": true
+  },
+  {
+   "rule": "elevator lift over the flying range",
+   "value": "-5.1 to -0.8",
+   "limit": "info (down -)",
+   "unit": "N",
+   "ok": true
+  },
+  {
+   "rule": "take-off speed",
+   "value": 1.994,
+   "limit": "info",
+   "unit": "m/s",
+   "ok": true
+  },
+  {
+   "rule": "take-off wind, beam reach (baseline)",
+   "value": 7.25,
+   "limit": "<= 8 kn",
+   "unit": "kn",
+   "ok": true
+  },
+  {
+   "rule": "take-off wind, beam reach (worst sensitivity case)",
+   "value": 8.0,
+   "limit": "<= 10 kn",
+   "unit": "kn",
+   "ok": true
+  },
+  {
+   "rule": "main foil CL at take-off (flaps down)",
+   "value": 0.8,
+   "limit": "<= 0.8 x assumed CL max 1.0",
+   "unit": "",
+   "ok": true
+  },
+  {
+   "rule": "Reynolds number, main foil at take-off",
+   "value": 0.897,
+   "limit": "info (x 1e5)",
+   "unit": "",
+   "ok": true
+  },
+  {
+   "rule": "Reynolds number, elevator at take-off",
+   "value": 0.558,
+   "limit": "info (x 1e5)",
+   "unit": "",
+   "ok": true
+  },
+  {
+   "rule": "main foil depth at design ride height, level",
+   "value": 1.5,
+   "limit": ">= 1 chord",
+   "unit": "chords",
+   "ok": true
+  },
+  {
+   "rule": "elevator depth at design ride height, level",
+   "value": 2.053,
+   "limit": ">= 1 chord",
+   "unit": "chords",
+   "ok": true
+  },
+  {
+   "rule": "main foil root stress, largest flight load on one wing at 2 g (CFRP)",
+   "value": 49.664,
+   "limit": "<= 100 MPa (safety 3)",
+   "unit": "MPa",
+   "ok": true
+  },
+  {
+   "rule": "main foil tip deflection, same case",
+   "value": 1.491,
+   "limit": "<= 2 mm",
+   "unit": "mm",
+   "ok": true
+  },
+  {
+   "rule": "elevator root stress, largest flight load (up or down) on one elevator at 2 g",
+   "value": 46.105,
+   "limit": "<= 100 MPa (safety 3)",
+   "unit": "MPa",
+   "ok": true
+  }
+ ],
+ "heave_time_domain": [
+  {
+   "V": 2.0,
+   "settling_s": 0.544,
+   "overshoot_pct": 0.0,
+   "final_mm": 0.0
+  },
+  {
+   "V": 3.0,
+   "settling_s": 0.363,
+   "overshoot_pct": 0.0,
+   "final_mm": 0.0
+  },
+  {
+   "V": 4.0,
+   "settling_s": 0.272,
+   "overshoot_pct": 0.0,
+   "final_mm": 0.0
+  },
+  {
+   "V": 5.0,
+   "settling_s": 0.218,
+   "overshoot_pct": 0.0,
+   "final_mm": 0.0
+  }
+ ],
+ "design_waterline_boat_z_mm": -152.5,
+ "largest_flight_loads_N": {
+  "main": 31.56,
+  "elevator": 9.57
+ },
+ "assumptions": {
+  "section_cl_max": 1.0,
+  "nu_m2_s": 1e-06,
+  "E_MPa": 70000.0,
+  "strength_MPa": 300.0,
+  "disturbance_mm": 20.0
+ }
+}

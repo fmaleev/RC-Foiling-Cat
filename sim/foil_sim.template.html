@@ -1,0 +1,519 @@
+<title>Foil Flight Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F2F5F6; --surface:#FFFFFF; --surface-2:#E7EDEF; --line:#CBD6DA; --ink:#12232D; --muted:#566A74;
+  --accent:#0E7C8B; --accent-ink:#FFFFFF; --amber:#C9912E; --slate:#6F8490; --fly:#1F8A5B; --warn:#B7791F; --bad:#B4432F;
+  --grid:rgba(18,35,45,.08); --heat-lo:#E9F3F4; --heat-hi:#0E5F6B;
+  --f-display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0C171E; --surface:#12212A; --surface-2:#182B35; --line:#27404C; --ink:#E2ECEF; --muted:#8FA5AF;
+    --accent:#3DB3C2; --accent-ink:#06222A; --amber:#E0B25A; --slate:#8FA5AF; --fly:#4CC38A; --warn:#E0A94A; --bad:#E27A63;
+    --grid:rgba(226,236,239,.08); --heat-lo:#15303A; --heat-hi:#5FD0DD;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0C171E; --surface:#12212A; --surface-2:#182B35; --line:#27404C; --ink:#E2ECEF; --muted:#8FA5AF;
+  --accent:#3DB3C2; --accent-ink:#06222A; --amber:#E0B25A; --slate:#8FA5AF; --fly:#4CC38A; --warn:#E0A94A; --bad:#E27A63;
+  --grid:rgba(226,236,239,.08); --heat-lo:#15303A; --heat-hi:#5FD0DD;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;padding-inline:16px;padding-block:18px 40px}
+.wrap{max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.4vw,38px);letter-spacing:.01em;margin:0;text-wrap:balance}
+h1 small{display:block;font-family:var(--f-body);font-weight:400;font-size:15px;color:var(--muted);letter-spacing:0;margin-top:2px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+button{font:600 14px var(--f-body);border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 12px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.layout{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:18px;align-items:start}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+aside.rail{display:flex;flex-direction:column;gap:14px;position:sticky;top:env(safe-area-inset-top,0px);max-height:calc(100vh - 24px);overflow:auto;padding-right:2px}
+@media (max-width:900px){aside.rail{position:static;max-height:none}}
+fieldset{border:1px solid var(--line);border-radius:8px;background:var(--surface);margin:0;padding:10px 12px 12px;display:flex;flex-direction:column;gap:10px}
+legend{font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 4px}
+.ctl{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center}
+.ctl label{font-size:14px}
+.ctl output{font-family:var(--f-mono);font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
+.ctl input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg label{flex:1;text-align:center;padding:5px 8px;font-size:13px;cursor:pointer;border-right:1px solid var(--line)}
+.seg label:last-child{border-right:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked+span{color:var(--accent);font-weight:600}
+.seg label:has(input:checked){background:var(--surface-2)}
+.seg label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:-2px}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:14px}
+.check input{margin-top:3px;accent-color:var(--accent)}
+.hint{font-size:12.5px;color:var(--muted);margin:0}
+.mass-list{display:grid;grid-template-columns:1fr 84px;gap:4px 8px;font-size:13px;align-items:center}
+.mass-list input{width:100%;font:13px var(--f-mono);padding:3px 5px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink);text-align:right}
+.mass-total{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:13px;border-top:1px solid var(--line);padding-top:6px}
+main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .k{font-size:12.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.tile .v{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.05;font-variant-numeric:tabular-nums}
+.tile .s{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.tile.mode{border-width:2px}
+.tile.mode[data-mode="flying"]{border-color:var(--fly)} .tile.mode[data-mode="flying"] .v{color:var(--fly)}
+.tile.mode[data-mode="lifting"],.tile.mode[data-mode="skimming"]{border-color:var(--amber)} .tile.mode[data-mode="lifting"] .v,.tile.mode[data-mode="skimming"] .v{color:var(--amber)}
+.tile.mode[data-mode="displacement"] .v{color:var(--slate)}
+.notes{display:flex;flex-direction:column;gap:6px}
+.note{font-size:14px;padding:7px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+.note[data-sev="warn"]{border-color:var(--warn)} .note[data-sev="bad"]{border-color:var(--bad)} .note[data-sev="ok"]{border-color:var(--fly)}
+.note b{font-weight:600}
+.charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:1100px){.charts{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.panel h2{font-family:var(--f-display);font-weight:600;font-size:18px;margin:0;letter-spacing:.01em}
+.panel p{margin:0}
+.panel .cap{font-size:13px;color:var(--muted)}
+.canvas-box{position:relative;width:100%;aspect-ratio:16/10;max-width:100%}
+.canvas-box canvas{position:absolute;inset:0;width:100%;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.sweep-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px}
+select{font:14px var(--f-body);padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.progress{font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+details summary{cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:17px}
+details .body{max-width:78ch;display:flex;flex-direction:column;gap:8px;padding-top:8px;font-size:14.5px}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:4px 10px;border-bottom:1px solid var(--line);text-align:right;font-family:var(--f-mono)}
+th:first-child,td:first-child{text-align:left;font-family:var(--f-body)}
+th{color:var(--muted);font-weight:600;font-family:var(--f-body)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <h1>Foil Flight Simulator<small>1 m RC foiling catamaran with <span class="fv"></span> foils: set the wind, trim the sails, size the foils, and see whether it flies and stays trimmed.</small></h1>
+  <div class="btns">
+    <button id="btn-run" class="primary" type="button">Run acceleration</button>
+    <button id="btn-reset" type="button">Reset to CAD design</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="rail" aria-label="Controls">
+  <fieldset>
+    <legend>Boat</legend>
+    <div class="seg" role="radiogroup" aria-label="Configuration">
+      <label><input type="radio" name="cfg" id="cfg-foil" value="foiling" checked><span>Foiling (L-foils)</span></label>
+      <label><input type="radio" name="cfg" id="cfg-disp" value="displacement"><span>Build-first (boards)</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Wind</legend>
+    <div class="ctl"><label for="tws">True wind speed</label><output id="tws-o"></output><input type="range" id="tws" min="2" max="20" step="0.5" value="8"></div>
+    <div class="ctl"><label for="twa">True wind angle (off the bow)</label><output id="twa-o"></output><input type="range" id="twa" min="35" max="180" step="5" value="90"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Sails</legend>
+    <div class="seg" role="radiogroup" aria-label="Sail trim mode">
+      <label><input type="radio" name="trim" id="trim-auto" value="auto" checked><span>Auto trim</span></label>
+      <label><input type="radio" name="trim" id="trim-man" value="manual"><span>Manual sheet</span></label>
+    </div>
+    <div class="ctl" id="cl-ctl"><label for="clset">Sail lift coefficient (how hard you sheet)</label><output id="clset-o"></output><input type="range" id="clset" min="0.1" max="1.3" step="0.05" value="1.0"></div>
+    <div class="ctl"><label for="sailpct">Sail area (same planform)</label><output id="sailpct-o"></output><input type="range" id="sailpct" min="70" max="130" step="5" value="100"></div>
+    <p class="hint">Auto trim finds the most drive the boat can hold without passing 90 % of its heeling or bow-down limit, as the VPP does. Manual sets the lift coefficient; the boat still eases if it would heel past the limit.</p>
+  </fieldset>
+
+  <fieldset id="foil-fs">
+    <legend>Foils</legend>
+    <div class="ctl"><label for="wspan">Main foil span (each side)</label><output id="wspan-o"></output><input type="range" id="wspan" min="100" max="320" step="10" value="160"></div>
+    <div class="ctl"><label for="wchord">Main foil chord</label><output id="wchord-o"></output><input type="range" id="wchord" min="40" max="90" step="1" value="45"></div>
+    <div class="ctl"><label for="winc">Main foil incidence (NACA 4412)</label><output id="winc-o"></output><input type="range" id="winc" min="-2" max="6" step="0.25" value="1.5"></div>
+    <div class="ctl"><label for="espan">Elevator span (each side)</label><output id="espan-o"></output><input type="range" id="espan" min="80" max="260" step="10" value="120"></div>
+    <div class="ctl"><label for="echord">Elevator chord</label><output id="echord-o"></output><input type="range" id="echord" min="24" max="60" step="1" value="28"></div>
+    <div class="ctl"><label for="einc">Elevator incidence (NACA 0012)</label><output id="einc-o"></output><input type="range" id="einc" min="-2" max="6" step="0.25" value="-1"></div>
+    <div class="ctl"><label for="zel">Elevator height (rudders end just below it)</label><output id="zel-o"></output><input type="range" id="zel" min="-280" max="-190" step="1" value="-210"></div>
+    <label class="check"><input type="checkbox" id="flaps" checked><span>Wand-driven flaps (ride-height control, 25 % chord, +-15 deg)</span></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Mass</legend>
+    <div class="mass-list" id="mass-list"></div>
+    <div class="ctl"><label for="lcg">Centre of gravity shift (forward +)</label><output id="lcg-o"></output><input type="range" id="lcg" min="-60" max="60" step="5" value="0"></div>
+    <div class="mass-total"><span>Sailing mass</span><span id="mass-total"></span></div>
+    <p class="hint">Component weights come from the CAD model and the parts' spec sheets. Edit any of them; extra weight is placed at the centre of gravity. Resizing the foils changes their solid-carbon weight automatically.</p>
+  </fieldset>
+</aside>
+
+<main>
+  <section class="readout" aria-live="polite">
+    <div class="tile mode" id="t-mode"><span class="k">Flight mode</span><span class="v" id="r-mode"></span><span class="s" id="r-mode-s"></span></div>
+    <div class="tile"><span class="k">Boat speed</span><span class="v" id="r-v"></span><span class="s" id="r-v-s"></span></div>
+    <div class="tile"><span class="k">Take-off speed</span><span class="v" id="r-vto"></span><span class="s" id="r-vto-s"></span></div>
+    <div class="tile"><span class="k">Wind needed to fly</span><span class="v" id="r-minw"></span><span class="s" id="r-minw-s"></span></div>
+    <div class="tile"><span class="k">Flying attitude</span><span class="v" id="r-att"></span><span class="s" id="r-att-s"></span></div>
+    <div class="tile"><span class="k">Heel / bow-down use</span><span class="v" id="r-heel"></span><span class="s" id="r-heel-s"></span></div>
+  </section>
+  <div class="notes" id="notes"></div>
+
+  <div class="charts">
+    <section class="panel">
+      <h2>Drive and drag against boat speed</h2>
+      <p class="cap">The boat accelerates wherever the sails' drive is above the drag. It flies if it gets over the drag hump to the take-off speed.</p>
+      <div class="canvas-box"><canvas id="c-force" role="img" aria-label="Sail drive and total drag against boat speed"></canvas></div>
+      <div class="legend"><span><i style="background:var(--amber)"></i>sail drive</span><span><i style="background:var(--ink)"></i>total drag</span><span><i style="background:var(--slate)"></i>drag if the foils never lifted</span><span><i style="background:var(--fly)"></i>take-off speed</span></div>
+    </section>
+    <section class="panel">
+      <h2>Acceleration from a standstill</h2>
+      <p class="cap">Speed and foil lift over time after the sails are sheeted in (10 % added mass assumed).</p>
+      <div class="canvas-box"><canvas id="c-run" role="img" aria-label="Boat speed and foil lift over time"></canvas></div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>boat speed (m/s)</span><span><i style="background:var(--amber)"></i>foil lift / weight (%)</span></div>
+    </section>
+    <section class="panel">
+      <h2>Speed at every wind angle</h2>
+      <p class="cap">Boat speed against true wind angle at the current wind speed. Green marks where it flies.</p>
+      <div class="canvas-box"><canvas id="c-polar" role="img" aria-label="Boat speed against true wind angle"></canvas></div>
+      <div class="legend"><span><i style="background:var(--fly)"></i>flying</span><span><i style="background:var(--amber)"></i>foils lifting, a hull in the water</span><span><i style="background:var(--slate)"></i>displacement</span></div>
+    </section>
+    <section class="panel">
+      <h2>Foil size explorer</h2>
+      <div class="sweep-ctl">
+        <label for="metric">Show</label>
+        <select id="metric">
+          <option value="minwind">wind needed to fly (kn)</option>
+          <option value="speed">boat speed at the current wind (m/s)</option>
+          <option value="vto">take-off speed (m/s)</option>
+        </select>
+        <button id="btn-sweep" type="button">Run sweep</button>
+        <span class="progress" id="sweep-p">Main foil span x chord, other settings as set.</span>
+      </div>
+      <div class="canvas-box"><canvas id="c-sweep" role="img" aria-label="Heatmap of the chosen result over main foil span and chord"></canvas></div>
+      <p class="cap" id="sweep-best"></p>
+    </section>
+  </div>
+
+  <details>
+    <summary>How this works, and how far to trust it</summary>
+    <div class="body">
+      <p>The page runs the same physics as the project's velocity prediction program (<code>analysis/vpp.py</code>). Hull wave resistance (Michell thin-ship integral with catamaran interference) is precomputed over boat speed and the weight the hulls carry, then interpolated. Everything else is computed live:</p>
+      <ul>
+        <li>ITTC-57 friction</li>
+        <li>appendage drag</li>
+        <li>lifting-line foil lift and induced drag</li>
+        <li>the sail lift/drag model</li>
+        <li>the heel and bow-down limits</li>
+      </ul>
+      <p>Take-off happens when both foil pairs can carry their share of the weight: the elevator's share is set by where the centre of gravity sits between the foils. With wand-driven flaps, the main foils can add up to 15 deg of flap at low speed, so they need less speed to lift their share. Without flaps the boat has no ride-height stability once it flies. The flap range also sets the speeds over which the flaps can hold ride height.</p>
+      <p>These are model predictions. Several inputs are assumptions rather than measurements:</p>
+      <ul>
+        <li>the sail maximum lift coefficient (1.3)</li>
+        <li>the flap effectiveness</li>
+        <li>the 10 % added mass</li>
+        <li>scaling of the bow-down limit with weight</li>
+      </ul>
+      <p>Foil lift at Reynolds numbers near 10^5 and close to the surface may be lower than predicted.</p>
+      <div class="tbl-wrap"><table id="ref-tbl"><caption class="hint" style="caption-side:top;text-align:left;padding-bottom:4px">Check: this page at the CAD design (<span class="fv"></span> foils) vs the Python VPP (boat speed, m/s)</caption></table></div>
+    </div>
+  </details>
+</main>
+</div>
+</div>
+
+<script>
+const D = __SIM_DATA__;
+__SIM_CORE__
+const { C, A, H, T, DEG, KN, CAD_FOILS, foilMassG, foilLcgShift, flyTrim, rmFly, liftSlope, interp1, makeBoat, takeoffSpeed, flapAt, resistance, drive, solve, minWindToFly, accelRun } = makeSim(D);
+const $ = id => document.getElementById(id);
+
+// ------------------------------------------------------------------ state
+const DEFAULTS = { cfg: 'foiling', tws: 8, twa: 90, trim: 'auto', clset: 1.0, sailPct: 100, ...CAD_FOILS, flaps: true, lcgShift: 0 };
+const massDefaults = { foiling: D.mass.foiling, displacement: D.mass.displacement };
+let masses = JSON.parse(JSON.stringify(massDefaults));
+const S = { ...DEFAULTS };
+const fmt = (x, d = 2) => (x === null || x === undefined || !isFinite(x)) ? '--' : x.toFixed(d);
+
+function foilDelta() { return S.cfg === 'foiling' ? foilMassG(S) - foilMassG(CAD_FOILS) : 0; }   // foils resized from the CAD sizes
+function massTotal() { return Object.values(masses[S.cfg]).reduce((a, v) => a + Number(v || 0), 0) + foilDelta(); }   // the CAD list includes the 20 g wiring allowance
+
+function buildMassList() {
+  const box = $('mass-list'); box.innerHTML = '';
+  for (const [k, v] of Object.entries(masses[S.cfg])) {
+    const id = 'm-' + k.replace(/[^A-Za-z0-9]/g, '');
+    const lab = document.createElement('label'); lab.htmlFor = id; lab.textContent = k;
+    const inp = document.createElement('input'); inp.type = 'number'; inp.id = id; inp.min = '0'; inp.step = '1'; inp.value = Math.round(v * 10) / 10;
+    inp.setAttribute('aria-label', k + ' mass in grams');
+    inp.addEventListener('input', () => { masses[S.cfg][k] = Math.max(0, Number(inp.value) || 0); update(); });
+    box.append(lab, inp);
+  }
+}
+
+const sliders = [['tws', v => `${v} kn  (${(v * KN).toFixed(1)} m/s)`], ['twa', v => `${v} deg`], ['clset', v => Number(v).toFixed(2)], ['sailpct', v => `${v} %`],
+  ['wspan', v => `${v} mm`], ['wchord', v => `${v} mm`], ['winc', v => `${Number(v).toFixed(2)} deg`], ['espan', v => `${v} mm`], ['echord', v => `${v} mm`],
+  ['einc', v => `${Number(v).toFixed(2)} deg`], ['zel', v => `z ${v} mm, ${Math.round(T.z_fly * 1000 - v)} mm deep level`], ['lcg', v => `${v > 0 ? '+' : ''}${v} mm`]];
+const keyOf = { tws: 'tws', twa: 'twa', clset: 'clset', sailpct: 'sailPct', wspan: 'wspan', wchord: 'wchord', winc: 'winc', espan: 'espan', echord: 'echord', einc: 'einc', zel: 'zel', lcg: 'lcgShift' };
+
+function readInputs() {
+  for (const [id] of sliders) S[keyOf[id]] = Number($(id).value);
+  S.cfg = $('cfg-foil').checked ? 'foiling' : 'displacement';
+  S.trim = $('trim-man').checked ? 'manual' : 'auto';
+  S.flaps = $('flaps').checked;
+}
+function writeInputs() {
+  for (const [id] of sliders) $(id).value = S[keyOf[id]];
+  $('cfg-foil').checked = S.cfg === 'foiling'; $('cfg-disp').checked = S.cfg !== 'foiling';
+  $('trim-auto').checked = S.trim === 'auto'; $('trim-man').checked = S.trim === 'manual';
+  $('flaps').checked = S.flaps;
+}
+function boatFrom(over = {}) {   // resized foils also move the centre of gravity
+  const p = { ...S, ...over }, m = massTotal() + (S.cfg === 'foiling' ? foilMassG(p) - foilMassG(S) : 0);
+  return makeBoat({ ...p, massG: m, lcgShift: p.lcgShift + (p.cfg === 'foiling' ? foilLcgShift(p, m) : 0) });
+}
+
+// ------------------------------------------------------------------ drawing
+function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function setupCanvas(cv) {
+  const r = cv.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.height * dpr));
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w: r.width, h: r.height };
+}
+function niceTicks(lo, hi, n = 5) {
+  const span = hi - lo || 1, step0 = span / n, mag = 10 ** Math.floor(Math.log10(step0)), err = step0 / mag;
+  const step = (err >= 7.5 ? 10 : err >= 3.5 ? 5 : err >= 1.5 ? 2 : 1) * mag;
+  const t = []; for (let v = Math.ceil(lo / step) * step; v <= hi + step * 1e-6; v += step) t.push(Number(v.toFixed(10)));
+  return t;
+}
+function axes(g, x0, x1, y0, y1, xl, yl, pad = { l: 46, r: 14, t: 10, b: 36 }) {
+  const { ctx, w, h } = g, X = v => pad.l + (v - x0) / (x1 - x0) * (w - pad.l - pad.r), Y = v => h - pad.b - (v - y0) / (y1 - y0) * (h - pad.t - pad.b);
+  ctx.clearRect(0, 0, w, h);
+  ctx.font = `12px ${css('--f-mono') || 'monospace'}`; ctx.fillStyle = css('--muted'); ctx.strokeStyle = css('--grid'); ctx.lineWidth = 1;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  for (const v of niceTicks(x0, x1)) { ctx.beginPath(); ctx.moveTo(X(v), pad.t); ctx.lineTo(X(v), h - pad.b); ctx.stroke(); ctx.fillText(String(v), X(v), h - pad.b + 5); }
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (const v of niceTicks(y0, y1)) { ctx.beginPath(); ctx.moveTo(pad.l, Y(v)); ctx.lineTo(w - pad.r, Y(v)); ctx.stroke(); ctx.fillText(String(v), pad.l - 6, Y(v)); }
+  ctx.font = `12px ${css('--f-body') || 'sans-serif'}`; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom'; ctx.fillText(xl, (pad.l + w - pad.r) / 2, h - 2);
+  ctx.save(); ctx.translate(12, (pad.t + h - pad.b) / 2); ctx.rotate(-Math.PI / 2); ctx.textBaseline = 'middle'; ctx.fillText(yl, 0, 0); ctx.restore();
+  return { X, Y, pad };
+}
+function line(ctx, pts, X, Y, color, width = 2, dash = []) {
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash(dash); ctx.beginPath();
+  let pen = false;
+  for (const [x, y] of pts) { if (y === null || !isFinite(y)) { pen = false; continue; } pen ? ctx.lineTo(X(x), Y(y)) : ctx.moveTo(X(x), Y(y)); pen = true; }
+  ctx.stroke(); ctx.restore();
+}
+
+let last = {};
+function drawForce(b, sol) {
+  const g = setupCanvas($('c-force')), vmax = 5;
+  const drv = [], drg = [], hull = [];
+  for (let V = 0.05; V <= vmax + 1e-9; V += 0.05) {
+    const s = drive(b, V, S.tws * KN, S.twa);
+    drv.push([V, s.fx]); drg.push([V, resistance(b, V, s.fy).R]);
+    if (b.foiling) hull.push([V, V >= b.vto ? resistance(b, V, s.fy, true).R : null]);
+  }
+  const ymax = Math.max(4, ...drg.map(p => p[1]).filter(v => v < 60), ...drv.map(p => p[1])) * 1.12;
+  const { X, Y } = axes(g, 0, vmax, 0, Math.min(ymax, 40), 'boat speed (m/s)', 'force (N)');
+  const ctx = g.ctx;
+  if (b.foiling && isFinite(b.vto) && b.vto < vmax) {
+    ctx.save(); ctx.strokeStyle = css('--fly'); ctx.setLineDash([5, 4]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(b.vto), Y(0)); ctx.lineTo(X(b.vto), Y(Math.min(ymax, 40))); ctx.stroke(); ctx.restore();
+    ctx.fillStyle = css('--fly'); ctx.font = `12px ${css('--f-body')}`; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillText('take-off', X(b.vto) + 4, Y(Math.min(ymax, 40)) + 2);
+  }
+  if (b.foiling) line(ctx, hull, X, Y, css('--slate'), 1.5, [4, 4]);
+  line(ctx, drg, X, Y, css('--ink'), 2);
+  line(ctx, drv, X, Y, css('--amber'), 2.5);
+  const Ve = sol.V, De = resistance(b, Ve, drive(b, Ve, S.tws * KN, S.twa).fy).R;
+  ctx.fillStyle = css('--accent'); ctx.beginPath(); ctx.arc(X(Ve), Y(Math.min(De, 40)), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = css('--ink'); ctx.font = `600 12px ${css('--f-body')}`; ctx.textAlign = Ve > 3.8 ? 'right' : 'left'; ctx.textBaseline = 'bottom';
+  ctx.fillText(`${Ve.toFixed(2)} m/s`, X(Ve) + (Ve > 3.8 ? -8 : 8), Y(Math.min(De, 40)) - 4);
+}
+function drawRun(run) {
+  const g = setupCanvas($('c-run')), tEnd = run.pts[run.pts.length - 1].t;
+  const vmax = Math.max(1, ...run.pts.map(p => p.V)) * 1.15;
+  const { X, Y } = axes(g, 0, tEnd, 0, vmax, 'time (s)', 'boat speed (m/s)', { l: 46, r: 40, t: 10, b: 36 });
+  const ctx = g.ctx, Yl = v => Y(v / 100 * vmax);
+  ctx.save(); ctx.fillStyle = css('--amber'); ctx.globalAlpha = 0.18; ctx.beginPath(); ctx.moveTo(X(0), Yl(0));
+  for (const p of run.pts) ctx.lineTo(X(p.t), Yl(p.lift));
+  ctx.lineTo(X(tEnd), Yl(0)); ctx.closePath(); ctx.fill(); ctx.restore();
+  line(ctx, run.pts.map(p => [p.t, p.lift / 100 * vmax]), X, Y, css('--amber'), 1.5);
+  line(ctx, run.pts.map(p => [p.t, p.V]), X, Y, css('--accent'), 2.5);
+  ctx.fillStyle = css('--muted'); ctx.font = `12px ${css('--f-mono')}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  for (const v of [0, 50, 100]) ctx.fillText(v + '%', g.w - 36, Yl(v));
+  if (run.tTake !== null) {
+    ctx.save(); ctx.strokeStyle = css('--fly'); ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(X(run.tTake), Y(0)); ctx.lineTo(X(run.tTake), Y(vmax)); ctx.stroke(); ctx.restore();
+    ctx.fillStyle = css('--fly'); ctx.font = `600 12px ${css('--f-body')}`; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText(`flies at ${run.tTake.toFixed(1)} s`, X(run.tTake) + 5, Y(vmax) + 4);
+  }
+}
+function drawPolar(b) {
+  const g = setupCanvas($('c-polar')), pts = [];
+  for (let a = 35; a <= 180; a += 5) { const s = solve(b, S.tws * KN, a); pts.push({ a, V: s.V, mode: s.mode }); }
+  const vmax = Math.max(1, ...pts.map(p => p.V)) * 1.1;
+  const { X, Y } = axes(g, 30, 180, 0, vmax, 'true wind angle (deg)', 'boat speed (m/s)');
+  const ctx = g.ctx, col = { flying: css('--fly'), lifting: css('--amber'), skimming: css('--amber'), displacement: css('--slate') };
+  for (let i = 0; i < pts.length - 1; i++) line(ctx, [[pts[i].a, pts[i].V], [pts[i + 1].a, pts[i + 1].V]], X, Y, col[pts[i].mode], 2.5);
+  for (const p of pts) { ctx.fillStyle = col[p.mode]; ctx.beginPath(); ctx.arc(X(p.a), Y(p.V), 3, 0, 2 * Math.PI); ctx.fill(); }
+  const cur = solve(b, S.tws * KN, S.twa);
+  ctx.strokeStyle = css('--ink'); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(X(S.twa), Y(cur.V), 6, 0, 2 * Math.PI); ctx.stroke();
+}
+
+// sweep
+const SPANS = [100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320], CHORDS = [40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90];
+let sweep = null, sweepJob = 0;
+function metricOf(b) {
+  const m = $('metric').value;
+  if (m === 'vto') return isFinite(b.vto) ? b.vto : null;
+  if (m === 'speed') { const s = solve(b, S.tws * KN, S.twa); return s.V; }
+  return minWindToFly(b, S.twa);
+}
+function runSweep() {
+  const job = ++sweepJob, m = $('metric').value, cells = [];
+  let i = 0;
+  $('sweep-p').textContent = 'Running...';
+  const step = () => {
+    if (job !== sweepJob) return;
+    const t0 = performance.now();
+    while (i < SPANS.length * CHORDS.length && performance.now() - t0 < 30) {
+      const s = SPANS[i % SPANS.length], c = CHORDS[Math.floor(i / SPANS.length)];
+      cells.push({ s, c, v: metricOf(boatFrom({ wspan: s, wchord: c })) }); i++;
+    }
+    $('sweep-p').textContent = `Running... ${Math.round(i / (SPANS.length * CHORDS.length) * 100)} %`;
+    if (i < SPANS.length * CHORDS.length) { setTimeout(step, 0); return; }
+    sweep = { m, cells, cfgKey: sweepKey() }; drawSweep();
+    $('sweep-p').textContent = `Done: ${SPANS.length * CHORDS.length} designs.`;
+  };
+  step();
+}
+function sweepKey() { return JSON.stringify([S.cfg, S.tws, S.twa, S.trim, S.clset, S.sailPct, S.winc, S.espan, S.echord, S.einc, S.zel, S.flaps, S.lcgShift, massTotal()]); }
+function drawSweep() {
+  const g = setupCanvas($('c-sweep')), ctx = g.ctx;
+  const pad = { l: 52, r: 70, t: 10, b: 36 };
+  const { X, Y } = axes(g, SPANS[0] - 10, SPANS[SPANS.length - 1] + 10, CHORDS[0] - 2.5, CHORDS[CHORDS.length - 1] + 2.5, 'main foil span each side (mm)', 'chord (mm)', pad);
+  if (!sweep || !S.cfg.startsWith('foil')) {
+    ctx.fillStyle = css('--muted'); ctx.font = `14px ${css('--f-body')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(S.cfg === 'foiling' ? 'Press "Run sweep" to map the chosen result.' : 'The sweep needs the foiling configuration.', (pad.l + g.w - pad.r) / 2, (pad.t + g.h - pad.b) / 2);
+    $('sweep-best').textContent = ''; return;
+  }
+  const vals = sweep.cells.map(c => c.v).filter(v => v !== null);
+  const lo = Math.min(...vals), hi = Math.max(...vals), better = sweep.m === 'speed' ? 'high' : 'low';
+  const lerp = (a, b, t) => a.map((x, k) => Math.round(x + (b[k] - x) * t));
+  const hex = h => { h = h.replace('#', ''); return [0, 2, 4].map(k => parseInt(h.slice(k, k + 2), 16)); };
+  const cLo = hex(css('--heat-lo')), cHi = hex(css('--heat-hi'));
+  const cw = (X(SPANS[1]) - X(SPANS[0])), ch = (Y(CHORDS[0]) - Y(CHORDS[1]));
+  let best = null;
+  for (const c of sweep.cells) {
+    if (c.v === null) { ctx.fillStyle = css('--surface-2'); }
+    else {
+      let t = hi > lo ? (c.v - lo) / (hi - lo) : 0.5; if (better === 'low') t = 1 - t;
+      ctx.fillStyle = `rgb(${lerp(cLo, cHi, t).join(',')})`;
+      if (!best || (better === 'low' ? c.v < best.v : c.v > best.v)) best = c;
+    }
+    ctx.fillRect(X(c.s) - cw / 2 + 0.5, Y(c.c) - ch / 2 + 0.5, cw - 1, ch - 1);
+  }
+  ctx.strokeStyle = css('--ink'); ctx.lineWidth = 2; ctx.strokeRect(X(S.wspan) - cw / 2, Y(S.wchord) - ch / 2, cw, ch);
+  // legend bar
+  const lx = g.w - pad.r + 16, ly0 = pad.t + 4, ly1 = g.h - pad.b - 4;
+  for (let yy = ly0; yy <= ly1; yy++) { const t = 1 - (yy - ly0) / (ly1 - ly0); ctx.fillStyle = `rgb(${lerp(cLo, cHi, better === 'low' ? 1 - t : t).join(',')})`; ctx.fillRect(lx, yy, 12, 1); }
+  ctx.fillStyle = css('--muted'); ctx.font = `11px ${css('--f-mono')}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(fmt(hi, 1), lx + 16, ly0 + 4); ctx.fillText(fmt(lo, 1), lx + 16, ly1 - 4);
+  const unit = { minwind: 'kn', speed: 'm/s', vto: 'm/s' }[sweep.m];
+  $('sweep-best').textContent = best ? `Best in this sweep: ${best.s} mm span x ${best.c} mm chord (${fmt(best.v, 2)} ${unit}). Grey cells never fly. The outlined cell is the current design. Weight and drag of larger foils are not re-costed here.` : 'No design in this sweep flies with these settings.';
+}
+
+// ------------------------------------------------------------------ update
+function notes(b, sol) {
+  const n = [];
+  if (b.foiling) {
+    if (!isFinite(b.vto)) {
+      const t = [2, 2.5, 3, 3.5, 4].map(V => flyTrim(b, V));
+      n.push(['bad', `<b>Cannot fly.</b> At no speed can the foils hold the boat level with the hulls clear: ${[...new Set(t.map(x => x.why))].join(', ')}. Lower the elevator incidence, lower the elevators, or add foil area.`]);
+    }
+    if (b.share_el > 0.45) n.push(['warn', `<b>Elevators carry ${Math.round(b.share_el * 100)} % of the weight.</b> Moving the centre of gravity forward puts the load back on the main foils.`]);
+    if (!S.flaps && sol.mode === 'flying') n.push(['bad', '<b>Fixed foils have no ride-height stability.</b> Once flying, extra lift makes the boat climb until the foils breach, then it drops back. Turn on the wand-driven flaps.']);
+    if (sol.trimLimited) n.push(['warn', `<b>Sails eased to keep the foils trimmed.</b> Above ${b.vflyMax.toFixed(2)} m/s the boat cannot fly steadily (${b.flyLimit}), so the speed is capped there.`]);
+    if (S.flaps && sol.mode === 'flying') {
+      const t = flyTrim(b, sol.V, sol.s.fy);
+      n.push(['ok', `<b>Flying with ride-height control.</b> The flaps hold height with ${t.flapDeg.toFixed(1)} deg of their +-15 deg; the boat pitches ${t.pitchDeg.toFixed(1)} deg, the elevators run ${Math.round(t.elD * 1000)} mm deep and carry ${t.Le.toFixed(1)} N, and holding the largest side force takes ${t.steerDeg.toFixed(1)} deg of rudder.`]);
+    }
+    if (sol.mode !== 'flying' && isFinite(b.vto)) {
+      const gap = b.vto - sol.V;
+      if (gap > 0.02) n.push(['warn', `<b>Not flying.</b> The boat settles at ${sol.V.toFixed(2)} m/s, ${gap.toFixed(2)} m/s short of take-off. It needs more wind, more sail power, a better angle, or more foil area.`]);
+      else n.push(['warn', `<b>Foils cannot hold the heel yet.</b> At ${sol.V.toFixed(2)} m/s the foils can carry the boat, but the leeward one is already at its lift limit, so the sails' heeling moment has to go onto the leeward hull (the foils can take ${rmFly(b, Math.max(sol.V, b.vto)).toFixed(1)} of ${(C.RM_FRACTION * b.RM).toFixed(1)} N m). Its drag holds the boat back: bigger main foils, or a lower angle to the wind, let it fly.`]);
+    }
+  }
+  if (sol.s && sol.s.pitchLimited) n.push(['warn', '<b>Sails eased to protect the bows.</b> At this power the bow-down moment would bury the leeward bow.']);
+  else if (sol.s && sol.s.depowered) n.push(['warn', '<b>Sails eased to stay upright.</b> Full power would heel the boat past 90 % of its righting moment.']);
+  $('notes').innerHTML = n.map(([s, t]) => `<div class="note" data-sev="${s}">${t}</div>`).join('');
+}
+function update() {
+  readInputs();
+  for (const [id, f] of sliders) $(id + '-o').textContent = f($(id).value);
+  $('cl-ctl').hidden = S.trim !== 'manual';
+  $('foil-fs').disabled = S.cfg !== 'foiling';
+  const b = boatFrom();
+  const fd = foilDelta();
+  $('mass-total').textContent = `${massTotal().toFixed(0)} g  (${(b.W).toFixed(1)} N)${Math.abs(fd) >= 0.5 ? `, foils ${fd > 0 ? '+' : ''}${fd.toFixed(0)} g` : ''}`;
+  const sol = solve(b, S.tws * KN, S.twa);
+  const mode = sol.mode, label = { flying: 'Flying', lifting: 'Foils lifting', skimming: 'Skimming', displacement: 'Displacement' }[mode];
+  $('t-mode').dataset.mode = mode; $('r-mode').textContent = label;
+  $('r-mode-s').textContent = mode === 'skimming' ? `leeward hull carries ${sol.r.hullN.toFixed(1)} N to hold the heel` : mode === 'lifting' ? `foils carry ${Math.round(Math.min(1, sol.r.liftFrac) * 100)} % of the weight` : (mode === 'flying' ? 'hulls clear of the water' : (b.foiling ? 'hulls carry the boat' : 'daggerboards, no foils'));
+  $('r-v').textContent = `${sol.V.toFixed(2)} m/s`; $('r-v-s').textContent = `${(sol.V / KN).toFixed(1)} kn  |  ${(sol.V / (S.tws * KN)).toFixed(2)} x wind`;
+  if (b.foiling) {
+    $('r-vto').textContent = isFinite(b.vto) ? `${b.vto.toFixed(2)} m/s` : 'never';
+    $('r-vto-s').textContent = isFinite(b.vto) ? `flies up to ${b.vflyMax.toFixed(2)} m/s${b.flyLimit ? ` (${b.flyLimit})` : ''}` : 'no feasible flying trim';
+    const mw = minWindToFly(b, S.twa);
+    $('r-minw').textContent = mw === null ? 'over 25 kn' : `${mw.toFixed(1)} kn`; $('r-minw-s').textContent = `at ${S.twa} deg, this trim`;
+  } else { $('r-vto').textContent = 'n/a'; $('r-vto-s').textContent = 'no foils fitted'; $('r-minw').textContent = 'n/a'; $('r-minw-s').textContent = 'no foils fitted'; }
+  if (b.foiling && mode === 'flying') {
+    const t = flyTrim(b, sol.V, sol.s.fy);
+    $('r-att').textContent = `${t.pitchDeg > 0 ? '+' : ''}${t.pitchDeg.toFixed(1)} deg`;
+    $('r-att-s').textContent = `elevators ${Math.round(t.elD * 1000)} mm deep | rudders ${Math.round(t.rudI * 1000)} mm in`;
+  } else { $('r-att').textContent = '--'; $('r-att-s').textContent = b.foiling ? 'shown when flying (nose up +)' : 'no foils fitted'; }
+  const s = sol.s || {};
+  $('r-heel').textContent = `${Math.round((s.heel || 0) * 100)} / ${Math.round((s.pitch || 0) * 100)} %`;
+  $('r-heel-s').textContent = `of righting moment | sail CL ${fmt(s.cl, 2)}`;
+  notes(b, sol);
+  drawForce(b, sol); drawPolar(b);
+  last.run = accelRun(b, S.tws * KN, S.twa); drawRun(last.run);
+  if (sweep && sweep.cfgKey !== sweepKey()) { sweep = null; $('sweep-p').textContent = 'Settings changed: run the sweep again.'; }
+  drawSweep();
+}
+
+function refTable() {
+  const rows = D.reference.filter(r => [60, 90].includes(r.twa) && [6, 8, 10].includes(r.tws));
+  const saved = { ...S }; Object.assign(S, DEFAULTS);   // the VPP models the same boat, wand flaps included
+  let html = '<thead><tr><th>Case</th><th>VPP (Python)</th><th>This page</th></tr></thead><tbody>';
+  for (const r of rows) {
+    S.cfg = r.cfg; const b = makeBoat({ ...S, massG: Object.values(massDefaults[r.cfg]).reduce((a, v) => a + v, 0) });
+    const s = solve(b, r.tws * KN, r.twa);
+    html += `<tr><td>${r.cfg === 'foiling' ? 'foiling' : 'build-first'}, ${r.tws} kn at ${r.twa} deg</td><td>${r.V.toFixed(2)}${r.mode === 'foiling' ? ' F' : ''}</td><td>${s.V.toFixed(2)}${s.mode === 'flying' ? ' F' : ''}</td></tr>`;
+  }
+  Object.assign(S, saved);
+  $('ref-tbl').insertAdjacentHTML('beforeend', html + '</tbody>');
+  $('ref-tbl').insertAdjacentHTML('afterend', `<p class="hint">Both at the CAD design (${A.FOIL_VERSION} foils), with the flying trim in heave and pitch and the wand-driven flaps fully down until the boat flies (F = flying).</p>`);
+}
+
+document.querySelectorAll('input[type=range]').forEach(el => el.addEventListener('input', update));
+document.querySelectorAll('input[name=cfg]').forEach(el => el.addEventListener('change', () => { readInputs(); buildMassList(); update(); }));
+document.querySelectorAll('input[name=trim]').forEach(el => el.addEventListener('change', update));
+$('flaps').addEventListener('change', update);
+$('metric').addEventListener('change', () => { sweep = null; drawSweep(); $('sweep-p').textContent = 'Press "Run sweep" to map the chosen result.'; });
+$('btn-sweep').addEventListener('click', runSweep);
+$('btn-run').addEventListener('click', () => { update(); document.getElementById('c-run').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+$('btn-reset').addEventListener('click', () => { Object.assign(S, DEFAULTS); masses = JSON.parse(JSON.stringify(massDefaults)); writeInputs(); buildMassList(); sweep = null; update(); });
+let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(update, 80); }).observe(document.querySelector('.charts'));
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', update);
+new MutationObserver(update).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+document.querySelectorAll('.fv').forEach(e => { e.textContent = A.FOIL_VERSION; });
+writeInputs(); buildMassList(); refTable(); update();
+</script>
