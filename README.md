@@ -22,7 +22,7 @@ All four documents are regenerated from the analysis results by `mini/manual/bui
 | Fusion design | What it is | Parts cost | Status |
 |---|---|---|---|
 | **RC Mini Cat 600 (simplified)** | 600 mm, 2 radio channels (rudder + one winch driving both sheets on a stepped drum), round mast, 3-batten main | **$257.37** | Build first |
-| **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$381.02** | Build second |
+| **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$384.49** | Build second |
 | **RC Foiling Catamaran v1** (latest version: v1.3 hulls, v1.4 pod, v2.3 foils) | 1 m + L-foils, T-foil rudders on 18 mm longer foiling rudders, wand-driven flaps for ride-height control | foil kit **+$101.17** | Design stage |
 
 Prices were read on retailer pages on 2026-09-23, and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning pins, gooseneck pin and boom eye are cut from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
@@ -101,6 +101,7 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
 
     The build-first boat went from 2037 g to 2114 g and the foiling boat (v2.2 foils) from 2242 g to 2332 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
 13. **v2.3 foils (`cad_scripts/foils_v23.py`):** the corrected CG cut the v2.2 foils' pitch static margin to 25 mm, under the 30 mm limit, so the search was rerun. It picked a wing of 180 x 50 mm at +1.5 deg and elevators of 160 x 28 mm at -0.5 deg, 18 mm lower on longer foiling rudders. The wing keeps its quarter chord, so the flap hinge moves 2.5 mm aft and the flap horn follows it (the strut pushrod doglegs out of its slot); the gearing stays 1.5. The adoption check was also fixed: it had compared the CAD design against the fastest robust design overall, while the rule compares only designs that fly at both 60 and 90 deg.
+14. **Print size (`cad_scripts/print_splits.py`):** every part now fits a 220 x 220 mm bed, checked by a design rule. The pod and lid print in four pieces (cuts at x = 455, 600 and 720 mm, clear of the servo rails and beam saddles). The daggerboards and L-foil cores print in two pieces joined inside the hull trunks. The daggerboard joint is bridged by two 1.2 mm carbon rods in face grooves (joint check 9.8x in `analysis/structure.py`); the L-foil caps run across the core joint, and two 2 mm carbon dowels align it. The rudder blades and lower daggerboard pieces print diagonally. The one-piece STLs stay in `stl/` for printers with 330 mm of travel. The same check found the eight battens need 2.01 m of 1.2 mm rod against the 2 m listed; a 1 m rod was added (+$3.47).
 
 ## Repository map
 
@@ -123,7 +124,7 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
 | `analysis/figures_data.py` | Plot data for the paper and poster |
 | `mini/mini_analysis.py`, `mini/manual_data.py` | Mini hydrostatics, VPP, rudder check; rigging lengths, drum sizing, sail patterns |
 | `bom/make_bom.py` | Costed parts lists with source URLs (mini, 1 m build-first, v2 foil kit) |
-| `cad_scripts/` | Fusion API scripts: `build_mini.py`, `build_full_hull.py` (v1.3 hulls + print segments), `servo_mounts.py` (rails and wells from the servo drawings), `pod_v14.py` (shortened pod, pod-beam saddle, rudder-servo bracket and cover), `foils_v21.py` and `foils_v22.py` (foil sets with flaps and pushrod channels; v2.2 adds the rudder extensions), `elevator_trim.py` (elevator trim pods), `foil_cores.py` (printable cores with carbon-cap recesses), `linkage.py` (ride-height linkage), `rig_fittings.py` (gudgeons, tracks, bridle post, mast cap, hounds collar, mast fairing, gooseneck, boom jaw; STLs and print list), `clearance.py` (rig-to-pod sweep), `export_mini_mass.py`, `export_full_mass.py`, `export_inertia.py` (pitch and roll inertia for the heave-pitch check) |
+| `cad_scripts/` | Fusion API scripts: `build_mini.py`, `build_full_hull.py` (v1.3 hulls + print segments), `servo_mounts.py` (rails and wells from the servo drawings), `pod_v14.py` (shortened pod, pod-beam saddle, rudder-servo bracket and cover), `foils_v21.py` and `foils_v22.py` (foil sets with flaps and pushrod channels; v2.2 adds the rudder extensions), `elevator_trim.py` (elevator trim pods), `foil_cores.py` (printable cores with carbon-cap recesses), `linkage.py` (ride-height linkage), `rig_fittings.py` (gudgeons, tracks, bridle post, mast cap, hounds collar, mast fairing, gooseneck, boom jaw; STLs and print list), `print_splits.py` (pod, daggerboard and L-foil core pieces for a 220 mm bed), `clearance.py` (rig-to-pod sweep), `export_mini_mass.py`, `export_full_mass.py`, `export_inertia.py` (pitch and roll inertia for the heave-pitch check) |
 | `cad/`, `stl/`, `mini/cad/`, `mini/stl/` | STEP / Fusion archives and print-ready STLs |
 | Sail Trim add-in | `~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim/` (`rig_model.py`, `fusion_rig.py`, `fittings_geom.py` for the printed cars, `SailTrim.py`); copy in `fusion_addin/SailTrim/` |
 
@@ -144,7 +145,7 @@ The geometry update behind the dialog was tested through the API, but the dialog
 ## Validation done so far
 
 - Hull volume from the station table vs the CAD loft (v1.3 hulls): -0.20 %.
-- Design-rule check (`analysis/design_checks.py`): 28 of 28 rules pass, including the traveler car on its rail at mainsheet-servo stall.
+- Design-rule check (`analysis/design_checks.py`): 30 of 30 rules pass, including the traveler car on its rail at mainsheet-servo stall, the daggerboard joint and the 220 mm print bed.
 - Foil stability and sizing test (`analysis/foil_checks.py`): 28 of 28 pass, including a time-domain heave simulation and the flying-trim checks (depths, rudder immersion, steering, flying range with the pitch couple halved or 1.5x).
 - Michell integral: grid-converged to 0.03 % on the Wigley hull, with the expected hump/hollow shape. Thin-ship theory is reported to over-predict near the main hump, so wave drag is on the pessimistic side.
 - Heeled-hull maximum righting moment vs the W x s/2 used by the VPP: within 3.3 % (1 m) and 4.7 % (mini).

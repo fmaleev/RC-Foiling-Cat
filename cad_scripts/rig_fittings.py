@@ -256,8 +256,6 @@ PRINT = [  # (print-list key, component, body, STL, qty)
     ('Mast Fairing Upper 1', 'Mast Fittings (print)', 'Mast Fairing Upper 1', 'Mast_Fairing_Upper_x2.stl', 2),
     ('Gooseneck', 'Mast Fittings (print)', 'Gooseneck', 'Gooseneck.stl', 1),
     ('Boom Jaw', 'Mast Fittings (print)', 'Boom Jaw', 'Boom_Jaw.stl', 1),
-    ('Core L-Foil Port', 'Foil Cores (print)', 'Core L-Foil Port', 'Foil_Core_L_Port.stl', 1),
-    ('Core L-Foil Stbd', 'Foil Cores (print)', 'Core L-Foil Stbd', 'Foil_Core_L_Stbd.stl', 1),
     ('Core Elevator Port', 'Foil Cores (print)', 'Core Elevator Port', 'Foil_Core_Elevator_x2.stl', 2),
     ('Core Flap Port', 'Foil Cores (print)', 'Core Flap Port', 'Foil_Flap_x2.stl', 2),
     ('Elevator Trim Pod Port', 'Foiling Kit', 'Elevator Trim Pod Port', 'Elevator_Trim_Pod_x2.stl', 2),

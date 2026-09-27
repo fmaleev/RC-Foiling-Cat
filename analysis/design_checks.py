@@ -109,9 +109,18 @@ for k in ('build_first_1m', 'foiling_1m', 'mini_600'):
     check(f'mast buckling, {k}', v['buckling_safety']['servo_stall'], '>= 2', v['buckling_safety']['servo_stall'] >= 2, 'x load')
     worst = min(v[b]['safety_factor'] for b in ('front_beam', 'rear_beam', 'pod_beam') if b in v)
     check(f'crossbeam bending, {k}', worst, '>= 2', worst >= 2, 'x load')
+    if 'daggerboard_joint' in v:
+        dj = v['daggerboard_joint']['safety_factor']
+        check('daggerboard joint (two-piece print)', dj, '>= 2', dj >= 2, 'x load')
     if 'traveler_car' in v:
         tc = v['traveler_car']['safety_factor']
         check(f'traveler car on its rail, {k}', tc, '>= 2', tc >= 2, 'x load')
+
+# printing: every 1 m part must fit a 220 x 220 mm bed, lying on its smallest side, straight or diagonal (5 mm margin)
+PL = json.load(open(os.path.join(ROOT, 'manual_1m', 'print_list_1m.json')))
+need = {k: min(v['size_mm'][0], (v['size_mm'][0] + v['size_mm'][1]) / math.sqrt(2)) if v['size_mm'][1] <= 220 else 999 for k, v in PL.items()}
+worst = max(need, key=need.get)
+check(f'1 m print parts on a 220 mm bed (largest: {worst})', round(need[worst], 1), '<= 215', need[worst] <= 215, 'mm')
 
 # servo fit (sizes from the manufacturers' drawings, as used in cad_scripts/servo_mounts.py)
 S = consts('servo_mounts.py', {'STD', 'MICRO', 'CLEAR', 'LAYOUT'})

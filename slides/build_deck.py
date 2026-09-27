@@ -190,7 +190,7 @@ S['build'] = f"""<section id="build" style="background:{PALE}; {BASE}">
     {card(f"${cost('bom_full_build_first'):.2f}", '1&#160;m boat with daggerboards', '#FFFFFF')}
     {card(f"${cost('bom_foiling_kit_v2'):.2f}", f'{FV} foiling kit, fitted later', '#FFFFFF')}
   </div>
-  <p style="font-size:32px; line-height:1.4; color:{INK}">Every price was read on a retailer page (September 2026), before shipping and tax. Build manuals, 1:1 sail patterns, print-ready STLs and a tow-test plan with pass bands are ready.</p>
+  <p style="font-size:32px; line-height:1.4; color:{INK}">Every price was read on a retailer page (September 2026), before shipping and tax. Build manuals, 1:1 sail patterns, print-ready STLs (every part fits a 220&#160;mm bed) and a tow-test plan with pass bands are ready.</p>
   {footer(13)}
   <aside>The tow test compares towing from the sail's centre of effort and from the mast foot; the pitch difference measures the bow-down couple, the model's largest uncertainty.</aside>
 </section>"""

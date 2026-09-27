@@ -126,6 +126,13 @@
   "ok": true
  },
  {
+  "rule": "daggerboard joint (two-piece print)",
+  "value": 9.8,
+  "limit": ">= 2",
+  "unit": "x load",
+  "ok": true
+ },
+ {
   "rule": "traveler car on its rail, build_first_1m",
   "value": 3.2,
   "limit": ">= 2",
@@ -165,6 +172,13 @@
   "value": 5.6,
   "limit": ">= 2",
   "unit": "x load",
+  "ok": true
+ },
+ {
+  "rule": "1 m print parts on a 220 mm bed (largest: Daggerboard Lower (print))",
+  "value": 205.1,
+  "limit": "<= 215",
+  "unit": "mm",
   "ok": true
  },
  {

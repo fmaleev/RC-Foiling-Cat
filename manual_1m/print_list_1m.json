@@ -10,17 +10,6 @@
   ],
   "exists": true
  },
- "Daggerboard Port": {
-  "stl": "Daggerboard_x2.stl",
-  "qty": 2,
-  "cm3": 96.19,
-  "size_mm": [
-   325,
-   60,
-   7
-  ],
-  "exists": true
- },
  "Hull Port Seg 1 (x0-200)": {
   "stl": "Hull_Port_Seg_1_x0_200.stl",
   "qty": 1,
@@ -131,72 +120,6 @@
   ],
   "exists": true
  },
- "Pod Shell Seg 1 (x270-380)": {
-  "stl": "Pod_Shell_Seg_1_x270_380.stl",
-  "qty": 1,
-  "cm3": 37.4,
-  "size_mm": [
-   110,
-   90,
-   57
-  ],
-  "exists": true
- },
- "Pod Shell Seg 2 (x380-600)": {
-  "stl": "Pod_Shell_Seg_2_x380_600.stl",
-  "qty": 1,
-  "cm3": 72.47,
-  "size_mm": [
-   220,
-   90,
-   54
-  ],
-  "exists": true
- },
- "Pod Shell Seg 3 (x600-840)": {
-  "stl": "Pod_Shell_Seg_3_x600_840.stl",
-  "qty": 1,
-  "cm3": 62.56,
-  "size_mm": [
-   240,
-   90,
-   60
-  ],
-  "exists": true
- },
- "Pod Lid Seg 1 (x270-380)": {
-  "stl": "Pod_Lid_Seg_1_x270_380.stl",
-  "qty": 1,
-  "cm3": 11.88,
-  "size_mm": [
-   110,
-   90,
-   1
-  ],
-  "exists": true
- },
- "Pod Lid Seg 2 (x380-600)": {
-  "stl": "Pod_Lid_Seg_2_x380_600.stl",
-  "qty": 1,
-  "cm3": 23.73,
-  "size_mm": [
-   220,
-   90,
-   1
-  ],
-  "exists": true
- },
- "Pod Lid Seg 3 (x600-840)": {
-  "stl": "Pod_Lid_Seg_3_x600_840.stl",
-  "qty": 1,
-  "cm3": 26.97,
-  "size_mm": [
-   240,
-   90,
-   11
-  ],
-  "exists": true
- },
  "Rudder Servo Bracket (print)": {
   "stl": "Rudder_Servo_Bracket.stl",
   "qty": 1,
@@ -241,17 +164,6 @@
   ],
   "exists": true
  },
- "Core L-Foil Port": {
-  "stl": "Foil_Core_L_Port.stl",
-  "qty": 1,
-  "cm3": 107.36,
-  "size_mm": [
-   296,
-   184,
-   60
-  ],
-  "exists": true
- },
  "Core Elevator Port": {
   "stl": "Foil_Core_Elevator_x2.stl",
   "qty": 2,
@@ -271,17 +183,6 @@
    165,
    12,
    3
-  ],
-  "exists": true
- },
- "Core L-Foil Stbd": {
-  "stl": "Foil_Core_L_Stbd.stl",
-  "qty": 1,
-  "cm3": 107.37,
-  "size_mm": [
-   296,
-   184,
-   60
   ],
   "exists": true
  },
@@ -491,6 +392,160 @@
    7,
    3,
    3
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 1 (x270-455)": {
+  "stl": "Pod_Shell_Seg_1_x270_455.stl",
+  "qty": 1,
+  "cm3": 61.4,
+  "size_mm": [
+   185,
+   90,
+   57
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 2 (x455-600)": {
+  "stl": "Pod_Shell_Seg_2_x455_600.stl",
+  "qty": 1,
+  "cm3": 48.47,
+  "size_mm": [
+   145,
+   90,
+   54
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 3 (x600-720)": {
+  "stl": "Pod_Shell_Seg_3_x600_720.stl",
+  "qty": 1,
+  "cm3": 35.43,
+  "size_mm": [
+   120,
+   90,
+   60
+  ],
+  "exists": true
+ },
+ "Pod Shell Seg 4 (x720-840)": {
+  "stl": "Pod_Shell_Seg_4_x720_840.stl",
+  "qty": 1,
+  "cm3": 27.13,
+  "size_mm": [
+   120,
+   90,
+   50
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 1 (x270-455)": {
+  "stl": "Pod_Lid_Seg_1_x270_455.stl",
+  "qty": 1,
+  "cm3": 19.98,
+  "size_mm": [
+   185,
+   90,
+   1
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 2 (x455-600)": {
+  "stl": "Pod_Lid_Seg_2_x455_600.stl",
+  "qty": 1,
+  "cm3": 15.63,
+  "size_mm": [
+   145,
+   90,
+   1
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 3 (x600-720)": {
+  "stl": "Pod_Lid_Seg_3_x600_720.stl",
+  "qty": 1,
+  "cm3": 12.8,
+  "size_mm": [
+   120,
+   90,
+   1
+  ],
+  "exists": true
+ },
+ "Pod Lid Seg 4 (x720-840)": {
+  "stl": "Pod_Lid_Seg_4_x720_840.stl",
+  "qty": 1,
+  "cm3": 14.17,
+  "size_mm": [
+   120,
+   90,
+   11
+  ],
+  "exists": true
+ },
+ "Daggerboard Lower (print)": {
+  "stl": "Daggerboard_Lower_x2.stl",
+  "qty": 2,
+  "cm3": 67.91,
+  "size_mm": [
+   230,
+   60,
+   7
+  ],
+  "exists": true
+ },
+ "Daggerboard Upper (print)": {
+  "stl": "Daggerboard_Upper_x2.stl",
+  "qty": 2,
+  "cm3": 27.96,
+  "size_mm": [
+   95,
+   60,
+   7
+  ],
+  "exists": true
+ },
+ "Core L-Foil Port Lower": {
+  "stl": "Foil_Core_L_Port_Lower.stl",
+  "qty": 1,
+  "cm3": 83.01,
+  "size_mm": [
+   205,
+   184,
+   60
+  ],
+  "exists": true
+ },
+ "Core L-Foil Port Upper": {
+  "stl": "Foil_Core_L_Port_Upper.stl",
+  "qty": 1,
+  "cm3": 24.19,
+  "size_mm": [
+   91,
+   60,
+   7
+  ],
+  "exists": true
+ },
+ "Core L-Foil Stbd Lower": {
+  "stl": "Foil_Core_L_Stbd_Lower.stl",
+  "qty": 1,
+  "cm3": 83.01,
+  "size_mm": [
+   205,
+   184,
+   60
+  ],
+  "exists": true
+ },
+ "Core L-Foil Stbd Upper": {
+  "stl": "Foil_Core_L_Stbd_Upper.stl",
+  "qty": 1,
+  "cm3": 24.19,
+  "size_mm": [
+   91,
+   60,
+   7
   ],
   "exists": true
  }

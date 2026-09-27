@@ -58,10 +58,10 @@ def print_rows(keys):
 
 hull = sorted(k for k in PL if k.startswith('Hull'))
 pod = sorted(k for k in PL if k.startswith('Pod'))
-boat_parts = hull + pod + ['Rudder Servo Bracket (print)', 'Rudder Servo Cover (print)', 'Rudder Blade Port', 'Daggerboard Port', 'Gudgeon Port',
+boat_parts = hull + pod + ['Rudder Servo Bracket (print)', 'Rudder Servo Cover (print)', 'Rudder Blade Port', 'Daggerboard Lower (print)', 'Daggerboard Upper (print)', 'Gudgeon Port',
                           'Traveler Track Centre', 'Traveler Track Port', 'Traveler Track Stbd', 'Traveler Car', 'Jib Track', 'Jib Car',
                           'Bridle Post', 'Mast Cap', 'Hounds Collar', 'Mast Fairing Lower 1', 'Mast Fairing Upper 1', 'Gooseneck', 'Boom Jaw']
-foil_parts = ['Core L-Foil Port', 'Core L-Foil Stbd', 'Core Elevator Port', 'Core Flap Port', 'Elevator Trim Pod Port', 'Rudder Extension Port',
+foil_parts = ['Core L-Foil Port Lower', 'Core L-Foil Port Upper', 'Core L-Foil Stbd Lower', 'Core L-Foil Stbd Upper', 'Core Elevator Port', 'Core Flap Port', 'Elevator Trim Pod Port', 'Rudder Extension Port',
               'Wand Pivot Port', 'Wand Hub Port', 'Bellcrank Mount Port', 'Strut Bellcrank Port', 'Flap Horn Port']
 g_boat = sum(PL[k]['cm3'] * PETG * PL[k]['qty'] for k in boat_parts)
 g_foil = sum(PL[k]['cm3'] * PETG * PL[k]['qty'] for k in foil_parts)
@@ -126,6 +126,8 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 
 \noindent Print the seven mast fairing pieces in spiral-vase mode: one """ + f"{fg.FAIR_WALL:.2f}" + r"""\,mm perimeter, no bottom or top layers. They are thin shells that slide over the mast tube. Print the tracks and cars standing on end, so the T-profile lies flat on the bed. The linkage parts marked x2 are handed: print the second one mirrored, for the starboard hull.
 
+\noindent Every part fits a 220\,x\,220\,mm bed; print the rudder blades and the lower daggerboard pieces diagonally across it. The daggerboards and the L-foil cores are printed in two pieces that join inside the hull's trunk (Steps 4 and 10). On a printer with at least 330\,mm of travel, the one-piece versions in \texttt{stl/} (\texttt{Daggerboard\_x2}, 325\,mm; \texttt{Foil\_Core\_L\_Port} and \texttt{\_Stbd}, 296\,mm) can be printed instead.
+
 \section{Building the boat}
 \step{1. Hulls}
 \begin{enumerate}
@@ -140,13 +142,14 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \end{enumerate}
 \step{3. Pod and electronics}
 \begin{enumerate}
-\item Bond the three pod shell segments and the three lid segments. The pod snaps onto the front beam and the pod beam.
+\item Bond the four pod shell segments and the four lid segments. The pod snaps onto the front beam and the pod beam.
 \item Fit the two sail winches (traveler: 4-turn; jib sheet: 2-turn) and the mainsheet servo on their rails. The winches hang by their ears in 4--6\,mm wells. JX does not publish the winch's ear height; the rails use the FS5115M value (27.3\,mm above the case bottom). If a winch case touches the bottom of its well first, shim under the ears.
 \item Hook the mainsheet tail to the servo horn 25\,mm from the shaft, not closer. The sheet runs twice between the traveler car and the boom, so a shorter arm lets the servo pull harder on the beams and mast than the structure check allows. Fit a longer horn if the supplied ones are shorter.
 \item Receiver and the 4xAA pack with its switch go in the pod. The two ends of the traveler line and the mainsheet tail leave the pod through the three holes in its transom and run aft to the turning pins in the traveler track's end stops (Step 7).
 \end{enumerate}
-\step{4. Rudders}
+\step{4. Rudders and daggerboards}
 \begin{enumerate}
+\item Daggerboards: epoxy each lower piece to its upper piece end to end on a flat surface, with the grooves lined up. Epoxy an 80\,mm piece of the 1.2\,mm carbon rod into the groove on each face, across the joint, and sand flush. The joint sits inside the hull's trunk, where the trunk carries most of the load.
 \item Rudder stocks from the 0.156\,in music wire, through the printed blades (pivot at 25\,\% chord).
 \item Epoxy a gudgeon to each transom, centred on the hull, with its plate flat on the transom face; its two lugs hold the stock 19\,mm behind the transom. Slide the stock down through both lugs into the blade; the tiller arm above the upper lug keeps it in.
 \item Snap the rudder-servo bracket onto the rear beam from below, centred between the hulls, and epoxy it so it cannot rotate. The MG90S hangs by its ears on the bracket's rails, aft of the beam, under the printed cover. The pushrod (0.093\,in wire, Du-Bro clevises) runs from the slot in the cover to the tie bar, which joins the two tiller arms.
@@ -189,6 +192,7 @@ Fit the kit only after the build-first boat sails well.
 \step{10. Foil cores and carbon caps}
 \begin{enumerate}
 \item Print the L-foil cores (port and starboard are mirror images), the elevator cores and the flaps. The cores have 0.5\,mm deep, 25\,mm wide recesses on both faces of the strut, the wing and the elevator for the carbon caps.
+\item Each L-foil core comes in two pieces. Epoxy them end to end with two 24\,mm pieces of the 2\,mm carbon rod in the dowel holes, keeping the pushrod channel clear. Do this before the caps: the caps then run across the joint, which sits inside the hull's trunk.
 \item Split the 2\,in unidirectional tape lengthwise into 25\,mm strips and lay 4 layers into each recess with the laminating epoxy, fibres along the span; the caps finish flush with the section. The caps use about """ + f"{TAPE_M:.1f}" + r"""\,m of the 7.3\,m of tape.
 \item The strut has a 2.4\,mm channel for the flap pushrod (0.047\,in wire); keep it clear of epoxy.
 \end{enumerate}

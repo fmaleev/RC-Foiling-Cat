@@ -34,6 +34,12 @@
    "safety_factor": 3.2,
    "lip_mm": 1.6
   },
+  "daggerboard_joint": {
+   "board_force_N": 2.91,
+   "joint_moment_Nmm": 200.0,
+   "rod_capacity_Nmm": 1967.9,
+   "safety_factor": 9.8
+  },
   "pod_beam": {
    "load_N": 14.33,
    "stress_MPa": 34.6,

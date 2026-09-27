@@ -75,7 +75,8 @@ def rebuild(design):
 
 
 def segments(design):
-    """(Re)creates the hidden 'Print Segments' component: hulls 5 x 200 mm, pod and lid 3 pieces."""
+    """(Re)creates the hidden 'Print Segments' component: hulls 5 x 200 mm, pod and lid 4 pieces (every piece fits a
+    220 mm bed; the pod cuts avoid the servo rails, wells and beam saddles)."""
     root = design.rootComponent
     for o in list(root.occurrences):
         if o.component.name == 'Print Segments':
@@ -88,10 +89,10 @@ def segments(design):
         src = comps[hn].bRepBodies.itemByName(hn)
         for i in range(5):
             jobs.append((f'{hn} Seg {i + 1} (x{cuts[i]}-{cuts[i + 1]})', src, cuts[i] - (5 if i == 0 else 0), cuts[i + 1] + (5 if i == 4 else 0)))
-    pc = [260, 380, 600, 850]   # v1.4 pod: transom at x = 270
+    pc = [260, 455, 600, 720, 850]   # v1.4 pod: transom at x = 270
     for pn in ('Pod Shell', 'Pod Lid'):
         src = comps['Center Pod'].bRepBodies.itemByName(pn)
-        for i in range(3):
+        for i in range(len(pc) - 1):
             jobs.append((f'{pn} Seg {i + 1} (x{max(pc[i], 270)}-{min(pc[i + 1], 840)})', src, pc[i], pc[i + 1]))
     for pn in ('Rudder Servo Bracket', 'Rudder Servo Cover'):
         src = comps['Center Pod'].bRepBodies.itemByName(pn)

@@ -18,11 +18,14 @@ ROOT = os.path.abspath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.expanduser('~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim'))
 import rig_model
 import fittings_geom as fg
+sys.path.insert(0, HERE)
+import vpp
 
 E_CF, SIGMA_CF = 70000.0, 300.0      # N/mm2 (assumed)
 SAG = 0.02                           # forestay sag / length (assumed)
 SLAM_G = 5.0                         # vertical acceleration for the pod-beam check (assumed)
 SIGMA_PETG = 25.0                    # N/mm2, printed PETG in bending, load in the layer plane (assumed)
+BOARD_JOINT = dict(z=-0.020, share=0.35, rod_d=1.2, groove=1.4)   # cad_scripts/print_splits.py; share of the side force per board as in vpp.py
 KGCM = 0.0980665                     # N m per kg cm
 load = lambda *p: json.load(open(os.path.join(ROOT, *p)))
 ST, VPP, MINI = load('analysis', 'stability_results.json'), load('analysis', 'vpp_results.json'), load('mini', 'mini_results.json')
@@ -56,6 +59,21 @@ def beam(P, span, od_id):
     s = M * c / I
     return dict(load_N=round(P, 2), stress_MPa=round(s, 1), deflection_mm=round(P * span ** 3 / (48 * E_CF * I), 2),
                 safety_factor=round(SIGMA_CF / s, 1) if s else None)
+
+
+def board_joint(F):
+    """Build-first daggerboard printed in two pieces joined inside the trunk (cad_scripts/print_splits.py). The board is a
+    lever on the trunk: supported at the hull bottom and at the deck, loaded by its share of the side force at mid-draught.
+    The joint moment is carried by two 1.2 mm carbon rods bonded across it, one in a groove on each face at the thickest
+    point (carbon strength as SIGMA_CF, assumed)."""
+    vpp.configure()
+    zw = vpp.sinkage(CAD['displacement']['mass_g'] / 1000 / vpp.RHO)
+    zb, zt, zj = vpp.ZB(vpp.X_BOARD), vpp.ZT(vpp.X_BOARD), BOARD_JOINT['z']
+    Fb = BOARD_JOINT['share'] * F
+    M = Fb * (zb - (zw + vpp.Z_BOARD) / 2) * (zt - zj) / (zt - zb) * 1000            # N mm
+    t = 0.12 * vpp.STRUT_C * 1000                                                    # board thickness, mm
+    cap = SIGMA_CF * math.pi * (BOARD_JOINT['rod_d'] / 2) ** 2 * (t - BOARD_JOINT['groove'])
+    return dict(board_force_N=round(Fb, 2), joint_moment_Nmm=round(M, 1), rod_capacity_Nmm=round(cap, 1), safety_factor=round(cap / M, 1))
 
 
 def rig(name, B):
@@ -96,6 +114,8 @@ def rig(name, B):
         cap = min(SIGMA_PETG * 2 * fg.TC_HY * t * t / (3 * a) for t, a in ((t_lip, arm), (hh, ((sw + c) + hw) / 2 - sw)))
         up = B['purchase'] * T_ms
         out['traveler_car'] = dict(uplift_N=round(up, 1), capacity_N=round(cap, 1), safety_factor=round(cap / up, 1), lip_mm=round(t_lip, 2))
+    if name == 'build_first_1m':
+        out['daggerboard_joint'] = board_joint(F)
     if B['profile'] == 'full':
         R_pod = sum(m * (620 - x) for m, x in POD_ITEMS) / (620 - 350) * 9.81 / 1000
         out['pod_beam'] = dict(beam(R_pod * SLAM_G, span, (10.0, 8.0)), static_reaction_N=round(R_pod, 2), slam_g=SLAM_G)
