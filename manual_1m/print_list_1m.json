@@ -222,11 +222,11 @@
  "Rudder Extension Port": {
   "stl": "Foiling_Rudder_Extension_x2.stl",
   "qty": 2,
-  "cm3": 0.5,
+  "cm3": 1.33,
   "size_mm": [
    45,
-   5,
-   3
+   8,
+   5
   ],
   "exists": true
  },
@@ -244,10 +244,10 @@
  "Core L-Foil Port": {
   "stl": "Foil_Core_L_Port.stl",
   "qty": 1,
-  "cm3": 98.71,
+  "cm3": 107.36,
   "size_mm": [
    296,
-   164,
+   184,
    60
   ],
   "exists": true
@@ -255,9 +255,9 @@
  "Core Elevator Port": {
   "stl": "Foil_Core_Elevator_x2.stl",
   "qty": 2,
-  "cm3": 5.32,
+  "cm3": 7.11,
   "size_mm": [
-   120,
+   160,
    28,
    3
   ],
@@ -266,10 +266,10 @@
  "Core Flap Port": {
   "stl": "Foil_Flap_x2.stl",
   "qty": 2,
-  "cm3": 2.45,
+  "cm3": 3.45,
   "size_mm": [
-   146,
-   11,
+   165,
+   12,
    3
   ],
   "exists": true
@@ -277,10 +277,10 @@
  "Core L-Foil Stbd": {
   "stl": "Foil_Core_L_Stbd.stl",
   "qty": 1,
-  "cm3": 98.7,
+  "cm3": 107.37,
   "size_mm": [
    296,
-   164,
+   184,
    60
   ],
   "exists": true
@@ -488,7 +488,7 @@
   "qty": 2,
   "cm3": 0.06,
   "size_mm": [
-   8,
+   7,
    3,
    3
   ],

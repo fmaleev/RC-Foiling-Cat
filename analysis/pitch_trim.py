@@ -13,7 +13,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CAD = json.load(open(os.path.join(HERE, 'cad_data.json')))
 DATA = os.path.join(HERE, '..', 'paper', 'data')
 KEYS = ('WING_SPAN', 'WING_C', 'INC_MAIN_DEG', 'EL_SPAN', 'EL_C', 'INC_EL_DEG', 'Z_EL')
-DESIGNS = {'v2.0': (0.200, 0.060, 2.0, 0.150, 0.036, 3.0, -0.197), 'v2.1': (0.160, 0.040, 0.0, 0.140, 0.032, 4.0, -0.197)}
+DESIGNS = {'v2.0': (0.200, 0.060, 2.0, 0.150, 0.036, 3.0, -0.197), 'v2.1': (0.160, 0.040, 0.0, 0.140, 0.032, 4.0, -0.197),
+           'v2.2': (0.160, 0.045, 1.5, 0.120, 0.028, -1.0, -0.210)}
 
 
 def foil_parts(ws, wc, es, ec, zel):

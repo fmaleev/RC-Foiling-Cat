@@ -2,14 +2,14 @@
 \usepackage[letterpaper,margin=0.9in]{geometry}
 \usepackage{booktabs,amsmath,siunitx,xurl,graphicx,caption}
 \usepackage[hidelinks]{hyperref}
-\title{\textbf{Tow-Test Plan for the 1\,m Foiling Catamaran (v2.2 foils)}}
+\title{\textbf{Tow-Test Plan for the 1\,m Foiling Catamaran (v2.3 foils)}}
 \author{Filip Maleev}
 \date{September 2026}
 \begin{document}
 \maketitle
 
 \section*{Purpose}
-The foiling version has only been analysed, not tested. This plan checks the numbers the design depends on before the boat sails on its foils: take-off speed, drag, pitch trim, flap angle and ride height, and whether the wand holds height without oscillating. Every prediction below comes from the same model as the paper (\texttt{analysis/vpp.py}, flying trim in heave and pitch) for the v2.2 foils in the CAD model. The pass bands are engineering judgment, not model outputs.
+The foiling version has only been analysed, not tested. This plan checks the numbers the design depends on before the boat sails on its foils: take-off speed, drag, pitch trim, flap angle and ride height, and whether the wand holds height without oscillating. Every prediction below comes from the same model as the paper (\texttt{analysis/vpp.py}, flying trim in heave and pitch) for the v2.3 foils in the CAD model. The pass bands are engineering judgment, not model outputs.
 
 Towing replaces the sails. The tow force equals the drag, just as the sail drive does, and the height of the tow point sets the bow-down couple. Two tow points are used:
 \begin{itemize}
@@ -20,8 +20,8 @@ The pitch difference between A and B measures the couple directly, which is the 
 
 \section*{1. Bench checks (before the water)}
 \begin{enumerate}
-\item \textbf{Weight and balance.} Fully rigged without sails but with sails, battery and radio installed: 2242\,g. Balance point (centre of gravity) 462\,mm forward of the transoms. Move the battery to correct it.
-\item \textbf{Foil angles}, measured with a phone inclinometer against the deck: main wing $+1.5^\circ$, elevators $-1^\circ$ (nose down is negative).
+\item \textbf{Weight and balance.} Fully rigged without sails but with sails, battery and radio installed: 2373\,g. Balance point (centre of gravity) 454\,mm forward of the transoms. Move the battery to correct it.
+\item \textbf{Foil angles}, measured with a phone inclinometer against the deck: main wing $+1.5^\circ$, elevators $-0.5^\circ$ (nose down is negative).
 \item \textbf{Wand and flap.} With the wand at 49$^\circ$ below the deck line (the design ride height, hinge 226\,mm above the water), the flap should be at $0^\circ$. Each degree of wand should move the flap 1.5$^\circ$ (wand down, flap down). Travel to both $\pm15^\circ$ stops without binding.
 \item \textbf{Free play.} Less than about $0.5^\circ$ at the flap when the wand is held still (judgment: play acts like a dead band in the height control).
 \end{enumerate}
@@ -34,45 +34,45 @@ Run each speed for at least 10\,s after it settles, first at tow point A, then a
 
 \begin{table}[h]
 \centering\small
-\caption*{\textbf{Tow point A (sail centre of effort).} Take-off at 1.99\,m/s. Pitch nose up $+$; flap down $+$; bow height relative to the design ride height; elevator depth at its quarter chord.}
+\caption*{\textbf{Tow point A (sail centre of effort).} Take-off at 1.81\,m/s. Pitch nose up $+$; flap down $+$; bow height relative to the design ride height; elevator depth at its quarter chord.}
 \resizebox{\textwidth}{!}{\begin{tabular}{llccccc}
 \toprule
 Speed (m/s) & State & Tow force (N) & Pitch ($^\circ$) & Flap ($^\circ$) & Bow (mm) & Elevator depth (mm) \\
 \midrule
-1.5 & foils lifting (57\,\% of weight) & 3.3 & -- & $+15$ (stop) & -- & -- \\
-2.0 & flying & 3.8 & $+0.1$ & $+13.0$ & $-32$ & 91 \\
-2.5 & flying & 3.7 & $+0.4$ & $+3.3$ & $-9$ & 74 \\
-3.0 & flying & 4.1 & $+0.3$ & $-1.1$ & $+1$ & 62 \\
-3.5 & flying & 4.8 & $+0.2$ & $-3.5$ & $+7$ & 54 \\
-4.0 & flying & 5.6 & $+0.1$ & $-5.0$ & $+11$ & 49 \\
+1.5 & foils lifting (68\,\% of weight) & 3.6 & -- & $+15$ (stop) & -- & -- \\
+2.0 & flying & 3.6 & $+0.4$ & $+7.8$ & $-20$ & 89 \\
+2.5 & flying & 3.8 & $+0.3$ & $+0.9$ & $-3$ & 71 \\
+3.0 & flying & 4.4 & $+0.1$ & $-2.4$ & $+5$ & 59 \\
+3.5 & flying & 5.3 & $-0.1$ & $-4.3$ & $+10$ & 52 \\
+4.0 & flying & 6.3 & $-0.2$ & $-5.4$ & $+13$ & 47 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \begin{table}[h]
 \centering\small
-\caption*{\textbf{Tow point B (mast foot).} Take-off at 1.85\,m/s.}
+\caption*{\textbf{Tow point B (mast foot).} Take-off at 1.69\,m/s.}
 \resizebox{\textwidth}{!}{\begin{tabular}{llccccc}
 \toprule
 Speed (m/s) & State & Tow force (N) & Pitch ($^\circ$) & Flap ($^\circ$) & Bow (mm) & Elevator depth (mm) \\
 \midrule
-1.5 & foils lifting (57\,\% of weight) & 3.3 & -- & $+15$ (stop) & -- & -- \\
-2.0 & flying & 3.6 & $+3.4$ & $+2.7$ & $-19$ & 136 \\
-2.5 & flying & 3.7 & $+2.5$ & $-3.0$ & $-2$ & 103 \\
-3.0 & flying & 4.1 & $+1.9$ & $-5.9$ & $+7$ & 84 \\
-3.5 & flying & 4.8 & $+1.5$ & $-7.5$ & $+12$ & 73 \\
-4.0 & flying & 5.7 & $+1.3$ & $-8.6$ & $+15$ & 65 \\
+1.5 & foils lifting (68\,\% of weight) & 3.6 & -- & $+15$ (stop) & -- & -- \\
+2.0 & flying & 3.4 & $+2.5$ & $+0.7$ & $-11$ & 119 \\
+2.5 & flying & 3.8 & $+1.7$ & $-3.8$ & $+3$ & 91 \\
+3.0 & flying & 4.4 & $+1.2$ & $-6.1$ & $+10$ & 75 \\
+3.5 & flying & 5.3 & $+0.9$ & $-7.5$ & $+13$ & 66 \\
+4.0 & flying & 6.3 & $+0.7$ & $-8.3$ & $+16$ & 60 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\noindent Predicted pitch difference, A minus B: $-3.3$$^\circ$ at 2.0\,m/s, $-2.0$$^\circ$ at 2.5\,m/s, $-1.6$$^\circ$ at 3.0\,m/s, $-1.3$$^\circ$ at 3.5\,m/s, $-1.2$$^\circ$ at 4.0\,m/s.
+\noindent Predicted pitch difference, A minus B: $-2.2$$^\circ$ at 2.0\,m/s, $-1.4$$^\circ$ at 2.5\,m/s, $-1.1$$^\circ$ at 3.0\,m/s, $-1.0$$^\circ$ at 3.5\,m/s, $-0.9$$^\circ$ at 4.0\,m/s.
 
 \section*{4. Disturbance test}
-At 3 and 4\,m/s (tow point A), push the bow down about 20\,mm with a pole and let go, or tow across a small wake. The model predicts the height returns within 0.22--0.54\,s with no overshoot (heave alone) and a coupled heave--pitch mode at 1.8--7.0\,Hz that is well damped (damping ratio at least 0.64). A visible oscillation that keeps going (porpoising) is a failure.
+At 3 and 4\,m/s (tow point A), push the bow down about 20\,mm with a pole and let go, or tow across a small wake. The model predicts the height returns within 0.24--0.62\,s with no overshoot (heave alone) and a coupled heave--pitch mode at 1.6--7.0\,Hz that is well damped (damping ratio at least 0.69). A visible oscillation that keeps going (porpoising) is a failure.
 
 \section*{5. Roll near take-off (under sail)}
-Straight towing does not load the foils sideways, so it cannot test roll. Near take-off both main wings are at their lift limit, and the leeward hull has to carry what the foils cannot of the sails' heeling moment (the paper, Section 3.4). The model has the boat flying from 7.2\,kn on a beam reach but only from 10.7\,kn at 60$^\circ$, where the side force is larger. Under sail at 60$^\circ$, note the wind at which the leeward hull stops touching after the windward one lifts. Much earlier than predicted means the foils have more roll authority than modelled; much later points to the flap limit or to foil lift at low speed.
+Straight towing does not load the foils sideways, so it cannot test roll. Near take-off both main wings are at their lift limit, and the leeward hull has to carry what the foils cannot of the sails' heeling moment (the paper, Section 3.4). The model has the boat flying from 7.1\,kn on a beam reach but only from 8.9\,kn at 60$^\circ$, where the side force is larger. Under sail at 60$^\circ$, note the wind at which the leeward hull stops touching after the windward one lifts. Much earlier than predicted means the foils have more roll authority than modelled; much later points to the flap limit or to foil lift at low speed.
 
 \section*{6. Pass bands and what to change}
 Pass bands (judgment): take-off speed within $\pm15\,\%$ of the prediction; tow force within $\pm30\,\%$; pitch within $\pm1^\circ$; flap within $\pm3^\circ$; no sustained oscillation. The model gives the direction and size of each correction:

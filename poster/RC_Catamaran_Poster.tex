@@ -29,8 +29,8 @@
 Can a 3D-printed 1\,m radio-controlled catamaran look and sail like a real beach cat (Hobie~16, Nacra~17), \textbf{fly on hydrofoils}, and still be \textbf{controllable}? The answers had to be known before building.
 \vspace{0.6em}
 \begin{center}
-\includegraphics[width=0.46\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.46\linewidth]{../images/foiling_v2.2.png}\\
-{\normalsize Build-first version (daggerboards) \hfill Foiling version (v2.2 L-foils, T-foil rudders)}
+\includegraphics[width=0.46\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.46\linewidth]{../images/foiling_v2.3.png}\\
+{\normalsize Build-first version (daggerboards) \hfill Foiling version (v2.3 L-foils, T-foil rudders)}
 \end{center}
 }
 \block{Design (Autodesk Fusion, scripted through its API)}{
@@ -103,17 +103,17 @@ Grid refinement changes the result by less than \textbf{0.03\,\%}, and the hump 
 \end{tikzpicture}
 \end{center}
 \begin{itemize}
-\item Build-first: \hl{2.7\,m/s} in 8\,kn of wind on a beam reach.
-\item Foiling: takes off at \textbf{2.0\,m/s} from about \textbf{7.1\,kn}, below the 8--9\,kn where the rig must be depowered.
-\item Sensitivity (sail $C_L$ $\pm$15\,\%, foil lift $-$20\,\%, mass $\pm$10\,\%, sail-drive couple $\times$0.5--1.5): take-off between \textbf{6.75 and 8.75\,kn}.
+\item Build-first: \hl{2.6\,m/s} in 8\,kn of wind on a beam reach.
+\item Foiling: takes off at \textbf{1.8\,m/s} from about \textbf{7.1\,kn}, below the 8--9\,kn where the rig must be depowered.
+\item Sensitivity (sail $C_L$ $\pm$15\,\%, foil lift $-$20\,\%, mass $\pm$10\,\%, sail-drive couple $\times$0.5--1.5, laminar foil friction): take-off between \textbf{6.25 and 11\,kn}.
 \end{itemize}
 }
 \block{Results: can it be controlled?}{
 \begin{itemize}
-\item \textbf{Rudders (build-first):} need at most \hl{2.6$^\circ$} of $\pm$18$^\circ$ throw, with $\geq$78\,\% margin to stall, even with the windward rudder out of the water.
-\item \textbf{Foil pitch:} stable, with the CG 32--84\,mm ahead of the neutral point.
+\item \textbf{Rudders (build-first):} need at most \hl{2.6$^\circ$} of $\pm$18$^\circ$ throw, with $\geq$77\,\% margin to stall, even with the windward rudder out of the water.
+\item \textbf{Foil pitch:} stable, with the CG 41--97\,mm ahead of the neutral point.
 \item \textbf{Bows (pitchpole):} v1.3 hulls add forward volume: +23\,\% bow-down margin for +0.4\,\% drag. The VPP now eases the sails for pitch as well as heel.
-\item \textbf{Foil heave: NOT stable.} Fixed-angle foils lift \hl{+78\,\%} more than the boat's weight at 4\,m/s, so the boat would climb, breach and crash.
+\item \textbf{Foil heave: NOT stable.} Fixed-angle foils lift \hl{+120\,\%} more than the boat's weight at 4\,m/s, so the boat would climb, breach and crash.
 \end{itemize}
 \begin{center}
 \begin{tikzpicture}
@@ -122,7 +122,7 @@ Grid refinement changes the result by less than \textbf{0.03\,\%}, and the hump 
 \end{axis}
 \end{tikzpicture}
 \end{center}
-\textbf{v2 fix, sized:} a bow wand on each hull drives a 25\,\%-chord flap on that hull's foil. Heave becomes stable and over-damped ($\zeta$\,=\,1.4, 2.1--5.3\,Hz) using at most 13.0$^\circ$ of flap across the flying range. \textbf{Build order:} mini, then the 1\,m boat without foils, then foils with wands.
+\textbf{v2 fix, sized:} a bow wand on each hull drives a 25\,\%-chord flap on that hull's foil. Heave becomes stable and over-damped ($\zeta$\,=\,1.6, 2.2--5.8\,Hz) using at most 10.2$^\circ$ of flap across the flying range. \textbf{Build order:} mini, then the 1\,m boat without foils, then foils with wands.
 }
 
 % ------------------------------------------------------------------ column 4
@@ -143,15 +143,15 @@ Same lines, rig and printed construction at 0.6 length, but hull sections scaled
 \end{axis}
 \end{tikzpicture}
 \end{center}
-\centering\hl{\$257.37} in parts for the mini\quad|\quad \textbf{\$381.02} for the 1\,m boat (+\$99.45 foils)\par
+\centering\hl{\$257.37} in parts for the mini\quad|\quad \textbf{\$381.02} for the 1\,m boat (+\$101.17 foils)\par
 {\normalsize Every price was read on a retailer page. The build manual has the full list, 1:1 sail patterns and 10 build steps.}
 }
 \block{Checked in CAD, next on the water}{
 \begin{itemize}
 \item Servo rails redrawn from the makers' drawings.
-\item A 9-trim clearance sweep moved the pod forward onto a light third beam.
-\item Flight simulator with pitch trim, 306{,}180 foil designs: positive-incidence elevators would pitch the boat nose-down and out of the water. \textbf{v2.2} (in CAD): elevators at $-1^\circ$, 13\,mm lower; flies level at 12\,kn.
-\item \textbf{Next:} build the mini, then the 1\,m boat; tow-test the v2.2 foils, then fly.
+\item A 9-trim clearance sweep moved the pod forward onto a light third beam. Every fitting is now drawn and printable.
+\item Flight simulator with pitch trim, 306{,}180 foil designs: positive-incidence elevators would pitch the boat nose-down and out of the water. \textbf{v2.3} (in CAD): elevators at $-0.5^\circ$, 18\,mm lower; flies level at 12\,kn.
+\item \textbf{Next:} build the mini, then the 1\,m boat; tow-test the v2.3 foils, then fly.
 \end{itemize}
 }
 \end{columns}

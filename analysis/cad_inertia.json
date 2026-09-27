@@ -1,9 +1,9 @@
 {
- "mass_kg": 2.3316,
- "lcg_mm": 454.1,
- "vcg_mm": 61.6,
- "Iyy_kgm2": 0.23757,
- "Ixx_kgm2": 0.20766,
- "k_pitch_m": 0.3192,
+ "mass_kg": 2.3728,
+ "lcg_mm": 453.7,
+ "vcg_mm": 56.7,
+ "Iyy_kgm2": 0.24338,
+ "Ixx_kgm2": 0.21263,
+ "k_pitch_m": 0.3203,
  "note": "cad_scripts/export_inertia.py: foiling configuration, masses as in cad_data.json"
 }

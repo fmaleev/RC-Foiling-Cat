@@ -32,14 +32,15 @@ TRUNK = (0.064, 0.0092, 560)  # flooded foil trunk: length, width (m), x (mm)
 
 # appendages (m): chord, bottom z in boat frame
 STRUT_C, RUDDER_C, EL_C = 0.060, 0.045, 0.028
-Z_WING, Z_BOARD, Z_RUDDER, Z_EL = -0.220, -0.250, -0.200, -0.210
-# v2.2 foils (sim/optimize.js with the flying trim; paper Section 6). Earlier sets: v2.0 wing 200 x 60 mm at 2 deg,
-# elevators 150 x 36 mm at 3 deg; v2.1 wing 160 x 40 mm at 0 deg, elevators 140 x 32 mm at 4 deg; both at Z_EL = -0.197.
+Z_WING, Z_BOARD, Z_RUDDER, Z_EL = -0.220, -0.250, -0.200, -0.215
+# v2.3 foils (sim/optimize.js with the flying trim and the CAD masses after the fittings; paper Section 6). Earlier sets:
+# v2.0 wing 200 x 60 mm at 2 deg, elevators 150 x 36 mm at 3 deg; v2.1 wing 160 x 40 mm at 0 deg, elevators 140 x 32 mm
+# at 4 deg; both at Z_EL = -0.197; v2.2 wing 160 x 45 mm at 1.5 deg, elevators 120 x 28 mm at -1 deg, Z_EL = -0.210.
 # Z_RUDDER is the build-first rudder tip; the foiling rudders end RUDDER_BELOW_EL under the elevators.
-FOIL_VERSION = 'v2.2'
-WING_SPAN, EL_SPAN = 0.160, 0.120
-WING_C = 0.045                             # main-foil wing chord; the strut keeps STRUT_C
-INC_MAIN_DEG, INC_EL_DEG = 1.5, -1.0
+FOIL_VERSION = 'v2.3'
+WING_SPAN, EL_SPAN = 0.180, 0.160
+WING_C = 0.050                             # main-foil wing chord; the strut keeps STRUT_C
+INC_MAIN_DEG, INC_EL_DEG = 1.5, -0.5
 # wand-driven flaps (analysis/ride_height.py): fully down until the boat flies, so take-off uses the flapped main foil.
 # FLAP_TAU = thin-airfoil effectiveness of a 25 % chord flap x 0.8 viscous factor. Foil CL is capped at 0.8
 # (0.8 of an assumed section maximum of 1.0 near Re 1e5), as in the flight simulator (sim/sim_core.js).

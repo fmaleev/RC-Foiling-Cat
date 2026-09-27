@@ -14,7 +14,7 @@
 \maketitle
 
 \begin{abstract}
-This paper describes the design of a 1\,m radio-controlled catamaran with a beach-cat rig, two appendage configurations (daggerboards, or L-foils with T-foil rudder elevators), and a simplified 0.6\,m version intended as a first build. The hulls are 3D-printed PETG shells with bonded bulkheads, so every printed segment is a sealed compartment. The rig follows full-size beach cats: a square-top, fully battened main on a rotating wing mast, and a jib on a forestay bridle. It is modelled parametrically in Autodesk Fusion, and a custom add-in trims it with three sliders (jib sheet, main traveler, mainsheet tension). Performance is estimated with a purpose-written velocity prediction program. It combines ITTC-57 friction, Michell thin-ship wave resistance with catamaran interference (validated on the Wigley hull), appendage and foil drag, and a depowering sail model. The displacement version reaches 2.7\,m/s on a beam reach in 8\,kn of wind. Its rudders need at most 2.6$^\circ$ of an available $\pm$18$^\circ$. The foiling version reaches its 1.99\,m/s take-off speed from about 7.1\,kn of true wind, and a sensitivity study places take-off between 6.75 and 8.75\,kn. A controllability analysis shows that the foiling version is pitch-stable but has no heave stability with fixed-incidence foils: at 4\,m/s the foils lift 78\,\% more than the boat's weight. It therefore needs ride-height control. A wand-driven trailing-edge flap is sized here: it makes heave stable and well damped ($\zeta=1.4$) while using at most 13.0$^\circ$ of flap from take-off to 5\,m/s. This result led to building the non-foiling version first, preceded by a costed 0.6\,m version (\$257.37 in parts). A flight simulator built on the same physics, extended with the boat's trim in heave and pitch, then searched 306{,}180 foil designs. At speed the sail drive's bow-down couple makes the elevators push down. With a fixed positive incidence they do so by pitching the boat nose-down until they leave the water, so neither the original foils nor a first optimized set would fly. The adopted v2.2 foils set the elevators at $-1^\circ$ and 13\,mm lower, and reach 4.65\,m/s on a beam reach in 12\,kn of wind with the boat level.
+This paper describes the design of a 1\,m radio-controlled catamaran with a beach-cat rig, two appendage configurations (daggerboards, or L-foils with T-foil rudder elevators), and a simplified 0.6\,m version intended as a first build. The hulls are 3D-printed PETG shells with bonded bulkheads, so every printed segment is a sealed compartment. The rig follows full-size beach cats: a square-top, fully battened main on a rotating wing mast, and a jib on a forestay bridle. It is modelled parametrically in Autodesk Fusion, and a custom add-in trims it with three sliders (jib sheet, main traveler, mainsheet tension). Performance is estimated with a purpose-written velocity prediction program. It combines ITTC-57 friction, Michell thin-ship wave resistance with catamaran interference (validated on the Wigley hull), appendage and foil drag, and a depowering sail model. The displacement version reaches 2.6\,m/s on a beam reach in 8\,kn of wind. Its rudders need at most 2.6$^\circ$ of an available $\pm$18$^\circ$. The foiling version reaches its 1.81\,m/s take-off speed from about 7.1\,kn of true wind, and a sensitivity study places take-off between 6.25 and 11\,kn. A controllability analysis shows that the foiling version is pitch-stable but has no heave stability with fixed-incidence foils: at 4\,m/s the foils lift 120\,\% more than the boat's weight. It therefore needs ride-height control. A wand-driven trailing-edge flap is sized here: it makes heave stable and well damped ($\zeta=1.6$) while using at most 10.2$^\circ$ of flap from take-off to 5\,m/s. This result led to building the non-foiling version first, preceded by a costed 0.6\,m version (\$257.37 in parts). A flight simulator built on the same physics, extended with the boat's trim in heave and pitch, then searched 306{,}180 foil designs. At speed the sail drive's bow-down couple makes the elevators push down. With a fixed positive incidence they do so by pitching the boat nose-down until they leave the water, so neither the original foils nor a first optimized set would fly. The adopted v2.3 foils set the elevators at $-0.5^\circ$ and 18\,mm lower, and reach 4.53\,m/s on a beam reach in 12\,kn of wind with the boat level.
 \end{abstract}
 
 \section{Introduction}
@@ -23,8 +23,8 @@ Beach catamarans such as the Hobie~16 and the Olympic Nacra~17 combine two slend
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.49\columnwidth]{../images/build_first_v1.4.png}\hfill
-\includegraphics[width=0.49\columnwidth]{../images/foiling_v2.2.png}
-\caption{The 1\,m design in Autodesk Fusion: build-first version with daggerboards (left) and foiling version with the v2.2 L-foils and T-foil rudders (right).}
+\includegraphics[width=0.49\columnwidth]{../images/foiling_v2.3.png}
+\caption{The 1\,m design in Autodesk Fusion: build-first version with daggerboards (left) and foiling version with the v2.3 L-foils and T-foil rudders (right).}
 \label{fig:renders}
 \end{figure}
 
@@ -64,7 +64,7 @@ Each hull is lofted through eight elliptical stations (Fig.~\ref{fig:plans}, rig
 \end{figure*}
 
 \subsection{Rig: following real beach cats}
-Table~\ref{tab:rig} compares the rig with the Hobie~16 and Nacra~17 \cite{hobie,nacra}. The main-to-jib ratio (3.2) lies between the two, and the planform follows their square-top main with 8 full-length battens. The rest also comes from the full-size boats: a rotating wing mast (24\,x\,14\,mm fairing on a 12\,mm carbon tube), a forestay bridle to both bows, a traveler on the rear beam, and a jib car on a short track (on the pod lid here, because the pod sits over the front beam). Sail area and mast height, however, cannot follow geometric scaling. For a scale factor $\lambda$, righting moment scales as $\lambda^4$ (weight $\lambda^3$ times beam $\lambda$). In the same wind, the heeling moment of a similar rig scales only as $\lambda^3$ (area $\lambda^2$ times height $\lambda$). A 1:5 model with full-scale proportions would therefore be over-canvassed, so sail area was set by the VPP instead (Section~\ref{sec:results}).
+Table~\ref{tab:rig} compares the rig with the Hobie~16 and Nacra~17 \cite{hobie,nacra}. The main-to-jib ratio (3.2) lies between the two, and the planform follows their square-top main with 8 full-length battens. The rest also comes from the full-size boats: a rotating wing mast (24\,x\,14\,mm fairing on a 12\,mm carbon tube), a forestay bridle to both bows, a traveler on the rear beam, and a jib car on a short track (on the pod lid here, because the pod sits over the front beam). All the fittings are printed: transom gudgeons, T-rail tracks with sliding cars, a hounds collar whose groove carries the loop the stays tie to (so the mast turns inside it), a mast cap that seals the tube, a bridle post and a gooseneck. The fairing is printed as 0.45\,mm shells in seven pieces, and the main's luff is laced to its trailing edge. Sail area and mast height, however, cannot follow geometric scaling. For a scale factor $\lambda$, righting moment scales as $\lambda^4$ (weight $\lambda^3$ times beam $\lambda$). In the same wind, the heeling moment of a similar rig scales only as $\lambda^3$ (area $\lambda^2$ times height $\lambda$). A 1:5 model with full-scale proportions would therefore be over-canvassed, so sail area was set by the VPP instead (Section~\ref{sec:results}).
 
 \begin{table}[t]
 \centering\small
@@ -84,7 +84,7 @@ Sail area / LOA$^2$ & 0.74 & 0.68 & 0.40 \\
 The three real-cat controls map to three RC channels and to three sliders in a Fusion add-in written for this project. Jib sheet sets the jib angle. Main traveler sets the boom angle and moves the traveler car. Mainsheet tension sets the main's twist, from $30^\circ$ loose to $3^\circ$ hard, and its depth, from 13\,\% to 8\,\%. The sails and wing mast are loft and extrude features on batten-station sketches. The add-in moves the sketch points, so the parametric model re-solves; booms, sheets and cars are updated as base-feature bodies.
 
 \subsection{Appendages and foils}
-The rudders are balanced NACA\,0012 blades (45\,mm chord, pivot at 25\,\% chord) linked by a tie bar. The build-first version has NACA\,0012 daggerboards; the foiling version replaces them with L-foils: a NACA\,0012 strut (60\,mm chord) and a NACA\,4412 wing (45\,mm chord, 160\,mm span per side) at 1.5$^\circ$ incidence. Rudder T-foil elevators (NACA\,0012, 28\,mm chord, 120\,mm span) sit at $+-1^\circ$. The foiling rudders are 13\,mm longer than the build-first ones, so the elevators sit at $z=-210$\,mm. These are the v2.2 foils chosen with the flight simulator (Section~\ref{sec:opt}). They replace the original v2.0 set (wings 200\,x\,60\,mm at $2^\circ$, elevators 150\,x\,36\,mm at $3^\circ$) and a first optimized set (v2.1) that the trim model showed would not fly. Every result in this paper is for v2.2 unless stated otherwise. An early layout placed the main foils 100\,mm deeper than the elevators. Because the elevators would breach first, that extra depth added weight and drag but no ride height, so the wings were moved up to the elevator depth, saving 73\,g of carbon.
+The rudders are balanced NACA\,0012 blades (45\,mm chord, pivot at 25\,\% chord) linked by a tie bar. The build-first version has NACA\,0012 daggerboards; the foiling version replaces them with L-foils: a NACA\,0012 strut (60\,mm chord) and a NACA\,4412 wing (50\,mm chord, 180\,mm span per side) at 1.5$^\circ$ incidence. Rudder T-foil elevators (NACA\,0012, 28\,mm chord, 160\,mm span) sit at $-0.5^\circ$. The foiling rudders are 18\,mm longer than the build-first ones, so the elevators sit at $z=-215$\,mm. These are the v2.3 foils chosen with the flight simulator (Section~\ref{sec:opt}). They replace the original v2.0 set (wings 200\,x\,60\,mm at $2^\circ$, elevators 150\,x\,36\,mm at $3^\circ$), a first optimized set (v2.1) that the trim model showed would not fly, and v2.2 (wings 160\,x\,45\,mm, elevators 120\,x\,28\,mm at $-1^\circ$), which lost its pitch static margin when the CAD masses were corrected. Every result in this paper is for v2.3 unless stated otherwise. An early layout placed the main foils 100\,mm deeper than the elevators. Because the elevators would breach first, that extra depth added weight and drag but no ride height, so the wings were moved up to the elevator depth, saving 73\,g of carbon.
 
 \section{Analysis methods}
 \subsection{Mass properties and hydrostatics}
@@ -102,7 +102,7 @@ R_W=\frac{4\rho g^2}{\pi U^2}\int_1^\infty \big(I^2+J^2\big)\,\frac{\lambda^2\,F
 \begin{equation}
 I+iJ=\iint \frac{\partial Y}{\partial x}\,e^{\lambda^2k_0z}\,e^{i\lambda k_0x}\,dx\,dz,\qquad k_0=g/U^2,
 \end{equation}
-where $F_c=4\cos^2\!\big(k_0\lambda\sqrt{\lambda^2-1}\,s/2\big)$ accounts for interference between hulls a distance $s$ apart ($F_c=1$ for a single hull). The substitution $\lambda=\cosh u$ removes the endpoint singularity. $\partial Y/\partial x$ is taken as constant on each panel, and the exponential factors are integrated exactly in $x$ and $z$ (a Filon-type rule), which keeps the integral accurate at low Froude numbers. The integration was checked on the Wigley parabolic hull ($L/B=10$, $L/T=16$, Fig.~\ref{fig:wigley}): doubling the grid changes $C_W$ by less than 0.03\,\%, and the curve shows the expected hump-and-hollow shape. Thin-ship theory is reported to over-predict near the main hump \cite{tuck}, so wave drag here is, if anything, pessimistic. A transom term follows Holtrop and Mennen \cite{holtrop}. Appendage profile drag uses the ITTC line with Hoerner's thickness factor $1+2t/c+60(t/c)^4$ and a spray term $0.24\,q\,t^2$ \cite{hoerner}. Induced drag is $D_i=L^2/(q\pi e b^2)$, applied both to foil lift and to the side force carried by boards and rudders.
+where $F_c=4\cos^2\!\big(k_0\lambda\sqrt{\lambda^2-1}\,s/2\big)$ accounts for interference between hulls a distance $s$ apart ($F_c=1$ for a single hull). The substitution $\lambda=\cosh u$ removes the endpoint singularity. $\partial Y/\partial x$ is taken as constant on each panel, and the exponential factors are integrated exactly in $x$ and $z$ (a Filon-type rule), which keeps the integral accurate at low Froude numbers. The integration was checked on the Wigley parabolic hull ($L/B=10$, $L/T=16$, Fig.~\ref{fig:wigley}): doubling the grid changes $C_W$ by less than 0.03\,\%, and the curve shows the expected hump-and-hollow shape. Thin-ship theory is reported to over-predict near the main hump \cite{tuck}, so wave drag here is, if anything, pessimistic. A transom term follows Holtrop and Mennen \cite{holtrop}. Wave resistance, wetted area, waterline length and draft are tabulated once for each hull shape, over the load the hulls carry (0--3.6\,kg in 0.2\,kg steps) and the speed (0.1--4.5\,m/s in 0.1\,m/s steps), for both hulls together and for one hull. The VPP and the flight simulator interpolate the same table; against direct evaluation, the interpolated hull drag differs by less than 1\,\%. Appendage profile drag uses the ITTC line with Hoerner's thickness factor $1+2t/c+60(t/c)^4$ and a spray term $0.24\,q\,t^2$ \cite{hoerner}. The ITTC line assumes turbulent flow from the leading edge. At the foils' chord Reynolds numbers ($1$--$2\times10^5$) much of the flow may be laminar, so a sensitivity case replaces it with the flat-plate laminar line $C_F=1.328/\sqrt{Re}$ (Prandtl--Schlichting with transition above $Re=5\times10^5$), about half the turbulent value. This is an optimistic bound: a laminar separation bubble adds drag that a flat plate does not have. Induced drag is $D_i=L^2/(q\pi e b^2)$, applied both to foil lift and to the side force carried by boards and rudders.
 
 \begin{figure}[t]
 \centering
@@ -133,6 +133,8 @@ where $a$ and $c$ are the distances from the CG to the main-foil and elevator qu
 \end{itemize}
 Take-off is the lowest such speed. Above the range the sails must be eased, and the VPP caps the speed there.
 
+\noindent\textbf{Roll.} Flying, the boat resists heel only by moving lift to the leeward foil. With the leeward wing at its flap and lift limit $L_1$ and the windward one carrying the rest of $L_m$, the foils' largest righting moment is $RM_f=(2L_1-L_m)\,s/2$. At the take-off speed both wings are at that limit, so $RM_f=0$; it reaches $Ws/2$ only as speed builds. Any larger heeling moment $M$ is taken by the leeward hull, which then carries $N=(M-RM_f)/s$ and adds its single-hull resistance (friction, transom and Michell wave drag for one hull). The boat counts as flying only when $N=0$; otherwise it is \emph{skimming}. While skimming, the VPP also eases the sails (scales their lift down) whenever that gives more net thrust, as a sailor would to get onto the foils.
+
 \subsection{Controllability}
 Steady yaw balance requires the rudders to cancel $M=F_y(x_{CE}-x_{CLR})+R_{\text{hull}}\,u\,s/2$, where $u$ is the fraction of righting moment in use; the second term is the extra drag of the loaded leeward hull. The rudder force $F_r=M/(x_{CLR}-x_r)$ is converted to a rudder angle with the lifting-line slope, and the windward rudder is taken as clear of the water for $u>0.8$. Foil pitch stability uses the neutral point $x_{np}=(a_mS_mx_m+\eta a_eS_ex_e)/(a_mS_m+\eta a_eS_e)$ with $\eta=1$ or $0.65$ to bracket downwash on the elevators.
 
@@ -146,16 +148,16 @@ Steady yaw balance requires the rudders to cancel $M=F_y(x_{CE}-x_{CLR})+R_{\tex
 \toprule
 & 1\,m build-first & 1\,m foiling & 0.6\,m mini \\
 \midrule
-Mass (g) & 2037 & 2242 & 755 \\
-Hull draft (mm) & 28.6 & 29.9 & 23.8 \\
-LCG / LCB (mm) & 457 / 431 & 462 / 432 & 258 / 262 \\
-One-hull buoyancy / weight & 2.74 & 2.49 & 2.05 \\
-Max righting moment (N\,m) & 5.60 & 6.16 & 1.26 \\
+Mass (g) & 2114 & 2373 & 755 \\
+Hull draft (mm) & 29.3 & 30.8 & 23.8 \\
+LCG / LCB (mm) & 450 / 432 & 454 / 433 & 258 / 262 \\
+One-hull buoyancy / weight & 2.64 & 2.35 & 2.05 \\
+Max righting moment (N\,m) & 5.81 & 6.52 & 1.26 \\
 Sail area (m$^2$) & 0.401 & 0.401 & 0.144 \\
 \bottomrule
 \end{tabular}}
 \end{table}
-Table~\ref{tab:hydro} lists the three boats. The heaviest items on the 1\,m build-first boat are the hulls (783\,g), the centre pod (336\,g) and the RC electronics (313\,g); the foiling kit adds 376\,g. The design target was that one hull alone could float at least twice the boat's weight; all three versions meet it.
+Table~\ref{tab:hydro} lists the three boats. The heaviest items on the 1\,m build-first boat are the hulls (783\,g), the centre pod (336\,g) and the RC electronics (315\,g); the foiling kit adds 422\,g. The design target was that one hull alone could float at least twice the boat's weight; all three versions meet it.
 
 \subsection{Resistance and speed}
 \begin{figure}[t]
@@ -168,7 +170,7 @@ Table~\ref{tab:hydro} lists the three boats. The heaviest items on the 1\,m buil
 \addplot[dotted, thick, blue] table[x=V, y=fric] {data/resistance_displacement.dat}; \addlegendentry{build-first hull friction}
 \end{axis}
 \end{tikzpicture}
-\caption{Resistance at zero side force. The foiling curve peaks just before take-off (1.99\,m/s) and drops once the hulls leave the water.}
+\caption{Resistance at zero side force. The foiling curve peaks just before take-off (1.81\,m/s) and drops once the hulls leave the water.}
 \label{fig:res}
 \end{figure}
 
@@ -186,7 +188,7 @@ Table~\ref{tab:hydro} lists the three boats. The heaviest items on the 1\,m buil
 \label{fig:vpp}
 \end{figure}
 
-Figures~\ref{fig:res} and~\ref{fig:vpp} show the predicted resistance and speed. Hull friction and appendage drag dominate the build-first boat; Michell wave drag stays below 0.42\,N up to 3\,m/s because the hulls are slender ($L/B=12.5$). Below take-off, the foils cost the foiling version 25--26\,\% of its speed. The foiling version takes off from about 7.1\,kn of true wind, which is below the 8--9\,kn where the rig starts to depower, so a usable foiling window exists. Table~\ref{tab:sens} shows that this conclusion holds across the least certain inputs.
+Figures~\ref{fig:res} and~\ref{fig:vpp} show the predicted resistance and speed. Hull friction and appendage drag dominate the build-first boat; Michell wave drag stays below 0.43\,N up to 3\,m/s because the hulls are slender ($L/B=12.5$). Below take-off, the foils cost the foiling version 28--31\,\% of its speed. The foiling version takes off from about 7.1\,kn of true wind, which is below the 8--9\,kn where the rig starts to depower, so a usable foiling window exists. Table~\ref{tab:sens} shows that this conclusion holds across the least certain inputs.
 
 \begin{table}[t]
 \centering\small
@@ -196,22 +198,23 @@ Figures~\ref{fig:res} and~\ref{fig:vpp} show the predicted resistance and speed.
 \toprule
 Scenario & $V_{to}$ (m/s) & TWA 60$^\circ$ & TWA 90$^\circ$ \\
 \midrule
-baseline & 1.99 & 7.75 & 7.25 \\
-sail CLmax 1.1 & 1.99 & 8.25 & 7.75 \\
-sail CLmax 1.5 & 1.99 & 7.25 & 6.75 \\
-foil lift -20\% (low Re, free surface) & 2.16 & 7.75 & 7.5 \\
-mass +10\% & 2.09 & 8.0 & 7.5 \\
-mass -10\% & 1.89 & 7.25 & 6.75 \\
-sail-drive pitch couple x0.5 & 1.87 & 7.5 & 7.0 \\
-sail-drive pitch couple x1.5 & 2.24 & 8.75 & 7.5 \\
+baseline & 1.81 & 9 & 7.25 \\
+sail CLmax 1.1 & 1.81 & 9 & 7.75 \\
+sail CLmax 1.5 & 1.81 & 9 & 6.75 \\
+foil lift -20\% (low Re, free surface) & 1.94 & 10.5 & 7.25 \\
+mass +10\% & 1.90 & 9.5 & 7.5 \\
+mass -10\% & 1.72 & 8.75 & 7 \\
+sail-drive pitch couple x0.5 & 1.71 & 8.25 & 7 \\
+sail-drive pitch couple x1.5 & 2.00 & 11 & 7.5 \\
+foil friction laminar (low Re) & 1.76 & 7.25 & 6.25 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \subsection{Controllability}
-\textbf{Build-first version.} Over 4--14\,kn and TWA 60--105$^\circ$ the rudders need at most 2.6$^\circ$ (TWA 60$^\circ$, 8\,kn, one rudder working) of the $\pm18^\circ$ that the linkage gives. That leaves at least 78\,\% margin to stall, and the servo torque needed is below 0.09\,kg\,cm.
+\textbf{Build-first version.} Over 4--14\,kn and TWA 60--105$^\circ$ the rudders need at most 2.6$^\circ$ (TWA 60$^\circ$, 8\,kn, one rudder working) of the $\pm18^\circ$ that the linkage gives. That leaves at least 77\,\% margin to stall, and the servo torque needed is below 0.10\,kg\,cm.
 
-\noindent\textbf{Foiling version.} Steering while flying needs at most 4.4$^\circ$, with 74\,mm of rudder immersed in that case (from the flying trim). The foil system is statically pitch-stable: the CG lies 32--84\,mm ahead of the neutral point. Heave is the problem (Fig.~\ref{fig:heave}). With fixed incidence, lift grows as $V^2$ while weight is constant, so nothing sets the flying height: the boat would climb until a foil breaches and ventilates, then drop. Holding height requires the main-foil angle to change by +3.7$^\circ$ at 2\,m/s but -3.3$^\circ$ at 4\,m/s. If the boat is also free to pitch, the fixed-incidence elevators trim it nose-down as speed rises. That reduces the excess but does not remove it, and nothing still ties lift to height, so heave stays neutral. Ride-height control is therefore required before the foiling version can fly under control (Section~\ref{sec:rh}).
+\noindent\textbf{Foiling version.} Steering while flying needs at most 4.8$^\circ$, with 63\,mm of rudder immersed in that case (from the flying trim). The foil system is statically pitch-stable: the CG lies 41--97\,mm ahead of the neutral point. Heave is the problem (Fig.~\ref{fig:heave}). With fixed incidence, lift grows as $V^2$ while weight is constant, so nothing sets the flying height: the boat would climb until a foil breaches and ventilates, then drop. Holding height requires the main-foil angle to change by +2.1$^\circ$ at 2\,m/s but -3.7$^\circ$ at 4\,m/s. If the boat is also free to pitch, the fixed-incidence elevators trim it nose-down as speed rises. That reduces the excess but does not remove it, and nothing still ties lift to height, so heave stays neutral. Ride-height control is therefore required before the foiling version can fly under control (Section~\ref{sec:rh}).
 
 \begin{figure}[t]
 \centering
@@ -228,9 +231,9 @@ sail-drive pitch couple x1.5 & 2.24 & 8.75 & 7.5 \\
 \end{figure}
 
 \subsection{Static stability and pitchpole}\label{sec:stab}
-\textbf{Heel.} The transverse righting arm (Fig.~\ref{fig:gz}) comes from clipping the heeled elliptical sections of both hulls at the waterline, with the waterline height solved so displacement equals weight. The 1\,m build-first boat reaches its largest righting arm, 271\,mm, at 6$^\circ$ of heel, when the windward hull lifts. The maximum righting moment, 5.41\,N\,m, is within 3\,\% of the $Ws/2$ used in the VPP, which confirms that assumption. The boat capsizes at about 80$^\circ$ (mini: 80$^\circ$).
+\textbf{Heel.} The transverse righting arm (Fig.~\ref{fig:gz}) comes from clipping the heeled elliptical sections of both hulls at the waterline, with the waterline height solved so displacement equals weight. The 1\,m build-first boat reaches its largest righting arm, 270\,mm, at 6$^\circ$ of heel, when the windward hull lifts. The maximum righting moment, 5.59\,N\,m, is within 4\,\% of the $Ws/2$ used in the VPP, which confirms that assumption. The boat capsizes at about 80$^\circ$ (mini: 80$^\circ$).
 
-\noindent\textbf{Pitchpole.} A catamaran more often trips over its bows than capsizes sideways. Tilting the waterline bow-down and re-solving the sinkage gives the largest longitudinal righting moment the hulls can provide before the bows go under: 4.77\,N\,m on both hulls and 3.64\,N\,m on one hull (the windward hull flying). Setting that equal to the sails' bow-down moment gives the wind above which the sails must be eased on each point of sail. For the 1\,m boat that is >20 / 9 / 11.5 / 16\,kn at TWA 60/90/120/150$^\circ$, and for the mini 7.5 / 8.5 / 10 / 13.5\,kn. These limits sit close to the heel limits, so pitch-limited depowering was added to the VPP.
+\noindent\textbf{Pitchpole.} A catamaran more often trips over its bows than capsizes sideways. Tilting the waterline bow-down and re-solving the sinkage gives the largest longitudinal righting moment the hulls can provide before the bows go under: 5.04\,N\,m on both hulls and 3.85\,N\,m on one hull (the windward hull flying). Setting that equal to the sails' bow-down moment gives the wind above which the sails must be eased on each point of sail. For the 1\,m boat that is >20 / 9.5 / 11.5 / 16.5\,kn at TWA 60/90/120/150$^\circ$, and for the mini 7.5 / 8.5 / 10 / 13.5\,kn. These limits sit close to the heel limits, so pitch-limited depowering was added to the VPP.
 
 \noindent\textbf{Design iteration: bow volume.} Table~\ref{tab:bows} compares the original hull with three variants that add volume only to the forward stations, mostly above the waterline. Variant B was adopted as the v1.3 hull. It raises the one-hull pitch limit by 23\,\% for 13\,g and a 0.4\,\% drag increase at 2\,m/s. Variant C adds little more for 50\,\% more weight.
 
@@ -265,23 +268,23 @@ C & 3.96 & 4.90 & 3.535 & +20 & >20 / 9 / 11.5 \\
 \end{table}
 
 \subsection{Foil structure}
-With the largest main-foil flight load, which occurs at speed when the elevators push down, all on one wing under a 2\,g gust (63.1\,N; root moment 5050\,N\,mm), the section properties computed from the NACA coordinates give the results in Table~\ref{tab:struct}. Printed PETG is strong enough but far too flexible, so the foils must be carbon. A home-buildable alternative to solid carbon is a printed core with unidirectional carbon caps (4 layers of 0.127\,mm tape, 25\,mm wide, on each face). Taking $E\approx120$\,GPa for the cap laminate (assumed), centring the caps on the thickest point and ignoring the core, the caps give 69\,\% of the solid-carbon bending stiffness: tip deflection 2.16\,mm and cap stress 122\,MPa in the load case above. The v2 foiling kit (cores, carbon tape, laminating epoxy, flap hinges, wands and linkage) costs \$99.45.
+With the largest main-foil flight load, which occurs at speed when the elevators push down, all on one wing under a 2\,g gust (68.7\,N; root moment 6187\,N\,mm), the section properties computed from the NACA coordinates give the results in Table~\ref{tab:struct}. Printed PETG is strong enough but far too flexible, so the foils must be carbon. A home-buildable alternative to solid carbon is a printed core with unidirectional carbon caps (4 layers of 0.127\,mm tape, 25\,mm wide, on each face). Taking $E\approx120$\,GPa for the cap laminate (assumed), centring the caps on the thickest point and ignoring the core, the caps give 59\,\% of the solid-carbon bending stiffness: tip deflection 2.55\,mm and cap stress 125\,MPa in the load case above. The v2 foiling kit (cores, carbon tape, laminating epoxy, flap hinges, wands and linkage) costs \$101.17.
 \begin{table}[t]
 \centering\small
-\caption{L-foil structural check (v2.2 foils).}
+\caption{L-foil structural check (v2.3 foils).}
 \label{tab:struct}
 \resizebox{\columnwidth}{!}{\begin{tabular}{lccc}
 \toprule
 Material & Root stress & Tip deflection & Strut rotation \\
 \midrule
-CFRP ($E$ = 70 GPa) & 49.7 MPa & 1.49 mm & 0.82$^\circ$ \\
-Printed PETG ($E$ = 2 GPa) & 49.7 MPa & 52.18 mm & 28.70$^\circ$ \\
+CFRP ($E$ = 70 GPa) & 44.4 MPa & 1.52 mm & 1.00$^\circ$ \\
+Printed PETG ($E$ = 2 GPa) & 44.4 MPa & 53.08 mm & 35.17$^\circ$ \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \subsection{Rig and crossbeam loads}\label{sec:rigload}
-The largest steady side force the sails can apply is set by the righting moment, $F = RM_{\max}/h$ with $h$ the heeling arm; beyond it the boat heels and sheds load. Carried by a mast pinned at the step and held by the windward shroud at the hounds, this force gives the shroud tension. The jib's share (by area), on a forestay with an assumed 2\,\% sag, gives the forestay tension, and the vertical components of both compress the mast. A harder case is the sheet servo at its stall torque (spec-sheet values at 4.8\,V), for example with the sheet held in against a stop. The mast is checked for Euler buckling between step and hounds. Each crossbeam is checked as a simply supported tube loaded at mid-span. On the mini, the box levers the sheet load onto both beams. Table~\ref{tab:rigload} lists the results. $E = 70$\,GPa and a bending strength of 300\,MPa are assumed for the carbon tubes, since no values are published for the tubes used.
+The largest steady side force the sails can apply is set by the righting moment, $F = RM_{\max}/h$ with $h$ the heeling arm; beyond it the boat heels and sheds load. Carried by a mast pinned at the step and held by the windward shroud at the hounds, this force gives the shroud tension. The jib's share (by area), on a forestay with an assumed 2\,\% sag, gives the forestay tension, and the vertical components of both compress the mast. A harder case is the sheet servo at its stall torque (spec-sheet values at 4.8\,V), for example with the sheet held in against a stop. The mast is checked for Euler buckling between step and hounds. Each crossbeam is checked as a simply supported tube loaded at mid-span. On the 1\,m boat the mainsheet runs from the traveler car up to the boom and back (the loop that keeps the traveler from pulling on it), so the boom, the car and the rear beam carry twice the tail tension. With the tail 15\,mm from the servo shaft this failed the factor-of-2 rule (front beam 1.7, mast 2.0); the tail now attaches 25\,mm from the shaft. The printed traveler car is checked the same way: its lips under the rail head bend as cantilevers, with an assumed 25\,MPa bending strength for printed PETG. On the mini, the box levers the sheet load onto both beams. Table~\ref{tab:rigload} lists the results. $E = 70$\,GPa and a bending strength of 300\,MPa are assumed for the carbon tubes, since no values are published for the tubes used.
 
 \begin{table}[h]
 \centering\small
@@ -291,13 +294,14 @@ The largest steady side force the sails can apply is set by the righting moment,
 \toprule
  & 1\,m build-first & Mini \\
 \midrule
-Side force at the heel limit (N) & 8.0 & 2.9 \\
-Shroud / forestay tension (N) & 16 / 12 & 5.9 / 4.3 \\
-Mainsheet at servo stall (N) & 92 & 34 \\
-Mast compression, sailing / stall (N) & 27 / 119 & 10 / 44 \\
-Mast Euler load (N) / safety at stall & 423 / 3.6 & 107 / 2.4 \\
-Front beam: MPa / mm / safety & 100 / 4.7 / 3.0 & 54 / 1.5 / 5.6 \\
-Rear beam: MPa / mm / safety & 77 / 3.6 / 3.9 & 40 / 1.1 / 7.6 \\
+Side force at the heel limit (N) & 8.3 & 2.9 \\
+Shroud / forestay tension (N) & 17 / 12 & 5.9 / 4.3 \\
+Mainsheet at servo stall (N) & 55 & 34 \\
+Mast compression, sailing / stall (N) & 28 / 138 & 10 / 44 \\
+Mast Euler load (N) / safety at stall & 423 / 3.1 & 107 / 2.4 \\
+Front beam: MPa / mm / safety & 116 / 5.4 / 2.6 & 54 / 1.5 / 5.6 \\
+Rear beam: MPa / mm / safety & 92 / 4.3 / 3.2 & 40 / 1.1 / 7.6 \\
+Traveler car on its rail: uplift (N) / safety & 110 / 3.2 & -- \\
 Pod beam, 5\,g: MPa / mm / safety & 35 / 2.6 / 8.7 & -- \\
 \bottomrule
 \end{tabular}}
@@ -306,22 +310,39 @@ Pod beam, 5\,g: MPa / mm / safety & 35 / 2.6 / 8.7 & -- \\
 The sailing loads are small: the sheet servos, not the wind, set the structural load case. With its first 8\,x\,7\,mm beams (0.5\,mm wall), the mini's front beam reached a safety factor of only 2.0 in the stall case and deflected 5.2\,mm. It now uses 10\,x\,8\,mm tube, which costs \$1.05 less, for 18\,g more.
 
 \section{Ride-height control}\label{sec:rh}
-Each L-foil wing gets a trailing-edge flap of 25\,\% chord (11\,mm) from 10\,mm inside the tip to the strut, 146\,mm of the 160\,mm span. A carbon wand hinged at each bow trails on the water and drives that hull's flap through a deck pushrod, a bellcrank and a rod inside the strut. Each foil therefore regulates its own height, which also adds roll stability. Thin-airfoil theory gives the flap effectiveness
+Each L-foil wing gets a trailing-edge flap of 25\,\% chord (12\,mm) from 10\,mm inside the tip to the strut, 166\,mm of the 180\,mm span. A carbon wand hinged at each bow trails on the water and drives that hull's flap through a deck pushrod, a bellcrank and a rod inside the strut. Each foil therefore regulates its own height, which also adds roll stability. Thin-airfoil theory gives the flap effectiveness
 \begin{equation}
 \tau = 1-\frac{\theta_h-\sin\theta_h}{\pi},\qquad \cos\theta_h = 2E-1,
 \end{equation}
 so $\tau=0.609$ for $E=0.25$; 0.487 is used after a 20\,\% viscous reduction. The wand is 300\,mm long at 49$^\circ$, so its angle changes by 5.08\,rad per metre of height. The linkage gearing is 1.5$^\circ$ of flap per degree of wand.
 
-\noindent\textbf{Trim.} At each speed the elevators set the pitch and the flaps make up the main foils' lift, with the sail-drive couple included (Section~\ref{sec:trim}). From take-off at 1.99 to 5.0\,m/s the flap angle stays between $-6.7$$^\circ$ and $13.0$$^\circ$, inside the $\pm15^\circ$ travel (Fig.~\ref{fig:rh}). The boat pitches between $+0.0$$^\circ$ and $+0.4$$^\circ$ (nose up $+$), and the bow flies $-32$ to $+15$\,mm from its design height.
+\noindent\textbf{Trim.} At each speed the elevators set the pitch and the flaps make up the main foils' lift, with the sail-drive couple included (Section~\ref{sec:trim}). From take-off at 1.81 to 5.0\,m/s the flap angle stays between $-6.8$$^\circ$ and $10.2$$^\circ$, inside the $\pm15^\circ$ travel (Fig.~\ref{fig:rh}). The boat pitches between $-0.3$$^\circ$ and $+0.4$$^\circ$ (nose up $+$), and the bow flies $-26$ to $+16$\,mm from its design height.
 
 \noindent\textbf{Heave stability.} Linearised heave dynamics are
 \begin{gather}
 m\ddot h + c\,\dot h + k\,h = 0,\\
 c=\frac{q(S_ma_m+S_ea_e)}{V},\qquad k=q\,S_ma_m\,\tau\,G\,\frac{d\phi}{dh},
 \end{gather}
-where $c$ comes from the change of foil angle of attack with vertical velocity ($\dot h/V$) and $k$ from the wand feedback. With fixed foils $k=0$, so nothing restores height. With the wand, $k$ rises from 404 to 2527\,N/m and the natural frequency from 2.1 to 5.3\,Hz. Because $c\propto V$ and $\sqrt{k}\propto V$, the damping ratio is the same at every speed, $\zeta=1.4$ (over-damped): disturbances die out without oscillating. A time-domain run of the same model (\texttt{analysis/foil\_checks.py}) confirms this: across the flying range a 20\,mm height disturbance decays to 5\,\% in 0.22--0.54\,s with no overshoot, while with fixed foils it does not decay at all. The same script checks the trim over the flying range up to the 12\,kn beam-reach speed: the elevators stay at least 1.57 chords deep, the main foils 1.20 chords, and at least 47\,mm of rudder stays in the water. At take-off, with the flaps fully down, the main foils need $C_L=0.80$. 28 of 28 foil checks pass.
+where $c$ comes from the change of foil angle of attack with vertical velocity ($\dot h/V$) and $k$ from the wand feedback. With fixed foils $k=0$, so nothing restores height. With the wand, $k$ rises from 458 to 3174\,N/m and the natural frequency from 2.2 to 5.8\,Hz. Because $c\propto V$ and $\sqrt{k}\propto V$, the damping ratio is the same at every speed, $\zeta=1.6$ (over-damped): disturbances die out without oscillating. A time-domain run of the same model (\texttt{analysis/foil\_checks.py}) confirms this: across the flying range a 20\,mm height disturbance decays to 5\,\% in 0.24--0.62\,s with no overshoot, while with fixed foils it does not decay at all. The same script checks the trim over the flying range up to the 12\,kn beam-reach speed: the elevators stay at least 1.55 chords deep, the main foils 1.02 chords, and at least 46\,mm of rudder stays in the water. At take-off, with the flaps fully down, the main foils need $C_L=0.80$. 28 of 28 foil checks pass.
 
-\noindent\textbf{Heave and pitch together.} The wand sits a metre ahead of the elevators, so heave and pitch are coupled: the wand reads the bow height and the boat-frame angle, and each foil feels the vertical velocity of its own station, $\dot h + l\,\dot\theta$. Linearising both degrees of freedom about the trim, with the pitch inertia from the CAD model ($I_{yy}=0.207$\,kg\,m$^2$, radius of gyration 304\,mm), gives a fourth-order system (\texttt{analysis/pitch\_heave.py}). Across the flying range it is stable (Routh--Hurwitz), with one oscillating mode at 1.8--7.0\,Hz and damping ratio at least 0.64 (0.62 with an elevator efficiency of 0.65), and two non-oscillating decaying modes. That is less damping than the heave-only estimate ($\zeta=1.36$), but the motion stays well damped. With fixed foils one root sits at zero: heave stays neutral. Unsteady lift, added mass and downwash lag are left out.
+\noindent\textbf{Heave and pitch together.} The wand sits a metre ahead of the elevators, so heave and pitch are coupled: the wand reads the bow height and the boat-frame angle, and each foil feels the vertical velocity of its own station, $\dot h + l\,\dot\theta$. Linearising both degrees of freedom about the trim, with the pitch inertia from the CAD model ($I_{yy}=0.243$\,kg\,m$^2$, radius of gyration 320\,mm), gives a fourth-order system (\texttt{analysis/pitch\_heave.py}). Across the flying range it is stable (Routh--Hurwitz), with one oscillating mode at 1.6--7.0\,Hz and damping ratio at least 0.69 (0.66 with an elevator efficiency of 0.65), and two non-oscillating decaying modes. That is less damping than the heave-only estimate ($\zeta=1.56$), but the motion stays well damped. With fixed foils one root sits at zero: heave stays neutral. Unsteady lift, added mass and downwash lag are left out.
+
+\noindent\textbf{Take-off in time.} The trims above are equilibria. The transition was also integrated in time (\texttt{analysis/takeoff\_sim.py}): surge, heave and pitch with RK4 in 2\,ms steps, hull buoyancy from the stations at the instantaneous attitude, the wand and flap stops, foil lift fading over the last half chord below the surface, and sail drive from the VPP (the boat is held flat). From rest in 8\,kn on a beam reach the hulls leave the water after 2.4\,s. The bow then rises at most 11\,mm above its design height, the elevators stay at least 48\,mm deep, and the boat settles at 3.72\,m/s, matching the VPP's steady speed (Fig.~\ref{fig:ts}). A 4\,kn gust for 5\,s while flying in 9\,kn raises the bow at most 16\,mm and leaves the elevators at least 41\,mm deep; no foil breaches. Hull damping when afloat is an assumed 30\,\% of critical; it only affects the hull-borne phase.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.8\columnwidth, height=0.55\columnwidth, xlabel={Time (s)}, ylabel={Speed (m/s)}, axis y line*=left, xmin=0, xmax=12, ymin=0, legend style={at={(0.97,0.35)}, anchor=east}]
+\addplot[thick, blue] table[x=t, y=V] {data/takeoff_ts.dat}; \addlegendentry{speed}
+\end{axis}
+\begin{axis}[width=0.8\columnwidth, height=0.55\columnwidth, ylabel={Bow height, flap}, axis y line*=right, axis x line=none, xmin=0, xmax=12, grid=none, legend style={at={(0.97,0.12)}, anchor=east}]
+\addplot[thick, red] table[x=t, y=bow] {data/takeoff_ts.dat}; \addlegendentry{bow (mm)}
+\addplot[thick, black!60, dashed] table[x=t, y=flap] {data/takeoff_ts.dat}; \addlegendentry{flap ($^\circ$)}
+\end{axis}
+\end{tikzpicture}
+\caption{Take-off from rest in 8\,kn on a beam reach (time-domain simulation): boat speed, bow height relative to the design ride height, and flap angle. The flaps sit on their $+15^\circ$ stops until the boat rises.}
+\label{fig:ts}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -336,7 +357,7 @@ where $c$ comes from the change of foil angle of attack with vertical velocity (
 \end{figure}
 
 \section{Foil design with the flight simulator}\label{sec:opt}
-The VPP answers whether a given design flies; to ask which foils fly best, it was turned into an interactive flight simulator (a web page, \texttt{sim/foil\_sim.html}). Its physics are the VPP's, including the flying trim of Section~\ref{sec:trim}: the Michell wave resistance is tabulated against boat speed and the weight the hulls carry, and every other term is computed live. At the CAD design it reproduces the Python VPP's boat speed to 0.02\,m/s in all 12 reference cases (build-first and foiling, 6--10\,kn, 60 and 90$^\circ$). It adds:
+The VPP answers whether a given design flies; to ask which foils fly best, it was turned into an interactive flight simulator (a web page, \texttt{sim/foil\_sim.html}). Its physics are the VPP's, including the flying trim of Section~\ref{sec:trim}: the Michell wave resistance is tabulated against boat speed and the weight the hulls carry, and every other term is computed live. At the CAD design it reproduces the Python VPP's boat speed to 0.00\,m/s in all 12 reference cases (build-first and foiling, 6--10\,kn, 60 and 90$^\circ$). It adds:
 \begin{itemize}\itemsep1pt
 \item foil span, chord and incidence, and the elevator height, as inputs;
 \item foil and rudder mass and the resulting shift of the centre of gravity, with the densities of the CAD mass export;
@@ -344,18 +365,19 @@ The VPP answers whether a given design flies; to ask which foils fly best, it wa
 \item a cap on the usable foil lift coefficient of 0.8 (0.8 of an assumed section maximum of 1.0 near $Re=10^5$).
 \end{itemize}
 
-\noindent\textbf{A first search, and why it was withdrawn.} A first search was run before the trim model existed. It assumed each foil pair carried a fixed share of the weight at level attitude, so the elevators set the take-off speed. It recommended smaller foils with the elevators at $4^\circ$ (v2.1: wings 160\,x\,40\,mm at $0^\circ$, elevators 140\,x\,32\,mm at $4^\circ$), and these were drawn in CAD. The trim model reverses that result. At 4.5\,m/s the v2.2 foils must balance a 5.3\,N\,m bow-down couple, more than the elevators' share of the weight times the foil spacing, so the elevators must push down. Fixed at $+4^\circ$, they can only do that by pitching the whole boat nose-down. The stern, a metre behind the wand that holds the bow, then rises until the elevators leave the water: for v2.1 the elevator reaches the surface at 2.5\,m/s (Fig.~\ref{fig:trim}). Neither the original v2.0 foils nor v2.1 has any speed at which the trim is feasible: as drawn, they would not fly.
+\noindent\textbf{A first search, and why it was withdrawn.} A first search was run before the trim model existed. It assumed each foil pair carried a fixed share of the weight at level attitude, so the elevators set the take-off speed. It recommended smaller foils with the elevators at $4^\circ$ (v2.1: wings 160\,x\,40\,mm at $0^\circ$, elevators 140\,x\,32\,mm at $4^\circ$), and these were drawn in CAD. The trim model reverses that result. At 4.5\,m/s the v2.3 foils must balance a 6.0\,N\,m bow-down couple, more than the elevators' share of the weight times the foil spacing, so the elevators must push down. Fixed at $+4^\circ$, they can only do that by pitching the whole boat nose-down. The stern, a metre behind the wand that holds the bow, then rises until the elevators leave the water: for v2.1 the elevator reaches the surface at 2.6\,m/s (Fig.~\ref{fig:trim}). Neither the original v2.0 foils nor v2.1 has any speed at which the trim is feasible: as drawn, they would not fly.
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}
 \begin{axis}[width=\columnwidth, height=0.62\columnwidth, xlabel={Boat speed (m/s)}, ylabel={Elevator depth (mm)}, ymin=-60, ymax=100, xmin=2, xmax=5, legend style={font=\scriptsize, at={(0.5,-0.26)}, anchor=north, legend columns=3, draw=none}]
 \addplot[thick, red!70!black, dashed] table[x=V, y=eldepth] {data/trim_v21.dat}; \addlegendentry{v2.1}
-\addplot[thick, blue] table[x=V, y=eldepth] {data/trim_CAD.dat}; \addlegendentry{v2.2}
+\addplot[thick, black!55, dotted] table[x=V, y=eldepth] {data/trim_v22.dat}; \addlegendentry{v2.2}
+\addplot[thick, blue] table[x=V, y=eldepth] {data/trim_CAD.dat}; \addlegendentry{v2.3}
 \addplot[gray, thin] coordinates {(2,0) (5,0)}; \addlegendentry{water surface}
 \end{axis}
 \end{tikzpicture}
-\caption{Elevator depth from the flying trim, sail-drive couple included. The v2.1 elevators at $+4^\circ$ pitch the boat nose-down and come out of the water; the v2.2 elevators at $-1^\circ$, 13\,mm lower, stay in. (The v2.1 curve is shown where no feasible trim exists, to show why.)}
+\caption{Elevator depth from the flying trim, sail-drive couple included. The v2.1 elevators at $+4^\circ$ pitch the boat nose-down and come out of the water; the v2.3 elevators at $-0.5^\circ$, 18\,mm lower, stay in. (The v2.1 curve is shown where no feasible trim exists, to show why.)}
 \label{fig:trim}
 \end{figure}
 
@@ -373,9 +395,9 @@ Incidences from $-1$ to $3^\circ$ and the height were then refined for the best 
 \item the pitch static margin is at least 30\,mm with an elevator efficiency of 0.65 (about 5\,\% of the 590\,mm foil spacing, assumed);
 \item the boat flies at 12\,kn on a beam reach, with the flying range reaching at least 5\,\% above that speed.
 \end{itemize}
-Feasible designs tended to sit on these limits. Nose-down pitch lifts the rudders and struts out of the water and cuts their drag, which the model rewards and a gust would punish. The adopted design therefore also needs operating margins at the 12\,kn speed: main foils and elevators at least one chord deep, at least 45\,mm of rudder in the water, and a flying range reaching 10\,\% above that speed. It must also be robust: it must still fly, without hitting the top of the flying range at 12\,kn, with the sail-drive couple halved or 1.5 times larger and with the CG 20\,mm forward or aft. Of 83{,}294 feasible designs, 13{,}960 had the margins and 13{,}928 were also robust. Among robust designs within 5\,\% of the fastest, the rule picks the one needing the least wind to fly, averaged over 60 and 90$^\circ$. The design in CAD stays adopted while it passes every check and needs at most 0.1\,kn more wind than the rule's pick. That tolerance is below the model's resolution (see below), and in this run the difference is +0.00\,kn.
+Feasible designs tended to sit on these limits. Nose-down pitch lifts the rudders and struts out of the water and cuts their drag, which the model rewards and a gust would punish. The adopted design therefore also needs operating margins at the 12\,kn speed: main foils and elevators at least one chord deep, at least 45\,mm of rudder in the water, and a flying range reaching 10\,\% above that speed. It must also be robust: it must still fly, without hitting the top of the flying range at 12\,kn, with the sail-drive couple halved or 1.5 times larger and with the CG 20\,mm forward or aft. Of 78{,}717 feasible designs, 12{,}340 had the margins and 11{,}645 were also robust. Among robust designs within 5\,\% of the fastest, the rule picks the one needing the least wind to fly, averaged over 60 and 90$^\circ$. The design in CAD stays adopted while it passes every check and needs at most 0.1\,kn more wind than the rule's pick. That tolerance is below the model's resolution (see below), and in this run the difference is +0.00\,kn.
 
-\noindent\textbf{v2.2.} The adopted foils are wings of 160\,x\,45\,mm at $+1.5^\circ$ and elevators of 120\,x\,28\,mm at $-1^\circ$, set 13\,mm lower than before (Table~\ref{tab:opt}). The negative elevator incidence is the key change. At 12\,kn the elevators push down 5.4\,N with the boat at +0.0$^\circ$ of pitch, instead of pitching the boat nose-down to get there. In the simulator the boat takes off at 1.99\,m/s, from 6.9\,kn on a beam reach and 7.4\,kn at 60$^\circ$. It reaches 4.65\,m/s at 12\,kn, and its flying range extends to the end of the scan (6\,m/s). The original v2.0 sizes cannot be re-trimmed into the feasible set: whatever the incidences and elevator height, their static margin is at most 29.9\,mm, just under the 30\,mm limit. The v2.1 sizes cannot be rescued. Once the elevators push down, the main foils carry the weight plus that downforce, and in 2525 of the 3213 re-trims tried the 40\,mm-chord wing bends past the 2\,mm limit.
+\noindent\textbf{v2.3.} The foils first adopted from this search (v2.2: wings 160\,x\,45\,mm at $+1.5^\circ$, elevators 120\,x\,28\,mm at $-1^\circ$) were drawn in CAD. Correcting the CAD masses (the printed fittings and mast fairing, and music-wire rudder parts that had been weighed as aluminium) added 89\,g and moved the centre of gravity about 7\,mm aft. That cut v2.2's pitch static margin to 24\,mm, under the limit, and the rerun search picked larger foils. The adopted foils are wings of 180\,x\,50\,mm at $+1.5^\circ$ and elevators of 160\,x\,28\,mm at $-0.5^\circ$, set 18\,mm lower than before (Table~\ref{tab:opt}). The negative elevator incidence is the key change. At 12\,kn the elevators push down 5.8\,N with the boat at $-0.3^\circ$ of pitch, instead of pitching the boat nose-down to get there. In the simulator the boat takes off at 1.81\,m/s, from 7.1\,kn on a beam reach and 8.9\,kn at 60$^\circ$. It reaches 4.53\,m/s at 12\,kn, and its flying range extends to the end of the scan (6\,m/s). The original v2.0 sizes cannot be re-trimmed into the feasible set: whatever the incidences and elevator height, their static margin is at most 23.0\,mm, just under the 30\,mm limit. The v2.1 sizes cannot be rescued. Once the elevators push down, the main foils carry the weight plus that downforce, and in 2577 of the 3213 re-trims tried the 40\,mm-chord wing bends past the 2\,mm limit.
 
 \begin{figure}[t]
 \centering
@@ -384,9 +406,9 @@ Feasible designs tended to sit on these limits. Nose-down pitch lifts the rudder
 \addplot[only marks, mark=*, mark size=0.4pt, gray!40] table[x=tws90, y=v12] {data/opt_cloud_thin.dat}; \addlegendentry{feasible designs}
 \addplot[only marks, mark=*, mark size=0.5pt, blue!35] table[x=tws90, y=v12] {data/opt_cloud_robust_thin.dat}; \addlegendentry{robust, with margins}
 \addplot[thick, blue] table[x=tws90, y=v12] {data/opt_front_robust.dat}; \addlegendentry{best robust trade-off}
-\addplot[only marks, mark=diamond*, mark size=3pt, orange!80!black] coordinates {(6.767,4.450)}; \addlegendentry{light-wind design}
-\addplot[only marks, mark=triangle*, mark size=3pt, red!70!black] coordinates {(6.936,4.650)}; \addlegendentry{v2.2 (adopted)}
-\addplot[only marks, mark=square*, mark size=2.5pt, black] coordinates {(7.308,4.810)}; \addlegendentry{speed design}
+\addplot[only marks, mark=diamond*, mark size=3pt, orange!80!black] coordinates {(7.062,4.250)}; \addlegendentry{light-wind design}
+\addplot[only marks, mark=triangle*, mark size=3pt, red!70!black] coordinates {(7.094,4.530)}; \addlegendentry{v2.3 (adopted)}
+\addplot[only marks, mark=square*, mark size=2.5pt, black] coordinates {(7.642,4.910)}; \addlegendentry{speed design}
 \end{axis}
 \end{tikzpicture}
 \caption{Foil search with the trim model: every feasible design (grey), those with operating margins that are also robust (blue), and the best robust trade-off. Up and to the left is better. The adopted design also weighs the take-off wind at 60$^\circ$, which this plot does not show.}
@@ -395,29 +417,31 @@ Feasible designs tended to sit on these limits. Nose-down pitch lifts the rudder
 
 \begin{table*}[t]
 \centering\small
-\caption{Foil sets with the trim model (flight simulator, auto trim; take-off wind to 0.01\,kn). v2.0 and v2.1 have no feasible flying trim; their speeds are hull-borne (h). v2.2 was adopted and built in CAD. The light-wind design needs the least wind among robust designs within 15\,\% of the fastest; the speed design is the fastest robust design.}
+\caption{Foil sets with the trim model (flight simulator, auto trim; take-off wind to 0.01\,kn). v2.0 and v2.1 have no feasible flying trim; their speeds are hull-borne (h). v2.2 was built in CAD before the mass correction and now fails the static-margin limit; v2.3 is adopted and in CAD. The light-wind design needs the least wind among robust designs within 15\,\% of the fastest; the speed design is the fastest robust design.}
 \label{tab:opt}
-\resizebox{\textwidth}{!}{\begin{tabular}{lccccc}
+\resizebox{\textwidth}{!}{\begin{tabular}{lcccccc}
 \toprule
- & v2.0 (original) & v2.1 (first search) & v2.2 (adopted) & Light-wind design & Speed design \\
+ & v2.0 (original) & v2.1 (first search) & v2.2 (before mass fix) & v2.3 (adopted) & Light-wind design & Speed design \\
 \midrule
-Main foil, span x chord (mm), incidence & 200\,x\,60 at $2^\circ$ & 160\,x\,40 at $0^\circ$ & 160\,x\,45 at $1.5^\circ$ & 180\,x\,50 at $0^\circ$ & 140\,x\,40 at $1^\circ$ \\
-Elevator, span x chord (mm), incidence & 150\,x\,36 at $3^\circ$ & 140\,x\,32 at $4^\circ$ & 120\,x\,28 at $-1^\circ$ & 140\,x\,32 at $0.5^\circ$ & 100\,x\,32 at $1.5^\circ$ \\
-Elevator height $z$ (mm) & -197 & -197 & -210 & -235 & -255 \\
-Sailing mass (g) & 2364 & 2232 & 2241 & 2294 & 2233 \\
-Take-off speed / flies to (m/s) & -- & -- & 1.99 / 6+ & 1.91 / 6+ & 2.49 / 6+ \\
-Wind to fly at 90 / 60$^\circ$ (kn) & -- & -- & 6.94 / 7.39 & 6.77 / 7.21 & 7.31 / 8.79 \\
-Speed at 8 / 12\,kn, beam reach (m/s) & 2.85\,h / 3.49\,h & 3.17\,h / 3.69\,h & 3.83 / 4.65 & 3.67 / 4.45 & 3.93 / 4.81 \\
-At 12\,kn: pitch, flap & -- & -- & +0.0$^\circ$, -6.0$^\circ$ & -1.4$^\circ$, -0.6$^\circ$ & -2.6$^\circ$, +1.2$^\circ$ \\
-At 12\,kn: elev. / main / rudder depth (mm) & -- & -- & 43 / 54 / 46 & 51 / 50 / 53 & 50 / 42 / 53 \\
-Root stress main / elev. (MPa) & -- & -- & 50 / 46 & 44 / 44 & 59 / 22 \\
-Main tip deflection (mm) & -- & -- & 1.49 & 1.51 & 1.52 \\
-Static margin (mm), heave $\zeta$ & 30, 1.67 & 73, 1.51 & 32, 1.36 & 36, 1.54 & 36, 1.23 \\
+Main foil, span x chord (mm), incidence & 200\,x\,60 at $2^\circ$ & 160\,x\,40 at $0^\circ$ & 160\,x\,45 at $1.5^\circ$ & 180\,x\,50 at $1.5^\circ$ & 200\,x\,55 at $0^\circ$ & 140\,x\,40 at $2^\circ$ \\
+Elevator, span x chord (mm), incidence & 150\,x\,36 at $3^\circ$ & 140\,x\,32 at $4^\circ$ & 120\,x\,28 at $-1^\circ$ & 160\,x\,28 at $-0.5^\circ$ & 200\,x\,36 at $0^\circ$ & 100\,x\,32 at $0.5^\circ$ \\
+Elevator height $z$ (mm) & -197 & -197 & -210 & -215 & -215 & -235 \\
+Sailing mass (g) & 2453 & 2322 & 2331 & 2373 & 2446 & 2316 \\
+Take-off speed / flies to (m/s) & -- & -- & 2.02 / 6+ & 1.81 / 6+ & 1.69 / 6+ & 2.30 / 6+ \\
+Wind to fly at 90 / 60$^\circ$ (kn) & -- & -- & 7.30 / 10.69 & 7.09 / 8.94 & 7.06 / 8.63 & 7.64 / -- \\
+Speed at 8 / 12\,kn, beam reach (m/s) & 2.83\,h / 3.59\,h & 3.15\,h / 3.81\,h & 3.87 / 4.71 & 3.71 / 4.53 & 3.31 / 4.25 & 4.01 / 4.91 \\
+At 12\,kn: pitch, flap & -- & -- & $+0.0^\circ$, $-6.2^\circ$ & $-0.3^\circ$, $-6.1^\circ$ & $-0.6^\circ$, $-2.5^\circ$ & $-1.5^\circ$, $-3.2^\circ$ \\
+At 12\,kn: elev. / main / rudder depth (mm) & -- & -- & 44 / 54 / 47 & 43 / 51 / 46 & 43 / 55 / 46 & 44 / 44 / 47 \\
+Root stress main / elev. (MPa) & -- & -- & 50 / 44 & 44 / 71 & 41 / 54 & 59 / 20 \\
+Main tip deflection (mm) & -- & -- & 1.51 & 1.52 & 1.58 & 1.53 \\
+Static margin (mm), heave $\zeta$ & 23, 1.64 & 66, 1.48 & 24, 1.33 & 41, 1.56 & 69, 1.89 & 30, 1.21 \\
 \bottomrule
 \end{tabular}}
 \end{table*}
 
-The simulator interpolates the wave-resistance table, which smooths the drag hump just before take-off. Its take-off winds for v2.2 are therefore 0.12 and 0.14\,kn below the VPP's (7.06 and 7.53\,kn at 90 and 60$^\circ$). Once the boat is flying the two agree. As with the rest of the paper, these are model predictions. The drag model sets the size of the sail-drive couple, which is why the design must also work with the couple halved or 1.5 times larger (take-off at 1.87 and 2.24\,m/s, flying to 6.00 and 5.91\,m/s). Lift near $Re=10^5$, the flap model and the wand gearing on the smaller foils are what the tow tests have to confirm, and the elevator incidence should be adjustable by at least $\pm1^\circ$ on the water.
+The simulator interpolates the wave-resistance table, which smooths the drag hump just before take-off. Its take-off winds for v2.3 are therefore 0.02 and 0.01\,kn below the VPP's (7.11 and 8.95\,kn at 90 and 60$^\circ$). Once the boat is flying the two agree. \noindent\textbf{Roll near take-off.} With the adopted foils the boat flies from 7.1\,kn on a beam reach but needs 8.9\,kn at 60$^\circ$ (simulator), because at take-off both wings are at their lift limit and the larger side force has to go onto the leeward hull (Section~\ref{sec:trim}). More flap travel does not help: with $\pm25^\circ$ instead of $\pm15^\circ$ the take-off winds are unchanged, because the usable lift coefficient, not the flap stop, limits the leeward wing. What does help is technique. Taken off on a beam reach and then headed up, the boat stays flying at 60$^\circ$ down to 8.25\,kn (\texttt{sim/roll\_options.js}). At 45$^\circ$ it does not take off below 25\,kn, and once flying it cannot stay up below 16\,kn.
+
+As with the rest of the paper, these are model predictions. The drag model sets the size of the sail-drive couple, which is why the design must also work with the couple halved or 1.5 times larger (take-off at 1.71 and 2.00\,m/s, flying to 6.00 and 6.00\,m/s). With laminar foil friction, the optimistic bound on the drag, it takes off at 1.76\,m/s and flies to 6.00\,m/s. Lift near $Re=10^5$, the flap model and the wand gearing on the smaller foils are what the tow tests have to confirm, and the elevator incidence should be adjustable by at least $\pm1^\circ$ on the water.
 
 
 \section{Simplified 0.6\,m version}
@@ -435,15 +459,17 @@ Several changes came directly from the checks above rather than from the first l
 \item \textbf{Servo fit.} Checking every mount against the manufacturers' drawings found three misfits: the 40.5\,mm winch cases did not fit between rails 40.2\,mm apart (40\,mm on the mini); the 1\,m rails sat 3.5\,mm below the FS5115M's ears (27.3\,mm above the case bottom); and the mini's micro-servo rails sat 6\,mm below the MG90S ear line. The rails were redrawn from the drawings with 0.3--0.4\,mm clearance and a wire notch at each rail. Each winch now hangs in a 4--6\,mm well, so its drum clears the lid by 5.6--7.9\,mm instead of 0.4\,mm on the mini.
 \item \textbf{Mini crossbeams.} The rig-load check (Section~\ref{sec:rigload}) replaced the mini's 8\,x\,7\,mm beams with 10\,x\,8\,mm tube.
 \item \textbf{Rig clearance.} A clearance sweep of the Fusion model over nine trims (boom and jib from 0/5$^\circ$ to 40/40$^\circ$) showed that the original pod, which ran over both beams, blocked the traveler car for boom angles below about 7.5$^\circ$. In that range the mainsheet from the clew (259\,mm from the transom) to the car also passed through the pod lid, and the jib car sat inside the pod. The pod now ends 11\,mm forward of the clew. Its aft end first hung on a printed cradle under the rear beam, but a load check showed that a cradle under the beam can only hold the pod down, not up. The aft end now rests on a light third crossbeam: 10\,mm carbon, cut from the tube already bought for the mast joiner, at 350\,mm from the transom, where no mainsheet position reaches. The rudder servo sits aft of the rear beam on a printed bracket, under a cover. The bracket clamps the beam from below, so the car can cross the centreline, and the jib track moved onto the lid. The same interference check found the tiller arms and ride-height wands rubbing the hulls. The tiller arms are now level, and the wands hinge ahead of the stems. The sweep is now clear at all nine trims.
-\item \textbf{Pitch trim (v2.2 foils).} A first simulator search (v2.1) picked smaller foils with $4^\circ$ elevators. Adding the trim in heave and pitch (Section~\ref{sec:trim}) showed that the sail drive's couple makes the elevators push down at speed, and that fixed positive-incidence elevators then pitch the boat nose-down until they leave the water: neither v2.0 nor v2.1 would fly. The search was repeated with the elevator height as a variable, a pitch static-margin limit, operating margins and robustness checks. The adopted v2.2 foils have the elevators at $-1^\circ$, 13\,mm lower on slightly longer rudders, and fly level at 12\,kn (Section~\ref{sec:opt}).
+\item \textbf{Pitch trim (v2.2 foils).} A first simulator search (v2.1) picked smaller foils with $4^\circ$ elevators. Adding the trim in heave and pitch (Section~\ref{sec:trim}) showed that the sail drive's couple makes the elevators push down at speed, and that fixed positive-incidence elevators then pitch the boat nose-down until they leave the water: neither v2.0 nor v2.1 would fly. The search was repeated with the elevator height as a variable, a pitch static-margin limit, operating margins and robustness checks. The v2.2 foils adopted then had the elevators at $-1^\circ$, 13\,mm lower on slightly longer rudders, and flew level at 12\,kn; the mass correction below replaced them.
+\item \textbf{Clearance over the full trim range.} A second sweep, with the printed gooseneck turning with the wing and the boom end with the boom, found two problems. A boom-end fork reaching below the boom would hit the jib car with the main eased and the jib sheeted in, so the fork moved to the gooseneck and the boom end became a single tongue. Separately, with the jib sheeted fully in ($5^\circ$) and the main eased past about $31^\circ$, the jib sheet crosses the boom itself; the manual says to ease the jib first.
+\item \textbf{Fittings and masses.} Designing the printed fittings and the mast fairing replaced placeholder blocks and assumed masses. The fairing, gooseneck and boom jaw weigh 45\,g, where 10\,g had been assumed for the fairing. The rudder stocks, tiller arms, tie bar and pushrod had been weighed as aluminium, but they are music wire (the steel tie bar alone is 56\,g). The build-first boat went from 2037 to 2114\,g and the foiling boat from 2242 to 2373\,g, with the centre of gravity about 7\,mm further aft; every result here uses the new masses. The CG shift cut the v2.2 foils' pitch static margin to 24\,mm, under the 30\,mm limit, so the search of Section~\ref{sec:opt} was rerun and picked v2.3. The traveler's end stops also limit the boom to about 35$^\circ$ off the centre line.
 \end{enumerate}
-These checks are now automated. After every analysis run, a design-rule script re-checks 26 rules against the results, the rig model and the CAD constants: one-hull buoyancy, rudder and foil-pitch margins, heave damping, take-off wind, rig-to-pod clearances, servo fit and drum-to-lid clearance. All 26 pass. (The script first caught a stale CAD volume in the hull-volume check.)
+These checks are now automated. After every analysis run, a design-rule script re-checks 28 rules against the results, the rig model and the CAD constants: one-hull buoyancy, rudder and foil-pitch margins, heave damping, take-off wind, rig-to-pod clearances, servo fit and drum-to-lid clearance. All 28 pass. (The script first caught a stale CAD volume in the hull-volume check.)
 
 \section{Discussion and limitations}
-All performance numbers are model predictions and remain to be checked on the water. The main uncertainties are the sail coefficients ($C_{L,\max}$), foil lift at $Re\approx10^5$ and near the free surface, and the form factor. Thin-ship theory also neglects sinkage, trim and spray. The yaw balance uses geometric centres of effort and lateral resistance, which is a conservative simplification. In the trim model the three sail controls are independent. On the boat this depends on the mainsheet routing. If the tail simply ran from the traveler car to the pod, moving the car would change the tail length by up to 236\,mm, more than the mainsheet servo can take up. The mainsheet is therefore dead-ended at one end of the rear beam and led out of the car to a turning block at the other end, so any car movement shortens one side exactly as much as it lengthens the other. The sensitivity study addresses the first two uncertainties. Next steps: (1) build and GPS-log the mini and the 1\,m build-first boat and compare speeds with Fig.~\ref{fig:vpp}; (2) build the v2.2 foils (Section~\ref{sec:opt}), with an adjustable elevator incidence, and tow-test them; (3) build the wand-and-flap ride-height system of Section~\ref{sec:rh} and tune its gearing on the water.
+All performance numbers are model predictions and remain to be checked on the water. The main uncertainties are the sail coefficients ($C_{L,\max}$), foil lift at $Re\approx10^5$ and near the free surface, and the form factor. Thin-ship theory also neglects sinkage, trim and spray. The yaw balance uses geometric centres of effort and lateral resistance, which is a conservative simplification. In the trim model the three sail controls are independent. On the boat this depends on the mainsheet routing. If the tail simply ran from the traveler car to the pod, moving the car would change the tail length by up to 213\,mm, more than the mainsheet servo can take up. The mainsheet is therefore dead-ended on a pin in one of the traveler track's end stops and led out of the car round a pin in the other, so any car movement shortens one side exactly as much as it lengthens the other. The sensitivity study addresses the first two uncertainties. Next steps: (1) build and GPS-log the mini and the 1\,m build-first boat and compare speeds with Fig.~\ref{fig:vpp}; (2) build the v2.3 foils (Section~\ref{sec:opt}), with an adjustable elevator incidence, and tow-test them; (3) build the wand-and-flap ride-height system of Section~\ref{sec:rh} and tune its gearing on the water.
 
 \section{Conclusion}
-A 1\,m RC beach catamaran was designed with printable, compartmented hulls, a real-cat rig trimmed by three sliders, and two appendage options. A validated velocity prediction program and a controllability analysis support four conclusions: the displacement version is controllable with large margins; the foiling version can reach take-off in moderate wind; with fixed foils it has no heave stability, but a wand-driven flap on each L-foil makes heave stable and well damped; and a 0.6\,m simplified version is the sensible first build. A flight simulator built on the same physics, with the boat's trim in heave and pitch, showed that the sail drive's bow-down couple decides the elevator design: elevators at a positive fixed incidence would pitch the boat nose-down and leave the water at speed. The adopted v2.2 foils, with the elevators at $-1^\circ$ and slightly deeper, fly level at 12\,kn and are in the CAD model.
+A 1\,m RC beach catamaran was designed with printable, compartmented hulls, a real-cat rig trimmed by three sliders, and two appendage options. A validated velocity prediction program and a controllability analysis support four conclusions: the displacement version is controllable with large margins; the foiling version can reach take-off in moderate wind; with fixed foils it has no heave stability, but a wand-driven flap on each L-foil makes heave stable and well damped; and a 0.6\,m simplified version is the sensible first build. A flight simulator built on the same physics, with the boat's trim in heave and pitch, showed that the sail drive's bow-down couple decides the elevator design: elevators at a positive fixed incidence would pitch the boat nose-down and leave the water at speed. The adopted v2.3 foils, with the elevators at $-0.5^\circ$ and slightly deeper, fly level at 12\,kn and are in the CAD model.
 
 \begin{thebibliography}{9}\small
 \bibitem{hobie} Hobie 16 specifications. \url{https://en.wikipedia.org/wiki/Hobie_16}

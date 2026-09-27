@@ -327,9 +327,9 @@
   "note": "winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder"
  },
  "foiling": {
-  "mass_g": 2331.6,
-  "lcg_mm": 454.8,
-  "vcg_mm": 62.6,
+  "mass_g": 2372.8,
+  "lcg_mm": 454.3,
+  "vcg_mm": 57.7,
   "by_component_g": {
    "Crossbeams": 113.9,
    "Center Pod": 335.6,
@@ -342,7 +342,7 @@
    "Ride Height Control": 29.3,
    "Hull Port": 391.3,
    "Hull Stbd": 391.3,
-   "Foiling Kit": 381.1,
+   "Foiling Kit": 422.3,
    "Wiring allowance": 20
   },
   "items": [
@@ -724,37 +724,37 @@
    [
     "Foiling Kit",
     "L-Foil Port",
-    170.1
+    184.4
    ],
    [
     "Foiling Kit",
     "Elevator Port",
-    11.9
+    15.9
    ],
    [
     "Foiling Kit",
     "L-Foil Stbd",
-    170.2
+    184.4
    ],
    [
     "Foiling Kit",
     "Elevator Stbd",
-    11.9
+    15.9
    ],
    [
     "Foiling Kit",
     "Flap Port",
-    3.8
+    5.4
    ],
    [
     "Foiling Kit",
     "Flap Stbd",
-    3.8
+    5.4
    ],
    [
     "Foiling Kit",
     "Rudder Extension Port",
-    0.5
+    1.3
    ],
    [
     "Foiling Kit",
@@ -769,7 +769,7 @@
    [
     "Foiling Kit",
     "Rudder Extension Stbd",
-    0.5
+    1.3
    ],
    [
     "Foiling Kit",

@@ -9,7 +9,7 @@ A 1 m radio-controlled beach catamaran (Hobie 16 / Nacra 17 style) designed in A
 | Document | What it is |
 |---|---|
 | [`poster/RC_Catamaran_Poster.pdf`](poster/RC_Catamaran_Poster.pdf) | A0 landscape research poster (scales to 48 x 36 in) |
-| [`paper/RC_Catamaran_Paper.pdf`](paper/RC_Catamaran_Paper.pdf) | 10-page technical paper: design, methods (including the flying trim in heave and pitch), validation, results, stability and pitchpole, rig and crossbeam loads, ride-height design, foil design with the flight simulator (why v2.1 was withdrawn, v2.2), design iterations |
+| [`paper/RC_Catamaran_Paper.pdf`](paper/RC_Catamaran_Paper.pdf) | 11-page technical paper: design, methods (including the flying trim in heave and pitch), validation, results, stability and pitchpole, rig and crossbeam loads, ride-height design, foil design with the flight simulator (why v2.1 was withdrawn, v2.2), design iterations |
 | [`mini/manual/RC_Mini_Cat_Build_Manual.pdf`](mini/manual/RC_Mini_Cat_Build_Manual.pdf) | Build manual for the 0.6 m Mini Cat: costed parts list, print settings, 10 build steps, radio setup, cost appendices for the 1 m boat and the foil kit |
 | [`sim/foil_sim.html`](sim/foil_sim.html) | Foil flight simulator (open in a browser): wind speed and angle, sail trim, editable part weights, foil span, chord and incidence, elevator height, flaps on/off; shows flight mode, take-off speed and the top of the flying range, cruising speed, wind needed to fly, the flying attitude (pitch, elevator depth, rudder immersion), an acceleration run, a speed polar and a foil-size heatmap. Uses the VPP physics, including the flying trim in heave and pitch, and reproduces its speeds |
 | [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md) | Mini Cat shopping and build checklist: every part link re-checked on 2026-09-24 (verified / substituted / not re-verified), print list with STL names, 9-step build checklist |
@@ -23,7 +23,7 @@ All four documents are regenerated from the analysis results by `mini/manual/bui
 |---|---|---|---|
 | **RC Mini Cat 600 (simplified)** | 600 mm, 2 radio channels (rudder + one winch driving both sheets on a stepped drum), round mast, 3-batten main | **$257.37** | Build first |
 | **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$381.02** | Build second |
-| **RC Foiling Catamaran v1** (latest version: v1.3 hulls, v1.4 pod, v2.2 foils) | 1 m + L-foils, T-foil rudders on 13 mm longer foiling rudders, wand-driven flaps for ride-height control | foil kit **+$101.17** | Design stage |
+| **RC Foiling Catamaran v1** (latest version: v1.3 hulls, v1.4 pod, v2.3 foils) | 1 m + L-foils, T-foil rudders on 18 mm longer foiling rudders, wand-driven flaps for ride-height control | foil kit **+$101.17** | Design stage |
 
 Prices were read on retailer pages on 2026-09-23, and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning pins, gooseneck pin and boom eye are cut from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
 
@@ -31,22 +31,22 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
 
 | | Mini Cat 600 | 1 m build-first | 1 m foiling |
 |---|---|---|---|
-| Sailing mass | 755 g | 2037 g | 2242 g |
+| Sailing mass | 755 g | 2114 g | 2373 g |
 | Sail area | 0.144 m2 | 0.401 m2 | 0.401 m2 |
-| One hull's buoyancy / boat weight (my design target: 2 or more) | 2.05 | 2.74 | 2.49 |
-| Speed, beam reach, 8 kn of wind | 2.13 m/s | 2.67 m/s | 3.83 m/s (flying) |
-| Top speed before the bows limit it | 2.13 m/s | 2.97 m/s | n/a (flying) |
-| Max rudder angle needed (4-14 kn) | 1.6 deg of 19.9 deg | 2.6 deg of 18 deg | 4.4 deg while flying (4.7 deg at most to hold the largest side force anywhere in the flying range) |
-| Max righting moment (heeled-hull calculation) / capsize angle | 1.20 N m / about 80 deg | 5.41 N m / about 80 deg | 6.00 N m / about 90 deg |
-| Bow-down moment the hulls can resist (1 hull / 2 hulls) | 0.58 / 0.82 N m | 3.64 / 4.77 N m | 3.71 / 5.19 N m |
-| Wind where the bows start to limit sailing (TWA 60/90/120/150) | 7.5 / 8.5 / 10 / 13.5 kn | none up to 20 / 9 / 11.5 / 16 kn | |
-| Take-off | n/a | n/a | 1.99 m/s, from 7.06 kn on a beam reach and 7.53 kn at 60 deg (VPP); 6.75-8.75 kn in the sensitivity study |
-| Heave (height) stability | n/a | n/a | fixed foils: none. With wand-driven flaps: damping ratio 1.36, 2.1-5.3 Hz, at most 13.2 deg of flap from take-off to the 12 kn speed |
-| Flying trim (pitch, depths; `analysis/pitch_trim.py`) | n/a | n/a | flies from take-off to at least 6 m/s at +0.0 to +0.4 deg of pitch; up to the 12 kn speed the elevators stay at least 1.57 chords deep and 47 mm of rudder stays in the water |
-| Heave and pitch together (`analysis/pitch_heave.py`) | n/a | n/a | stable across the flying range: one oscillating mode at 1.8-7.0 Hz, damping ratio at least 0.64 (0.62 with elevator efficiency 0.65); pitch inertia 0.207 kg m2 from the CAD |
-| Mast buckling safety, sheet servo at stall (sailing loads only) | 2.4 (10.9) | 3.6 (15.6) | 3.5 (13.9) |
-| Crossbeam bending safety, sheet servo at stall (assumed 300 MPa strength) | 5.6 | 3.0 | 2.9 |
-| Foil stability and sizing test (`analysis/foil_checks.py`) | n/a | n/a | 28 of 28 pass: pitch static margin 32-84 mm; coupled heave-pitch modes stable (least damping ratio 0.64); a 20 mm height disturbance settles in 0.22-0.54 s with no overshoot |
+| One hull's buoyancy / boat weight (my design target: 2 or more) | 2.05 | 2.64 | 2.35 |
+| Speed, beam reach, 8 kn of wind | 2.13 m/s | 2.65 m/s | 3.71 m/s (flying) |
+| Top speed before the bows limit it | 2.13 m/s | 3.05 m/s | n/a (flying) |
+| Max rudder angle needed (4-14 kn) | 1.6 deg of 19.9 deg | 2.6 deg of 18 deg | 4.8 deg (5.8 deg at most to hold the largest side force, at take-off) |
+| Max righting moment (heeled-hull calculation) / capsize angle | 1.20 N m / about 80 deg | 5.59 N m / about 80 deg | 6.34 N m / about 90 deg |
+| Bow-down moment the hulls can resist (1 hull / 2 hulls) | 0.58 / 0.82 N m | 3.85 / 5.04 N m | 3.86 / 5.56 N m |
+| Wind where the bows start to limit sailing (TWA 60/90/120/150) | 7.5 / 8.5 / 10 / 13.5 kn | none up to 20 / 9.5 / 11.5 / 16.5 kn | |
+| Take-off | n/a | n/a | 1.81 m/s, from 7.11 kn on a beam reach and 8.95 kn at 60 deg (VPP); 6.25-11 kn in the sensitivity study (6.25 kn with laminar foil friction) |
+| Heave (height) stability | n/a | n/a | fixed foils: none. With wand-driven flaps: damping ratio 1.56, 2.2-5.8 Hz, at most 10.2 deg of flap from take-off to 5 m/s |
+| Flying trim (pitch, depths; `analysis/pitch_trim.py`) | n/a | n/a | flies from take-off to at least 6 m/s at -0.3 to +0.4 deg of pitch; at the 12 kn speed the elevators are 43 mm (1.5 chords) deep and 46 mm of rudder stays in the water |
+| Heave and pitch together (`analysis/pitch_heave.py`) | n/a | n/a | stable across the flying range: one oscillating mode at 1.6-7.0 Hz, damping ratio at least 0.69 (0.66 with elevator efficiency 0.65); pitch inertia 0.243 kg m2 from the CAD |
+| Mast buckling safety, sheet servo at stall (sailing loads only) | 2.4 (10.9) | 3.1 (15.1) | 3.0 (13.4) |
+| Crossbeam bending safety, sheet servo at stall (assumed 300 MPa strength) | 5.6 | 2.6 | 2.5 |
+| Foil stability and sizing test (`analysis/foil_checks.py`) | n/a | n/a | 28 of 28 pass: pitch static margin 41-97 mm; coupled heave-pitch modes stable (least damping ratio 0.66); a 20 mm height disturbance settles within 0.62 s |
 
 ## Design iterations driven by the analysis
 
@@ -99,7 +99,8 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
     - The fairing, gooseneck and boom jaw weigh 45.0 g, where 10 g had been assumed.
     - The rudder stocks, tiller arms, tie bar and pushrod are music wire but had been weighed as aluminium. The steel tie bar alone is 56 g.
 
-    The build-first boat went from 2037 g to 2114 g and the foiling boat from 2242 g to 2332 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
+    The build-first boat went from 2037 g to 2114 g and the foiling boat (v2.2 foils) from 2242 g to 2332 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
+13. **v2.3 foils (`cad_scripts/foils_v23.py`):** the corrected CG cut the v2.2 foils' pitch static margin to 25 mm, under the 30 mm limit, so the search was rerun. It picked a wing of 180 x 50 mm at +1.5 deg and elevators of 160 x 28 mm at -0.5 deg, 18 mm lower on longer foiling rudders. The wing keeps its quarter chord, so the flap hinge moves 2.5 mm aft and the flap horn follows it (the strut pushrod doglegs out of its slot); the gearing stays 1.5. The adoption check was also fixed: it had compared the CAD design against the fastest robust design overall, while the rule compares only designs that fly at both 60 and 90 deg.
 
 ## Repository map
 
@@ -126,7 +127,7 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
 | `cad/`, `stl/`, `mini/cad/`, `mini/stl/` | STEP / Fusion archives and print-ready STLs |
 | Sail Trim add-in | `~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim/` (`rig_model.py`, `fusion_rig.py`, `fittings_geom.py` for the printed cars, `SailTrim.py`); copy in `fusion_addin/SailTrim/` |
 
-Current exports: `cad/RC_Catamaran_v1.4_Build_First_no_foils.step/.f3d`, `cad/RC_Foiling_Catamaran_v2.2.step/.f3d`, `cad/Foiling_Kit_v2.2_carbon_parts_flaps_rudder_extensions.step` (the v2.1 exports are kept for reference). The 1 m print parts are in `stl/`: v1.3 hulls, the v1.4 pod and lid segments, `Rudder_Servo_Bracket.stl`, `Rudder_Servo_Cover.stl`, the fittings (`Gudgeon_x2`, `Traveler_Track_Centre/Port/Stbd`, `Traveler_Car`, `Jib_Track`, `Jib_Car`, `Bridle_Post`, `Mast_Cap`, `Hounds_Collar`, `Mast_Fairing_Lower_x5`, `Mast_Fairing_Upper_x2`, `Gooseneck`, `Boom_Jaw`) and, for the foiling version, the foil cores, flaps, trim pods, rudder extensions and linkage parts (`Wand_Hinge_Bracket_x2`, `Wand_Hub_x2`, `Bellcrank_Mount_x2`, `Strut_Bellcrank_x2`, `Flap_Horn_x2`). The full print list with sizes and filament is in the 1 m manual. The mini's print parts are in `mini/stl/`.
+Current exports: `cad/RC_Catamaran_v1.4_Build_First_no_foils.step/.f3d`, `cad/RC_Foiling_Catamaran_v2.3.step/.f3d`, `cad/Foiling_Kit_v2.3_carbon_parts_flaps_rudder_extensions.step` (the v2.1 and v2.2 exports are kept for reference). The 1 m print parts are in `stl/`: v1.3 hulls, the v1.4 pod and lid segments, `Rudder_Servo_Bracket.stl`, `Rudder_Servo_Cover.stl`, the fittings (`Gudgeon_x2`, `Traveler_Track_Centre/Port/Stbd`, `Traveler_Car`, `Jib_Track`, `Jib_Car`, `Bridle_Post`, `Mast_Cap`, `Hounds_Collar`, `Mast_Fairing_Lower_x5`, `Mast_Fairing_Upper_x2`, `Gooseneck`, `Boom_Jaw`) and, for the foiling version, the foil cores, flaps, trim pods, rudder extensions and linkage parts (`Wand_Hinge_Bracket_x2`, `Wand_Hub_x2`, `Bellcrank_Mount_x2`, `Strut_Bellcrank_x2`, `Flap_Horn_x2`). The full print list with sizes and filament is in the 1 m manual. The mini's print parts are in `mini/stl/`.
 
 ## Sail Trim add-in
 
@@ -143,7 +144,7 @@ The geometry update behind the dialog was tested through the API, but the dialog
 ## Validation done so far
 
 - Hull volume from the station table vs the CAD loft (v1.3 hulls): -0.20 %.
-- Design-rule check (`analysis/design_checks.py`): 26 of 26 rules pass.
+- Design-rule check (`analysis/design_checks.py`): 28 of 28 rules pass, including the traveler car on its rail at mainsheet-servo stall.
 - Foil stability and sizing test (`analysis/foil_checks.py`): 28 of 28 pass, including a time-domain heave simulation and the flying-trim checks (depths, rudder immersion, steering, flying range with the pitch couple halved or 1.5x).
 - Michell integral: grid-converged to 0.03 % on the Wigley hull, with the expected hump/hollow shape. Thin-ship theory is reported to over-predict near the main hump, so wave drag is on the pessimistic side.
 - Heeled-hull maximum righting moment vs the W x s/2 used by the VPP: within 3.3 % (1 m) and 4.7 % (mini).
@@ -179,4 +180,4 @@ The geometry update behind the dialog was tested through the API, but the dialog
 
 1. Build and GPS-log the Mini Cat, then compare with its VPP table (manual Appendix A).
 2. Build the 1 m build-first boat.
-3. Make the carbon-capped v2.2 L-foils with flaps and the longer foiling rudders (elevator incidence adjustable by at least +-1 deg), tow-test them, tune the wand gearing, then fly.
+3. Make the carbon-capped v2.3 L-foils with flaps and the longer foiling rudders (elevator incidence adjustable by at least +-1 deg), tow-test them, tune the wand gearing, then fly.

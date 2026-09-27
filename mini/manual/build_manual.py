@@ -1,7 +1,15 @@
 """Generates the RC Mini Cat 600 build manual (LaTeX) from the analysis + BOM outputs, then compile with tectonic."""
-import csv, json, os
+import csv, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.abspath(os.path.join(HERE, '..', '..', 'analysis')))
+import vpp
+WC, WS = vpp.WING_C * 1000, vpp.WING_SPAN * 1000
+EL_S = vpp.EL_SPAN * 1000
+EXT_MM = (vpp.Z_RUDDER - vpp.Z_EL) * 1000 - 7.0   # blade tip to the trim pod's top (cad_scripts/elevator_trim.py POD_HALF_H = 7 mm)
+# carbon caps (cad_scripts/foil_cores.py bands): strut from just above the wing to 1 mm under its top, wing from 1 mm inside
+# the tip to the strut, elevator 1 mm in from each tip; 4 layers on each of two faces, two sides; 2 in tape = two 25 mm strips
+TAPE_M = ((74.0 - (-219.0 + 0.1 * WC)) + (WS - 5.1) + (EL_S - 2.0)) * 4 * 2 * 2 / 2 / 1000
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 R = json.load(open(os.path.join(ROOT, 'mini', 'mini_results.json')))
 D = json.load(open(os.path.join(HERE, 'manual_data.json')))
@@ -316,8 +324,8 @@ These come from the same velocity-prediction code as the 1\,m boat. Hull frictio
 \end{longtable}}
 If you build the mini first, the radio and the NiMH pack carry over, which lowers the 1\,m boat's extra cost by """ + money(sum(float(x['total_usd']) for x in full if x['group'] in ('Radio', 'Power'))) + r""".
 
-\section{Parts cost of the v2.2 foiling kit}
-The kit is sized for the v2.2 foils in the CAD model: NACA\,4412 wings 160\,x\,45\,mm at $+1.5^\circ$, NACA\,0012 elevators 120\,x\,28\,mm at $-1^\circ$ (nose down), and 60\,mm-chord struts. The foiling rudders end 13\,mm lower than the build-first ones, in a printed trim pod: bond a 3\,mm extension (\url{stl/Foiling_Rudder_Extension_x2.stl}) and then the pod (\url{stl/Elevator_Trim_Pod_x2.stl}, 45\,x\,9\,x\,14\,mm) under each blade. The elevator passes through the pod's slot, pivots on a 2\,mm carbon pin at its quarter chord, and is clamped by two M2 set screws 12\,mm behind the pin (one from above, one from below): one turn moves it about $1.9^\circ$, so it can be trimmed on the water. Printable cores with 0.5\,mm recesses for the carbon caps are in \url{stl/} (\texttt{Foil\_Core\_*}, \texttt{Foil\_Flap\_x2}). The foils are printed PETG cores with unidirectional carbon caps (4 layers per face), laminated with epoxy; the caps take about 4.6\,m of the 7.3\,m of tape listed. The kit also includes flap hinges, the ride-height wands and their linkage. It is added to the 1\,m boat after the build-first version sails.
+\section{Parts cost of the """ + vpp.FOIL_VERSION + r""" foiling kit}
+The kit is sized for the """ + vpp.FOIL_VERSION + r""" foils in the CAD model: NACA\,4412 wings """ + f"{WS:.0f}\\,x\\,{WC:.0f}" + r"""\,mm at $""" + f"{vpp.INC_MAIN_DEG:+g}" + r"""^\circ$, NACA\,0012 elevators """ + f"{EL_S:.0f}\\,x\\,{vpp.EL_C * 1000:.0f}" + r"""\,mm at $""" + f"{vpp.INC_EL_DEG:+g}" + r"""^\circ$ (nose down), and 60\,mm-chord struts. The foiling rudders end """ + f"{(vpp.Z_RUDDER - vpp.Z_EL + vpp.RUDDER_BELOW_EL) * 1000:.0f}" + r"""\,mm lower than the build-first ones, in a printed trim pod: bond a """ + f"{EXT_MM:.0f}" + r"""\,mm extension (\url{stl/Foiling_Rudder_Extension_x2.stl}) and then the pod (\url{stl/Elevator_Trim_Pod_x2.stl}, 45\,x\,9\,x\,14\,mm) under each blade. The elevator passes through the pod's slot, pivots on a 2\,mm carbon pin at its quarter chord, and is clamped by two M2 set screws 12\,mm behind the pin (one from above, one from below): one turn moves it about $1.9^\circ$, so it can be trimmed on the water. Printable cores with 0.5\,mm recesses for the carbon caps are in \url{stl/} (\texttt{Foil\_Core\_*}, \texttt{Foil\_Flap\_x2}). The foils are printed PETG cores with unidirectional carbon caps (4 layers per face), laminated with epoxy; the caps take about """ + f"{TAPE_M:.1f}" + r"""\,m of the 7.3\,m of tape listed. The kit also includes flap hinges, the ride-height wands and their linkage. It is added to the 1\,m boat after the build-first version sails.
 {\small
 \begin{longtable}{p{1.5cm}p{4.3cm}p{5.0cm}cp{1.2cm}p{1.2cm}}
 \toprule

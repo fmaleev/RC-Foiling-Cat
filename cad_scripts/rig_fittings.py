@@ -256,13 +256,18 @@ PRINT = [  # (print-list key, component, body, STL, qty)
     ('Mast Fairing Upper 1', 'Mast Fittings (print)', 'Mast Fairing Upper 1', 'Mast_Fairing_Upper_x2.stl', 2),
     ('Gooseneck', 'Mast Fittings (print)', 'Gooseneck', 'Gooseneck.stl', 1),
     ('Boom Jaw', 'Mast Fittings (print)', 'Boom Jaw', 'Boom_Jaw.stl', 1),
+    ('Core L-Foil Port', 'Foil Cores (print)', 'Core L-Foil Port', 'Foil_Core_L_Port.stl', 1),
+    ('Core L-Foil Stbd', 'Foil Cores (print)', 'Core L-Foil Stbd', 'Foil_Core_L_Stbd.stl', 1),
+    ('Core Elevator Port', 'Foil Cores (print)', 'Core Elevator Port', 'Foil_Core_Elevator_x2.stl', 2),
+    ('Core Flap Port', 'Foil Cores (print)', 'Core Flap Port', 'Foil_Flap_x2.stl', 2),
+    ('Elevator Trim Pod Port', 'Foiling Kit', 'Elevator Trim Pod Port', 'Elevator_Trim_Pod_x2.stl', 2),
+    ('Rudder Extension Port', 'Foiling Kit', 'Rudder Extension Port', 'Foiling_Rudder_Extension_x2.stl', 2),
     ('Wand Pivot Port', 'Ride Height Control', 'Wand Pivot Port', 'Wand_Hinge_Bracket_x2.stl', 2),
     ('Wand Hub Port', 'Ride Height Control', 'Wand Hub Port', 'Wand_Hub_x2.stl', 2),
     ('Bellcrank Mount Port', 'Ride Height Control', 'Bellcrank Mount Port', 'Bellcrank_Mount_x2.stl', 2),
     ('Strut Bellcrank Port', 'Ride Height Control', 'Strut Bellcrank Port', 'Strut_Bellcrank_x2.stl', 2),
     ('Flap Horn Port', 'Ride Height Control', 'Flap Horn Port', 'Flap_Horn_x2.stl', 2),
 ]
-KEEP_STL = ('Wand_', 'Bellcrank', 'Strut_Bellcrank', 'Flap_Horn')   # exported with the linkage (linkage.py)
 
 
 def export_print(design):
@@ -274,10 +279,9 @@ def export_print(design):
     for key, cname, bname, stl, qty in PRINT:
         b = comp_of(root, cname).bRepBodies.itemByName(bname)
         fn = os.path.join(ROOT, 'stl', stl)
-        if not stl.startswith(KEEP_STL) or not os.path.exists(fn):
-            opt = em.createSTLExportOptions(b, fn)
-            opt.meshRefinement = adsk.fusion.MeshRefinementSettings.MeshRefinementHigh
-            em.execute(opt)
+        opt = em.createSTLExportOptions(b, fn)
+        opt.meshRefinement = adsk.fusion.MeshRefinementSettings.MeshRefinementHigh
+        em.execute(opt)
         bb = b.boundingBox
         size = sorted((round((bb.maxPoint.x - bb.minPoint.x) * 10), round((bb.maxPoint.y - bb.minPoint.y) * 10),
                        round((bb.maxPoint.z - bb.minPoint.z) * 10)), reverse=True)

@@ -179,7 +179,7 @@ S['fittings'] = f"""<section id="fittings" style="background:{LIGHT}; {BASE}">
     {img('gudgeon.png', 'Transom gudgeon holding the music-wire rudder stock', 520, 364, 'cover', 'border-radius:12px')}
     {img('gooseneck.png', 'Gooseneck at the foot of the wing mast, with the boom jaw', 520, 364, 'cover', 'border-radius:12px')}
   </div>
-  <p style="font-size:32px; line-height:1.4; color:{INK}">Tracks and cars, gudgeons, gooseneck, mast fairing and the ride-height linkage replaced placeholder blocks. Weighing them properly added {CAD['foiling']['mass_g'] - 2241.5:.0f}&#160;g to the foiling boat, and every prediction here uses the new mass.</p>
+  <p style="font-size:32px; line-height:1.4; color:{INK}">Tracks and cars, gudgeons, gooseneck, mast fairing and the ride-height linkage replaced placeholder blocks. Weighing them properly added {OPT['v22']['mass_g'] - 2241.5:.0f}&#160;g and moved the centre of gravity aft, which cost the v2.2 foils their pitch margin; the search then picked {FV}.</p>
   {footer(12)}
   <aside>Two assumed masses were wrong: the printed wing-mast fairing weighs about four times the 10 g that had been assumed, and the music-wire rudder parts had been weighed as aluminium. The Fusion add-in still moves the printed cars with the trim sliders.</aside>
 </section>"""

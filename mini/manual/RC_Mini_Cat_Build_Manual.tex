@@ -265,20 +265,20 @@ These come from the same velocity-prediction code as the 1\,m boat. Hull frictio
 \midrule\endhead
 Radio & FlySky FS-i6X + FS-iA6B receiver & 4 channels used: rudder, traveler, jib, mainsheet & 1 & \$69.99 & \$69.99 \\
 Radio & AA alkaline x4 & transmitter power & 1 & \$2.99 & \$2.99 \\
-Servos & JX W4505-4T sail winch servo & traveler (236 mm of line) & 1 & \$11.13 & \$11.13 \\
-Servos & JX W4505-2T sail winch servo & jib sheet (142 mm of line) & 1 & \$11.13 & \$11.13 \\
+Servos & JX W4505-4T sail winch servo & traveler (about 231 mm of car travel, rig model) & 1 & \$11.13 & \$11.13 \\
+Servos & JX W4505-2T sail winch servo & jib sheet (about 93 mm of sheet, rig model) & 1 & \$11.13 & \$11.13 \\
 Servos & Feetech FS5115M standard servo & mainsheet tension & 1 & \$32.06 & \$32.06 \\
 Servos & MG90S metal-gear micro servo & rudders via pushrod + tie bar & 1 & \$2.59 & \$2.59 \\
 Power & Panasonic eneloop AA 2000 mAh, 4-pack & receiver pack (4.8 V) & 1 & \$12.75 & \$12.75 \\
 Power & Traxxas 4-cell AA holder with switch (TRA1523) & receiver battery box + on/off & 1 & \$4.00 & \$4.00 \\
-Printed & PETG filament 1 kg & hulls, pod, lid, pod tail, rudders, boards, tracks, cars (~1.3 kg used) & 2 & \$13.99 & \$27.98 \\
+Printed & PETG filament 1 kg & hulls, pod, lid, rudder-servo bracket and cover, rudders, boards, gudgeons, tracks, cars, mast fairing and fittings (~1.5 kg used, 1 m manual print list) & 2 & \$13.99 & \$27.98 \\
 Carbon & Carbon tube 16 x 14 mm x 1 m & two 600 mm crossbeams & 2 & \$16.28 & \$32.56 \\
 Carbon & Carbon tube 12 x 10 mm x 1 m & two-piece mast (1.3 m) & 2 & \$12.26 & \$24.52 \\
 Carbon & Carbon tube 10 x 8 mm x 1 m & mast joiner spigot (150 mm) and pod beam (600 mm) & 1 & \$16.15 & \$16.15 \\
 Carbon & Carbon tube 8 x 7 mm x 1 m & boom (345 mm) & 1 & \$17.20 & \$17.20 \\
 Carbon & Carbon rod 1.2 mm x 2 m & 8 battens & 1 & \$5.25 & \$5.25 \\
 Hardware & Music wire 0.156 in & rudder stocks, tie bar & 2 & \$4.99 & \$9.98 \\
-Hardware & Music wire 0.093 in & rudder pushrod, bent turning eyes for the control lines & 1 & \$3.99 & \$3.99 \\
+Hardware & Music wire 0.093 in & rudder pushrod, track end-stop turning pins, gooseneck pin, boom sheet eye & 1 & \$3.99 & \$3.99 \\
 Hardware & Du-Bro micro pushrod system & clevises & 1 & \$8.55 & \$8.55 \\
 Sails & Icarex PC31 ripstop polyester, 1 m & main + jib (0.40 m2) & 1 & \$21.99 & \$21.99 \\
 Sails & Ripstop sail tape 2 in, half roll & luff, batten pockets, corners & 1 & \$24.00 & \$24.00 \\
@@ -291,22 +291,23 @@ Adhesives & BSI gap-filling CA 1/2 oz & small parts & 1 & \$4.79 & \$4.79 \\
 \end{longtable}}
 If you build the mini first, the radio and the NiMH pack carry over, which lowers the 1\,m boat's extra cost by \$89.73.
 
-\section{Parts cost of the v2.2 foiling kit}
-The kit is sized for the v2.2 foils in the CAD model: NACA\,4412 wings 160\,x\,45\,mm at $+1.5^\circ$, NACA\,0012 elevators 120\,x\,28\,mm at $-1^\circ$ (nose down), and 60\,mm-chord struts. The foiling rudders are 13\,mm longer than the build-first ones: print two rudder extensions (\url{stl/Foiling_Rudder_Extension_x2.stl}, 45\,x\,5.4\,x\,13\,mm) from the same PETG and bond them under the blades, so the elevators sit 13\,mm below the build-first rudder tips (at $z=-210$\,mm in the CAD model). Make the elevator incidence adjustable by at least $\pm1^\circ$ (a shim under the elevator mount) for trimming on the water. The foils are printed PETG cores with unidirectional carbon caps (4 layers per face), laminated with epoxy; the caps take about 4.6\,m of the 7.3\,m of tape listed. The kit also includes flap hinges, the ride-height wands and their linkage. It is added to the 1\,m boat after the build-first version sails.
+\section{Parts cost of the v2.3 foiling kit}
+The kit is sized for the v2.3 foils in the CAD model: NACA\,4412 wings 180\,x\,50\,mm at $+1.5^\circ$, NACA\,0012 elevators 160\,x\,28\,mm at $-0.5^\circ$ (nose down), and 60\,mm-chord struts. The foiling rudders end 18\,mm lower than the build-first ones, in a printed trim pod: bond a 8\,mm extension (\url{stl/Foiling_Rudder_Extension_x2.stl}) and then the pod (\url{stl/Elevator_Trim_Pod_x2.stl}, 45\,x\,9\,x\,14\,mm) under each blade. The elevator passes through the pod's slot, pivots on a 2\,mm carbon pin at its quarter chord, and is clamped by two M2 set screws 12\,mm behind the pin (one from above, one from below): one turn moves it about $1.9^\circ$, so it can be trimmed on the water. Printable cores with 0.5\,mm recesses for the carbon caps are in \url{stl/} (\texttt{Foil\_Core\_*}, \texttt{Foil\_Flap\_x2}). The foils are printed PETG cores with unidirectional carbon caps (4 layers per face), laminated with epoxy; the caps take about 5.0\,m of the 7.3\,m of tape listed. The kit also includes flap hinges, the ride-height wands and their linkage. It is added to the 1\,m boat after the build-first version sails.
 {\small
 \begin{longtable}{p{1.5cm}p{4.3cm}p{5.0cm}cp{1.2cm}p{1.2cm}}
 \toprule
 \textbf{Group} & \textbf{Item} & \textbf{Used for} & \textbf{Qty} & \textbf{Unit} & \textbf{Total} \\
 \midrule\endhead
-Printed & PETG filament 1 kg & L-foil, elevator and flap cores, bellcranks (~400 g) & 1 & \$13.99 & \$13.99 \\
+Printed & PETG filament 1 kg & L-foil, elevator and flap cores, trim pods, ride-height linkage (~290 g, 1 m manual print list) & 1 & \$13.99 & \$13.99 \\
 Carbon & Unidirectional carbon tape 2 in x 12 ft & spar caps: 4 layers per face on struts, wings, elevators & 2 & \$19.95 & \$39.90 \\
 Adhesives & EL2 laminating epoxy 500 g & wet-out of the caps & 1 & \$20.70 & \$20.70 \\
 Carbon & Carbon rod 1.2 mm x 1 m & flap hinge pins & 1 & \$3.47 & \$3.47 \\
-Carbon & Carbon rod 2 mm x 1 m & two 300 mm ride-height wands & 1 & \$8.85 & \$8.85 \\
+Carbon & Carbon rod 2 mm x 1 m & two 300 mm ride-height wands, elevator pivot pins, wand and bellcrank axles & 1 & \$8.85 & \$8.85 \\
 Hardware & Music wire 0.047 in & wand-to-flap pushrods & 1 & \$3.99 & \$3.99 \\
 Hardware & Du-Bro micro pushrod system & clevises for the flap linkage & 1 & \$8.55 & \$8.55 \\
+Hardware & M2 x 6 mm stainless set screw, cup point (Bolt Depot 8697) & elevator trim screws, two per trim pod & 4 & \$0.43 & \$1.72 \\
 \midrule
-& \textbf{Total} & & & & \textbf{\$99.45} \\
+& \textbf{Total} & & & & \textbf{\$101.17} \\
 \bottomrule
 \end{longtable}}
 
@@ -336,6 +337,7 @@ Hardware & Du-Bro micro pushrod system & clevises for the flap linkage & 1 & \$8
 \item HobbyTown: \url{https://www.hobbytown.com/bob-smith-industries-quickcure-5-minute-epoxy-9o-bsi202/p37082}
 \item CST CU-379: 2 in unidirectional carbon, 0.005 in, 12 ft: \url{https://www.cstsales.com/heat_tack.html}
 \item Easy Composites EL2, 500 g kit: \url{https://www.easycomposites.us/el2-epoxy-laminating-resin}
+\item Bolt Depot, per piece (read 2026-09-25): \url{https://boltdepot.com/Product-Details?product=8697}
 \end{itemize}}
 Two prices carry extra uncertainty: the JX winch (AliExpress listed it on sale; the full price is used here) and the 16\,x\,14\,mm carbon tube (price taken from a search listing because the store's page was not reachable).
 \end{document}

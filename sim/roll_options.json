@@ -1,0 +1,117 @@
+{
+ "generated_by": "sim/roll_options.js",
+ "foils": "v2.3",
+ "rows": [
+  {
+   "label": "CAD design",
+   "vto": 1.81,
+   "rm_fly_Nm": [
+    {
+     "V": 2,
+     "rm": 1.49
+    },
+    {
+     "V": 2.2,
+     "rm": 3.18
+    },
+    {
+     "V": 2.4,
+     "rm": 5
+    },
+    {
+     "V": 2.6,
+     "rm": 6.68
+    },
+    {
+     "V": 2.8,
+     "rm": 6.77
+    },
+    {
+     "V": 3,
+     "rm": 6.87
+    }
+   ],
+   "rm_full_Nm": 6.52,
+   "takeoff_90": 7.09,
+   "stay_90": 6.5,
+   "takeoff_60": 8.94,
+   "stay_60": 8.25,
+   "takeoff_45": null,
+   "stay_45": null
+  },
+  {
+   "label": "flap travel +-20 deg",
+   "vto": 1.81,
+   "rm_fly_Nm": [
+    {
+     "V": 2,
+     "rm": 1.49
+    },
+    {
+     "V": 2.2,
+     "rm": 3.18
+    },
+    {
+     "V": 2.4,
+     "rm": 5
+    },
+    {
+     "V": 2.6,
+     "rm": 6.68
+    },
+    {
+     "V": 2.8,
+     "rm": 6.77
+    },
+    {
+     "V": 3,
+     "rm": 6.87
+    }
+   ],
+   "rm_full_Nm": 6.52,
+   "takeoff_90": 7.09,
+   "stay_90": 6.5,
+   "takeoff_60": 8.94,
+   "stay_60": 8.25,
+   "takeoff_45": null,
+   "stay_45": null
+  },
+  {
+   "label": "flap travel +-25 deg",
+   "vto": 1.81,
+   "rm_fly_Nm": [
+    {
+     "V": 2,
+     "rm": 1.49
+    },
+    {
+     "V": 2.2,
+     "rm": 3.18
+    },
+    {
+     "V": 2.4,
+     "rm": 5
+    },
+    {
+     "V": 2.6,
+     "rm": 6.68
+    },
+    {
+     "V": 2.8,
+     "rm": 6.77
+    },
+    {
+     "V": 3,
+     "rm": 6.87
+    }
+   ],
+   "rm_full_Nm": 6.52,
+   "takeoff_90": 7.09,
+   "stay_90": 6.5,
+   "takeoff_60": 8.94,
+   "stay_60": 8.25,
+   "takeoff_45": null,
+   "stay_45": null
+  }
+ ]
+}

@@ -1,82 +1,92 @@
 [
  {
   "scenario": "baseline",
-  "takeoff_speed_ms": 1.99,
+  "takeoff_speed_ms": 1.81,
   "flying_range_top_ms": 6.0,
   "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 10.75,
-  "TWA60_speed_after_ms": 2.97,
+  "TWA60_takeoff_tws_kn": 9.0,
+  "TWA60_speed_after_ms": 2.69,
   "TWA90_takeoff_tws_kn": 7.25,
-  "TWA90_speed_after_ms": 3.59
+  "TWA90_speed_after_ms": 3.23
  },
  {
   "scenario": "sail CLmax 1.1",
-  "takeoff_speed_ms": 1.99,
+  "takeoff_speed_ms": 1.81,
   "flying_range_top_ms": 6.0,
   "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 10.75,
-  "TWA60_speed_after_ms": 2.97,
-  "TWA90_takeoff_tws_kn": 8.0,
-  "TWA90_speed_after_ms": 3.69
+  "TWA60_takeoff_tws_kn": 9.0,
+  "TWA60_speed_after_ms": 2.69,
+  "TWA90_takeoff_tws_kn": 7.75,
+  "TWA90_speed_after_ms": 3.13
  },
  {
   "scenario": "sail CLmax 1.5",
-  "takeoff_speed_ms": 1.99,
+  "takeoff_speed_ms": 1.81,
   "flying_range_top_ms": 6.0,
   "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 10.75,
-  "TWA60_speed_after_ms": 2.97,
+  "TWA60_takeoff_tws_kn": 9.0,
+  "TWA60_speed_after_ms": 2.69,
   "TWA90_takeoff_tws_kn": 6.75,
-  "TWA90_speed_after_ms": 3.45
+  "TWA90_speed_after_ms": 3.21
  },
  {
   "scenario": "foil lift -20% (low Re, free surface)",
-  "takeoff_speed_ms": 2.16,
+  "takeoff_speed_ms": 1.94,
   "flying_range_top_ms": 6.0,
   "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 14.0,
-  "TWA60_speed_after_ms": 3.19,
-  "TWA90_takeoff_tws_kn": 7.5,
-  "TWA90_speed_after_ms": 3.69
+  "TWA60_takeoff_tws_kn": 10.5,
+  "TWA60_speed_after_ms": 2.89,
+  "TWA90_takeoff_tws_kn": 7.25,
+  "TWA90_speed_after_ms": 3.21
  },
  {
   "scenario": "mass +10%",
-  "takeoff_speed_ms": 2.09,
-  "flying_range_top_ms": 6.0,
-  "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 11.25,
-  "TWA60_speed_after_ms": 3.13,
-  "TWA90_takeoff_tws_kn": 7.75,
-  "TWA90_speed_after_ms": 3.85
- },
- {
-  "scenario": "mass -10%",
-  "takeoff_speed_ms": 1.89,
-  "flying_range_top_ms": 6.0,
-  "flying_range_limit": null,
-  "TWA60_takeoff_tws_kn": 10.25,
-  "TWA60_speed_after_ms": 2.81,
-  "TWA90_takeoff_tws_kn": 7.0,
-  "TWA90_speed_after_ms": 3.45
- },
- {
-  "scenario": "sail-drive pitch couple x0.5",
-  "takeoff_speed_ms": 1.87,
+  "takeoff_speed_ms": 1.9,
   "flying_range_top_ms": 6.0,
   "flying_range_limit": null,
   "TWA60_takeoff_tws_kn": 9.5,
   "TWA60_speed_after_ms": 2.85,
-  "TWA90_takeoff_tws_kn": 7.25,
-  "TWA90_speed_after_ms": 3.59
+  "TWA90_takeoff_tws_kn": 7.5,
+  "TWA90_speed_after_ms": 3.35
+ },
+ {
+  "scenario": "mass -10%",
+  "takeoff_speed_ms": 1.72,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 8.75,
+  "TWA60_speed_after_ms": 2.57,
+  "TWA90_takeoff_tws_kn": 7.0,
+  "TWA90_speed_after_ms": 3.13
+ },
+ {
+  "scenario": "sail-drive pitch couple x0.5",
+  "takeoff_speed_ms": 1.71,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 8.25,
+  "TWA60_speed_after_ms": 2.63,
+  "TWA90_takeoff_tws_kn": 7.0,
+  "TWA90_speed_after_ms": 3.07
  },
  {
   "scenario": "sail-drive pitch couple x1.5",
-  "takeoff_speed_ms": 2.24,
-  "flying_range_top_ms": 5.91,
-  "flying_range_limit": "rudder immersion",
-  "TWA60_takeoff_tws_kn": null,
-  "TWA60_speed_after_ms": null,
+  "takeoff_speed_ms": 2.0,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 11.0,
+  "TWA60_speed_after_ms": 2.85,
   "TWA90_takeoff_tws_kn": 7.5,
-  "TWA90_speed_after_ms": 3.65
+  "TWA90_speed_after_ms": 3.33
+ },
+ {
+  "scenario": "foil friction laminar (low Re)",
+  "takeoff_speed_ms": 1.76,
+  "flying_range_top_ms": 6.0,
+  "flying_range_limit": null,
+  "TWA60_takeoff_tws_kn": 7.25,
+  "TWA60_speed_after_ms": 3.57,
+  "TWA90_takeoff_tws_kn": 6.25,
+  "TWA90_speed_after_ms": 4.45
  }
 ]

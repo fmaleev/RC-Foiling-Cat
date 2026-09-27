@@ -20,6 +20,11 @@ PETG = 1.27
 V = lambda cfg, twa, tws: [x for x in VR['vpp'][cfg][str(twa)] if x['tws_kn'] == tws][0]['V']
 D, F = CAD['displacement'], CAD['foiling']
 WC, WS = vpp.WING_C * 1000, vpp.WING_SPAN * 1000
+EL_S = vpp.EL_SPAN * 1000
+EXT_MM = (vpp.Z_RUDDER - vpp.Z_EL) * 1000 - 7.0   # blade tip to the trim pod's top (cad_scripts/elevator_trim.py POD_HALF_H = 7 mm)
+# carbon caps (cad_scripts/foil_cores.py bands): strut from just above the wing to 1 mm under its top, wing from 1 mm inside
+# the tip to the strut, elevator 1 mm in from each tip; 4 layers on each of two faces, two sides; 2 in tape = two 25 mm strips
+TAPE_M = ((74.0 - (-219.0 + 0.1 * WC)) + (WS - 5.1) + (EL_S - 2.0)) * 4 * 2 * 2 / 2 / 1000
 
 
 def esc(s):
@@ -184,7 +189,7 @@ Fit the kit only after the build-first boat sails well.
 \step{10. Foil cores and carbon caps}
 \begin{enumerate}
 \item Print the L-foil cores (port and starboard are mirror images), the elevator cores and the flaps. The cores have 0.5\,mm deep, 25\,mm wide recesses on both faces of the strut, the wing and the elevator for the carbon caps.
-\item Split the 2\,in unidirectional tape lengthwise into 25\,mm strips and lay 4 layers into each recess with the laminating epoxy, fibres along the span; the caps finish flush with the section. The caps use about 4.5\,m of the 7.3\,m of tape.
+\item Split the 2\,in unidirectional tape lengthwise into 25\,mm strips and lay 4 layers into each recess with the laminating epoxy, fibres along the span; the caps finish flush with the section. The caps use about """ + f"{TAPE_M:.1f}" + r"""\,m of the 7.3\,m of tape.
 \item The strut has a 2.4\,mm channel for the flap pushrod (0.047\,in wire); keep it clear of epoxy.
 \end{enumerate}
 \step{11. Flaps}
@@ -206,7 +211,7 @@ The printed linkage gives them. The wand hub's horn is 8.25\,mm long, the bellcr
 \step{13. Elevators and trim pods}
 \begin{center}\includegraphics[width=0.6\linewidth]{../images/elevator_trim_pod.png}\end{center}
 \begin{enumerate}
-\item Bond a 3\,mm extension and then a trim pod under each rudder blade; the pod's slot is at the elevator's height.
+\item Bond a """ + f"{EXT_MM:.0f}" + r"""\,mm extension and then a trim pod under each rudder blade; the pod's slot is at the elevator's height.
 \item Slide the elevator through the slot and pin it at its quarter chord with a 10\,mm piece of the 2\,mm carbon rod.
 \item Two M2 set screws, one from above and one from below, clamp it 12\,mm behind the pin. One turn moves the elevator about $1.9^\circ$. Set $""" + f"{vpp.INC_EL_DEG:+g}" + r"""^\circ$ (nose down) to start.
 \end{enumerate}

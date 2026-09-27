@@ -4,19 +4,19 @@
 \usepackage[hidelinks]{hyperref}
 \setlist{itemsep=2pt}
 \newcommand{\step}[1]{\subsection*{#1}}
-\title{\textbf{RC Catamaran 1\,m: Build Manual}\\\large Build-first boat and the v2.2 foiling kit}
+\title{\textbf{RC Catamaran 1\,m: Build Manual}\\\large Build-first boat and the v2.3 foiling kit}
 \author{Filip Maleev}
 \date{September 2026}
 \begin{document}
 \maketitle
 \begin{center}
-\includegraphics[width=0.48\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.48\linewidth]{../images/foiling_v2.2.png}
+\includegraphics[width=0.48\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.48\linewidth]{../images/foiling_v2.3.png}
 \end{center}
 
 \section{What you are building}
-A 1\,m catamaran with a beach-cat rig: a square-top, fully battened main on a rotating wing mast, a jib on a forestay bridle, and three sail controls (jib sheet, traveler, mainsheet tension) on three servos. Build the boat with daggerboards first (the \emph{build-first} version, 2114\,g ready to sail). Once it sails well, the foiling kit replaces the daggerboards with L-foils, adds wand-driven flaps for ride-height control, and puts T-foil elevators on the rudders (2331\,g).
+A 1\,m catamaran with a beach-cat rig: a square-top, fully battened main on a rotating wing mast, a jib on a forestay bridle, and three sail controls (jib sheet, traveler, mainsheet tension) on three servos. Build the boat with daggerboards first (the \emph{build-first} version, 2114\,g ready to sail). Once it sails well, the foiling kit replaces the daggerboards with L-foils, adds wand-driven flaps for ride-height control, and puts T-foil elevators on the rudders (2373\,g).
 
-Predicted, not yet measured: the build-first boat does 2.67\,m/s on a beam reach in 8\,kn of wind. The foiling version flies from about 7.2\,kn on a beam reach and 10.7\,kn at 60$^\circ$ to the wind, and does 4.65\,m/s on a beam reach in 12\,kn.
+Predicted, not yet measured: the build-first boat does 2.65\,m/s on a beam reach in 8\,kn of wind. The foiling version flies from about 7.1\,kn on a beam reach and 8.9\,kn at 60$^\circ$ to the wind, and does 4.53\,m/s on a beam reach in 12\,kn.
 
 \textbf{Build the 0.6\,m Mini Cat first} (its own manual). Many steps here assume you have done them once at that size.
 
@@ -94,7 +94,7 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \url{Rudder_Blade_x2.stl} & 2 & 226 x 45 x 5 & 96 \\
 \url{Daggerboard_x2.stl} & 2 & 325 x 60 x 7 & 244 \\
 \url{Gudgeon_x2.stl} & 2 & 28 x 24 x 16 & 10 \\
-\url{Traveler_Track_Centre.stl} & 1 & 152 x 7 x 6 & 5 \\
+\url{Traveler_Track_Centre.stl} & 1 & 152 x 7 x 6 & 6 \\
 \url{Traveler_Track_Port.stl} & 1 & 158 x 25 x 11 & 8 \\
 \url{Traveler_Track_Stbd.stl} & 1 & 158 x 25 x 11 & 8 \\
 \url{Traveler_Car.stl} & 1 & 18 x 16 x 11 & 2 \\
@@ -106,23 +106,23 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \url{Mast_Fairing_Lower_x5.stl} & 5 & 171 x 24 x 14 & 29 \\
 \url{Mast_Fairing_Upper_x2.stl} & 2 & 182 x 24 x 14 & 12 \\
 \url{Gooseneck.stl} & 1 & 32 x 16 x 14 & 3 \\
-\url{Boom_Jaw.stl} & 1 & 28 x 14 x 8 & 2 \\
+\url{Boom_Jaw.stl} & 1 & 28 x 8 x 8 & 2 \\
 \midrule
 \multicolumn{4}{l}{\textbf{Foiling kit}}\\
-\url{Foil_Core_L_Port.stl} & 1 & 296 x 164 x 60 & 125 \\
-\url{Foil_Core_L_Stbd.stl} & 1 & 296 x 164 x 60 & 125 \\
-\url{Foil_Core_Elevator_x2.stl} & 2 & 120 x 28 x 3 & 14 \\
-\url{Foil_Flap_x2.stl} & 2 & 146 x 11 x 3 & 6 \\
+\url{Foil_Core_L_Port.stl} & 1 & 296 x 184 x 60 & 136 \\
+\url{Foil_Core_L_Stbd.stl} & 1 & 296 x 184 x 60 & 136 \\
+\url{Foil_Core_Elevator_x2.stl} & 2 & 160 x 28 x 3 & 18 \\
+\url{Foil_Flap_x2.stl} & 2 & 165 x 12 x 3 & 9 \\
 \url{Elevator_Trim_Pod_x2.stl} & 2 & 45 x 14 x 9 & 7 \\
-\url{Foiling_Rudder_Extension_x2.stl} & 2 & 45 x 5 x 3 & 1 \\
+\url{Foiling_Rudder_Extension_x2.stl} & 2 & 45 x 8 x 5 & 3 \\
 \url{Wand_Hinge_Bracket_x2.stl} & 2 & 17 x 17 x 13 & 4 \\
 \url{Wand_Hub_x2.stl} & 2 & 23 x 16 x 12 & 3 \\
 \url{Bellcrank_Mount_x2.stl} & 2 & 37 x 24 x 10 & 6 \\
 \url{Strut_Bellcrank_x2.stl} & 2 & 12 x 12 x 2 & 0 \\
-\url{Flap_Horn_x2.stl} & 2 & 8 x 3 x 3 & 0 \\
+\url{Flap_Horn_x2.stl} & 2 & 7 x 3 x 3 & 0 \\
 \bottomrule
 \end{longtable}}
-\noindent Total: about 1507\,g for the boat and 292\,g for the foiling kit, before supports and failed prints.
+\noindent Total: about 1508\,g for the boat and 323\,g for the foiling kit, before supports and failed prints.
 
 \noindent Print the seven mast fairing pieces in spiral-vase mode: one 0.45\,mm perimeter, no bottom or top layers. They are thin shells that slide over the mast tube. Print the tracks and cars standing on end, so the T-profile lies flat on the bed. The linkage parts marked x2 are handed: print the second one mirrored, for the starboard hull.
 
@@ -142,6 +142,7 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \begin{enumerate}
 \item Bond the three pod shell segments and the three lid segments. The pod snaps onto the front beam and the pod beam.
 \item Fit the two sail winches (traveler: 4-turn; jib sheet: 2-turn) and the mainsheet servo on their rails. The winches hang by their ears in 4--6\,mm wells. JX does not publish the winch's ear height; the rails use the FS5115M value (27.3\,mm above the case bottom). If a winch case touches the bottom of its well first, shim under the ears.
+\item Hook the mainsheet tail to the servo horn 25\,mm from the shaft, not closer. The sheet runs twice between the traveler car and the boom, so a shorter arm lets the servo pull harder on the beams and mast than the structure check allows. Fit a longer horn if the supplied ones are shorter.
 \item Receiver and the 4xAA pack with its switch go in the pod. The two ends of the traveler line and the mainsheet tail leave the pod through the three holes in its transom and run aft to the turning pins in the traveler track's end stops (Step 7).
 \end{enumerate}
 \step{4. Rudders}
@@ -153,10 +154,10 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \step{5. Rig}
 \begin{enumerate}
 \item Mast: the two 12\,x\,10\,mm tubes joined by the 150\,mm spigot, 1298\,mm overall. Plug the top with the mast cap (epoxy), so the tube stays sealed if the boat capsizes.
-\item Wing: from the foot up, the gooseneck (tab and pin hole aft), the five lower fairing pieces, the hounds collar with its centre 928\,mm above the mast foot, and the two upper pieces. Line up the trailing edges and fix each piece to the tube with a drop of CA at both ends. The whole mast turns in the pod lid and the step, so the wing follows the sail.
+\item Wing: from the foot up, the gooseneck (its fork and pin hole aft), the five lower fairing pieces, the hounds collar with its centre 928\,mm above the mast foot, and the two upper pieces. Line up the trailing edges and fix each piece to the tube with a drop of CA at both ends. The whole mast turns in the pod lid and the step, so the wing follows the sail.
 \item Melt 1.2\,mm lacing holes through the fairing 4\,mm ahead of its trailing edge, every 50\,mm, starting 50\,mm above the sail's foot; the marks on the sail pattern give the heights. Skip the hounds collar.
 \item Standing rigging from the 30\,lb braided line (lengths between fittings): forestay 873\,mm, each bridle leg 336\,mm, each shroud 974\,mm. Add your own allowance for knots. Tie the three stays to a loop of line in the hounds collar's groove, so the mast turns inside the loop. At the bridle post, the bridle line runs through the lower hole (fix it there with CA); the forestay and the jib tack tie through the upper hole.
-\item Boom: 328\,mm of the 8\,x\,7\,mm tube, with the boom jaw epoxied into its front end. Pin the jaw to the gooseneck's tab with a piece of the 0.093\,in wire. Bend a small eye from the same wire for the mainsheet and epoxy it under the boom's aft end.
+\item Boom: 328\,mm of the 8\,x\,7\,mm tube, with the boom jaw epoxied into its front end. Put the jaw's tongue between the gooseneck's cheeks and pin it with a piece of the 0.093\,in wire. Bend a small eye from the same wire for the mainsheet and epoxy it under the boom's aft end.
 \item Traveler track: epoxy the centre piece on top of the rear beam, centred. Slide the car on from one end, then epoxy the two end pieces on so the rail runs continuously, and sand the joints smooth. Press a 19\,mm piece of the 0.093\,in wire into each end stop's pin hole. The car stops 213\,mm either side of the centre line (boom 35$^\circ$ out).
 \item Jib track: slide the jib car on, then epoxy the track on the pod lid on the centre line, 590\,mm forward of the transoms. Drill a 2\,mm hole through the lid under the hole at the track's centre, for the jib sheet.
 \end{enumerate}
@@ -176,6 +177,7 @@ The traveler line is one loop. From the winch drum it runs out of the pod, round
 \begin{enumerate}
 \item Bind the receiver and assign four channels: rudder, traveler, jib sheet, mainsheet tension.
 \item Traveler winch: set its end points so the car runs the full track (about 209\,mm of car travel in the rig model) without hitting the ends. Jib winch: about 82\,mm of sheet from sheeted in to eased. Mainsheet servo: set its end points by eye, flattest leech without stalling the servo.
+\item Do not sail with the jib sheeted fully in while the main is eased past about 30$^\circ$: the jib sheet then crosses the boom (CAD clearance sweep). Ease the jib a little first.
 \item Rudder: stick right, bow right. The linkage gives $\pm18^\circ$ of rudder.
 \item Failsafe: rudders centred and sheets eased on signal loss.
 \end{enumerate}
@@ -187,11 +189,11 @@ Fit the kit only after the build-first boat sails well.
 \step{10. Foil cores and carbon caps}
 \begin{enumerate}
 \item Print the L-foil cores (port and starboard are mirror images), the elevator cores and the flaps. The cores have 0.5\,mm deep, 25\,mm wide recesses on both faces of the strut, the wing and the elevator for the carbon caps.
-\item Split the 2\,in unidirectional tape lengthwise into 25\,mm strips and lay 4 layers into each recess with the laminating epoxy, fibres along the span; the caps finish flush with the section. The caps use about 4.5\,m of the 7.3\,m of tape.
+\item Split the 2\,in unidirectional tape lengthwise into 25\,mm strips and lay 4 layers into each recess with the laminating epoxy, fibres along the span; the caps finish flush with the section. The caps use about 5.0\,m of the 7.3\,m of tape.
 \item The strut has a 2.4\,mm channel for the flap pushrod (0.047\,in wire); keep it clear of epoxy.
 \end{enumerate}
 \step{11. Flaps}
-The flap is the aft 25\,\% of each wing (11\,mm), from 10\,mm inside the tip to the strut. It hinges on 1.2\,mm carbon pins on its leading edge, 34\,mm behind the wing's leading edge. The CAD does not model the hinge holes: drill them on that line at each end of the flap. The flap must swing $\pm15^\circ$ freely.
+The flap is the aft 25\,\% of each wing (12\,mm), from 10\,mm inside the tip to the strut. It hinges on 1.2\,mm carbon pins on its leading edge, 38\,mm behind the wing's leading edge. The CAD does not model the hinge holes: drill them on that line at each end of the flap. The flap must swing $\pm15^\circ$ freely.
 \step{12. Ride-height linkage}
 One wand per hull, 300\,mm of 2\,mm carbon rod, hinged at the bow. It drives its flap through a deck pushrod, a bellcrank and the pushrod inside the strut. The linkage must give:
 \begin{itemize}
@@ -209,14 +211,14 @@ The printed linkage gives them. The wand hub's horn is 8.25\,mm long, the bellcr
 \step{13. Elevators and trim pods}
 \begin{center}\includegraphics[width=0.6\linewidth]{../images/elevator_trim_pod.png}\end{center}
 \begin{enumerate}
-\item Bond a 3\,mm extension and then a trim pod under each rudder blade; the pod's slot is at the elevator's height.
+\item Bond a 8\,mm extension and then a trim pod under each rudder blade; the pod's slot is at the elevator's height.
 \item Slide the elevator through the slot and pin it at its quarter chord with a 10\,mm piece of the 2\,mm carbon rod.
-\item Two M2 set screws, one from above and one from below, clamp it 12\,mm behind the pin. One turn moves the elevator about $1.9^\circ$. Set $-1^\circ$ (nose down) to start.
+\item Two M2 set screws, one from above and one from below, clamp it 12\,mm behind the pin. One turn moves the elevator about $1.9^\circ$. Set $-0.5^\circ$ (nose down) to start.
 \end{enumerate}
 \step{14. Fit and set up}
 \begin{enumerate}
 \item Replace the daggerboards with the L-foils in the same trunks. Main wing incidence $+1.5^\circ$.
-\item Rebalance: the foiling boat should balance 455\,mm forward of the transoms, 2331\,g in total.
+\item Rebalance: the foiling boat should balance 454\,mm forward of the transoms, 2373\,g in total.
 \item Run the bench checks and the tow test in \texttt{testing/RC\_Foiling\_Cat\_Tow\_Test\_Plan.pdf} before sailing on the foils.
 \item First flights: take off on a beam reach, where the foils have enough roll authority, then head up. Near take-off the leeward hull may keep touching; that is expected.
 \end{enumerate}

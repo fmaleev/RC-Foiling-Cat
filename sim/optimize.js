@@ -35,6 +35,7 @@ const { A, C, KN } = S;
 const BASE = { cfg: 'foiling', tws: 8, twa: 90, trim: 'auto', clset: 1, sailPct: 100, flaps: true, lcgShift: 0 };
 const V20 = { wspan: 200, wchord: 60, winc: 2, espan: 150, echord: 36, einc: 3, zel: -197 };   // original foils
 const V21 = { wspan: 160, wchord: 40, winc: 0, espan: 140, echord: 32, einc: 4, zel: -197 };   // first pick, without the pitch trim
+const V22 = { wspan: 160, wchord: 45, winc: 1.5, espan: 120, echord: 28, einc: -1, zel: -210 };   // pitch-trim pick before the fittings' masses
 const M0 = Object.values(D.mass.foiling).reduce((a, v) => a + v, 0);   // CAD mass with the CAD's own foils
 const SIGMA_MAX = 100, DEFL_MAX = 2.0, E_CF = 70000, RE_MIN = 5e4, ZETA_MIN = 0.5, RANGE_MARGIN = 1.05, SM_MIN = 30, ETA_EL = 0.65;
 const OP = { el_chords: 1.0, rudder_mm: 45, range: 1.10 };   // operating margins at the 12 kn beam-reach speed
@@ -114,7 +115,7 @@ function evaluate(over, full = false) {
 }
 
 const t0 = Date.now();
-const ref20 = evaluate(V20, true), ref21 = evaluate(V21, true);
+const ref20 = evaluate(V20, true), ref21 = evaluate(V21, true), ref22 = evaluate(V22, true);
 
 // A. grid: sizes x incidences x elevator depth
 const WINC = [0, 1, 2], EINC = [0, 0.5, 1, 1.5, 2], ZEL = [-215, -235, -255, -275];
@@ -164,8 +165,9 @@ const byAvg = (pts, frac) => {   // least wind to fly averaged over 60 and 90 de
 };
 const ruleBest = byAvg(robust, 0.95);
 const cadEval = evaluate({ ...S.CAD_FOILS }, true);
-const cadOk = cadEval.robust && cadEval.margins && cadEval.tws_avg !== null
-  && cadEval.v12 >= 0.95 * Math.max(...robust.map(g => g.v12)) - 1e-9 && cadEval.tws_avg <= ruleBest.tws_avg + TOL_KN;
+const vmaxAvg = Math.max(...robust.filter(g => g.tws_avg !== null).map(g => g.v12));   // the same reference speed as byAvg
+const cadOk = Boolean(cadEval.robust && cadEval.margins && cadEval.tws_avg !== null
+  && cadEval.v12 >= 0.95 * vmaxAvg - 1e-9 && cadEval.tws_avg <= ruleBest.tws_avg + TOL_KN);
 const adopted = cadOk ? cadEval : ruleBest;
 const speed = byRule(robust, 0.99);          // for comparison: the fastest robust design (least beam-reach take-off wind within 1 %)
 const lightwind = byAvg(robust, 0.85);
@@ -204,7 +206,7 @@ const out = {
   grid_axes: { WINC, EINC, ZEL, sizes: 'wspan 140-300/20, wchord 40-80/5, espan 100-260/20, echord 28-52/4' },
   grid_size: grid.length, grid_feasible: grid.filter(g => g.feasible).length, grid_why: whyCount, refine_size: refine.length,
   operating_margins: OP, feasible_total: feas.length, with_margins: withMargins.length, robust_total: robust.length,
-  v20: ref20, v21: ref21, v20_retrimmed: retrim20, v21_retrimmed: retrim21, v20_retrim_why: rt20.why, v21_retrim_why: rt21.why, v20_retrim_static_margin_mm: rt20.static_margin_mm,
+  v20: ref20, v21: ref21, v22: ref22, v20_retrimmed: retrim20, v21_retrimmed: retrim21, v20_retrim_why: rt20.why, v21_retrim_why: rt21.why, v20_retrim_static_margin_mm: rt20.static_margin_mm,
   grid_adopted: gridAdopted, top_sizes: topSizes.map(sizes), rule_best: ruleBest, adoption_tolerance_kn: TOL_KN, cad_is_adopted: cadOk,
   adopted, adopted_fixed_foils: adoptedFixed, speed_design: speed, fastest, lightwind, cad_design: cad, pareto: front, pareto_margins: frontMargins, pareto_robust: frontRobust, oat,
   vpp_agreement: { n: agree.length, max_abs_dV: Math.max(...agree.map(x => x.dV)), cases: agree },

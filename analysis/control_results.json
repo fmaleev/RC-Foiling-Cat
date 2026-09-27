@@ -10,61 +10,61 @@
   {
    "tws_kn": 4,
    "twa": 60,
-   "V": 1.11,
+   "V": 1.09,
    "mode": "displacement",
-   "heel_util": 0.26,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.329,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 0.81,
+   "heel_util": 0.25,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.32,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 0.79,
    "rudders_working": 2,
    "CL_needed": 0.08,
-   "rudder_angle_deg": 1.1,
+   "rudder_angle_deg": 1.2,
    "stall_margin": 0.9,
    "servo_torque_kgcm": 0.02
   },
   {
    "tws_kn": 6,
    "twa": 60,
-   "V": 1.75,
+   "V": 1.73,
    "mode": "displacement",
-   "heel_util": 0.61,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.914,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 2.26,
+   "heel_util": 0.58,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.893,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 2.2,
    "rudders_working": 2,
    "CL_needed": 0.089,
    "rudder_angle_deg": 1.3,
    "stall_margin": 0.89,
-   "servo_torque_kgcm": 0.05
+   "servo_torque_kgcm": 0.04
   },
   {
    "tws_kn": 8,
    "twa": 60,
-   "V": 2.27,
+   "V": 2.29,
    "mode": "displacement",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.542,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 3.82,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.594,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 3.93,
    "rudders_working": 1,
-   "CL_needed": 0.179,
+   "CL_needed": 0.181,
    "rudder_angle_deg": 2.6,
-   "stall_margin": 0.78,
+   "stall_margin": 0.77,
    "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 10,
    "twa": 60,
-   "V": 2.43,
+   "V": 2.47,
    "mode": "displacement",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.608,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 3.98,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.67,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 4.12,
    "rudders_working": 1,
    "CL_needed": 0.163,
    "rudder_angle_deg": 2.3,
@@ -74,31 +74,31 @@
   {
    "tws_kn": 12,
    "twa": 60,
-   "V": 2.51,
+   "V": 2.57,
    "mode": "displacement",
-   "heel_util": 0.88,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.609,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 3.98,
+   "heel_util": 0.9,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.715,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 4.23,
    "rudders_working": 1,
-   "CL_needed": 0.153,
+   "CL_needed": 0.155,
    "rudder_angle_deg": 2.2,
    "stall_margin": 0.81,
-   "servo_torque_kgcm": 0.08
+   "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 14,
    "twa": 60,
-   "V": 2.51,
+   "V": 2.59,
    "mode": "displacement",
-   "heel_util": 0.84,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.526,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 3.77,
+   "heel_util": 0.86,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.648,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 4.07,
    "rudders_working": 1,
-   "CL_needed": 0.145,
+   "CL_needed": 0.146,
    "rudder_angle_deg": 2.1,
    "stall_margin": 0.82,
    "servo_torque_kgcm": 0.08
@@ -108,45 +108,45 @@
    "twa": 90,
    "V": 1.17,
    "mode": "displacement",
-   "heel_util": 0.14,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.177,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 0.44,
+   "heel_util": 0.13,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.175,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 0.43,
    "rudders_working": 2,
-   "CL_needed": 0.039,
-   "rudder_angle_deg": 0.6,
+   "CL_needed": 0.038,
+   "rudder_angle_deg": 0.5,
    "stall_margin": 0.95,
    "servo_torque_kgcm": 0.01
   },
   {
    "tws_kn": 6,
    "twa": 90,
-   "V": 1.87,
+   "V": 1.85,
    "mode": "displacement",
-   "heel_util": 0.33,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.512,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 1.27,
+   "heel_util": 0.31,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.498,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 1.23,
    "rudders_working": 2,
-   "CL_needed": 0.044,
+   "CL_needed": 0.043,
    "rudder_angle_deg": 0.6,
    "stall_margin": 0.95,
-   "servo_torque_kgcm": 0.03
+   "servo_torque_kgcm": 0.02
   },
   {
    "tws_kn": 8,
    "twa": 90,
-   "V": 2.67,
+   "V": 2.65,
    "mode": "displacement",
-   "heel_util": 0.63,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.205,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 2.98,
+   "heel_util": 0.6,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.175,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 2.9,
    "rudders_working": 2,
-   "CL_needed": 0.051,
+   "CL_needed": 0.05,
    "rudder_angle_deg": 0.7,
    "stall_margin": 0.94,
    "servo_torque_kgcm": 0.06
@@ -154,31 +154,31 @@
   {
    "tws_kn": 10,
    "twa": 90,
-   "V": 2.97,
+   "V": 3.03,
    "mode": "displacement",
-   "heel_util": 0.68,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.407,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 3.48,
+   "heel_util": 0.71,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.519,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 3.75,
    "rudders_working": 2,
-   "CL_needed": 0.048,
+   "CL_needed": 0.049,
    "rudder_angle_deg": 0.7,
    "stall_margin": 0.94,
-   "servo_torque_kgcm": 0.07
+   "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 12,
    "twa": 90,
-   "V": 2.97,
+   "V": 3.05,
    "mode": "displacement",
-   "heel_util": 0.57,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.176,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 2.91,
+   "heel_util": 0.59,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.284,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 3.17,
    "rudders_working": 2,
-   "CL_needed": 0.04,
+   "CL_needed": 0.041,
    "rudder_angle_deg": 0.6,
    "stall_margin": 0.95,
    "servo_torque_kgcm": 0.06
@@ -186,18 +186,18 @@
   {
    "tws_kn": 14,
    "twa": 90,
-   "V": 2.97,
+   "V": 3.05,
    "mode": "displacement",
-   "heel_util": 0.49,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 1.018,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 2.52,
+   "heel_util": 0.51,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 1.11,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 2.74,
    "rudders_working": 2,
-   "CL_needed": 0.035,
+   "CL_needed": 0.036,
    "rudder_angle_deg": 0.5,
    "stall_margin": 0.96,
-   "servo_torque_kgcm": 0.05
+   "servo_torque_kgcm": 0.06
   },
   {
    "tws_kn": 4,
@@ -205,10 +205,10 @@
    "V": 1.11,
    "mode": "displacement",
    "heel_util": 0.07,
-   "rudder_immersed_mm": 183.6,
+   "rudder_immersed_mm": 184.3,
    "yaw_moment_Nm": 0.091,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 0.23,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 0.22,
    "rudders_working": 2,
    "CL_needed": 0.022,
    "rudder_angle_deg": 0.3,
@@ -221,12 +221,12 @@
    "V": 1.73,
    "mode": "displacement",
    "heel_util": 0.17,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.257,
-   "CE_minus_CLR_mm": 130.9,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.254,
+   "CE_minus_CLR_mm": 129.9,
    "rudder_force_N": 0.63,
    "rudders_working": 2,
-   "CL_needed": 0.026,
+   "CL_needed": 0.025,
    "rudder_angle_deg": 0.4,
    "stall_margin": 0.97,
    "servo_torque_kgcm": 0.01
@@ -234,15 +234,15 @@
   {
    "tws_kn": 8,
    "twa": 105,
-   "V": 2.47,
+   "V": 2.45,
    "mode": "displacement",
-   "heel_util": 0.34,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.606,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 1.5,
+   "heel_util": 0.32,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.589,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 1.45,
    "rudders_working": 2,
-   "CL_needed": 0.03,
+   "CL_needed": 0.029,
    "rudder_angle_deg": 0.4,
    "stall_margin": 0.96,
    "servo_torque_kgcm": 0.03
@@ -250,49 +250,49 @@
   {
    "tws_kn": 10,
    "twa": 105,
-   "V": 2.97,
+   "V": 3.05,
    "mode": "displacement",
-   "heel_util": 0.44,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.898,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 2.22,
+   "heel_util": 0.46,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.992,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 2.45,
    "rudders_working": 2,
-   "CL_needed": 0.031,
-   "rudder_angle_deg": 0.4,
+   "CL_needed": 0.032,
+   "rudder_angle_deg": 0.5,
    "stall_margin": 0.96,
-   "servo_torque_kgcm": 0.04
+   "servo_torque_kgcm": 0.05
   },
   {
    "tws_kn": 12,
    "twa": 105,
-   "V": 2.97,
+   "V": 3.05,
    "mode": "displacement",
-   "heel_util": 0.34,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.706,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 1.75,
+   "heel_util": 0.36,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.78,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 1.93,
    "rudders_working": 2,
-   "CL_needed": 0.024,
-   "rudder_angle_deg": 0.3,
+   "CL_needed": 0.025,
+   "rudder_angle_deg": 0.4,
    "stall_margin": 0.97,
    "servo_torque_kgcm": 0.04
   },
   {
    "tws_kn": 14,
    "twa": 105,
-   "V": 2.97,
+   "V": 3.05,
    "mode": "displacement",
-   "heel_util": 0.28,
-   "rudder_immersed_mm": 183.6,
-   "yaw_moment_Nm": 0.573,
-   "CE_minus_CLR_mm": 130.9,
-   "rudder_force_N": 1.42,
+   "heel_util": 0.29,
+   "rudder_immersed_mm": 184.3,
+   "yaw_moment_Nm": 0.634,
+   "CE_minus_CLR_mm": 129.9,
+   "rudder_force_N": 1.56,
    "rudders_working": 2,
-   "CL_needed": 0.019,
+   "CL_needed": 0.02,
    "rudder_angle_deg": 0.3,
-   "stall_margin": 0.98,
+   "stall_margin": 0.97,
    "servo_torque_kgcm": 0.03
   }
  ],
@@ -300,111 +300,111 @@
   {
    "tws_kn": 4,
    "twa": 60,
-   "V": 0.81,
+   "V": 0.75,
    "mode": "displacement",
-   "heel_util": 0.19,
-   "rudder_immersed_mm": 194.5,
-   "yaw_moment_Nm": 0.276,
-   "CE_minus_CLR_mm": 148.6,
-   "rudder_force_N": 0.72,
+   "heel_util": 0.17,
+   "rudder_immersed_mm": 200.2,
+   "yaw_moment_Nm": 0.263,
+   "CE_minus_CLR_mm": 149.5,
+   "rudder_force_N": 0.68,
    "rudders_working": 2,
-   "CL_needed": 0.125,
-   "rudder_angle_deg": 1.8,
-   "stall_margin": 0.84,
+   "CL_needed": 0.135,
+   "rudder_angle_deg": 1.9,
+   "stall_margin": 0.83,
    "servo_torque_kgcm": 0.01
   },
   {
    "tws_kn": 6,
    "twa": 60,
-   "V": 1.29,
+   "V": 1.21,
    "mode": "displacement",
-   "heel_util": 0.44,
-   "rudder_immersed_mm": 188.8,
-   "yaw_moment_Nm": 0.732,
-   "CE_minus_CLR_mm": 160.4,
-   "rudder_force_N": 1.95,
+   "heel_util": 0.4,
+   "rudder_immersed_mm": 193.7,
+   "yaw_moment_Nm": 0.701,
+   "CE_minus_CLR_mm": 163.2,
+   "rudder_force_N": 1.89,
    "rudders_working": 2,
-   "CL_needed": 0.138,
-   "rudder_angle_deg": 2.0,
-   "stall_margin": 0.83,
+   "CL_needed": 0.148,
+   "rudder_angle_deg": 2.1,
+   "stall_margin": 0.82,
    "servo_torque_kgcm": 0.04
   },
   {
    "tws_kn": 8,
    "twa": 60,
-   "V": 1.99,
+   "V": 1.81,
    "mode": "displacement",
-   "heel_util": 0.86,
-   "rudder_immersed_mm": 178.1,
-   "yaw_moment_Nm": 1.613,
-   "CE_minus_CLR_mm": 181.1,
-   "rudder_force_N": 4.56,
-   "rudders_working": 1,
-   "CL_needed": 0.287,
-   "rudder_angle_deg": 4.2,
-   "stall_margin": 0.64,
+   "heel_util": 0.76,
+   "rudder_immersed_mm": 182.8,
+   "yaw_moment_Nm": 1.508,
+   "CE_minus_CLR_mm": 185.1,
+   "rudder_force_N": 4.31,
+   "rudders_working": 2,
+   "CL_needed": 0.16,
+   "rudder_angle_deg": 2.3,
+   "stall_margin": 0.8,
    "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 10,
    "twa": 60,
-   "V": 2.21,
+   "V": 2.85,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 81.6,
-   "yaw_moment_Nm": 1.365,
-   "CE_minus_CLR_mm": 192.1,
-   "rudder_force_N": 3.98,
+   "rudder_immersed_mm": 62.6,
+   "yaw_moment_Nm": 1.497,
+   "CE_minus_CLR_mm": 199.1,
+   "rudder_force_N": 4.46,
    "rudders_working": 2,
-   "CL_needed": 0.222,
-   "rudder_angle_deg": 4.6,
-   "stall_margin": 0.72,
-   "servo_torque_kgcm": 0.08
+   "CL_needed": 0.195,
+   "rudder_angle_deg": 4.8,
+   "stall_margin": 0.76,
+   "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 12,
    "twa": 60,
-   "V": 3.09,
+   "V": 3.03,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 61.5,
-   "yaw_moment_Nm": 1.368,
-   "CE_minus_CLR_mm": 192.6,
-   "rudder_force_N": 3.99,
+   "rudder_immersed_mm": 59.5,
+   "yaw_moment_Nm": 1.488,
+   "CE_minus_CLR_mm": 197.9,
+   "rudder_force_N": 4.41,
    "rudders_working": 2,
-   "CL_needed": 0.151,
-   "rudder_angle_deg": 3.8,
-   "stall_margin": 0.81,
-   "servo_torque_kgcm": 0.08
+   "CL_needed": 0.18,
+   "rudder_angle_deg": 4.6,
+   "stall_margin": 0.78,
+   "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 14,
    "twa": 60,
-   "V": 3.19,
+   "V": 3.15,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 59.9,
-   "yaw_moment_Nm": 1.364,
-   "CE_minus_CLR_mm": 192.0,
-   "rudder_force_N": 3.97,
+   "rudder_immersed_mm": 57.7,
+   "yaw_moment_Nm": 1.482,
+   "CE_minus_CLR_mm": 197.0,
+   "rudder_force_N": 4.38,
    "rudders_working": 2,
-   "CL_needed": 0.145,
-   "rudder_angle_deg": 3.7,
-   "stall_margin": 0.82,
-   "servo_torque_kgcm": 0.08
+   "CL_needed": 0.17,
+   "rudder_angle_deg": 4.4,
+   "stall_margin": 0.79,
+   "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 4,
    "twa": 90,
-   "V": 0.87,
+   "V": 0.81,
    "mode": "displacement",
-   "heel_util": 0.09,
-   "rudder_immersed_mm": 194.0,
-   "yaw_moment_Nm": 0.139,
-   "CE_minus_CLR_mm": 149.7,
-   "rudder_force_N": 0.36,
+   "heel_util": 0.08,
+   "rudder_immersed_mm": 199.5,
+   "yaw_moment_Nm": 0.13,
+   "CE_minus_CLR_mm": 150.8,
+   "rudder_force_N": 0.34,
    "rudders_working": 2,
-   "CL_needed": 0.055,
+   "CL_needed": 0.058,
    "rudder_angle_deg": 0.8,
    "stall_margin": 0.93,
    "servo_torque_kgcm": 0.01
@@ -412,15 +412,15 @@
   {
    "tws_kn": 6,
    "twa": 90,
-   "V": 1.41,
+   "V": 1.33,
    "mode": "displacement",
-   "heel_util": 0.23,
-   "rudder_immersed_mm": 186.7,
-   "yaw_moment_Nm": 0.386,
-   "CE_minus_CLR_mm": 164.5,
-   "rudder_force_N": 1.04,
+   "heel_util": 0.2,
+   "rudder_immersed_mm": 191.1,
+   "yaw_moment_Nm": 0.367,
+   "CE_minus_CLR_mm": 168.3,
+   "rudder_force_N": 1.0,
    "rudders_working": 2,
-   "CL_needed": 0.062,
+   "CL_needed": 0.066,
    "rudder_angle_deg": 0.9,
    "stall_margin": 0.92,
    "servo_torque_kgcm": 0.02
@@ -428,95 +428,95 @@
   {
    "tws_kn": 8,
    "twa": 90,
-   "V": 3.83,
+   "V": 3.71,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 52.1,
-   "yaw_moment_Nm": 1.334,
-   "CE_minus_CLR_mm": 187.8,
-   "rudder_force_N": 3.84,
+   "rudder_immersed_mm": 51.2,
+   "yaw_moment_Nm": 1.453,
+   "CE_minus_CLR_mm": 193.3,
+   "rudder_force_N": 4.25,
    "rudders_working": 2,
-   "CL_needed": 0.112,
-   "rudder_angle_deg": 3.1,
-   "stall_margin": 0.86,
-   "servo_torque_kgcm": 0.08
+   "CL_needed": 0.134,
+   "rudder_angle_deg": 3.7,
+   "stall_margin": 0.83,
+   "servo_torque_kgcm": 0.09
   },
   {
    "tws_kn": 10,
    "twa": 90,
-   "V": 4.29,
+   "V": 4.17,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 48.4,
-   "yaw_moment_Nm": 1.314,
-   "CE_minus_CLR_mm": 185.0,
-   "rudder_force_N": 3.75,
+   "rudder_immersed_mm": 47.7,
+   "yaw_moment_Nm": 1.433,
+   "CE_minus_CLR_mm": 190.6,
+   "rudder_force_N": 4.16,
    "rudders_working": 2,
-   "CL_needed": 0.094,
-   "rudder_angle_deg": 2.7,
-   "stall_margin": 0.88,
+   "CL_needed": 0.111,
+   "rudder_angle_deg": 3.3,
+   "stall_margin": 0.86,
    "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 12,
    "twa": 90,
-   "V": 4.65,
+   "V": 4.53,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 46.2,
-   "yaw_moment_Nm": 1.301,
-   "CE_minus_CLR_mm": 183.1,
-   "rudder_force_N": 3.69,
+   "rudder_immersed_mm": 45.6,
+   "yaw_moment_Nm": 1.42,
+   "CE_minus_CLR_mm": 188.8,
+   "rudder_force_N": 4.1,
    "rudders_working": 2,
-   "CL_needed": 0.082,
-   "rudder_angle_deg": 2.5,
-   "stall_margin": 0.9,
-   "servo_torque_kgcm": 0.07
+   "CL_needed": 0.097,
+   "rudder_angle_deg": 2.9,
+   "stall_margin": 0.88,
+   "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 14,
    "twa": 90,
-   "V": 4.93,
+   "V": 4.81,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 44.8,
-   "yaw_moment_Nm": 1.291,
-   "CE_minus_CLR_mm": 181.8,
-   "rudder_force_N": 3.65,
+   "rudder_immersed_mm": 44.3,
+   "yaw_moment_Nm": 1.411,
+   "CE_minus_CLR_mm": 187.6,
+   "rudder_force_N": 4.06,
    "rudders_working": 2,
-   "CL_needed": 0.075,
-   "rudder_angle_deg": 2.3,
-   "stall_margin": 0.91,
-   "servo_torque_kgcm": 0.07
+   "CL_needed": 0.088,
+   "rudder_angle_deg": 2.7,
+   "stall_margin": 0.89,
+   "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 4,
    "twa": 105,
-   "V": 0.83,
+   "V": 0.77,
    "mode": "displacement",
    "heel_util": 0.04,
-   "rudder_immersed_mm": 194.3,
-   "yaw_moment_Nm": 0.065,
-   "CE_minus_CLR_mm": 148.9,
-   "rudder_force_N": 0.17,
+   "rudder_immersed_mm": 200.0,
+   "yaw_moment_Nm": 0.058,
+   "CE_minus_CLR_mm": 149.9,
+   "rudder_force_N": 0.15,
    "rudders_working": 2,
    "CL_needed": 0.028,
    "rudder_angle_deg": 0.4,
-   "stall_margin": 0.97,
+   "stall_margin": 0.96,
    "servo_torque_kgcm": 0.0
   },
   {
    "tws_kn": 6,
    "twa": 105,
-   "V": 1.33,
+   "V": 1.25,
    "mode": "displacement",
-   "heel_util": 0.11,
-   "rudder_immersed_mm": 188.1,
-   "yaw_moment_Nm": 0.181,
-   "CE_minus_CLR_mm": 161.7,
-   "rudder_force_N": 0.49,
+   "heel_util": 0.09,
+   "rudder_immersed_mm": 192.9,
+   "yaw_moment_Nm": 0.166,
+   "CE_minus_CLR_mm": 164.8,
+   "rudder_force_N": 0.45,
    "rudders_working": 2,
-   "CL_needed": 0.032,
+   "CL_needed": 0.033,
    "rudder_angle_deg": 0.5,
    "stall_margin": 0.96,
    "servo_torque_kgcm": 0.01
@@ -524,329 +524,334 @@
   {
    "tws_kn": 8,
    "twa": 105,
-   "V": 3.81,
+   "V": 3.45,
    "mode": "foiling",
-   "heel_util": 0.67,
-   "rudder_immersed_mm": 52.9,
-   "yaw_moment_Nm": 0.995,
-   "CE_minus_CLR_mm": 189.1,
-   "rudder_force_N": 2.88,
+   "heel_util": 0.54,
+   "rudder_immersed_mm": 54.8,
+   "yaw_moment_Nm": 0.889,
+   "CE_minus_CLR_mm": 196.8,
+   "rudder_force_N": 2.63,
    "rudders_working": 2,
-   "CL_needed": 0.083,
-   "rudder_angle_deg": 2.3,
-   "stall_margin": 0.9,
-   "servo_torque_kgcm": 0.06
+   "CL_needed": 0.09,
+   "rudder_angle_deg": 2.4,
+   "stall_margin": 0.89,
+   "servo_torque_kgcm": 0.05
   },
   {
    "tws_kn": 10,
    "twa": 105,
-   "V": 4.81,
+   "V": 4.65,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 45.4,
-   "yaw_moment_Nm": 1.295,
-   "CE_minus_CLR_mm": 182.3,
-   "rudder_force_N": 3.67,
+   "rudder_immersed_mm": 45.0,
+   "yaw_moment_Nm": 1.416,
+   "CE_minus_CLR_mm": 188.3,
+   "rudder_force_N": 4.08,
    "rudders_working": 2,
-   "CL_needed": 0.078,
-   "rudder_angle_deg": 2.4,
-   "stall_margin": 0.9,
-   "servo_torque_kgcm": 0.07
+   "CL_needed": 0.093,
+   "rudder_angle_deg": 2.8,
+   "stall_margin": 0.88,
+   "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 12,
    "twa": 105,
-   "V": 5.27,
+   "V": 5.13,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 43.4,
-   "yaw_moment_Nm": 1.281,
-   "CE_minus_CLR_mm": 180.4,
-   "rudder_force_N": 3.61,
+   "rudder_immersed_mm": 43.1,
+   "yaw_moment_Nm": 1.402,
+   "CE_minus_CLR_mm": 186.4,
+   "rudder_force_N": 4.02,
    "rudders_working": 2,
-   "CL_needed": 0.067,
-   "rudder_angle_deg": 2.1,
-   "stall_margin": 0.92,
-   "servo_torque_kgcm": 0.07
+   "CL_needed": 0.079,
+   "rudder_angle_deg": 2.5,
+   "stall_margin": 0.9,
+   "servo_torque_kgcm": 0.08
   },
   {
    "tws_kn": 14,
    "twa": 105,
-   "V": 5.69,
+   "V": 5.53,
    "mode": "foiling",
    "heel_util": 0.9,
-   "rudder_immersed_mm": 42.1,
-   "yaw_moment_Nm": 1.271,
-   "CE_minus_CLR_mm": 178.9,
-   "rudder_force_N": 3.57,
+   "rudder_immersed_mm": 41.9,
+   "yaw_moment_Nm": 1.393,
+   "CE_minus_CLR_mm": 185.2,
+   "rudder_force_N": 3.98,
    "rudders_working": 2,
-   "CL_needed": 0.058,
-   "rudder_angle_deg": 1.9,
-   "stall_margin": 0.93,
-   "servo_torque_kgcm": 0.07
+   "CL_needed": 0.069,
+   "rudder_angle_deg": 2.2,
+   "stall_margin": 0.91,
+   "servo_torque_kgcm": 0.08
   }
  ],
  "foil_pitch": {
   "no downwash": {
-   "neutral_point_x_mm": 378.2,
-   "cg_x_mm": 461.9,
-   "static_margin_mm": 83.7,
+   "neutral_point_x_mm": 357.7,
+   "cg_x_mm": 454.3,
+   "static_margin_mm": 96.6,
    "stable": true
   },
   "elevator efficiency 0.65 (downwash/wake)": {
-   "neutral_point_x_mm": 430.1,
-   "cg_x_mm": 461.9,
-   "static_margin_mm": 31.8,
+   "neutral_point_x_mm": 412.9,
+   "cg_x_mm": 454.3,
+   "static_margin_mm": 41.4,
    "stable": true
   }
  },
  "foil_heave": [
   {
    "V": 2.0,
-   "lift_at_fixed_incidence_N": 9.8,
-   "weight_N": 22.0,
-   "excess_pct": -55.0,
-   "main_foil_angle_change_needed_deg": 3.7
+   "lift_at_fixed_incidence_N": 12.8,
+   "weight_N": 23.3,
+   "excess_pct": -45.0,
+   "main_foil_angle_change_needed_deg": 2.1
   },
   {
    "V": 2.5,
-   "lift_at_fixed_incidence_N": 15.3,
-   "weight_N": 22.0,
-   "excess_pct": -30.0,
-   "main_foil_angle_change_needed_deg": 0.3
+   "lift_at_fixed_incidence_N": 20.0,
+   "weight_N": 23.3,
+   "excess_pct": -14.0,
+   "main_foil_angle_change_needed_deg": -0.7
   },
   {
    "V": 3.0,
-   "lift_at_fixed_incidence_N": 22.0,
-   "weight_N": 22.0,
-   "excess_pct": 0.0,
-   "main_foil_angle_change_needed_deg": -1.5
+   "lift_at_fixed_incidence_N": 28.8,
+   "weight_N": 23.3,
+   "excess_pct": 24.0,
+   "main_foil_angle_change_needed_deg": -2.2
   },
   {
    "V": 3.5,
-   "lift_at_fixed_incidence_N": 30.0,
-   "weight_N": 22.0,
-   "excess_pct": 36.0,
-   "main_foil_angle_change_needed_deg": -2.6
+   "lift_at_fixed_incidence_N": 39.2,
+   "weight_N": 23.3,
+   "excess_pct": 68.0,
+   "main_foil_angle_change_needed_deg": -3.1
   },
   {
    "V": 4.0,
-   "lift_at_fixed_incidence_N": 39.2,
-   "weight_N": 22.0,
-   "excess_pct": 78.0,
-   "main_foil_angle_change_needed_deg": -3.3
+   "lift_at_fixed_incidence_N": 51.2,
+   "weight_N": 23.3,
+   "excess_pct": 120.0,
+   "main_foil_angle_change_needed_deg": -3.7
   }
  ],
  "foiling_steering_envelope": {
-  "max_deg": 4.67,
-  "at_V": 1.99,
-  "immersed_mm": 94.1,
+  "max_deg": 5.77,
+  "at_V": 1.81,
+  "immersed_mm": 101.5,
   "limit_deg": 14.4,
   "rows": [
    {
-    "V": 1.99,
-    "rudder_angle_deg": 4.67,
-    "rudder_immersed_mm": 94.1
+    "V": 1.81,
+    "rudder_angle_deg": 5.77,
+    "rudder_immersed_mm": 101.5
    },
    {
-    "V": 2.09,
-    "rudder_angle_deg": 4.57,
-    "rudder_immersed_mm": 90.7
+    "V": 1.91,
+    "rudder_angle_deg": 5.67,
+    "rudder_immersed_mm": 96.6
    },
    {
-    "V": 2.19,
-    "rudder_angle_deg": 4.47,
-    "rudder_immersed_mm": 87.3
+    "V": 2.01,
+    "rudder_angle_deg": 5.57,
+    "rudder_immersed_mm": 91.9
    },
    {
-    "V": 2.29,
-    "rudder_angle_deg": 4.38,
-    "rudder_immersed_mm": 83.9
+    "V": 2.11,
+    "rudder_angle_deg": 5.47,
+    "rudder_immersed_mm": 87.5
    },
    {
-    "V": 2.39,
-    "rudder_angle_deg": 4.28,
-    "rudder_immersed_mm": 80.7
+    "V": 2.21,
+    "rudder_angle_deg": 5.36,
+    "rudder_immersed_mm": 83.5
    },
    {
-    "V": 2.49,
-    "rudder_angle_deg": 4.19,
-    "rudder_immersed_mm": 77.7
+    "V": 2.31,
+    "rudder_angle_deg": 5.25,
+    "rudder_immersed_mm": 79.9
    },
    {
-    "V": 2.59,
+    "V": 2.41,
+    "rudder_angle_deg": 5.14,
+    "rudder_immersed_mm": 76.5
+   },
+   {
+    "V": 2.51,
+    "rudder_angle_deg": 5.03,
+    "rudder_immersed_mm": 73.5
+   },
+   {
+    "V": 2.61,
+    "rudder_angle_deg": 4.91,
+    "rudder_immersed_mm": 70.7
+   },
+   {
+    "V": 2.71,
+    "rudder_angle_deg": 4.8,
+    "rudder_immersed_mm": 68.2
+   },
+   {
+    "V": 2.81,
+    "rudder_angle_deg": 4.68,
+    "rudder_immersed_mm": 65.9
+   },
+   {
+    "V": 2.91,
+    "rudder_angle_deg": 4.56,
+    "rudder_immersed_mm": 63.9
+   },
+   {
+    "V": 3.01,
+    "rudder_angle_deg": 4.45,
+    "rudder_immersed_mm": 62.0
+   },
+   {
+    "V": 3.11,
+    "rudder_angle_deg": 4.33,
+    "rudder_immersed_mm": 60.2
+   },
+   {
+    "V": 3.21,
+    "rudder_angle_deg": 4.22,
+    "rudder_immersed_mm": 58.6
+   },
+   {
+    "V": 3.31,
     "rudder_angle_deg": 4.1,
-    "rudder_immersed_mm": 74.9
+    "rudder_immersed_mm": 57.2
    },
    {
-    "V": 2.69,
-    "rudder_angle_deg": 4.01,
-    "rudder_immersed_mm": 72.3
+    "V": 3.41,
+    "rudder_angle_deg": 3.99,
+    "rudder_immersed_mm": 55.8
    },
    {
-    "V": 2.79,
-    "rudder_angle_deg": 3.92,
-    "rudder_immersed_mm": 69.9
+    "V": 3.51,
+    "rudder_angle_deg": 3.89,
+    "rudder_immersed_mm": 54.6
    },
    {
-    "V": 2.89,
-    "rudder_angle_deg": 3.83,
-    "rudder_immersed_mm": 67.6
+    "V": 3.61,
+    "rudder_angle_deg": 3.78,
+    "rudder_immersed_mm": 53.5
    },
    {
-    "V": 2.99,
-    "rudder_angle_deg": 3.74,
-    "rudder_immersed_mm": 65.6
+    "V": 3.71,
+    "rudder_angle_deg": 3.67,
+    "rudder_immersed_mm": 52.4
    },
    {
-    "V": 3.09,
-    "rudder_angle_deg": 3.65,
-    "rudder_immersed_mm": 63.7
+    "V": 3.81,
+    "rudder_angle_deg": 3.57,
+    "rudder_immersed_mm": 51.5
    },
    {
-    "V": 3.19,
-    "rudder_angle_deg": 3.56,
-    "rudder_immersed_mm": 61.9
-   },
-   {
-    "V": 3.29,
+    "V": 3.91,
     "rudder_angle_deg": 3.47,
-    "rudder_immersed_mm": 60.3
+    "rudder_immersed_mm": 50.6
    },
    {
-    "V": 3.39,
-    "rudder_angle_deg": 3.39,
-    "rudder_immersed_mm": 58.8
+    "V": 4.01,
+    "rudder_angle_deg": 3.37,
+    "rudder_immersed_mm": 49.7
    },
    {
-    "V": 3.49,
-    "rudder_angle_deg": 3.3,
-    "rudder_immersed_mm": 57.4
+    "V": 4.11,
+    "rudder_angle_deg": 3.28,
+    "rudder_immersed_mm": 49.0
    },
    {
-    "V": 3.59,
-    "rudder_angle_deg": 3.22,
-    "rudder_immersed_mm": 56.1
+    "V": 4.21,
+    "rudder_angle_deg": 3.19,
+    "rudder_immersed_mm": 48.2
    },
    {
-    "V": 3.69,
-    "rudder_angle_deg": 3.13,
-    "rudder_immersed_mm": 54.9
+    "V": 4.31,
+    "rudder_angle_deg": 3.1,
+    "rudder_immersed_mm": 47.6
    },
    {
-    "V": 3.79,
-    "rudder_angle_deg": 3.05,
-    "rudder_immersed_mm": 53.8
+    "V": 4.41,
+    "rudder_angle_deg": 3.01,
+    "rudder_immersed_mm": 47.0
    },
    {
-    "V": 3.89,
-    "rudder_angle_deg": 2.97,
-    "rudder_immersed_mm": 52.7
+    "V": 4.51,
+    "rudder_angle_deg": 2.93,
+    "rudder_immersed_mm": 46.4
    },
    {
-    "V": 3.99,
-    "rudder_angle_deg": 2.9,
-    "rudder_immersed_mm": 51.8
+    "V": 4.61,
+    "rudder_angle_deg": 2.85,
+    "rudder_immersed_mm": 45.8
    },
    {
-    "V": 4.09,
-    "rudder_angle_deg": 2.82,
-    "rudder_immersed_mm": 50.9
+    "V": 4.71,
+    "rudder_angle_deg": 2.77,
+    "rudder_immersed_mm": 45.3
    },
    {
-    "V": 4.19,
-    "rudder_angle_deg": 2.75,
-    "rudder_immersed_mm": 50.1
+    "V": 4.81,
+    "rudder_angle_deg": 2.69,
+    "rudder_immersed_mm": 44.9
    },
    {
-    "V": 4.29,
-    "rudder_angle_deg": 2.68,
-    "rudder_immersed_mm": 49.3
+    "V": 4.91,
+    "rudder_angle_deg": 2.62,
+    "rudder_immersed_mm": 44.4
    },
    {
-    "V": 4.39,
-    "rudder_angle_deg": 2.61,
-    "rudder_immersed_mm": 48.6
-   },
-   {
-    "V": 4.49,
+    "V": 5.01,
     "rudder_angle_deg": 2.54,
-    "rudder_immersed_mm": 47.9
+    "rudder_immersed_mm": 44.0
    },
    {
-    "V": 4.59,
+    "V": 5.11,
     "rudder_angle_deg": 2.47,
-    "rudder_immersed_mm": 47.3
+    "rudder_immersed_mm": 43.6
    },
    {
-    "V": 4.69,
+    "V": 5.21,
     "rudder_angle_deg": 2.41,
-    "rudder_immersed_mm": 46.7
+    "rudder_immersed_mm": 43.2
    },
    {
-    "V": 4.79,
+    "V": 5.31,
     "rudder_angle_deg": 2.34,
-    "rudder_immersed_mm": 46.1
+    "rudder_immersed_mm": 42.9
    },
    {
-    "V": 4.89,
+    "V": 5.41,
     "rudder_angle_deg": 2.28,
-    "rudder_immersed_mm": 45.6
+    "rudder_immersed_mm": 42.6
    },
    {
-    "V": 4.99,
+    "V": 5.51,
     "rudder_angle_deg": 2.22,
-    "rudder_immersed_mm": 45.1
+    "rudder_immersed_mm": 42.3
    },
    {
-    "V": 5.09,
+    "V": 5.61,
     "rudder_angle_deg": 2.16,
-    "rudder_immersed_mm": 44.6
+    "rudder_immersed_mm": 42.0
    },
    {
-    "V": 5.19,
-    "rudder_angle_deg": 2.11,
-    "rudder_immersed_mm": 44.2
+    "V": 5.71,
+    "rudder_angle_deg": 2.1,
+    "rudder_immersed_mm": 41.7
    },
    {
-    "V": 5.29,
+    "V": 5.81,
     "rudder_angle_deg": 2.05,
-    "rudder_immersed_mm": 43.8
-   },
-   {
-    "V": 5.39,
-    "rudder_angle_deg": 2.0,
-    "rudder_immersed_mm": 43.4
-   },
-   {
-    "V": 5.49,
-    "rudder_angle_deg": 1.95,
-    "rudder_immersed_mm": 43.1
-   },
-   {
-    "V": 5.59,
-    "rudder_angle_deg": 1.9,
-    "rudder_immersed_mm": 42.7
-   },
-   {
-    "V": 5.69,
-    "rudder_angle_deg": 1.85,
-    "rudder_immersed_mm": 42.4
-   },
-   {
-    "V": 5.79,
-    "rudder_angle_deg": 1.81,
-    "rudder_immersed_mm": 42.1
-   },
-   {
-    "V": 5.89,
-    "rudder_angle_deg": 1.76,
-    "rudder_immersed_mm": 41.8
-   },
-   {
-    "V": 5.99,
-    "rudder_angle_deg": 1.72,
     "rudder_immersed_mm": 41.5
+   },
+   {
+    "V": 5.91,
+    "rudder_angle_deg": 1.99,
+    "rudder_immersed_mm": 41.2
    }
   ]
  }

@@ -1,8 +1,10 @@
 """Generates an A0 landscape research poster (tikzposter) from the project data. Compile with tectonic."""
-import csv, json, os
+import csv, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
+sys.path.insert(0, os.path.join(ROOT, 'analysis'))
+import vpp
 CTL = json.load(open(os.path.join(ROOT, 'analysis', 'control_results.json')))
 SEN = json.load(open(os.path.join(ROOT, 'analysis', 'sensitivity_results.json')))
 RES = json.load(open(os.path.join(ROOT, 'analysis', 'vpp_results.json')))
@@ -69,8 +71,8 @@ tex = r"""\documentclass[25pt, a0paper, landscape, margin=0mm, innermargin=18mm,
 Can a 3D-printed 1\,m radio-controlled catamaran look and sail like a real beach cat (Hobie~16, Nacra~17), \textbf{fly on hydrofoils}, and still be \textbf{controllable}? The answers had to be known before building.
 \vspace{0.6em}
 \begin{center}
-\includegraphics[width=0.46\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.46\linewidth]{../images/foiling_v2.2.png}\\
-{\normalsize Build-first version (daggerboards) \hfill Foiling version (v2.2 L-foils, T-foil rudders)}
+\includegraphics[width=0.46\linewidth]{../images/build_first_v1.4.png}\hfill\includegraphics[width=0.46\linewidth]{../images/foiling_""" + vpp.FOIL_VERSION + r""".png}\\
+{\normalsize Build-first version (daggerboards) \hfill Foiling version (""" + vpp.FOIL_VERSION + r""" L-foils, T-foil rudders)}
 \end{center}
 }
 \block{Design (Autodesk Fusion, scripted through its API)}{
@@ -145,7 +147,7 @@ Grid refinement changes the result by less than \textbf{0.03\,\%}, and the hump 
 \begin{itemize}
 \item Build-first: \hl{""" + f"{v8:.1f}" + r"""\,m/s} in 8\,kn of wind on a beam reach.
 \item Foiling: takes off at \textbf{""" + f"{SEN[0]['takeoff_speed_ms']:.1f}" + r"""\,m/s} from about \textbf{""" + f"{TOW['90']:.1f}" + r"""\,kn}, below the """ + f"{min(dep):g}--{max(dep):g}" + r"""\,kn where the rig must be depowered.
-\item Sensitivity (sail $C_L$ $\pm$15\,\%, foil lift $-$20\,\%, mass $\pm$10\,\%, sail-drive couple $\times$0.5--1.5): take-off between \textbf{""" + f"{min(tws_all):g} and {max(tws_all):g}" + r"""\,kn}.
+\item Sensitivity (sail $C_L$ $\pm$15\,\%, foil lift $-$20\,\%, mass $\pm$10\,\%, sail-drive couple $\times$0.5--1.5, laminar foil friction): take-off between \textbf{""" + f"{min(tws_all):g} and {max(tws_all):g}" + r"""\,kn}.
 \end{itemize}
 }
 \block{Results: can it be controlled?}{
@@ -189,9 +191,9 @@ Same lines, rig and printed construction at 0.6 length, but hull sections scaled
 \block{Checked in CAD, next on the water}{
 \begin{itemize}
 \item Servo rails redrawn from the makers' drawings.
-\item A 9-trim clearance sweep moved the pod forward onto a light third beam.
-\item Flight simulator with pitch trim, """ + f"{OPT['grid_size']:,}".replace(",", "{,}") + r""" foil designs: positive-incidence elevators would pitch the boat nose-down and out of the water. \textbf{v2.2} (in CAD): elevators at $""" + f"{OPT['adopted']['einc']:+g}" + r"""^\circ$, """ + f"{-197 - OPT['adopted']['zel']:.0f}" + r"""\,mm lower; flies level at 12\,kn.
-\item \textbf{Next:} build the mini, then the 1\,m boat; tow-test the v2.2 foils, then fly.
+\item A 9-trim clearance sweep moved the pod forward onto a light third beam. Every fitting is now drawn and printable.
+\item Flight simulator with pitch trim, """ + f"{OPT['grid_size']:,}".replace(",", "{,}") + r""" foil designs: positive-incidence elevators would pitch the boat nose-down and out of the water. \textbf{""" + vpp.FOIL_VERSION + r"""} (in CAD): elevators at $""" + f"{OPT['adopted']['einc']:+g}" + r"""^\circ$, """ + f"{-197 - OPT['adopted']['zel']:.0f}" + r"""\,mm lower; flies level at 12\,kn.
+\item \textbf{Next:} build the mini, then the 1\,m boat; tow-test the """ + vpp.FOIL_VERSION + r""" foils, then fly.
 \end{itemize}
 }
 \end{columns}

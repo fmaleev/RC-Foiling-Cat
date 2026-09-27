@@ -22,7 +22,7 @@ WAND_L, WAND_DEG, WAND_R = 300.0, 49.0, 1.0
 HUB_R, HORN, AXLE_R, HOLE_R = 5.0, 8.25, 1.0, 0.6
 Y_ROD = 8.0                            # deck pushrod, bellcrank and horn plane: 8 mm outboard of the hull centreline
 BELL_C, BELL_ARM = (574.0, 88.0), 8.0  # bellcrank pivot (x, z) and arm length
-FLAP_HORN_X, FLAP_ARM = 547.0, 5.5     # flap horn hole x (5.5 mm aft of the hinge at x = 552.5)
+FLAP_ARM = 5.5                         # flap horn hole 5.5 mm aft of the flap hinge (x = 575 - wing chord / 2)
 ROD_R = 0.6                            # 0.047 in music wire
 CHANNEL_TOP, CHANNEL_BOT = (566.0, 80.0), (547.0, -214.0)
 
@@ -70,8 +70,8 @@ def add_body(comp, name, temp, look=None):
     return b
 
 
-def side_parts(s, hull, lf_top_z, flap_top_z):
-    """Temporary bodies for one side; s = +1 port, -1 starboard. y is mirrored by s."""
+def side_parts(s, hull, lf_top_z, flap_top_z, horn_x):
+    """Temporary bodies for one side; s = +1 port, -1 starboard. y is mirrored by s. horn_x: the flap horn hole's x."""
     tbm = adsk.fusion.TemporaryBRepManager.get()
     yc, yr = s * HULL_Y, s * (HULL_Y + Y_ROD)
     Y = lambda d: s * (HULL_Y + d)                         # y at offset d outboard of the hull centreline
@@ -109,12 +109,12 @@ def side_parts(s, hull, lf_top_z, flap_top_z):
     k = (cz - zt) / (zt - zb)
     top = (xt + (xt - xb) * k, cz)
     out['Strut Pushrod'] = union([bm.tcyl((cx - BELL_ARM, yr, cz), (top[0], yc, cz), ROD_R), bm.tcyl((top[0], yc, top[1]), (xb, yc, zb), ROD_R),
-                                  bm.tcyl((xb, yc, zb), (xb, Y(-7.5), zb), ROD_R)])
+                                  bm.tcyl((xb, yc, zb), (horn_x, Y(-7.5), zb), ROD_R)])       # out of the slot, doglegged to the horn
     # flap horn: a tab on the flap root's upper surface, hole 5.5 mm aft of the hinge in line with the pushrod's foot
-    out['Flap Horn'] = minus(box(FLAP_HORN_X - 1.5, FLAP_HORN_X + 1.5, Y(-9.0), Y(-6.0), flap_top_z - 1.0, zb + 2.5),
-                             [cyl_y(FLAP_HORN_X, zb, Y(-10), Y(-5), HOLE_R + 0.1)])
+    out['Flap Horn'] = minus(box(horn_x - 1.5, horn_x + 1.5, Y(-9.0), Y(-6.0), flap_top_z - 1.0, zb + 2.5),
+                             [cyl_y(horn_x, zb, Y(-10), Y(-5), HOLE_R + 0.1)])
     # exit slot for the strut pushrod through the strut's inboard face, above the wing
-    out['_slot'] = box(xb - 1.7, xb + 1.7, Y(-4.5), Y(0.5), zb - 2.0, zb + 5.0)
+    out['_slot'] = box(min(xb, horn_x) - 1.7, max(xb, horn_x) + 1.7, Y(-4.5), Y(0.5), zb - 2.0, zb + 5.0)
     return out
 
 
@@ -130,7 +130,7 @@ def apply(design, foils):
     for side, s in (('Port', 1), ('Stbd', -1)):
         hull = [o.component for o in root.occurrences if o.component.name == f'Hull {side}'][0].bRepBodies.item(0)
         flap = kit.bRepBodies.itemByName(f'Flap {side}')
-        parts = side_parts(s, tbm.copy(hull), None, flap.boundingBox.maxPoint.z * 10)
+        parts = side_parts(s, tbm.copy(hull), None, flap.boundingBox.maxPoint.z * 10, 575.0 - foils['wchord'] / 2 - FLAP_ARM)
         horn = parts['Flap Horn']
         tbm.booleanOperation(horn, tbm.copy(flap), adsk.fusion.BooleanTypes.DifferenceBooleanType)
         for name in ('Wand Pivot', 'Wand Hub', 'Wand', 'Deck Pushrod', 'Bellcrank Mount', 'Strut Bellcrank', 'Strut Pushrod', 'Flap Horn'):
