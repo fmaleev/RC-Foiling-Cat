@@ -25,7 +25,7 @@ All four documents are regenerated from the analysis results by `mini/manual/bui
 | **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$381.02** | Build second |
 | **RC Foiling Catamaran v1** (latest version: v1.3 hulls, v1.4 pod, v2.2 foils) | 1 m + L-foils, T-foil rudders on 13 mm longer foiling rudders, wand-driven flaps for ride-height control | foil kit **+$101.17** | Design stage |
 
-Prices were read on retailer pages on 2026-09-23, and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning points are eyes bent from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
+Prices were read on retailer pages on 2026-09-23, and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning pins, gooseneck pin and boom eye are cut from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
 
 ## Key results (model predictions, not yet measured on the water)
 
@@ -84,12 +84,26 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
     - The search was repeated with the trim, the elevator height as a variable, a 30 mm pitch static-margin limit, a steering check, operating margins at 12 kn and robustness checks (couple x0.5 / x1.5, CG +-20 mm).
     - **Adopted v2.2:** wing 160 x 45 mm at +1.5 deg, elevators 120 x 28 mm at -1 deg, lowered 13 mm on longer foiling rudders (printed extensions). It flies level from 7.06 kn on a beam reach (VPP) and does 4.65 m/s in 12 kn.
     - The v2.1 sizes cannot be rescued: once the elevators push down, the 40 mm wing bends past the 2 mm limit.
+12. **Fittings and masses (`cad_scripts/rig_fittings.py`, `cad_scripts/linkage.py`):** the placeholder blocks were replaced by printable parts:
+    - Gudgeons.
+    - T-rail traveler and jib tracks with sliding cars (the add-in still moves the cars).
+    - A hounds collar the stays tie round, so the mast turns inside their loop.
+    - A mast cap that seals the tube, and a bridle post.
+    - A gooseneck and boom jaw.
+    - The ride-height linkage: 8.25 mm wand horn, 8 mm bellcrank, 5.5 mm flap horn, giving 1.5 deg of flap per deg of wand.
+    - The wing-mast fairing, as 0.45 mm vase-mode shells in seven pieces, with the main's luff laced to its trailing edge.
+
+    Two assumed masses were wrong:
+    - The fairing, gooseneck and boom jaw weigh 45.5 g, where 10 g had been assumed.
+    - The rudder stocks, tiller arms, tie bar and pushrod are music wire but had been weighed as aluminium. The steel tie bar alone is 56 g.
+
+    The build-first boat went from 2037 g to 2114 g and the foiling boat from 2242 g to 2331 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
 
 ## Repository map
 
 | Path | Contents |
 |---|---|
-| `analysis/vpp.py` | VPP: ITTC-57 friction, Michell thin-ship wave resistance with catamaran interference (Filon-type panel integration), appendage and foil drag, sail model depowered for heel and for pitch. Configurable hull (`vpp.configure`) |
+| `analysis/vpp.py` | VPP: ITTC-57 friction, Michell thin-ship wave resistance with catamaran interference (Filon-type panel integration; tabulated over hull load and speed in `hull_table()` and interpolated exactly as the simulator does), appendage and foil drag, sail model depowered for heel and for pitch. Configurable hull (`vpp.configure`) |
 | `analysis/stability.py`, `pitchpole.py` | Heel (GZ) curves from the heeled hull sections; the largest bow-down moment the hulls resist; pitchpole wind limits |
 | `analysis/hull_variants.py` | Bow-volume study behind the v1.3 hulls |
 | `analysis/control.py` | Rudder authority (yaw balance), foil pitch neutral point, heave check |
@@ -106,11 +120,11 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
 | `analysis/figures_data.py` | Plot data for the paper and poster |
 | `mini/mini_analysis.py`, `mini/manual_data.py` | Mini hydrostatics, VPP, rudder check; rigging lengths, drum sizing, sail patterns |
 | `bom/make_bom.py` | Costed parts lists with source URLs (mini, 1 m build-first, v2 foil kit) |
-| `cad_scripts/` | Fusion API scripts: `build_mini.py`, `build_full_hull.py` (v1.3 hulls + print segments), `servo_mounts.py` (rails and wells from the servo drawings), `pod_v14.py` (shortened pod, pod-beam saddle, rudder-servo bracket and cover), `foils_v21.py` and `foils_v22.py` (foil sets with flaps and pushrod channels; v2.2 adds the rudder extensions), `clearance.py` (rig-to-pod sweep), `export_mini_mass.py`, `export_full_mass.py`, `export_inertia.py` (pitch and roll inertia for the heave-pitch check) |
+| `cad_scripts/` | Fusion API scripts: `build_mini.py`, `build_full_hull.py` (v1.3 hulls + print segments), `servo_mounts.py` (rails and wells from the servo drawings), `pod_v14.py` (shortened pod, pod-beam saddle, rudder-servo bracket and cover), `foils_v21.py` and `foils_v22.py` (foil sets with flaps and pushrod channels; v2.2 adds the rudder extensions), `elevator_trim.py` (elevator trim pods), `foil_cores.py` (printable cores with carbon-cap recesses), `linkage.py` (ride-height linkage), `rig_fittings.py` (gudgeons, tracks, bridle post, mast cap, hounds collar, mast fairing, gooseneck, boom jaw; STLs and print list), `clearance.py` (rig-to-pod sweep), `export_mini_mass.py`, `export_full_mass.py`, `export_inertia.py` (pitch and roll inertia for the heave-pitch check) |
 | `cad/`, `stl/`, `mini/cad/`, `mini/stl/` | STEP / Fusion archives and print-ready STLs |
-| Sail Trim add-in | `~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim/` (`rig_model.py`, `fusion_rig.py`, `SailTrim.py`) |
+| Sail Trim add-in | `~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim/` (`rig_model.py`, `fusion_rig.py`, `fittings_geom.py` for the printed cars, `SailTrim.py`); copy in `fusion_addin/SailTrim/` |
 
-Current exports: `cad/RC_Catamaran_v1.4_Build_First_no_foils.step/.f3d`, `cad/RC_Foiling_Catamaran_v2.2.step/.f3d`, `cad/Foiling_Kit_v2.2_carbon_parts_flaps_rudder_extensions.step` (the v2.1 exports are kept for reference). The 1 m print parts are in `stl/`: v1.3 hulls, the v1.4 pod and lid segments, `Rudder_Servo_Bracket.stl`, `Rudder_Servo_Cover.stl` and, for the foiling version, `Foiling_Rudder_Extension_x2.stl`. The mini's print parts are in `mini/stl/`.
+Current exports: `cad/RC_Catamaran_v1.4_Build_First_no_foils.step/.f3d`, `cad/RC_Foiling_Catamaran_v2.2.step/.f3d`, `cad/Foiling_Kit_v2.2_carbon_parts_flaps_rudder_extensions.step` (the v2.1 exports are kept for reference). The 1 m print parts are in `stl/`: v1.3 hulls, the v1.4 pod and lid segments, `Rudder_Servo_Bracket.stl`, `Rudder_Servo_Cover.stl`, the fittings (`Gudgeon_x2`, `Traveler_Track_Centre/Port/Stbd`, `Traveler_Car`, `Jib_Track`, `Jib_Car`, `Bridle_Post`, `Mast_Cap`, `Hounds_Collar`, `Mast_Fairing_Lower_x5`, `Mast_Fairing_Upper_x2`, `Gooseneck`, `Boom_Jaw`) and, for the foiling version, the foil cores, flaps, trim pods, rudder extensions and linkage parts (`Wand_Hinge_Bracket_x2`, `Wand_Hub_x2`, `Bellcrank_Mount_x2`, `Strut_Bellcrank_x2`, `Flap_Horn_x2`). The full print list with sizes and filament is in the 1 m manual. The mini's print parts are in `mini/stl/`.
 
 ## Sail Trim add-in
 
@@ -140,18 +154,19 @@ The geometry update behind the dialog was tested through the API, but the dialog
 - Foils: thin-airfoil theory with a lifting-line slope (e = 0.85); flap effectiveness 0.8 x thin-airfoil value; usable CL 0.8; unidirectional carbon cap laminate E about 120 GPa (assumed)
 - Flying trim: sail drive equals the flying drag, acting at the sail centre of effort; limits of half a chord of submergence, 30 mm of rudder, 80 % of the rudder throw for steering and a 30 mm pitch static margin (elevator efficiency 0.65) are assumed
 - Rudders: CL max 0.8
-- Masses: PETG 1.27 g/cm3 and carbon 1.55 g/cm3. Servo, receiver and battery weights are from manufacturer specs. The exception is the JX W4505-2T winch, taken as 45 g: the weight listed for JX's 1.5-turn and 4-turn standard winches.
+- Masses: PETG 1.27 g/cm3, carbon 1.55 g/cm3 and music wire 7.85 g/cm3. The mast fairing is weighed as printed: 0.45 mm shells. Servo, receiver and battery weights are from manufacturer specs. The exception is the JX W4505-2T winch, taken as 45 g: the weight listed for JX's 1.5-turn and 4-turn standard winches.
 
 ## Build notes for the 1 m boat
 
 - **Pod beam:** cut a 600 mm length from the 10 x 8 mm carbon tube (the mast joiner uses 150 mm of it) and epoxy it into the third socket in each hull. The pod snaps onto it and onto the front beam.
 - **Rudder servo bracket:** snap the bracket's clamp onto the rear beam from below, centred between the hulls, and epoxy it there so it cannot rotate. Its clamp stays under the traveler track.
 - **Rudder servo:** the MG90S hangs by its ears on the bracket's rails, aft of the beam, under the printed cover. The pushrod leaves through the slot in the back of the cover and runs to the tie bar.
-- **Control lines:** the two traveler lines and the mainsheet tail leave the pod through the three holes in the transom, then run aft under the rear beam to turning eyes on its front face.
-- **Mainsheet routing:** the traveler car moves up to 236 mm, far more line than the mainsheet servo can take up, so route the mainsheet so the car cannot pull on it:
-  1. Dead-end the mainsheet at the port end of the rear beam.
-  2. Run it through the traveler car, up to the boom and back down.
-  3. Lead it out of the other side of the car to a turning block at the starboard end, then back under the beam into the pod.
+- **Control lines:** the two ends of the traveler line and the mainsheet tail leave the pod through the three holes in the transom and run aft to the 0.093 in wire turning pins in the traveler track's end stops.
+- **Mainsheet routing:** the traveler car moves up to 213 mm either side of the centre line, far more line than the mainsheet servo can take up, so route the mainsheet so the car cannot pull on it:
+  1. Tie the mainsheet to the port end-stop pin (upper slot).
+  2. Run it through the car's port post, up through the eye under the boom and back down.
+  3. Lead it through the starboard post, round the starboard pin (upper slot) and forward into the pod.
+  The traveler line is one loop from the winch drum, round both pins (lower slots) and through the car, fixed to the car with CA.
 
   Moving the car then shortens one side of the sheet exactly as much as it lengthens the other, so the traveler does not change mainsheet tension, which is how the trim model treats it.
 - **Winch ears:** JX does not publish the winch's ear height, so the rails use the FS5115M value (27.3 mm above the case bottom). If a winch case touches the bottom of its well before the ears reach the rails, shim under the ears.

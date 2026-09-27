@@ -245,7 +245,7 @@ function drive(b, V, tws, twa, clFrac = 1) {
 }
 function step(b, V, tws, twa) {   // sail forces and resistance at V; a skimming boat eases the sails if that gives more net thrust (vpp.Boat.solve)
   let s = drive(b, V, tws, twa), r = resistance(b, V, s.fy);
-  if (r.mode === 'skimming' && b.p.trim !== 'manual') {
+  if (r.mode === 'skimming' && b.p.trim !== 'manual' && s.fx - r.R < 0) {   // only when full sail would stop the boat
     let best = s.fx - r.R;
     for (const k of [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]) {
       const s2 = drive(b, V, tws, twa, k), r2 = resistance(b, V, s2.fy);

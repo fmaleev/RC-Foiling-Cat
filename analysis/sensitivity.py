@@ -16,8 +16,8 @@ def takeoff_tws(boat, twa, lo=4.0, hi=16.0, step=0.25):
     return None, None
 
 
-def scenario(name, cl_max=1.3, foil_lift=1.0, mass=1.0, couple=1.0):
-    vpp.CL_MAX, vpp.COUPLE_FACTOR = cl_max, couple
+def scenario(name, cl_max=1.3, foil_lift=1.0, mass=1.0, couple=1.0, friction='turbulent'):
+    vpp.CL_MAX, vpp.COUPLE_FACTOR, vpp.FOIL_FRICTION = cl_max, couple, friction
     cad = json.loads(json.dumps(CAD))
     cad['foiling']['mass_g'] *= mass
     b = vpp.load_pitch_limits(vpp.Boat('foiling', cad), 'foiling_1m')
@@ -40,8 +40,9 @@ if __name__ == '__main__':
             scenario('mass +10%', mass=1.10),
             scenario('mass -10%', mass=0.90),
             scenario('sail-drive pitch couple x0.5', couple=0.5),
-            scenario('sail-drive pitch couple x1.5', couple=1.5)]
-    vpp.CL_MAX, vpp.COUPLE_FACTOR = 1.3, 1.0
+            scenario('sail-drive pitch couple x1.5', couple=1.5),
+            scenario('foil friction laminar (low Re)', friction='transitional')]
+    vpp.CL_MAX, vpp.COUPLE_FACTOR, vpp.FOIL_FRICTION = 1.3, 1.0, 'turbulent'
     json.dump(rows, open(os.path.join(HERE, 'sensitivity_results.json'), 'w'), indent=1)
     for r in rows:
         print(r)

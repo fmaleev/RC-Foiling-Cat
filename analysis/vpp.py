@@ -8,14 +8,17 @@ Models
 - Hull friction: ITTC-57 line, form factor (1+k) = 1.25 (assumed, slender demihulls).
 - Hull wave resistance: Michell thin-ship integral, catamaran interference
   factor 4 cos^2(ky s/2), panel-wise analytic (Filon-type) integration in x and z.
+  Tabulated with draft, wetted area and waterline length over hull load and speed (hull_table()),
+  for both hulls and for one, and interpolated exactly as the flight simulator does.
 - Transom: Holtrop transom term.
-- Appendages: ITTC friction with Hoerner thickness form factor, spray drag,
+- Appendages: ITTC friction (FOIL_FRICTION = 'transitional': laminar flat plate, a sensitivity case only)
+  with Hoerner thickness form factor, spray drag,
   lifting-line induced drag for foil lift and for side force.
 - Foils: thin-airfoil zero-lift angle, lifting-line slope; wand-driven flaps fully down below take-off.
 - Sails: CL <= CLmax, CD = CD0 + CL^2/(pi e AR); CL reduced (flattened) so the
   heeling moment stays <= 0.9 x max righting moment.
 """
-import json, math, os
+import hashlib, json, math, os
 
 RHO, NU, G, RHO_A = 1000.0, 1.0e-6, 9.81, 1.225
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -43,7 +46,7 @@ INC_MAIN_DEG, INC_EL_DEG = 1.5, -1.0
 FLAP_TAU, FLAP_TRAVEL_DEG, CL_USABLE = 0.487, 15.0, 0.8
 X_MAIN_FOIL, X_EL = 575.0, -15.0          # quarter-chord x (mm)
 # ride-height wand (CAD 'Ride Height Control', analysis/ride_height.py): hinge at the bow, tip on the water
-X_PIVOT, Z_PIVOT = 1.001, 0.0739           # m, boat frame
+X_PIVOT, Z_PIVOT = 1.008, 0.074            # m, boat frame: wand hinge axle (cad_scripts/linkage.py PIVOT)
 WAND_L, WAND_PHI0_DEG, GEAR = 0.30, 49.0, 1.5   # m; deg below the boat's x axis at the design ride height; flap deg per wand deg
 Z_FLY = Z_PIVOT - WAND_L * math.sin(math.radians(WAND_PHI0_DEG))   # design waterline when flying, boat frame
 X_RUDDER_TIP = -0.0305                     # m, rudder blade tip centre (CAD)
@@ -195,9 +198,20 @@ def cf_ittc(re):
     return 0.075 / (math.log10(max(re, 1e4)) - 2) ** 2
 
 
+FOIL_FRICTION = 'turbulent'   # appendage friction line; 'transitional' is a sensitivity case (sensitivity.py, pitch_trim.py)
+
+
+def cf_transitional(re):
+    """Flat plate with a laminar start: Blasius below Re 5e5, Prandtl-Schlichting with the transition correction
+    (A = 1700) above. At foil chord Re of 1-2e5 this is fully laminar, an optimistic bound on the ITTC line."""
+    lam = 1.328 / math.sqrt(max(re, 1e3))
+    return lam if re < 5e5 else max(lam, 0.455 / math.log10(re) ** 2.58 - 1700 / re)
+
+
 def profile_drag(q, v, chord, span, tc):
     ff = 1 + 2 * tc + 60 * tc ** 4
-    return q * 2 * chord * span * cf_ittc(v * chord / NU) * ff
+    re = v * chord / NU
+    return q * 2 * chord * span * (cf_transitional(re) if FOIL_FRICTION == 'transitional' else cf_ittc(re)) * ff
 
 
 def induced(force, q, span, e=0.85):
@@ -399,26 +413,18 @@ class Boat:
         return self._rm[key]
 
     def one_hull(self, V, N):
-        """Resistance (N) of one hull carrying N newtons: the leeward hull skimming while the foils fly. Single-hull
-        Michell wave resistance, friction on that hull's wetted area, transom term as in the displacement branch."""
-        key = (round(V, 3), round(N * 4) / 4)
-        if key not in self._one:
-            Nq = key[1]
-            if Nq <= 0:
-                self._one[key] = 0.0
-            else:
-                q = 0.5 * RHO * V * V
-                zw = sinkage(2 * Nq / (RHO * G))                 # sinkage() takes the volume of both hulls
-                wet = [x for x in (L_HULL * i / 400 for i in range(401)) if ZB(x) < zw]
-                lwl = (max(wet) - min(wet)) if wet else 0.0
-                S = integrate(lambda x: wet_girth(x, zw), 0, L_HULL, 300)
-                Rf = q * S * cf_ittc(V * max(lwl, 0.05) / NU) * 1.25
-                Rw = michell(V, zw, catamaran=False) if V >= 0.3 else 0.0
-                at = sub_area(0.0, zw)
-                fnt = V / math.sqrt(2 * G * at / (HW(0) + HW(0) * 0.9)) if at > 0 else 99
-                Rtr = q * at * 0.2 * (1 - 0.2 * fnt) if fnt < 5 else 0.0
-                self._one[key] = Rf + Rw + Rtr
-        return self._one[key]
+        """Resistance (N) of one hull carrying N newtons: the leeward hull skimming while the foils fly. Friction,
+        transom term and single-hull Michell wave resistance, interpolated in hull_table() exactly as sim_core.js oneHull."""
+        if N <= 0.01:
+            return 0.0
+        m2 = 2 * N / G                                      # the table is for both hulls: each carries half
+        h = hull_at(m2)
+        q = 0.5 * RHO * V * V
+        S1, lwl, at1 = h['S'] / 2, h['lwl'], h['at'] / 2
+        Rf = q * S1 * cf_ittc(V * max(lwl, 0.05) / NU) * 1.25
+        Rw = wave_r(m2, V, 'rw1')
+        fnt = V / math.sqrt(2 * G * at1 / (HW(0) + HW(0) * 0.9)) if at1 > 0 else 99
+        return Rf + Rw + (q * at1 * 0.2 * (1 - 0.2 * fnt) if fnt < 5 else 0.0)
 
     def heel_arm(self, flying):
         if flying:  # water surface at the wand's design ride height; side force centred on the immersed struts
@@ -448,17 +454,14 @@ class Boat:
             lift = 0.0
             if self.foiling:
                 lift = min(q * self.S_main * self.cl_main_flap, (1 - self.share_el) * self.W) + min(q * self.S_el * self.cl_el, self.share_el * self.W)
-            zw = self.zw0
-            for _ in range(4):
+            zw, load = self.zw0, 0.0
+            for _ in range(4):                              # hull load <-> draft, appendage buoyancy included
                 load = max(0.0, self.W - lift - self.app_buoyancy(zw))
-                zw = sinkage(load / (RHO * G))
-            xs = [L_HULL * i / 400 for i in range(401)]
-            wet = [x for x in xs if ZB(x) < zw]
-            lwl = (max(wet) - min(wet)) if wet else 0.0
-            S = 2 * integrate(lambda x: wet_girth(x, zw), 0, L_HULL, 300)
-            Rf = q * S * cf_ittc(V * max(lwl, 0.05) / NU) * 1.25
-            Rw = michell(V, zw) if V >= 0.3 and load > 0 else 0.0
-            at = 2 * sub_area(0.0, zw)
+                zw = hull_at(load / G)['zw']
+            h = hull_at(load / G)                           # hull_table(), interpolated as in sim/sim_core.js
+            S, lwl, at = h['S'], h['lwl'], h['at']
+            Rf = q * S * cf_ittc(V * max(lwl, 0.05) / NU) * 1.25 if load > 0 else 0.0
+            Rw = wave_r(load / G, V)
             fnt = V / math.sqrt(2 * G * at / (2 * HW(0) + 2 * HW(0) * 0.9)) if at > 0 else 99
             Rtr = q * at * 0.2 * (1 - 0.2 * fnt) if fnt < 5 else 0.0
             self._cache[key] = (zw, lift, S, lwl, Rf, Rw, Rtr)
@@ -539,7 +542,7 @@ class Boat:
                 return dict(V=round(self.vfly_max, 3), mode='foiling', **{k: (round(v, 3) if isinstance(v, float) else v) for k, v in s.items()})
             fx, fy, s = self.pitch_limit(*self.forces(V, tws, twa_deg, flying), flying)
             R, info = self.resistance(V, fy)
-            if flying and info['mode'] == 'skimming':   # ease the sails if that lets the boat accelerate onto its foils
+            if flying and info['mode'] == 'skimming' and fx - R < 0:   # ease the sails if that lets the boat accelerate onto its foils
                 best = (fx - R, fx, fy, s, R, info)
                 for k in (0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1):
                     fx2, fy2, s2 = self.forces(V, tws, twa_deg, True, k)
@@ -552,6 +555,66 @@ class Boat:
             last = info
             V += dv
         return dict(V=vmax, mode='>vmax')
+
+
+TABLE_MASSES = [round(0.2 * i, 1) for i in range(19)]        # kg carried by both hulls, 0 .. 3.6
+TABLE_SPEEDS = [round(0.1 * j, 1) for j in range(1, 46)]      # m/s, 0.1 .. 4.5
+_TABLE = {}
+
+
+def interp_clamped(xs, ys, x):
+    """Linear interpolation, clamped at the ends (sim_core.js interp1)."""
+    if x <= xs[0]: return ys[0]
+    if x >= xs[-1]: return ys[-1]
+    i = 0
+    while xs[i + 1] < x:
+        i += 1
+    return ys[i] + (x - xs[i]) / (xs[i + 1] - xs[i]) * (ys[i + 1] - ys[i])
+
+
+def hull_at(m):
+    """Draft, wetted area, waterline length and transom area with both hulls carrying m kg (hull_table())."""
+    T = hull_table()
+    return {k: interp_clamped(T['masses'], [r[k] for r in T['rows']], m) for k in ('zw', 'S', 'lwl', 'at')}
+
+
+def wave_r(m, V, key='rw'):
+    """Michell wave resistance (N), bilinear in hull load and speed (sim_core.js waveR); key 'rw1' for one hull."""
+    if m <= 0 or V < 0.3:
+        return 0.0
+    T = hull_table()
+    HM, rows = T['masses'], T['rows']
+    i = 0
+    while i < len(HM) - 2 and HM[i + 1] < m:
+        i += 1
+    tm = min(1.0, max(0.0, (m - HM[i]) / (HM[i + 1] - HM[i])))
+    a, b = interp_clamped(T['speeds'], rows[i][key], V), interp_clamped(T['speeds'], rows[i + 1][key], V)
+    return a + tm * (b - a)
+
+
+def hull_table():
+    """Hull resistance table by the load both hulls carry and speed (the simulator's hull table): draft, wetted area,
+    waterline length, transom area, catamaran and single-hull Michell wave resistance. Built once per hull shape
+    (about 7 minutes of Michell integrals) and cached in analysis/hull_table_<hash>.json."""
+    sig = hashlib.md5(json.dumps([[round(v, 6) for v in section(L_HULL * i / 40)] for i in range(41)] + [L_HULL]).encode()).hexdigest()[:10]
+    if sig in _TABLE:
+        return _TABLE[sig]
+    path = os.path.join(HERE, f'hull_table_{sig}.json')
+    if os.path.exists(path):
+        _TABLE[sig] = json.load(open(path))
+        return _TABLE[sig]
+    zmin = min(ZB(L_HULL * i / 50) for i in range(51))
+    rows = []
+    for m in TABLE_MASSES:
+        zw = sinkage(m / RHO) if m > 0 else zmin
+        wet = [x for x in (L_HULL * i / 400 for i in range(401)) if ZB(x) < zw]
+        rows.append(dict(m=m, zw=zw, S=2 * integrate(lambda x: wet_girth(x, zw), 0, L_HULL, 300) if m > 0 else 0.0,
+                         lwl=(max(wet) - min(wet)) if wet else 0.0, at=2 * sub_area(0.0, zw) if m > 0 else 0.0,
+                         rw=[michell(V, zw) if (m > 0 and V >= 0.3) else 0.0 for V in TABLE_SPEEDS],
+                         rw1=[michell(V, zw, catamaran=False) if (m > 0 and V >= 0.3) else 0.0 for V in TABLE_SPEEDS]))
+    _TABLE[sig] = dict(masses=TABLE_MASSES, speeds=TABLE_SPEEDS, zmin=zmin, rows=rows)
+    json.dump(_TABLE[sig], open(path, 'w'))
+    return _TABLE[sig]
 
 
 def load_pitch_limits(boat, key, path=None):

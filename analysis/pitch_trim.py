@@ -71,13 +71,15 @@ if __name__ == '__main__':
             print(name, out[name]['mass_g'], 'g, take-off', out[name]['takeoff_ms'], 'flies to', out[name]['flying_range_top_ms'], out[name]['flying_range_limit'])
     # robustness of the CAD design: pitch couple, mass and centre of gravity
     rob = []
-    for label, couple, mass, dx in (('model', 1.0, 1.0, 0), ('couple x0.5', 0.5, 1.0, 0), ('couple x1.5', 1.5, 1.0, 0), ('mass +10%', 1.0, 1.1, 0),
-                                    ('mass -10%', 1.0, 0.9, 0), ('CG 20 mm forward', 1.0, 1.0, 20), ('CG 20 mm aft', 1.0, 1.0, -20)):
-        vpp.COUPLE_FACTOR = couple
+    for label, couple, mass, dx, fr in (('model', 1.0, 1.0, 0, 'turbulent'), ('couple x0.5', 0.5, 1.0, 0, 'turbulent'),
+                                        ('couple x1.5', 1.5, 1.0, 0, 'turbulent'), ('mass +10%', 1.0, 1.1, 0, 'turbulent'),
+                                        ('mass -10%', 1.0, 0.9, 0, 'turbulent'), ('CG 20 mm forward', 1.0, 1.0, 20, 'turbulent'),
+                                        ('CG 20 mm aft', 1.0, 1.0, -20, 'turbulent'), ('foil friction laminar (low Re)', 1.0, 1.0, 0, 'transitional')):
+        vpp.COUPLE_FACTOR, vpp.FOIL_FRICTION = couple, fr
         cad = json.loads(json.dumps(CAD)); cad['foiling']['mass_g'] *= mass; cad['foiling']['lcg_mm'] += dx
         b = vpp.Boat('foiling', cad)
         rob.append(dict(case=label, takeoff_ms=b.vto and round(b.vto, 3), flying_range_top_ms=b.vfly_max and round(b.vfly_max, 3), limit=b.fly_limit))
         print(rob[-1])
-    vpp.COUPLE_FACTOR = 1.0
+    vpp.COUPLE_FACTOR, vpp.FOIL_FRICTION = 1.0, 'turbulent'
     out['robustness'] = rob
     json.dump(out, open(os.path.join(HERE, 'pitch_trim_results.json'), 'w'), indent=1)

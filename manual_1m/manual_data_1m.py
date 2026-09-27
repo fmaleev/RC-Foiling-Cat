@@ -6,6 +6,7 @@ import json, math, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.expanduser('~/Library/Application Support/Autodesk/Autodesk Fusion 360/API/AddIns/SailTrim'))
 import rig_model as rm
+import fittings_geom as fg
 
 rm.set_profile('full')
 R = rm.RIG
@@ -13,12 +14,18 @@ d3 = lambda a, b: math.sqrt(sum((a[i] - b[i]) ** 2 for i in range(3)))
 tack = (R['tack'][0], 0.0, R['tack'][1])
 hounds = (R['mast_x'], 0.0, R['hounds_z'])
 rig = dict(forestay_mm=d3(tack, hounds), bridle_leg_mm=d3(tack, R['bow']), shroud_mm=d3((R['mast_x'], R['mast_r'] - 1, R['hounds_z']), R['chainplate']),
-           hounds_above_mast_foot_mm=R['hounds_z'] - R['mast_z0'], mast_length_mm=R['mast_top'] - R['mast_z0'], boom_length_mm=R['main_c0'])
+           hounds_above_mast_foot_mm=R['hounds_z'] - R['mast_z0'], mast_length_mm=R['mast_top'] - R['mast_z0'], boom_length_mm=R['main_c0'],
+           boom_tube_mm=R['main_c0'] - ((R['mast_x'] - (R['mast_chord'] - R['mast_le'])) - fg.BOOM_TUBE_X0))   # clew to the boom jaw
 # jib sheet between the add-in's jib limits, traveler car across the main limits (other controls at their defaults)
 ro = lambda **c: rm.readout(dict(rm.DEFAULTS, **c))
 (j0, j1), (m0, m1) = rm.LIMITS['jib_deg'], rm.LIMITS['main_deg']
 travel = dict(jib_sheet_mm=ro(jib_deg=j1)['jib_sheet_len_mm'] - ro(jib_deg=j0)['jib_sheet_len_mm'],
               traveler_mm=ro(main_deg=m1)['traveler_car_y_mm'] - ro(main_deg=m0)['traveler_car_y_mm'])
+lo, hi = m0, m1                     # boom angle at which the traveler car reaches its end stop
+for _ in range(30):
+    mid = (lo + hi) / 2
+    lo, hi = (mid, hi) if ro(main_deg=mid)['traveler_car_y_mm'] < fg.CAR_LIMIT - 0.01 else (lo, mid)
+travel['boom_at_car_stop_deg'] = hi
 main = []
 for k in range(41):
     s = k / 40
@@ -39,7 +46,9 @@ def tikz():
     L.append(r'\draw[very thick] (0,0) -- ' + ' -- '.join(f'({c:.1f},{h:.1f})' for h, c in main) + f' -- (0,{main[-1][0]:.1f}) -- cycle;')
     for h, bl in zip(battens, batten_len):
         L.append(f'\\draw[blue, thick] (4,{h}) -- ({bl + 4:.1f},{h}) node[right,black] {{batten {bl:.0f} mm}};')
-    L.append(r'\node[anchor=north west] at (0,-3) {MAINSAIL 1:1 (foot %.0f mm, luff %.0f mm, head %.0f mm). Luff attachment to the wing mast: add your own allowance.};' % (main[0][1], main[-1][0], main[-1][1]))
+    L.append(r'\node[anchor=north west] at (0,-3) {MAINSAIL 1:1 (foot %.0f mm, luff %.0f mm, head %.0f mm). The luff is laced to the wing mast\'s trailing edge: no allowance. Lacing holes (dots) every %.0f mm, 5 mm in from the luff.};' % (main[0][1], main[-1][0], main[-1][1], fg.LACING_PITCH))
+    for k in range(1, int(main[-1][0] // fg.LACING_PITCH) + 1):   # tack and head corners are lashed separately
+        L.append(f'\\fill (5,{k * fg.LACING_PITCH:.1f}) circle (0.6);')
     for h, c in main[::8]:
         L.append(f'\\draw[gray] (0,{h:.1f}) -- ({c:.1f},{h:.1f}); \\node[gray,anchor=west] at ({c + 2:.1f},{h:.1f}) {{h={h:.0f}: {c:.1f}}};')
     ox = main[0][1] + 110

@@ -8,11 +8,10 @@ PETG, CFRP, AL, STEEL = 1.27, 1.55, 2.7, 7.85
 FIXED = {  # g
     'Traveler Winch Servo': 45, 'Winch Drum': 5, 'Mainsheet Servo': 62, 'Jib Sheet Winch Servo': 45, 'Jib Winch Drum': 4,
     'Mainsheet Tail': 1, 'Rudder Servo': 12.2, 'Receiver': 14.9, 'Battery 2S': 123,
-    'Mast Tube Base': 0, 'Mast Cap': 3, 'Forestay': 3, 'Shroud Port': 3, 'Shroud Stbd': 3, 'Bridle Port': 2, 'Bridle Stbd': 2,
-    'Bridle Post': 3, 'Traveler Track': 10, 'Jib Track': 6, 'Mainsheet': 1, 'Traveler Car': 5, 'Jib Sheet': 1, 'Jib Car': 4,
-    'Wand Port': 1.5, 'Wand Stbd': 1.5, 'Wand Pivot Port': 2, 'Wand Pivot Stbd': 2, 'Deck Pushrod Port': 3.7, 'Deck Pushrod Stbd': 3.7,
-    'Strut Bellcrank Port': 1, 'Strut Bellcrank Stbd': 1, 'Strut Pushrod Port': 1.5, 'Strut Pushrod Stbd': 1.5,
-    'Flap Horn Port': 0.5, 'Flap Horn Stbd': 0.5}
+    'Mast Tube Base': 0, 'Forestay': 3, 'Shroud Port': 3, 'Shroud Stbd': 3, 'Bridle Port': 2, 'Bridle Stbd': 2,
+    'Mainsheet': 1, 'Jib Sheet': 1}
+MAST_PRINT = 'Mast Fittings (print)'   # rig_fittings.py: fairing shells, gooseneck, boom jaw; their mass goes on the Wing Mast
+mast_print_g = 0.0
 NOTE = 'winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder'
 
 
@@ -28,7 +27,7 @@ def mass_of(b):
     if n in ('Pod Shell', 'Pod Lid', 'Rudder Servo Bracket', 'Rudder Servo Cover'): return v * PETG
     if n in ('Front Beam', 'Rear Beam'): return tube(1.6, 0.1, 60)
     if n == 'Pod Beam': return tube(1.0, 0.1, 60)   # 10 x 8 mm, cut from the mast-joiner tube
-    if n == 'Wing Mast': return tube(1.2, 0.1, 129.8) + 10.0
+    if n == 'Wing Mast': return tube(1.2, 0.1, 129.8) + mast_print_g
     if n == 'Main Boom': return tube(0.8, 0.1, 34.5)
     if n in ('Mainsail', 'Jib'): return b.area / 1e4 * 36 + (3.0 if n == 'Mainsail' else 1.0)
     if n.startswith('Batten'): return 0.4
@@ -36,12 +35,22 @@ def mass_of(b):
     if n.startswith('Elevator Trim Pod'): return v * PETG + 2 * 0.3   # printed pod + two M2 x 6 screws (about 0.3 g each, assumed)
     if n.startswith('Elevator Pivot Pin'): return v * CFRP
     if n.startswith('Gudgeon'): return v * PETG
-    if n.startswith(('Rudder Stock', 'Tiller', 'Tie Bar', 'Rudder Pushrod')): return v * AL
+    if n.startswith(('Wand Pivot', 'Wand Hub', 'Bellcrank Mount', 'Strut Bellcrank', 'Flap Horn')): return v * PETG   # linkage.py
+    if n in ('Wand Port', 'Wand Stbd'): return v * CFRP
+    if n.startswith(('Deck Pushrod', 'Strut Pushrod')): return v * STEEL
+    if n.startswith(('Traveler Track', 'Jib Track', 'Traveler Car', 'Jib Car', 'Bridle Post', 'Mast Cap', 'Hounds Collar')): return v * PETG
+    if n.startswith(('Rudder Stock', 'Tiller', 'Tie Bar', 'Rudder Pushrod', 'Turning Pin')): return v * STEEL   # music wire
     if n.startswith(('L-Foil', 'Elevator', 'Flap')): return v * CFRP
     raise Exception('no mass rule ' + n)
 
 
+def mast_print_mass(design):
+    mp = [o.component for o in design.rootComponent.occurrences if o.component.name == MAST_PRINT]
+    return sum(b.volume for b in mp[0].bRepBodies) * PETG if mp else 10.0
+
+
 def export(design):
+    global mast_print_g
     if ADDIN not in sys.path:
         sys.path.insert(0, ADDIN)
     import rig_model
@@ -49,8 +58,9 @@ def export(design):
     rig_model.set_profile('full')
     plan = {s['name']: s for s in rig_model.planform()}
     bodies = {}
+    mast_print_g = mast_print_mass(design)
     for occ in design.rootComponent.occurrences:
-        if occ.component.name in ('Print Segments', 'Foil Cores (print)'):
+        if occ.component.name in ('Print Segments', 'Foil Cores (print)', MAST_PRINT):
             continue
         for b in occ.component.bRepBodies:
             bodies[b.name] = (occ.component.name, b)

@@ -5,11 +5,13 @@
   "shroud_mm": 973.8,
   "hounds_above_mast_foot_mm": 928.0,
   "mast_length_mm": 1298.0,
-  "boom_length_mm": 345.0
+  "boom_length_mm": 345.0,
+  "boom_tube_mm": 328.0
  },
  "travel": {
-  "jib_sheet_mm": 92.8,
-  "traveler_mm": 231.3
+  "jib_sheet_mm": 82.4,
+  "traveler_mm": 208.6,
+  "boom_at_car_stop_deg": 35.4
  },
  "battens_height_mm": [
   132.2,

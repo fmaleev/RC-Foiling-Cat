@@ -8,6 +8,11 @@ Sails are shown on starboard tack (wind from starboard, sails to port, +Y).
 """
 import math
 
+try:
+    from . import fittings_geom as fg
+except ImportError:
+    import fittings_geom as fg
+
 PROFILES = {
     # 1 m boat: beach-cat rig with rotating wing mast, 8 battens, traveler + jib car, three sail controls
     'full': dict(
@@ -16,8 +21,8 @@ PROFILES = {
         z_foot=140.0, z_head=1330.0, main_c0=345.0, main_ch=105.0, main_p=1.7, n_battens=8,
         boom_z=132.0, boom_r=4.0,
         tack=(818.0, 150.0), hounds_z=1000.0, jib_z0=158.0, jib_head_z=985.0, jib_c0=221.0, jib_ch=12.0, jib_sections=8,
-        rear_beam_x=180.0, front_beam_x=620.0, beam_top=70.0, car_limit=250.0, traveler=True,
-        track_h=1.5,  # traveler track on top of the rear beam
+        rear_beam_x=180.0, front_beam_x=620.0, beam_top=70.0, car_limit=fg.CAR_LIMIT, traveler=True,
+        track_h=fg.TT_TOP + fg.CLR - 70.0,  # car base above the beam top: T-rail track on the rear beam (fittings_geom)
         jib_track=(590.0, 36.0, 122.2),  # v1.4: on the pod lid (x, half travel, car base z); the pod covers the front beam
         bow=(985.0, 280.0, 70.0), chainplate=(600.0, 280.0, 66.0), bridle_post=True,
         limits=dict(jib_deg=(5.0, 40.0), main_deg=(0.0, 40.0), tension=(0.0, 100.0)),
@@ -172,10 +177,11 @@ def hardware(c):
             ('Mainsheet', 'cyl', ((clew[0], clew[1], r['boom_z'] - r['boom_r']), (lx, 0.0, r['lead_z']), 0.5)),
             ('Jib Sheet', 'cyl', ((jclew[0], jclew[1], js[0][0]), (r['jib_lead_x'], 0.0, r['lead_z']), 0.5))]
     return battens + [boom,
-        ('Mainsheet', 'cyl', ((clew[0], clew[1], r['boom_z'] - 4), (r['rear_beam_x'], car_y, r['beam_top'] + th + 6), 0.6)),
-        ('Traveler Car', 'box', (r['rear_beam_x'] - 8, r['rear_beam_x'] + 8, car_y - 9, car_y + 9, r['beam_top'] + th, r['beam_top'] + th + 7)),
-        ('Jib Sheet', 'cyl', ((jclew[0], jclew[1], js[0][0]), (jx, jcar_y, jz + jh), 0.6)),
-        ('Jib Car', 'box', (jx - 7, jx + 7, jcar_y - 7, jcar_y + 7, jz, jz + jh)),
+        ('Mainsheet', 'cyl', ((clew[0], clew[1], r['boom_z'] - 4), (fg.LINE_X, car_y, fg.Z_MAIN + 1), 0.6)),
+        ('Traveler Car', 'tcar', (r['rear_beam_x'] - fg.TC_HX, r['rear_beam_x'] + fg.TC_HX, car_y - fg.TC_HY, car_y + fg.TC_HY,
+                                  r['beam_top'] + th, fg.TC_POST_TOP)),   # bounding box; fusion_rig builds the printed car in it
+        ('Jib Sheet', 'cyl', ((jclew[0], jclew[1], js[0][0]), (fg.JC_SHEET[0], jcar_y + math.copysign(fg.JC_HY, jcar_y), fg.JC_SHEET[1]), 0.6)),
+        ('Jib Car', 'jcar', (jx - fg.JC_HX, jx + fg.JC_HX, jcar_y - fg.JC_HY, jcar_y + fg.JC_HY, jz, jz + jh)),
     ]
 
 

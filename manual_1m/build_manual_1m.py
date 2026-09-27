@@ -7,7 +7,9 @@ import csv, json, math, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.join(ROOT, 'analysis'))
+sys.path.insert(0, os.path.join(ROOT, 'fusion_addin', 'SailTrim'))
 import vpp
+import fittings_geom as fg
 
 J = lambda *p: json.load(open(os.path.join(ROOT, *p)))
 CAD, VR, MD, PL = J('analysis', 'cad_data.json'), J('analysis', 'vpp_results.json'), J('manual_1m', 'manual_data_1m.json'), J('manual_1m', 'print_list_1m.json')
@@ -51,8 +53,11 @@ def print_rows(keys):
 
 hull = sorted(k for k in PL if k.startswith('Hull'))
 pod = sorted(k for k in PL if k.startswith('Pod'))
-boat_parts = hull + pod + ['Rudder Servo Bracket (print)', 'Rudder Servo Cover (print)', 'Rudder Blade Port', 'Daggerboard Port']
-foil_parts = ['Core L-Foil Port', 'Core L-Foil Stbd', 'Core Elevator Port', 'Core Flap Port', 'Elevator Trim Pod Port', 'Rudder Extension Port']
+boat_parts = hull + pod + ['Rudder Servo Bracket (print)', 'Rudder Servo Cover (print)', 'Rudder Blade Port', 'Daggerboard Port', 'Gudgeon Port',
+                          'Traveler Track Centre', 'Traveler Track Port', 'Traveler Track Stbd', 'Traveler Car', 'Jib Track', 'Jib Car',
+                          'Bridle Post', 'Mast Cap', 'Hounds Collar', 'Mast Fairing Lower 1', 'Mast Fairing Upper 1', 'Gooseneck', 'Boom Jaw']
+foil_parts = ['Core L-Foil Port', 'Core L-Foil Stbd', 'Core Elevator Port', 'Core Flap Port', 'Elevator Trim Pod Port', 'Rudder Extension Port',
+              'Wand Pivot Port', 'Wand Hub Port', 'Bellcrank Mount Port', 'Strut Bellcrank Port', 'Flap Horn Port']
 g_boat = sum(PL[k]['cm3'] * PETG * PL[k]['qty'] for k in boat_parts)
 g_foil = sum(PL[k]['cm3'] * PETG * PL[k]['qty'] for k in foil_parts)
 bat = ', '.join(f"{l:.0f}" for l in MD['battens_length_mm'])
@@ -114,7 +119,7 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \end{longtable}}
 \noindent Total: about """ + f"{g_boat:.0f}" + r"""\,g for the boat and """ + f"{g_foil:.0f}" + r"""\,g for the foiling kit, before supports and failed prints.
 
-\noindent\textbf{Not yet printable.} These small fittings are blocks in the CAD model that stand in for their mass and position; each needs to be designed before it can be printed: gudgeons, traveler and jib tracks and cars, mast cap, bridle post, and, for the foiling kit, the wand pivots, strut bellcranks and flap horns.
+\noindent Print the seven mast fairing pieces in spiral-vase mode: one """ + f"{fg.FAIR_WALL:.2f}" + r"""\,mm perimeter, no bottom or top layers. They are thin shells that slide over the mast tube. Print the tracks and cars standing on end, so the T-profile lies flat on the bed. The linkage parts marked x2 are handed: print the second one mirrored, for the starboard hull.
 
 \section{Building the boat}
 \step{1. Hulls}
@@ -132,27 +137,36 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \begin{enumerate}
 \item Bond the three pod shell segments and the three lid segments. The pod snaps onto the front beam and the pod beam.
 \item Fit the two sail winches (traveler: 4-turn; jib sheet: 2-turn) and the mainsheet servo on their rails. The winches hang by their ears in 4--6\,mm wells. JX does not publish the winch's ear height; the rails use the FS5115M value (27.3\,mm above the case bottom). If a winch case touches the bottom of its well first, shim under the ears.
-\item Receiver and the 4xAA pack with its switch go in the pod. The two traveler lines and the mainsheet tail leave the pod through the three holes in its transom and run aft under the rear beam to turning eyes on its front face, bent from the 0.093\,in wire.
+\item Receiver and the 4xAA pack with its switch go in the pod. The two ends of the traveler line and the mainsheet tail leave the pod through the three holes in its transom and run aft to the turning pins in the traveler track's end stops (Step 7).
 \end{enumerate}
 \step{4. Rudders}
 \begin{enumerate}
-\item Rudder stocks from the 0.156\,in music wire, through the printed blades (pivot at 25\,\% chord). The gudgeons that hold them are still placeholders in the CAD (Section 3).
+\item Rudder stocks from the 0.156\,in music wire, through the printed blades (pivot at 25\,\% chord).
+\item Epoxy a gudgeon to each transom, centred on the hull, with its plate flat on the transom face; its two lugs hold the stock 19\,mm behind the transom. Slide the stock down through both lugs into the blade; the tiller arm above the upper lug keeps it in.
 \item Snap the rudder-servo bracket onto the rear beam from below, centred between the hulls, and epoxy it so it cannot rotate. The MG90S hangs by its ears on the bracket's rails, aft of the beam, under the printed cover. The pushrod (0.093\,in wire, Du-Bro clevises) runs from the slot in the cover to the tie bar, which joins the two tiller arms.
 \end{enumerate}
 \step{5. Rig}
 \begin{enumerate}
-\item Mast: the two 12\,x\,10\,mm tubes joined by the 150\,mm spigot, """ + f"{rig['mast_length_mm']:.0f}" + r"""\,mm overall. Hounds """ + f"{rig['hounds_above_mast_foot_mm']:.0f}" + r"""\,mm above the mast foot.
-\item Standing rigging from the 30\,lb braided line (lengths between fittings): forestay """ + f"{rig['forestay_mm']:.0f}" + r"""\,mm, each bridle leg """ + f"{rig['bridle_leg_mm']:.0f}" + r"""\,mm, each shroud """ + f"{rig['shroud_mm']:.0f}" + r"""\,mm. Add your own allowance for knots.
-\item Boom: """ + f"{rig['boom_length_mm']:.0f}" + r"""\,mm of the 8\,x\,7\,mm tube. Traveler track on the rear beam, jib track on the pod lid.
+\item Mast: the two 12\,x\,10\,mm tubes joined by the 150\,mm spigot, """ + f"{rig['mast_length_mm']:.0f}" + r"""\,mm overall. Plug the top with the mast cap (epoxy), so the tube stays sealed if the boat capsizes.
+\item Wing: from the foot up, the gooseneck (tab and pin hole aft), the five lower fairing pieces, the hounds collar with its centre """ + f"{rig['hounds_above_mast_foot_mm']:.0f}" + r"""\,mm above the mast foot, and the two upper pieces. Line up the trailing edges and fix each piece to the tube with a drop of CA at both ends. The whole mast turns in the pod lid and the step, so the wing follows the sail.
+\item Melt 1.2\,mm lacing holes through the fairing """ + f"{fg.LACING_IN:.0f}" + r"""\,mm ahead of its trailing edge, every """ + f"{fg.LACING_PITCH:.0f}" + r"""\,mm, starting """ + f"{fg.LACING_PITCH:.0f}" + r"""\,mm above the sail's foot; the marks on the sail pattern give the heights. Skip the hounds collar.
+\item Standing rigging from the 30\,lb braided line (lengths between fittings): forestay """ + f"{rig['forestay_mm']:.0f}" + r"""\,mm, each bridle leg """ + f"{rig['bridle_leg_mm']:.0f}" + r"""\,mm, each shroud """ + f"{rig['shroud_mm']:.0f}" + r"""\,mm. Add your own allowance for knots. Tie the three stays to a loop of line in the hounds collar's groove, so the mast turns inside the loop. At the bridle post, the bridle line runs through the lower hole (fix it there with CA); the forestay and the jib tack tie through the upper hole.
+\item Boom: """ + f"{rig['boom_tube_mm']:.0f}" + r"""\,mm of the 8\,x\,7\,mm tube, with the boom jaw epoxied into its front end. Pin the jaw to the gooseneck's tab with a piece of the 0.093\,in wire. Bend a small eye from the same wire for the mainsheet and epoxy it under the boom's aft end.
+\item Traveler track: epoxy the centre piece on top of the rear beam, centred. Slide the car on from one end, then epoxy the two end pieces on so the rail runs continuously, and sand the joints smooth. Press a 19\,mm piece of the 0.093\,in wire into each end stop's pin hole. The car stops """ + f"{fg.CAR_LIMIT:.0f}" + r"""\,mm either side of the centre line (boom """ + f"{MD['travel']['boom_at_car_stop_deg']:.0f}" + r"""$^\circ$ out).
+\item Jib track: slide the jib car on, then epoxy the track on the pod lid on the centre line, """ + f"{fg.JT_X:.0f}" + r"""\,mm forward of the transoms. Drill a 2\,mm hole through the lid under the hole at the track's centre, for the jib sheet.
 \end{enumerate}
 \step{6. Sails}
 \begin{enumerate}
 \item Print the 1:1 patterns (\texttt{manual\_1m/sail\_patterns\_1m\_1to1.pdf}, a single tall sheet: a copy shop's plotter, or tile it) and check the 100\,mm scale bar.
 \item Cut the main (foot """ + f"{MD['main']['foot']:.0f}" + r""", luff """ + f"{MD['main']['luff']:.0f}" + r""", head """ + f"{MD['main']['head']:.0f}" + r"""\,mm) and the jib (foot """ + f"{MD['jib_foot']:.0f}" + r""", luff """ + f"{MD['jib_luff_mm']:.0f}" + r"""\,mm) from the Icarex. Tape the edges, corners and eight batten pockets with the sail tape.
-\item Battens from the 1.2\,mm carbon rod, bottom to top (mm): """ + bat + r""". How the luff attaches to the wing mast is not detailed in the CAD: a sleeve, as on the Mini Cat, is one option.
+\item Battens from the 1.2\,mm carbon rod, bottom to top (mm): """ + bat + r""".
+\item Main luff: tape it, then melt the lacing holes 5\,mm in from the edge at the marks on the pattern. Lace it to the wing's trailing edge with the braided line, one turn round the edge per hole. Lash the tack to the hole in the boom jaw and the head to the top lacing hole.
+\item Jib: fold a 10\,mm sleeve along the luff around the forestay, as on the Mini Cat.
 \end{enumerate}
 \step{7. Mainsheet routing}
-The traveler car moves up to 236\,mm across the beam, far more line than the mainsheet servo can take up, so the car must not pull on the mainsheet. Dead-end the mainsheet at the port end of the rear beam, run it through the traveler car, up to the boom and back down, then out of the other side of the car to a turning block at the starboard end and back under the beam into the pod. Moving the car then shortens one side of the sheet exactly as much as it lengthens the other.
+The traveler car moves up to """ + f"{fg.CAR_LIMIT:.0f}" + r"""\,mm either side of the centre line. That is far more line than the mainsheet servo can take up, so the car must not pull on the mainsheet. Tie the mainsheet to the port end-stop pin in the upper slot. Run it through the car's port post, up through the eye under the boom and back down, through the starboard post, round the starboard pin in the upper slot and forward into the pod. Moving the car then shortens one side of the sheet exactly as much as it lengthens the other.
+
+The traveler line is one loop. From the winch drum it runs out of the pod, round the port pin in the lower slot, through the car's lower hole, round the starboard pin and back into the pod to the drum. Fix the car on the line with a drop of CA through the hole in the top of the car.
 \step{8. Radio setup}
 \begin{enumerate}
 \item Bind the receiver and assign four channels: rudder, traveler, jib sheet, mainsheet tension.
@@ -180,7 +194,13 @@ One wand per hull, """ + f"{vpp.WAND_L * 1000:.0f}" + r"""\,mm of 2\,mm carbon r
 \item \textbf{""" + f"{vpp.GEAR:g}" + r"""$^\circ$ of flap per degree of wand}, wand down giving flap down;
 \item the full $\pm""" + f"{vpp.FLAP_TRAVEL_DEG:.0f}" + r"""^\circ$ of flap without binding.
 \end{itemize}
-The wand pivots, bellcranks and flap horns are placeholders in the CAD (Section 3): design them to these three numbers.
+The printed linkage gives them. The wand hub's horn is 8.25\,mm long, the bellcrank's arms are 8\,mm, and the flap horn's hole is 5.5\,mm behind the flap hinge: $(8.25/5.5)\times(8/8) = 1.5^\circ$ of flap per degree of wand.
+\begin{enumerate}
+\item Epoxy a wand hinge bracket to each stem, cheeks forward. Put the wand hub between the cheeks on a 2\,mm carbon axle and push the wand into the hub's socket.
+\item Epoxy the bellcrank mount on the deck beside the strut's top. Pin the bellcrank between its cheeks on a 2\,mm carbon axle, one arm up and one arm aft.
+\item Bond the flap horn to the upper face of the flap's root, in line with the slot in the strut's inboard face.
+\item Bend Z-ends on the 0.047\,in wire. The deck pushrod runs from the hub's horn to the bellcrank's upper arm; the strut pushrod runs from the bellcrank's aft arm down the strut's channel and out of the slot to the flap horn. Bend the last Z with the wand at """ + f"{vpp.WAND_PHI0_DEG:.0f}" + r"""$^\circ$ and the flap at zero.
+\end{enumerate}
 \step{13. Elevators and trim pods}
 \begin{center}\includegraphics[width=0.6\linewidth]{../images/elevator_trim_pod.png}\end{center}
 \begin{enumerate}

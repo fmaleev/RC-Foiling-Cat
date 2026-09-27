@@ -17,10 +17,8 @@ CAD = json.load(open(os.path.join(ROOT, 'analysis', 'cad_data.json')))
 ST = json.load(open(os.path.join(ROOT, 'analysis', 'stability_results.json')))
 VR = json.load(open(os.path.join(ROOT, 'analysis', 'vpp_results.json')))
 
-MASSES = [round(0.2 * i, 1) for i in range(19)]            # kg carried by the hulls (both), 0 .. 3.6
-SPEEDS = [round(0.1 * j, 1) for j in range(1, 46)]           # m/s, 0.1 .. 4.5
-zmin = min(vpp.ZB(vpp.L_HULL * i / 50) for i in range(51))
-
+MASSES, SPEEDS = vpp.TABLE_MASSES, vpp.TABLE_SPEEDS
+zmin = vpp.hull_table()['zmin']
 
 def heel_arm_disp(zw, ce_z, zbot, z_rud):
     """vpp.Boat.heel_arm(False) with the waterline as an argument."""
@@ -38,24 +36,11 @@ def trim_data():
                 keel=[[round(x, 4), round(vpp.ZB(x), 5)] for x in (vpp.L_HULL * i / 50 for i in range(51))])
 
 
-def hull_rows():
-    rows = []
-    for m in MASSES:
-        zw = vpp.sinkage(m / vpp.RHO) if m > 0 else zmin
-        wet = [x for x in (vpp.L_HULL * i / 400 for i in range(401)) if vpp.ZB(x) < zw]
-        rows.append(dict(m=m, zw=zw, S=2 * vpp.integrate(lambda x: vpp.wet_girth(x, zw), 0, vpp.L_HULL, 300) if m > 0 else 0.0,
-                         lwl=(max(wet) - min(wet)) if wet else 0.0, at=2 * vpp.sub_area(0.0, zw) if m > 0 else 0.0,
-                         rw=[vpp.michell(V, zw) if (m > 0 and V >= 0.3) else 0.0 for V in SPEEDS],
-                         rw1=[vpp.michell(V, zw, catamaran=False) if (m > 0 and V >= 0.3) else 0.0 for V in SPEEDS]))   # one hull (skimming)
-        print('hull load', m, 'kg done', flush=True)
-    return rows
-
-
 if __name__ == '__main__':
     fb = vpp.load_pitch_limits(vpp.Boat('foiling', CAD), 'foiling_1m')
     db = vpp.Boat('displacement', CAD)
     ce_z = fb.ce_z
-    rows = hull_rows()
+    rows = vpp.hull_table()['rows']     # built and cached by vpp (the Python VPP interpolates the same table)
     ref = []
     for cfg in ('displacement', 'foiling'):
         for twa in ('60', '90', '105'):

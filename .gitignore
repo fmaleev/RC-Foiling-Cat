@@ -14,3 +14,4 @@ node_modules/
 analysis/logs_*.txt
 # macOS
 .DS_Store
+analysis/hull_table_*.json

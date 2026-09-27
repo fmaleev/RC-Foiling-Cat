@@ -20,11 +20,12 @@ import vpp
 HERE = os.path.dirname(os.path.abspath(__file__))
 CAD = json.load(open(os.path.join(HERE, 'cad_data.json')))
 INERTIA = json.load(open(os.path.join(HERE, 'cad_inertia.json')))
-SIM = json.load(open(os.path.join(HERE, '..', 'sim', 'sim_data.json')))
 DT, ZETA_HULL, NST = 0.002, 0.3, 40
 H_REF = vpp.WAND_L * math.sin(math.radians(vpp.WAND_PHI0_DEG))
 
-HM, HS, ROWS = SIM['hull']['masses'], SIM['hull']['speeds'], SIM['hull']['rows']
+vpp.configure()
+T = vpp.hull_table()                     # the simulator's hull table (sim/sim_data.json exports the same)
+HM, HS, ROWS = T['masses'], T['speeds'], T['rows']
 
 
 def interp1(xs, ys, x):
@@ -44,7 +45,7 @@ def hull_drag(m, V):
     tm = min(1.0, max(0.0, (m - HM[i]) / (HM[i + 1] - HM[i])))
     rw = interp1(HS, ROWS[i]['rw'], V) + tm * (interp1(HS, ROWS[i + 1]['rw'], V) - interp1(HS, ROWS[i]['rw'], V)) if V >= 0.3 else 0.0
     Rf = q * S * vpp.cf_ittc(V * max(lwl, 0.05) / vpp.NU) * 1.25
-    hw = SIM['hull']['hw_transom']
+    hw = vpp.HW(0.0)
     fnt = V / math.sqrt(2 * vpp.G * at / (2 * hw + 2 * hw * 0.9)) if at > 0 else 99
     return Rf + rw + (q * at * 0.2 * (1 - 0.2 * fnt) if fnt < 5 else 0.0)
 

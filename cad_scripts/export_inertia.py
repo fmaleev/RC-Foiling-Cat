@@ -14,6 +14,7 @@ def export(design):
     sys.path.insert(0, HERE)
     import export_full_mass as efm
     importlib.reload(efm)
+    efm.mast_print_g = efm.mast_print_mass(design)
     if efm.ADDIN not in sys.path:
         sys.path.insert(0, efm.ADDIN)
     import rig_model
@@ -23,7 +24,7 @@ def export(design):
     items = []                                    # (kg, x m, z m, Iyy_own kg m2, Ixx_own kg m2, y m)
     for occ in design.rootComponent.occurrences:
         c = occ.component.name
-        if c in ('Print Segments', 'Foil Cores (print)', 'Displacement Kit'):
+        if c in ('Print Segments', 'Foil Cores (print)', efm.MAST_PRINT, 'Displacement Kit'):
             continue
         for b in occ.component.bRepBodies:
             m = efm.mass_of(b) / 1000.0

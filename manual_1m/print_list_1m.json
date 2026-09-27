@@ -284,5 +284,214 @@
    60
   ],
   "exists": true
+ },
+ "Gudgeon Port": {
+  "stl": "Gudgeon_x2.stl",
+  "qty": 2,
+  "cm3": 3.84,
+  "size_mm": [
+   28,
+   24,
+   16
+  ],
+  "exists": true
+ },
+ "Traveler Track Centre": {
+  "stl": "Traveler_Track_Centre.stl",
+  "qty": 1,
+  "cm3": 4.29,
+  "size_mm": [
+   152,
+   7,
+   6
+  ],
+  "exists": true
+ },
+ "Traveler Track Port": {
+  "stl": "Traveler_Track_Port.stl",
+  "qty": 1,
+  "cm3": 6.46,
+  "size_mm": [
+   158,
+   25,
+   11
+  ],
+  "exists": true
+ },
+ "Traveler Track Stbd": {
+  "stl": "Traveler_Track_Stbd.stl",
+  "qty": 1,
+  "cm3": 6.46,
+  "size_mm": [
+   158,
+   25,
+   11
+  ],
+  "exists": true
+ },
+ "Traveler Car": {
+  "stl": "Traveler_Car.stl",
+  "qty": 1,
+  "cm3": 1.82,
+  "size_mm": [
+   18,
+   16,
+   11
+  ],
+  "exists": true
+ },
+ "Jib Track": {
+  "stl": "Jib_Track.stl",
+  "qty": 1,
+  "cm3": 2.06,
+  "size_mm": [
+   96,
+   10,
+   5
+  ],
+  "exists": true
+ },
+ "Jib Car": {
+  "stl": "Jib_Car.stl",
+  "qty": 1,
+  "cm3": 0.76,
+  "size_mm": [
+   14,
+   14,
+   5
+  ],
+  "exists": true
+ },
+ "Bridle Post": {
+  "stl": "Bridle_Post.stl",
+  "qty": 1,
+  "cm3": 0.86,
+  "size_mm": [
+   23,
+   7,
+   7
+  ],
+  "exists": true
+ },
+ "Mast Cap": {
+  "stl": "Mast_Cap.stl",
+  "qty": 1,
+  "cm3": 1.29,
+  "size_mm": [
+   14,
+   14,
+   14
+  ],
+  "exists": true
+ },
+ "Hounds Collar": {
+  "stl": "Hounds_Collar.stl",
+  "qty": 1,
+  "cm3": 0.66,
+  "size_mm": [
+   16,
+   16,
+   12
+  ],
+  "exists": true
+ },
+ "Mast Fairing Lower 1": {
+  "stl": "Mast_Fairing_Lower_x5.stl",
+  "qty": 5,
+  "cm3": 4.5,
+  "size_mm": [
+   171,
+   24,
+   14
+  ],
+  "exists": true
+ },
+ "Mast Fairing Upper 1": {
+  "stl": "Mast_Fairing_Upper_x2.stl",
+  "qty": 2,
+  "cm3": 4.8,
+  "size_mm": [
+   182,
+   24,
+   14
+  ],
+  "exists": true
+ },
+ "Gooseneck": {
+  "stl": "Gooseneck.stl",
+  "qty": 1,
+  "cm3": 2.18,
+  "size_mm": [
+   32,
+   16,
+   14
+  ],
+  "exists": true
+ },
+ "Boom Jaw": {
+  "stl": "Boom_Jaw.stl",
+  "qty": 1,
+  "cm3": 1.53,
+  "size_mm": [
+   28,
+   14,
+   8
+  ],
+  "exists": true
+ },
+ "Wand Pivot Port": {
+  "stl": "Wand_Hinge_Bracket_x2.stl",
+  "qty": 2,
+  "cm3": 1.52,
+  "size_mm": [
+   17,
+   17,
+   13
+  ],
+  "exists": true
+ },
+ "Wand Hub Port": {
+  "stl": "Wand_Hub_x2.stl",
+  "qty": 2,
+  "cm3": 1.12,
+  "size_mm": [
+   23,
+   16,
+   12
+  ],
+  "exists": true
+ },
+ "Bellcrank Mount Port": {
+  "stl": "Bellcrank_Mount_x2.stl",
+  "qty": 2,
+  "cm3": 2.31,
+  "size_mm": [
+   37,
+   24,
+   10
+  ],
+  "exists": true
+ },
+ "Strut Bellcrank Port": {
+  "stl": "Strut_Bellcrank_x2.stl",
+  "qty": 2,
+  "cm3": 0.15,
+  "size_mm": [
+   12,
+   12,
+   2
+  ],
+  "exists": true
+ },
+ "Flap Horn Port": {
+  "stl": "Flap_Horn_x2.stl",
+  "qty": 2,
+  "cm3": 0.06,
+  "size_mm": [
+   8,
+   3,
+   3
+  ],
+  "exists": true
  }
 }

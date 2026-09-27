@@ -3,8 +3,10 @@ import adsk.core, adsk.fusion
 
 try:
     from . import rig_model as rm
+    from . import fittings_geom as fg
 except ImportError:
     import rig_model as rm
+    import fittings_geom as fg
 
 PARAMS = (('JibSheet', 'jib_deg', 'deg', 'Front sail (jib) sheet angle'),
           ('MainTraveler', 'main_deg', 'deg', 'Back sail (main) traveler angle'),
@@ -95,6 +97,8 @@ def temp_body(item):
     name, kind, d = item
     if kind == 'cyl':
         return tbm.createCylinderOrCone(P(*d[0]), d[2] / 10.0, P(*d[1]), d[2] / 10.0)
+    if kind in ('tcar', 'jcar'):   # printed cars (fittings_geom), placed by their bounding box
+        return (fg.traveler_car if kind == 'tcar' else fg.jib_car)((d[2] + d[3]) / 2)
     if kind == 'ribbon':  # batten pocket: thin vertical strip following the sail section (leech end trimmed)
         pts, h = d
         wires = []
