@@ -420,7 +420,7 @@
  "Gooseneck": {
   "stl": "Gooseneck.stl",
   "qty": 1,
-  "cm3": 2.18,
+  "cm3": 2.11,
   "size_mm": [
    32,
    16,
@@ -431,10 +431,10 @@
  "Boom Jaw": {
   "stl": "Boom_Jaw.stl",
   "qty": 1,
-  "cm3": 1.53,
+  "cm3": 1.21,
   "size_mm": [
    28,
-   14,
+   8,
    8
   ],
   "exists": true

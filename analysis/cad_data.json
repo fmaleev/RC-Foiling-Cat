@@ -1,8 +1,8 @@
 {
  "displacement": {
-  "mass_g": 2114.1,
+  "mass_g": 2113.6,
   "lcg_mm": 449.6,
-  "vcg_mm": 81.6,
+  "vcg_mm": 81.4,
   "by_component_g": {
    "Crossbeams": 113.9,
    "Center Pod": 335.6,
@@ -10,7 +10,7 @@
    "RC Electronics": 315.3,
    "Displacement Kit": 192.4,
    "Rig Standing": 43.0,
-   "Mast": 115.0,
+   "Mast": 114.5,
    "Mainsail": 32.4,
    "Jib": 6.5,
    "Hull Port": 391.3,
@@ -236,7 +236,7 @@
    [
     "Mast",
     "Wing Mast",
-    115.0
+    114.5
    ],
    [
     "Mainsail",
@@ -327,16 +327,16 @@
   "note": "winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder"
  },
  "foiling": {
-  "mass_g": 2332.1,
+  "mass_g": 2331.6,
   "lcg_mm": 454.8,
-  "vcg_mm": 62.7,
+  "vcg_mm": 62.6,
   "by_component_g": {
    "Crossbeams": 113.9,
    "Center Pod": 335.6,
    "Rudders": 157.3,
    "RC Electronics": 315.3,
    "Rig Standing": 43.0,
-   "Mast": 115.0,
+   "Mast": 114.5,
    "Mainsail": 32.4,
    "Jib": 6.5,
    "Ride Height Control": 29.3,
@@ -554,7 +554,7 @@
    [
     "Mast",
     "Wing Mast",
-    115.0
+    114.5
    ],
    [
     "Mainsail",

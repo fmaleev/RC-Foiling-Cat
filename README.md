@@ -93,8 +93,10 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
     - The ride-height linkage: 8.25 mm wand horn, 8 mm bellcrank, 5.5 mm flap horn, giving 1.5 deg of flap per deg of wand.
     - The wing-mast fairing, as 0.45 mm vase-mode shells in seven pieces, with the main's luff laced to its trailing edge.
 
+    A clearance sweep with the gooseneck turning with the wing and the boom end with the boom moved the fork from the boom end to the gooseneck: a boom-end fork reaching below the boom would hit the jib car with the main eased and the jib sheeted in. The same sweep found that with the jib sheeted fully in (5 deg) and the main eased past about 31 deg, the jib sheet crosses the boom itself; the manual says to ease the jib first.
+
     Two assumed masses were wrong:
-    - The fairing, gooseneck and boom jaw weigh 45.5 g, where 10 g had been assumed.
+    - The fairing, gooseneck and boom jaw weigh 45.0 g, where 10 g had been assumed.
     - The rudder stocks, tiller arms, tie bar and pushrod are music wire but had been weighed as aluminium. The steel tie bar alone is 56 g.
 
     The build-first boat went from 2037 g to 2114 g and the foiling boat from 2242 g to 2332 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.

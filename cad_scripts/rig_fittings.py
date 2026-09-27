@@ -157,16 +157,19 @@ def mast_print(root, look):
     te = min(p[0] for p in outer)
     pin = (te - PIN_AFT, 0.0)
     zg0, zg1 = GOOSE_Z
+    # the gooseneck carries the fork (it turns with the wing, so its lower cheek stays by the trailing edge, clear of the
+    # jib car); the boom end is a single tongue no deeper than the 8 mm boom tube, so it passes over the jib car
     g = prism(comp, [outer], zg0, zg1 - zg0)
-    g = union([g, box(pin[0], te + 1.5, -2.0, 2.0, BOOM_Z - 4, BOOM_Z + 4), cyl((pin[0], 0, BOOM_Z - 4), (pin[0], 0, BOOM_Z + 4), 3.5)])
-    res['Gooseneck'] = minus(g, [cyl((MAST_X, 0, zg0 - 1), (MAST_X, 0, zg1 + 1), TUBE_R + 0.05), cyl((pin[0], 0, zg0 - 1), (pin[0], 0, zg1 + 1), 1.25)])
-    lo, hi = (BOOM_Z - 6.8, BOOM_Z - 4.3), (BOOM_Z + 4.3, BOOM_Z + 6.8)          # cheeks 0.3 mm clear of the 8 mm tab
-    jaw = [box(BOOM_TUBE_X0, pin[0] - 4.0, -4.0, 4.0, lo[0], hi[1])]
-    for za, zb in (lo, hi):
-        jaw += [box(pin[0] - 4.0, pin[0], -3.0, 3.0, za, zb), cyl((pin[0], 0, za), (pin[0], 0, zb), 3.0)]
-    jaw.append(cyl((BOOM_TUBE_X0 - 12.0, 0, BOOM_Z), (BOOM_TUBE_X0, 0, BOOM_Z), 3.45))     # plug into the 8 x 7 mm boom
-    res['Boom Jaw'] = minus(union(jaw), [cyl((pin[0], 0, lo[0] - 1), (pin[0], 0, hi[1] + 1), 1.25),
-                                          cyl((BOOM_TUBE_X0 + 4.0, -5, hi[0] + 0.2), (BOOM_TUBE_X0 + 4.0, 5, hi[0] + 0.2), 0.6)])
+    lo, hi = (zg0, BOOM_Z - 4.3), (BOOM_Z + 4.3, zg0 + 14.0)
+    g = union([g] + [part for za, zb in (lo, hi) for part in (box(pin[0], te + 1.5, -3.0, 3.0, za, zb), cyl((pin[0], 0, za), (pin[0], 0, zb), 3.5))])
+    res['Gooseneck'] = minus(g, [cyl((MAST_X, 0, zg0 - 1), (MAST_X, 0, zg1 + 1), TUBE_R + 0.05), cyl((pin[0], 0, zg0 - 1), (pin[0], 0, zg1 + 1), 1.25),
+                                 box(pin[0] - 5.0, te, -4.0, 4.0, lo[1], hi[0])])             # slot for the tongue
+    tz = (BOOM_Z - 4.0, BOOM_Z + 4.0)
+    jaw = [box(BOOM_TUBE_X0, pin[0] - 4.0, -4.0, 4.0, *tz), box(pin[0] - 4.0, pin[0], -2.0, 2.0, lo[1] + 0.3, hi[0] - 0.3),
+           cyl((pin[0], 0, lo[1] + 0.3), (pin[0], 0, hi[0] - 0.3), 3.0),
+           cyl((BOOM_TUBE_X0 - 12.0, 0, BOOM_Z), (BOOM_TUBE_X0, 0, BOOM_Z), 3.45)]                # plug into the 8 x 7 mm boom
+    res['Boom Jaw'] = minus(union(jaw), [cyl((pin[0], 0, tz[0] - 1), (pin[0], 0, tz[1] + 1), 1.25),
+                                          cyl((BOOM_TUBE_X0 + 4.0, -5, BOOM_Z + 2.0), (BOOM_TUBE_X0 + 4.0, 5, BOOM_Z + 2.0), 0.6)])
     out = {}
     for name, t in res.items():
         b = add_body(comp, name, t, look)
@@ -281,3 +284,46 @@ def export_print(design):
         pl[key] = dict(stl=stl, qty=qty, cm3=round(b.volume, 2), size_mm=size, exists=os.path.exists(fn))
     json.dump(pl, open(path, 'w'), indent=1)
     return {k: (pl[k]['cm3'], pl[k]['size_mm']) for k, *_ in PRINT}
+
+
+def mast_sweep(design, trims):
+    """Gooseneck (turning with the wing) and boom jaw (turning with the boom) placed at each (main_deg, jib_deg) trim and
+    checked for overlaps (mm3) against the jib car, jib sheet, jib track and pod lid, the moving cars set by the add-in."""
+    root = design.rootComponent
+    mp = comp_of(root, 'Mast Fittings (print)')
+    fixed = [comp_of(root, 'Rig Standing').bRepBodies.itemByName('Jib Track'), comp_of(root, 'Center Pod').bRepBodies.itemByName('Pod Lid')]
+    c0 = fusion_rig.read_controls(design)
+    te = min(p[0] for p in section(False))
+    out = []
+    for md, jd in trims:
+        c = dict(main_deg=float(md), jib_deg=float(jd), tension=c0['tension'])
+        fusion_rig.update(design, c)
+        phi = math.radians(rm.trim(c)['mast_rot'])
+        boom = {h[0]: h[2] for h in rm.hardware(c)}['Main Boom']
+        (x0, y0, _), (x1, y1, _) = boom[0], boom[1]
+        thb = math.atan2(y1 - y0, x0 - x1)                     # boom angle from dead aft toward +y
+        placed = {}
+        for name in ('Gooseneck', 'Boom Jaw'):
+            t = T().copy(mp.bRepBodies.itemByName(name))
+            m = adsk.core.Matrix3D.create()
+            m.setToRotation(-phi, adsk.core.Vector3D.create(0, 0, 1), adsk.core.Point3D.create(MAST_X / 10, 0, 0))
+            T().transform(t, m)
+            if name == 'Boom Jaw':
+                px, py = MAST_X + (te - PIN_AFT - MAST_X) * math.cos(phi), -(te - PIN_AFT - MAST_X) * math.sin(phi)
+                m2 = adsk.core.Matrix3D.create()
+                m2.setToRotation(phi - thb, adsk.core.Vector3D.create(0, 0, 1), adsk.core.Point3D.create(px / 10, py / 10, 0))
+                T().transform(t, m2)
+            placed[name] = t
+        moving = [comp_of(root, 'Jib').bRepBodies.itemByName(n) for n in ('Jib Car', 'Jib Sheet')]
+        hits = []
+        for name, t in placed.items():
+            for b in fixed + moving:
+                if not t.boundingBox.intersects(b.boundingBox):
+                    continue
+                u = T().copy(t)
+                T().booleanOperation(u, T().copy(b), adsk.fusion.BooleanTypes.IntersectionBooleanType)
+                if u.volume * 1000 > 0.01:
+                    hits.append((name, b.name, round(u.volume * 1000, 2)))
+        out.append(dict(main=md, jib=jd, hits=hits))
+    fusion_rig.update(design, c0)
+    return out
