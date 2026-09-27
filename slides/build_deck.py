@@ -172,6 +172,17 @@ S['takeoff'] = f"""<section id="takeoff" style="background:{LIGHT}; {BASE}">
   {footer(11)}
   <aside>Surge, heave and pitch integrated in 2 ms steps with the wand and flap stops. The run settles at the performance model's steady speed, an independent check. A 4 kn gust while flying leaves the elevators at least {TS['beam reach, 9 kn, 4 kn gust at 20-25 s']['min_el_depth_mm']:.0f} mm deep.</aside>
 </section>"""
+S['fittings'] = f"""<section id="fittings" style="background:{LIGHT}; {BASE}">
+  {title('Every fitting drawn and printable')}
+  <div style="display:flex; gap:32px">
+    {img('traveler_car.png', 'Traveler car on its T-rail track, with the two mainsheet posts', 520, 364, 'cover', 'border-radius:12px')}
+    {img('gudgeon.png', 'Transom gudgeon holding the music-wire rudder stock', 520, 364, 'cover', 'border-radius:12px')}
+    {img('gooseneck.png', 'Gooseneck at the foot of the wing mast, with the boom jaw', 520, 364, 'cover', 'border-radius:12px')}
+  </div>
+  <p style="font-size:32px; line-height:1.4; color:{INK}">Tracks and cars, gudgeons, gooseneck, mast fairing and the ride-height linkage replaced placeholder blocks. Weighing them properly added {CAD['foiling']['mass_g'] - 2241.5:.0f}&#160;g to the foiling boat, and every prediction here uses the new mass.</p>
+  {footer(12)}
+  <aside>Two assumed masses were wrong: the printed wing-mast fairing weighs about four times the 10 g that had been assumed, and the music-wire rudder parts had been weighed as aluminium. The Fusion add-in still moves the printed cars with the trim sliders.</aside>
+</section>"""
 S['build'] = f"""<section id="build" style="background:{PALE}; {BASE}">
   {title('Build plan and cost')}
   <div style="display:flex; gap:32px">
@@ -180,7 +191,7 @@ S['build'] = f"""<section id="build" style="background:{PALE}; {BASE}">
     {card(f"${cost('bom_foiling_kit_v2'):.2f}", f'{FV} foiling kit, fitted later', '#FFFFFF')}
   </div>
   <p style="font-size:32px; line-height:1.4; color:{INK}">Every price was read on a retailer page (September 2026), before shipping and tax. Build manuals, 1:1 sail patterns, print-ready STLs and a tow-test plan with pass bands are ready.</p>
-  {footer(12)}
+  {footer(13)}
   <aside>The tow test compares towing from the sail's centre of effort and from the mast foot; the pitch difference measures the bow-down couple, the model's largest uncertainty.</aside>
 </section>"""
 S['next'] = f"""<section id="next" style="background:{NAVY}; color:{LIGHT}; font-family:{SANS}; padding:128px 128px 160px; display:flex; flex-direction:column; justify-content:center; gap:40px">
@@ -193,7 +204,7 @@ S['next'] = f"""<section id="next" style="background:{NAVY}; color:{LIGHT}; font
   <p style="font-size:26px; line-height:1.4; color:#AFC2D6">Developed with Claude (Anthropic) as an AI engineering assistant for the CAD scripting, analysis code and documents.</p>
   <aside>The first measurements will say which assumptions matter most: foil lift near Re 1e5, the drag model behind the pitch couple, and the flap effectiveness.</aside>
 </section>"""
-ORDER = ['cover', 'question', 'design', 'method', 'speed', 'heave', 'surprise', 'fix', 'search', 'roll', 'takeoff', 'build', 'next']
+ORDER = ['cover', 'question', 'design', 'method', 'speed', 'heave', 'surprise', 'fix', 'search', 'roll', 'takeoff', 'fittings', 'build', 'next']
 
 if __name__ == '__main__':
     out = sys.argv[1]

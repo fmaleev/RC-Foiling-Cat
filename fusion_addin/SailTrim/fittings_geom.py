@@ -11,7 +11,7 @@ runs along the track through the car and up to the clew.
 """
 BEAM_X, BEAM_Z, BEAM_R = 180.0, 62.0, 8.0
 TT_TOP, TT_HALF_W = 72.0, 3.5          # track saddle top z (2 mm over the beam), half width
-TT_STEM, TT_HEAD = (1.0, 1.4), (3.0, 1.6)   # rail stem and head: (half width, height)
+TT_STEM, TT_HEAD = (1.0, 2.0), (3.0, 1.6)   # rail stem and head: (half width, height); car lips 1.6 mm (structure.py)
 TT_END, TT_STOP, TT_SPLIT = 234.0, 222.0, 76.0   # track ends (2 mm inside the hull walls), end-stop faces, joints (|y|)
 CLR = 0.2                              # sliding clearance
 TC_HX, TC_HY, TC_TOP, TC_POST_TOP = 5.5, 9.0, 82.0, 88.0

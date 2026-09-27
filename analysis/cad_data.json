@@ -1,7 +1,7 @@
 {
  "displacement": {
-  "mass_g": 2113.5,
-  "lcg_mm": 449.7,
+  "mass_g": 2114.1,
+  "lcg_mm": 449.6,
   "vcg_mm": 81.6,
   "by_component_g": {
    "Crossbeams": 113.9,
@@ -9,7 +9,7 @@
    "Rudders": 157.3,
    "RC Electronics": 315.3,
    "Displacement Kit": 192.4,
-   "Rig Standing": 42.3,
+   "Rig Standing": 43.0,
    "Mast": 115.0,
    "Mainsail": 32.4,
    "Jib": 6.5,
@@ -191,17 +191,17 @@
    [
     "Rig Standing",
     "Traveler Track Centre",
-    5.5
+    5.7
    ],
    [
     "Rig Standing",
     "Traveler Track Port",
-    8.2
+    8.4
    ],
    [
     "Rig Standing",
     "Traveler Track Stbd",
-    8.2
+    8.4
    ],
    [
     "Rig Standing",
@@ -327,15 +327,15 @@
   "note": "winches: JX W4505-4T / -2T 45 g (1.5T spec, same case assumed); mainsheet FS5115M 62 g (Pololu); rudder MG90S 12.2 g; receiver FS-iA6B 14.9 g; battery 4 x 27 g eneloop + 15 g holder"
  },
  "foiling": {
-  "mass_g": 2331.4,
-  "lcg_mm": 454.9,
+  "mass_g": 2332.1,
+  "lcg_mm": 454.8,
   "vcg_mm": 62.7,
   "by_component_g": {
    "Crossbeams": 113.9,
    "Center Pod": 335.6,
    "Rudders": 157.3,
    "RC Electronics": 315.3,
-   "Rig Standing": 42.3,
+   "Rig Standing": 43.0,
    "Mast": 115.0,
    "Mainsail": 32.4,
    "Jib": 6.5,
@@ -509,17 +509,17 @@
    [
     "Rig Standing",
     "Traveler Track Centre",
-    5.5
+    5.7
    ],
    [
     "Rig Standing",
     "Traveler Track Port",
-    8.2
+    8.4
    ],
    [
     "Rig Standing",
     "Traveler Track Stbd",
-    8.2
+    8.4
    ],
    [
     "Rig Standing",

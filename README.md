@@ -97,7 +97,7 @@ Prices were read on retailer pages on 2026-09-23, and every mini part link was r
     - The fairing, gooseneck and boom jaw weigh 45.5 g, where 10 g had been assumed.
     - The rudder stocks, tiller arms, tie bar and pushrod are music wire but had been weighed as aluminium. The steel tie bar alone is 56 g.
 
-    The build-first boat went from 2037 g to 2114 g and the foiling boat from 2242 g to 2331 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
+    The build-first boat went from 2037 g to 2114 g and the foiling boat from 2242 g to 2332 g, with the CG about 7 mm further aft. The traveler's end stops limit the boom to about 35 deg.
 
 ## Repository map
 
@@ -154,6 +154,7 @@ The geometry update behind the dialog was tested through the API, but the dialog
 - Foils: thin-airfoil theory with a lifting-line slope (e = 0.85); flap effectiveness 0.8 x thin-airfoil value; usable CL 0.8; unidirectional carbon cap laminate E about 120 GPa (assumed)
 - Flying trim: sail drive equals the flying drag, acting at the sail centre of effort; limits of half a chord of submergence, 30 mm of rudder, 80 % of the rudder throw for steering and a 30 mm pitch static margin (elevator efficiency 0.65) are assumed
 - Rudders: CL max 0.8
+- Loads: the mainsheet runs twice between the traveler car and the boom, so at servo stall the boom, car and rear beam carry twice the tail tension; the tail is on the servo horn 25 mm from the shaft (15 mm failed the factor-of-2 rule). Printed PETG in bending: 25 MPa (assumed).
 - Masses: PETG 1.27 g/cm3, carbon 1.55 g/cm3 and music wire 7.85 g/cm3. The mast fairing is weighed as printed: 0.45 mm shells. Servo, receiver and battery weights are from manufacturer specs. The exception is the JX W4505-2T winch, taken as 45 g: the weight listed for JX's 1.5-turn and 4-turn standard winches.
 
 ## Build notes for the 1 m boat

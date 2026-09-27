@@ -109,6 +109,9 @@ for k in ('build_first_1m', 'foiling_1m', 'mini_600'):
     check(f'mast buckling, {k}', v['buckling_safety']['servo_stall'], '>= 2', v['buckling_safety']['servo_stall'] >= 2, 'x load')
     worst = min(v[b]['safety_factor'] for b in ('front_beam', 'rear_beam', 'pod_beam') if b in v)
     check(f'crossbeam bending, {k}', worst, '>= 2', worst >= 2, 'x load')
+    if 'traveler_car' in v:
+        tc = v['traveler_car']['safety_factor']
+        check(f'traveler car on its rail, {k}', tc, '>= 2', tc >= 2, 'x load')
 
 # servo fit (sizes from the manufacturers' drawings, as used in cad_scripts/servo_mounts.py)
 S = consts('servo_mounts.py', {'STD', 'MICRO', 'CLEAR', 'LAYOUT'})

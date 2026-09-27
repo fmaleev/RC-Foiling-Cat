@@ -299,7 +299,7 @@
  "Traveler Track Centre": {
   "stl": "Traveler_Track_Centre.stl",
   "qty": 1,
-  "cm3": 4.29,
+  "cm3": 4.48,
   "size_mm": [
    152,
    7,
@@ -310,7 +310,7 @@
  "Traveler Track Port": {
   "stl": "Traveler_Track_Port.stl",
   "qty": 1,
-  "cm3": 6.46,
+  "cm3": 6.64,
   "size_mm": [
    158,
    25,
@@ -321,7 +321,7 @@
  "Traveler Track Stbd": {
   "stl": "Traveler_Track_Stbd.stl",
   "qty": 1,
-  "cm3": 6.46,
+  "cm3": 6.64,
   "size_mm": [
    158,
    25,
@@ -332,7 +332,7 @@
  "Traveler Car": {
   "stl": "Traveler_Car.stl",
   "qty": 1,
-  "cm3": 1.82,
+  "cm3": 1.8,
   "size_mm": [
    18,
    16,

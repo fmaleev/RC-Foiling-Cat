@@ -137,6 +137,7 @@ STL file (folder \texttt{stl/}) & Qty & Size (mm) & PETG (g) \\
 \begin{enumerate}
 \item Bond the three pod shell segments and the three lid segments. The pod snaps onto the front beam and the pod beam.
 \item Fit the two sail winches (traveler: 4-turn; jib sheet: 2-turn) and the mainsheet servo on their rails. The winches hang by their ears in 4--6\,mm wells. JX does not publish the winch's ear height; the rails use the FS5115M value (27.3\,mm above the case bottom). If a winch case touches the bottom of its well first, shim under the ears.
+\item Hook the mainsheet tail to the servo horn 25\,mm from the shaft, not closer. The sheet runs twice between the traveler car and the boom, so a shorter arm lets the servo pull harder on the beams and mast than the structure check allows. Fit a longer horn if the supplied ones are shorter.
 \item Receiver and the 4xAA pack with its switch go in the pod. The two ends of the traveler line and the mainsheet tail leave the pod through the three holes in its transom and run aft to the turning pins in the traveler track's end stops (Step 7).
 \end{enumerate}
 \step{4. Rudders}

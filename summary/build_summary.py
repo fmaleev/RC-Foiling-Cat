@@ -45,7 +45,7 @@ A radio-controlled catamaran that follows full-size beach cats (Hobie~16, Nacra~
 \item \textbf{Velocity prediction}: ITTC-57 friction, Michell thin-ship wave resistance with catamaran interference (checked on the Wigley hull), foil and appendage drag, and sails eased for heel and bow-down limits.
 \item \textbf{Foils}: lifting-line wings with wand-driven flaps; flying trim in heave and pitch, roll authority, coupled heave--pitch stability, and a time-domain take-off simulation.
 \item \textbf{Flight simulator} (web page, same physics) and a search of """ + f"{OPT['grid_size']:,}" + r""" foil designs under limits on stress, deflection, Reynolds number, pitch stability and damping, with depth margins and robustness checks.
-\item \textbf{Build plan}: costed parts lists (every price read from a retailer page), a build manual for the 0.6\,m boat, and a tow-test plan for the foils.
+\item \textbf{Build plan}: every fitting drawn and printable (tracks and cars, gudgeons, wing-mast fairing, gooseneck, ride-height linkage); costed parts lists (every price read from a retailer page), build manuals for the 0.6\,m and 1\,m boats, and a tow-test plan for the foils.
 \end{itemize}
 
 \head{Findings}
