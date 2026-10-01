@@ -1,7 +1,8 @@
 """Costed bills of materials (USD, prices read on retailer pages 2026-09-23; two re-read 2026-09-24). Writes CSV + LaTeX tables."""
-import csv, os
+import csv, json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+TRAVEL = json.load(open(os.path.join(HERE, '..', 'manual_1m', 'manual_data_1m.json')))['travel']   # sheet and car travel, rig model
 HT = 'https://www.hobbytown.com'
 CST_T = 'https://www.cstsales.com/Carbon_Fiber_Tubes.html'
 CST_R = 'https://www.cstsales.com/carbon_rods.html'
@@ -72,8 +73,8 @@ MINI_OPTIONS = [('Upgrade', 'EcoPower 640T waterproof micro servo', 'instead of 
 FULL = [
     ('Radio', 'FlySky FS-i6X + FS-iA6B receiver', '4 channels used: rudder, traveler, jib, mainsheet', 1, 'i6x'),
     ('Radio', 'AA alkaline x4', 'transmitter power', 1, 'aa_alk'),
-    ('Servos', 'JX W4505-4T sail winch servo', 'traveler (about 231 mm of car travel, rig model)', 1, 'jx'),
-    ('Servos', 'JX W4505-2T sail winch servo', 'jib sheet (about 93 mm of sheet, rig model)', 1, 'jx'),
+    ('Servos', 'JX W4505-4T sail winch servo', f"traveler (about {TRAVEL['traveler_mm']:.0f} mm of car travel, rig model)", 1, 'jx'),
+    ('Servos', 'JX W4505-2T sail winch servo', f"jib sheet (about {TRAVEL['jib_sheet_mm']:.0f} mm of sheet, rig model)", 1, 'jx'),
     ('Servos', 'Feetech FS5115M standard servo', 'mainsheet tension', 1, 'fs5115'),
     ('Servos', 'MG90S metal-gear micro servo', 'rudders via pushrod + tie bar', 1, 'mg90s'),
     ('Power', 'Panasonic eneloop AA 2000 mAh, 4-pack', 'receiver pack (4.8 V)', 1, 'enel_aa'),

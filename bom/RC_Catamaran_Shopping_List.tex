@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage{booktabs,longtable,array,xurl,enumitem}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt}
+\title{\textbf{RC Catamaran: What to Buy}\\\large Mini Cat, 1\,m boat and foiling kit}
+\author{Filip Maleev}
+\date{Prices read on retailer pages 23--25 September 2026}
+\begin{document}
+\maketitle
+
+\section*{The plan}
+Build in three stages, each after the one before sails well. The build manuals (\texttt{mini/manual/} and \texttt{manual\_1m/}) say what each part is for and how it goes together.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+ & List price & To buy, in this order \\
+\midrule
+Stage 1: Mini Cat 600 & \$257.37 & \$257.37 \\
+Stage 2: 1\,m boat (daggerboards) & \$384.49 & \$294.76$^\dagger$ \\
+Stage 3: foiling kit & \$101.17 & \$101.17 \\
+\midrule
+\textbf{All three} & & \textbf{\$653.30} \\
+\bottomrule
+\end{tabular}
+\end{center}
+$^\dagger$ The radio, its AA cells and the NiMH pack bought for the Mini (\$89.73) move to the 1\,m boat. Leftover filament, epoxy, glue, sail cloth and line from one stage may cover part of the next; the lists assume new stock.
+
+Prices exclude shipping and tax. They were read on the retailers' pages on the dates above (the Mini's links were re-checked on 24 September). Check them before ordering. Under each item, in italics, is the listing the price came from, with the part number where there is one and a note where the price is uncertain.
+
+\section*{Also needed, not priced above}
+\begin{itemize}
+\item \textbf{A 3D printer} that prints PETG, with a bed of at least 220\,x\,220\,mm. Every part is sized for that bed; two print diagonally (the 1\,m manual says which).
+\item \textbf{A NiMH charger} for the eneloop AA cells. One checked option: the Panasonic charger bundled with 4 more eneloop AA cells, \$32.09 at Walmart on 24 September 2026 [24].
+\item \textbf{Hand tools}, assumed on hand: hobby knife and steel rule; drill bits 1.2, 1.5, 2, 2.5 and 3.2\,mm (a pin vise is enough); side cutters and round-nose pliers for the music wire; 240-grit sandpaper; masking tape; a fine-tip soldering iron or hot needle for holes in the sailcloth; small screwdrivers; a 0.9\,mm hex key for the elevator trim screws; a bucket or sink for leak tests; a kitchen scale.
+\item Servo screws come with the servos.
+\end{itemize}
+
+\clearpage
+\section*{Order by store}
+Orders grouped by store, with the carried-over radio and battery counted once.
+\begin{center}
+\begin{tabular}{lcrl}
+\toprule
+Store & Items & Subtotal & Stages \\
+\midrule
+HobbyTown & 10 & \$149.19 & 1, 2, 3 \\
+CST (cstsales.com) & 11 & \$137.65 & 1, 2, 3 \\
+Elegoo US & 3 & \$55.96 & 1, 2, 3 \\
+kiteboarding.com & 2 & \$44.85 & 1, 2 \\
+Jones Airfoils & 2 & \$43.98 & 1, 2 \\
+AliExpress & 3 & \$33.39 & 1, 2 \\
+Wind Catcher RC & 1 & \$32.56 & 2 \\
+Pololu & 1 & \$32.06 & 2 \\
+K\&S Metals & 6 & \$29.93 & 1, 2, 3 \\
+Walmart & 2 & \$28.86 & 1, 2 \\
+RMRC & 1 & \$24.52 & 2 \\
+Easy Composites & 1 & \$20.70 & 3 \\
+MicroBattery & 1 & \$12.75 & 1 \\
+Waveshare & 2 & \$5.18 & 1, 2 \\
+Bolt Depot & 1 & \$1.72 & 3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Parts by stage}
+
+\subsection*{Stage 1: Mini Cat 600 (build first) \hfill \$257.37}
+{\small
+\begin{longtable}{L{4.1cm}L{4.5cm}crrl}
+\toprule
+Item & Used for & Qty & Unit & Total & Store [link] \\
+\midrule\endhead
+FlySky FS-i6X + FS-iA6B receiver & CH1 rudder, CH3 sails (non-centering stick); reused on the 1 m boat & 1 & \$69.99 & \$69.99 & HobbyTown [1] \\
+AA alkaline x4\newline{\footnotesize\itshape HobbyTown (EcoPower AA x4 add-on)} & transmitter power & 1 & \$2.99 & \$2.99 & HobbyTown [2] \\
+JX W4505-2T sail winch servo\newline{\footnotesize\itshape AliExpress: listed \$5.79 at 48\% off; full price used} & both sheets on the stepped drum & 1 & \$11.13 & \$11.13 & AliExpress [3] \\
+MG90S metal-gear micro servo & rudders via pushrod + tie bar & 1 & \$2.59 & \$2.59 & Waveshare [4] \\
+Panasonic eneloop AA 2000 mAh, 4-pack & receiver pack (4.8 V) & 1 & \$12.75 & \$12.75 & MicroBattery [5] \\
+Traxxas 4-cell AA holder with switch (TRA1523) & receiver battery box + on/off & 1 & \$4.00 & \$4.00 & HobbyTown [6] \\
+PETG filament 1 kg & hulls, box, lid, rudders, boards, drum (about 470 g used) & 1 & \$13.99 & \$13.99 & Elegoo US [7] \\
+Carbon tube 10 x 8 mm x 1 m\newline{\footnotesize\itshape CST CS-525 1M} & two 360 mm crossbeams & 1 & \$16.15 & \$16.15 & CST (cstsales.com) [8] \\
+Carbon tube 6 x 4 mm x 1 m\newline{\footnotesize\itshape CST CS-518 1M} & mast (800 mm) & 1 & \$15.25 & \$15.25 & CST (cstsales.com) [8] \\
+Carbon tube 4 mm OD x 1 m\newline{\footnotesize\itshape CST CS-508 1M} & boom (210 mm) & 1 & \$8.49 & \$8.49 & CST (cstsales.com) [8] \\
+Carbon rod 1.2 mm x 1 m\newline{\footnotesize\itshape CST CS-316 1M} & 3 battens & 1 & \$3.47 & \$3.47 & CST (cstsales.com) [9] \\
+Music wire 0.125 in\newline{\footnotesize\itshape K\&S 0.125 in x 12 in} & rudder stocks & 1 & \$3.99 & \$3.99 & K\&S Metals [10] \\
+Music wire 0.093 in\newline{\footnotesize\itshape K\&S 0.093 in x 12 in} & tie bar, tiller arms & 1 & \$3.99 & \$3.99 & K\&S Metals [10] \\
+Music wire 0.047 in\newline{\footnotesize\itshape K\&S 0.047 in x 12 in (3 pcs)} & rudder pushrod, sheet hooks & 1 & \$3.99 & \$3.99 & K\&S Metals [10] \\
+Du-Bro micro pushrod system & clevis + tube for the rudder pushrod & 1 & \$8.55 & \$8.55 & HobbyTown [11] \\
+Icarex PC31 ripstop polyester, 1 m\newline{\footnotesize\itshape Jones Airfoils, per metre (138 cm wide)} & main + jib (0.145 m2) & 1 & \$21.99 & \$21.99 & Jones Airfoils [12] \\
+Ripstop sail tape 2 in, 10 ft\newline{\footnotesize\itshape kiteboarding.com: \$15.00 base + \$5.85 for 10 ft} & luff, batten pockets, corners & 1 & \$20.85 & \$20.85 & kiteboarding.com [13] \\
+Braided PE line 30 lb\newline{\footnotesize\itshape Walmart, PowerPro 30 lb x 150 yd (read 2026-09-24; the original eBay listing had ended)} & stays, bridle, sheets & 1 & \$14.43 & \$14.43 & Walmart [14] \\
+BSI 5-minute epoxy 4.5 oz & hull segment joints, beams, fittings & 1 & \$13.99 & \$13.99 & HobbyTown [15] \\
+BSI gap-filling CA 1/2 oz & small parts, knots & 1 & \$4.79 & \$4.79 & HobbyTown [16] \\
+\midrule
+\multicolumn{4}{l}{\textbf{Total}} & \textbf{\$257.37} & \\
+\bottomrule
+\end{longtable}}
+
+\subsection*{Stage 2: 1 m boat with daggerboards \hfill \$384.49}
+{\small
+\begin{longtable}{L{4.1cm}L{4.5cm}crrl}
+\toprule
+Item & Used for & Qty & Unit & Total & Store [link] \\
+\midrule\endhead
+FlySky FS-i6X + FS-iA6B receiver$^\dagger$ & 4 channels used: rudder, traveler, jib, mainsheet & 1 & \$69.99 & \$69.99 & HobbyTown [1] \\
+AA alkaline x4$^\dagger$\newline{\footnotesize\itshape HobbyTown (EcoPower AA x4 add-on)} & transmitter power & 1 & \$2.99 & \$2.99 & HobbyTown [2] \\
+JX W4505-4T sail winch servo\newline{\footnotesize\itshape AliExpress: listed \$5.79 at 48\% off; full price used} & traveler (about 209 mm of car travel, rig model) & 1 & \$11.13 & \$11.13 & AliExpress [3] \\
+JX W4505-2T sail winch servo\newline{\footnotesize\itshape AliExpress: listed \$5.79 at 48\% off; full price used} & jib sheet (about 82 mm of sheet, rig model) & 1 & \$11.13 & \$11.13 & AliExpress [3] \\
+Feetech FS5115M standard servo & mainsheet tension & 1 & \$32.06 & \$32.06 & Pololu [17] \\
+MG90S metal-gear micro servo & rudders via pushrod + tie bar & 1 & \$2.59 & \$2.59 & Waveshare [4] \\
+Panasonic eneloop AA 2000 mAh, 4-pack$^\dagger$ & receiver pack (4.8 V) & 1 & \$12.75 & \$12.75 & MicroBattery [5] \\
+Traxxas 4-cell AA holder with switch (TRA1523)$^\dagger$ & receiver battery box + on/off & 1 & \$4.00 & \$4.00 & HobbyTown [6] \\
+PETG filament 1 kg & hulls, pod, lid, rudder-servo bracket and cover, rudders, boards, gudgeons, tracks, cars, mast fairing and fittings (about 1.5 kg used, 1 m manual print list) & 2 & \$13.99 & \$27.98 & Elegoo US [7] \\
+Carbon tube 16 x 14 mm x 1 m\newline{\footnotesize\itshape Wind Catcher RC (price from search listing, page not reachable from here)} & two 600 mm crossbeams & 2 & \$16.28 & \$32.56 & Wind Catcher RC [18] \\
+Carbon tube 12 x 10 mm x 1 m & two-piece mast (1.3 m) & 2 & \$12.26 & \$24.52 & RMRC [19] \\
+Carbon tube 10 x 8 mm x 1 m\newline{\footnotesize\itshape CST CS-525 1M} & mast joiner spigot (150 mm) and pod beam (600 mm) & 1 & \$16.15 & \$16.15 & CST (cstsales.com) [8] \\
+Carbon tube 8 x 7 mm x 1 m\newline{\footnotesize\itshape CST CS-529 1M} & boom (345 mm) & 1 & \$17.20 & \$17.20 & CST (cstsales.com) [8] \\
+Carbon rod 1.2 mm x 2 m\newline{\footnotesize\itshape CST CS-316 2M} & 8 battens (2.01 m in all; finish them from the 1 m rod) & 1 & \$5.25 & \$5.25 & CST (cstsales.com) [9] \\
+Carbon rod 1.2 mm x 1 m\newline{\footnotesize\itshape CST CS-316 1M} & the last batten, daggerboard joint rods (4 x 80 mm) & 1 & \$3.47 & \$3.47 & CST (cstsales.com) [9] \\
+Music wire 0.156 in\newline{\footnotesize\itshape K\&S 0.156 in x 12 in} & rudder stocks, tie bar & 2 & \$4.99 & \$9.98 & K\&S Metals [10] \\
+Music wire 0.093 in\newline{\footnotesize\itshape K\&S 0.093 in x 12 in} & rudder pushrod, track end-stop turning pins, gooseneck pin, boom sheet eye & 1 & \$3.99 & \$3.99 & K\&S Metals [10] \\
+Du-Bro micro pushrod system & clevises & 1 & \$8.55 & \$8.55 & HobbyTown [11] \\
+Icarex PC31 ripstop polyester, 1 m\newline{\footnotesize\itshape Jones Airfoils, per metre (138 cm wide)} & main + jib (0.40 m2) & 1 & \$21.99 & \$21.99 & Jones Airfoils [12] \\
+Ripstop sail tape 2 in, half roll\newline{\footnotesize\itshape kiteboarding.com: \$15.00 base + \$9.00 half roll} & luff, batten pockets, corners & 1 & \$24.00 & \$24.00 & kiteboarding.com [13] \\
+Braided PE line 30 lb\newline{\footnotesize\itshape Walmart, PowerPro 30 lb x 150 yd (read 2026-09-24; the original eBay listing had ended)} & stays, bridle, sheets & 1 & \$14.43 & \$14.43 & Walmart [14] \\
+BSI 5-minute epoxy 9 oz & hull joints, beams, fittings & 1 & \$22.99 & \$22.99 & HobbyTown [20] \\
+BSI gap-filling CA 1/2 oz & small parts & 1 & \$4.79 & \$4.79 & HobbyTown [16] \\
+\midrule
+\multicolumn{4}{l}{\textbf{Total}} & \textbf{\$384.49} & \\
+\bottomrule
+\end{longtable}}
+\noindent $^\dagger$ Already bought for the Mini Cat: the radio, its AA cells and the NiMH pack move to the 1\,m boat, so if you build the Mini first, Stage 2 costs \$294.76 instead of \$384.49.
+
+\subsection*{Stage 3: foiling kit (v2.3 foils) \hfill \$101.17}
+{\small
+\begin{longtable}{L{4.1cm}L{4.5cm}crrl}
+\toprule
+Item & Used for & Qty & Unit & Total & Store [link] \\
+\midrule\endhead
+PETG filament 1 kg & L-foil, elevator and flap cores, trim pods, ride-height linkage (about 290 g, 1 m manual print list) & 1 & \$13.99 & \$13.99 & Elegoo US [7] \\
+Unidirectional carbon tape 2 in x 12 ft\newline{\footnotesize\itshape CST CU-379: 2 in unidirectional carbon, 0.005 in, 12 ft} & spar caps: 4 layers per face on struts, wings, elevators & 2 & \$19.95 & \$39.90 & CST (cstsales.com) [21] \\
+EL2 laminating epoxy 500 g\newline{\footnotesize\itshape Easy Composites EL2, 500 g kit} & wet-out of the caps & 1 & \$20.70 & \$20.70 & Easy Composites [22] \\
+Carbon rod 1.2 mm x 1 m\newline{\footnotesize\itshape CST CS-316 1M} & flap hinge pins & 1 & \$3.47 & \$3.47 & CST (cstsales.com) [9] \\
+Carbon rod 2 mm x 1 m\newline{\footnotesize\itshape CST CS-323 1M (2 mm)} & two 300 mm ride-height wands, elevator pivot pins, wand and bellcrank axles, L-foil core dowels & 1 & \$8.85 & \$8.85 & CST (cstsales.com) [9] \\
+Music wire 0.047 in\newline{\footnotesize\itshape K\&S 0.047 in x 12 in (3 pcs)} & wand-to-flap pushrods & 1 & \$3.99 & \$3.99 & K\&S Metals [10] \\
+Du-Bro micro pushrod system & clevises for the flap linkage & 1 & \$8.55 & \$8.55 & HobbyTown [11] \\
+M2 x 6 mm stainless set screw, cup point (Bolt Depot 8697)\newline{\footnotesize\itshape Bolt Depot, per piece (read 2026-09-25)} & elevator trim screws, two per trim pod & 4 & \$0.43 & \$1.72 & Bolt Depot [23] \\
+\midrule
+\multicolumn{4}{l}{\textbf{Total}} & \textbf{\$101.17} & \\
+\bottomrule
+\end{longtable}}
+
+\subsection*{Options for the Mini (not in its total)}
+{\small
+\begin{longtable}{L{4.1cm}L{4.5cm}crrl}
+\toprule
+Item & Used for & Qty & Unit & Total & Store [link] \\
+\midrule
+EcoPower 640T waterproof micro servo & instead of MG90S & 1 & \$29.99 & \$29.99 & HobbyTown [25] \\
+FlySky FS-GT2E + FS-A3 (car radio)\newline{\footnotesize\itshape HobbyTown (re-read 2026-09-24; now sold with the FS-A3 receiver)} & instead of FS-i6X; throttle trigger springs back to centre & 1 & \$38.99 & \$38.99 & HobbyTown [2] \\
+\bottomrule
+\end{longtable}}
+
+\section*{Links}
+{\small
+\begin{enumerate}[label={[\arabic*]}]
+\item \url{https://www.hobbytown.com/flysky-i6x-6channel-afhds-2a-air-radio-system-w-ia6b-receiver-fsy-i6xia6b/p1674181}
+\item \url{https://www.hobbytown.com/flysky-fsgt2e-2channel-transmitter-w-fsa3-receiver-fsy-fs-gt2ea3/p1592822}
+\item \url{https://www.aliexpress.com/item/1005003265131874.html}
+\item \url{https://www.waveshare.com/mg90s-servo.htm}
+\item \url{https://www.microbattery.com/panasonic-bk-3mcca4ba-eneloop-aa-2100-cycle-ni-mh-pre-charged-rechargeable-batteries-4-pack80.html}
+\item \url{https://www.hobbytown.com/traxxas-4cell-aa-battery-holder-w-switch-cover-tra1523/p49945}
+\item \url{https://us.elegoo.com/products/rapid-petg-filament-1-75mm-colored-1kg}
+\item \url{https://www.cstsales.com/Carbon_Fiber_Tubes.html}
+\item \url{https://www.cstsales.com/carbon_rods.html}
+\item \url{https://ksmetals.com/collections/12-long-music-wire}
+\item \url{https://www.hobbytown.com/dubro-pushrod-system-micro-dub847/p29360}
+\item \url{https://jonesairfoils.com/products/icarex}
+\item \url{https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch}
+\item \url{https://www.walmart.com/ip/PowerPro-Braided-Fishing-Line-30lb-x-150yd-ylw-21100300150Y/17117880}
+\item \url{https://www.hobbytown.com/bob-smith-industries-quickcure-5-minute-epoxy-4-1-2oz-bsi201/p37081}
+\item \url{https://www.hobbytown.com/bob-smith-industries-instacure-gap-filling-ca-1-2oz-bsi106/p37055}
+\item \url{https://www.pololu.com/product/3426}
+\item \url{https://windcatcherrc.com/product/carbon-fiber-tube-16mm-x-14mm-x-1000mm/}
+\item \url{https://www.readymaderc.com/products/details/carbon-fiber-tube-12mm-x-10mm-1m-long}
+\item \url{https://www.hobbytown.com/bob-smith-industries-quickcure-5-minute-epoxy-9o-bsi202/p37082}
+\item \url{https://www.cstsales.com/heat_tack.html}
+\item \url{https://www.easycomposites.us/el2-epoxy-laminating-resin}
+\item \url{https://boltdepot.com/Product-Details?product=8697}
+\item \url{https://www.walmart.com/ip/Panasonic-Battery-Charger-with-4-eneloop-AA-Rechargeable-Batteries-4-Count/124706107}
+\item \url{https://www.hobbytown.com/ecopower-640t-13g-waterproof-metal-gear-digital-sub-micro-servo-ecp-640t/p859667}
+\end{enumerate}}
+\end{document}
