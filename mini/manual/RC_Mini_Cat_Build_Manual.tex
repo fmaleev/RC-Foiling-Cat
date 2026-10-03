@@ -1,7 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage[letterpaper,margin=0.9in]{geometry}
 \usepackage{graphicx,booktabs,longtable,tabularx,array,enumitem,xcolor,fancyhdr}
-\usepackage{xurl}
+\usepackage{xurl,tikz,caption}
+\captionsetup{font=small}
 \usepackage[hidelinks]{hyperref}
 \usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}
 \definecolor{accent}{HTML}{1F4E79}
@@ -156,6 +157,19 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \begin{center}\includegraphics[width=0.55\textwidth]{../images/mini_layout_top.png}\\ \small Layout from above (lid and sails hidden): mast step, winch with stepped drum, battery, receiver, rudder servo, pushrod to the tie bar.\end{center}
 
 \step{1. Hulls}
+\begin{center}\begin{tikzpicture}\draw[thick, fill=gray!12] plot[smooth, tension=0.4] coordinates {(0.000,0.868) (1.980,0.898) (4.400,0.925)} -- plot[smooth, tension=0.4] coordinates {(4.400,-0.667) (1.980,-0.598) (0.000,-0.419)} -- cycle;
+\node[font=\footnotesize] at (2.200,-0.913) {Segment 1};
+\draw[thick, fill=gray!12] plot[smooth, tension=0.4] coordinates {(4.796,0.925) (5.016,0.928) (7.656,0.957) (9.196,1.010)} -- plot[smooth, tension=0.4] coordinates {(9.196,-0.597) (7.656,-0.658) (5.016,-0.673) (4.796,-0.667)} -- cycle;
+\node[font=\footnotesize] at (6.996,-0.970) {Segment 2};
+\draw[very thick, blue!70] (4.796,-0.667) -- (4.796,0.925);
+\draw[very thick, blue!70] (4.400,-0.667) -- (4.400,0.925);
+\draw[thick, fill=gray!12] plot[smooth, tension=0.4] coordinates {(9.592,1.010) (10.692,1.047) (12.408,1.137) (13.464,1.182) (13.992,1.212)} -- plot[smooth, tension=0.4] coordinates {(13.992,0.075) (13.464,-0.180) (12.408,-0.389) (10.692,-0.554) (9.592,-0.597)} -- cycle;
+\node[font=\footnotesize] at (11.792,-0.756) {Segment 3};
+\draw[very thick, blue!70] (9.592,-0.597) -- (9.592,1.010);
+\draw[very thick, blue!70] (9.196,-0.597) -- (9.196,1.010);
+\node[font=\footnotesize, blue!70, align=center] at (4.598,1.324) {half bulkheads:\\ faces meet flat};
+\node[font=\footnotesize, anchor=east] at (-0.044,0.220) {transom};
+\node[font=\footnotesize, anchor=west] at (14.080,1.212) {bow};\end{tikzpicture}\par\captionof{figure}{Each hull prints as three sealed segments. Sand the joint faces flat, then epoxy them face to face against a straight edge.}\end{center}
 \begin{enumerate}
 \item Sand the joint faces of the three segments of each hull flat on sandpaper laid on a table.
 \item Dry-fit: the segments must line up on the outside. Epoxy segment 1 to 2 and 2 to 3 face to face. Hold them against a straight edge (a steel rule taped to the table) while the epoxy cures.
@@ -165,6 +179,19 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{each finished hull weighs about 145\,g (design value including glue) and floats level.}
 
 \step{2. Crossbeams and frame}
+\begin{center}\begin{tikzpicture}\draw[thick, fill=gray!12] (0.000,3.566) -- (1.710,3.695) -- (3.990,3.747) -- (6.270,3.740) -- (8.550,3.682) -- (10.032,3.566) -- (10.944,3.411) -- (11.400,3.282) -- (11.400,3.178) -- (10.944,3.049) -- (10.032,2.894) -- (8.550,2.778) -- (6.270,2.720) -- (3.990,2.713) -- (1.710,2.765) -- (0.000,2.894) -- cycle;
+\draw[dashed, gray] (-0.190,3.230) -- (11.590,3.230);
+\draw[thick, fill=gray!12] (0.000,-2.894) -- (1.710,-2.765) -- (3.990,-2.713) -- (6.270,-2.720) -- (8.550,-2.778) -- (10.032,-2.894) -- (10.944,-3.049) -- (11.400,-3.178) -- (11.400,-3.282) -- (10.944,-3.411) -- (10.032,-3.566) -- (8.550,-3.682) -- (6.270,-3.740) -- (3.990,-3.747) -- (1.710,-3.695) -- (0.000,-3.566) -- cycle;
+\draw[dashed, gray] (-0.190,-3.230) -- (11.590,-3.230);
+\draw[line width=2.2pt] (7.068,-3.420) -- (7.068,3.420);
+\draw[line width=2.2pt] (2.052,-3.420) -- (2.052,3.420);
+\draw[red!70!black, thick, <->] (2.052,-3.420) -- (7.068,3.420);
+\draw[red!70!black, thick, <->] (2.052,3.420) -- (7.068,-3.420);
+\node[red!70!black, font=\footnotesize, fill=white, inner sep=1pt] at (4.560,0.760) {diagonals equal within 1\,mm};
+\draw[<->] (11.875,-3.230) -- node[right, font=\footnotesize, align=left] {340\,mm\\between hull\\centre lines} (11.875,3.230);
+\node[font=\footnotesize, above] at (7.068,3.838) {front beam, 360\,mm};
+\node[font=\footnotesize, above] at (2.052,3.838) {rear beam, 360\,mm};
+\node[font=\footnotesize, anchor=east] at (-0.228,0) {transoms};\end{tikzpicture}\par\captionof{figure}{Squaring the frame (top view, bows to the right). With the second hull on the beams, shift it until the two diagonals match.}\end{center}
 \begin{enumerate}
 \item Cut the 10\,mm carbon tube into two 360\,mm beams (score around with a knife, then snap; wear a mask when sanding carbon).
 \item Epoxy both beams into the sockets of one hull. Slide the other hull on, lay the frame on a flat table and measure the two diagonals (front-left beam end to rear-right, and the reverse). Shift until they are equal within 1\,mm, then epoxy the second hull.
@@ -172,6 +199,32 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{hull centre lines are 340\,mm apart at both beams.}
 
 \step{3. Rudders and steering linkage}
+\begin{center}\begin{tikzpicture}\fill[gray!12] (0,1.900) rectangle (3.600,3.300);
+\draw[thick] (0,1.900) -- (0,3.300);
+\fill[black!60] (-1.920,2.510) rectangle (-0.300,2.690);
+\fill (-0.705,2.600) circle (2.4pt);
+\draw[very thick, blue!70] (-0.705,2.600) -- (0.540,2.600);
+\fill[blue!70] (0.540,2.600) circle (1.6pt);
+\fill[gray!12] (0,-3.300) rectangle (3.600,-1.900);
+\draw[thick] (0,-3.300) -- (0,-1.900);
+\fill[black!60] (-1.920,-2.690) rectangle (-0.300,-2.510);
+\fill (-0.705,-2.600) circle (2.4pt);
+\draw[very thick, blue!70] (-0.705,-2.600) -- (0.540,-2.600);
+\fill[blue!70] (0.540,-2.600) circle (1.6pt);
+\draw[very thick, blue!70] (0.540,-2.600) -- (0.540,2.600);
+\draw[thick, rounded corners=4pt, fill=gray!8] (5.760,-1.3) rectangle (10.260,1.3);
+\draw[fill=gray!40] (6.606,-0.360) rectangle (7.974,0.360);
+\draw[thick] (7.290,0) -- (7.290,0.600);
+\fill (7.290,0.600) circle (1.4pt);
+\draw[thick, red!70!black] (7.290,0.600) -- (0.540,0);
+\draw[<->] (-0.705,3.500) -- node[above, font=\footnotesize] {20.75\,mm} (0.540,3.500);
+\draw[<->] (8.130,0) -- node[right, font=\footnotesize] {10\,mm} (8.130,0.600);
+\node[font=\footnotesize, anchor=east, align=left, black] at (-2.040,2.600) {rudder blade, 27\,mm chord;\\stock (0.125\,in wire)\\at 25\,\% of the chord};
+\node[font=\footnotesize, anchor=east, align=left, blue!70] at (-2.040,-2.600) {tiller arm (0.093\,in wire)\\from the stock to the tie bar};
+\node[font=\footnotesize, anchor=west, align=left, blue!70] at (0.660,-1.700) {tie bar (0.093\,in wire)};
+\node[font=\footnotesize, anchor=south, align=left, red!70!black] at (3.315,1.000) {pushrod (0.047\,in wire)};
+\node[font=\footnotesize, anchor=west, align=left, black] at (5.940,-0.750) {electronics box:\\rudder servo (MG90S)};
+\node[font=\footnotesize, anchor=west, align=left, black] at (0.720,1.650) {transom};\end{tikzpicture}\par\captionof{figure}{Steering linkage (top view, bows to the right; fore and aft to scale, the hulls drawn closer together than the real 340\,mm). Both tiller arms are the same length and the tie bar keeps the rudders parallel.}\end{center}
 \begin{enumerate}
 \item Drill a 3.2\,mm hole down the pivot line of each rudder blade, 6.75\,mm behind the leading edge (25\,\% of the 27\,mm chord). This balanced pivot keeps the servo load tiny.
 \item Push a 0.125\,in music-wire stock through each blade and its gudgeon, epoxy the blade to the wire (not the gudgeon), and epoxy the gudgeon to the transom.
@@ -181,6 +234,15 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{with the servo centred both rudders point straight; full servo travel gives about $\pm$20$^\circ$ of rudder.}
 
 \step{4. Electronics box}
+\begin{center}\begin{tikzpicture}\node[draw, thick, fill=blue!8, minimum width=3.0cm, minimum height=2.6cm, align=center, font=\footnotesize] at (0,0) {\textbf{Receiver}\\FS-iA6B};
+\node[draw, thick, fill=gray!10, minimum width=4.0cm, minimum height=0.9cm, align=center, font=\footnotesize] at (-5.7,0.9) {rudder servo (MG90S)};
+\node[draw, thick, fill=gray!10, minimum width=4.0cm, minimum height=0.9cm, align=center, font=\footnotesize] at (-5.7,-0.9) {sail winch (JX W4505-2T)};
+\node[draw, thick, fill=gray!10, minimum width=3.8cm, minimum height=1.4cm, align=center, font=\footnotesize] at (6.3,0) {4 x eneloop AA\\in the holder with switch};
+\draw[thick, ->] (-1.5,0.9) -- node[above, font=\footnotesize] {CH1} (-3.7,0.9);
+\draw[thick, ->] (-1.5,-0.9) -- node[above, font=\footnotesize] {CH3} (-3.7,-0.9);
+\draw[thick, ->] (4.4,0) -- node[above, font=\footnotesize, align=center] {any spare\\channel (CH6)} (1.5,0);
+\node[font=\footnotesize, align=center] at (-5.7,2.1) {right stick, left--right:\\self-centring};
+\node[font=\footnotesize, align=center] at (-5.7,-2.1) {left stick, up--down:\\stays where you leave it};\end{tikzpicture}\par\captionof{figure}{Receiver wiring. The battery powers the receiver through any free channel; both servos then take their power from the receiver.}\end{center}
 \begin{enumerate}
 \item Epoxy the two box halves together, and separately the two lid halves.
 \item Lower the sail winch into the well between the front rails (output shaft up) until its mounting ears rest on the rails, and set the MG90S between the rear rails the same way. Lead each servo wire out sideways through the notch at the foot of a rail. Drill 1.5\,mm pilot holes through the ear holes and fix both servos with the screws supplied with them.
@@ -192,6 +254,23 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \end{enumerate}
 
 \step{5. Mast and standing rigging}
+\begin{center}\begin{tikzpicture}\draw[thick, fill=gray!12] (0.000,0.414) -- (0.945,0.428) -- (2.205,0.443) -- (3.465,0.457) -- (4.725,0.500) -- (5.544,0.543) -- (6.048,0.564) -- (6.300,0.578) -- (6.300,0.036) -- (6.048,-0.086) -- (5.544,-0.186) -- (4.725,-0.264) -- (3.465,-0.314) -- (2.205,-0.321) -- (0.945,-0.286) -- (0.000,-0.200) -- cycle;
+\fill[gray!35] (1.008,0.462) rectangle (4.032,0.987);
+\draw[fill=blue!8] (3.875,1.113) -- (1.701,1.113) -- (1.731,1.863) -- (1.799,2.612) -- (1.896,3.362) -- (2.019,4.112) -- (2.166,4.862) -- (2.335,5.611) -- (2.525,6.361) -- (2.735,7.111) -- (2.965,7.860) -- (3.213,8.610) -- (3.875,8.610) -- cycle;
+\draw[fill=red!8] (5.139,1.176) -- (3.742,1.176) -- (3.864,6.374) -- (3.938,6.374) -- cycle;
+\draw[line width=1.6pt] (3.906,0.485) -- (3.906,8.873);
+\draw[line width=1.2pt] (3.875,1.050) -- (1.701,1.050);
+\draw[red!70!black, thick] (5.155,1.103) -- (3.906,6.510);
+\draw[red!70!black, thick, dashed] (5.155,1.103) -- (6.195,0.462);
+\draw[orange!80!black, thick] (3.906,6.510) -- (3.780,0.441);
+\fill (3.906,6.510) circle (1.6pt);
+\draw[gray] (6.720,8.873) -- (3.906,8.873);\node[anchor=west, font=\footnotesize, align=left] at (6.720,8.873) {mast: 799\,mm of 6\,mm tube, top plugged};
+\draw[gray] (6.720,6.773) -- (3.906,6.510);\node[anchor=west, font=\footnotesize, align=left] at (6.720,6.773) {hounds: line binding 574\,mm\\above the mast foot};
+\draw[gray] (6.720,4.935) -- (4.531,3.806);\node[anchor=west, font=\footnotesize, align=left] at (6.720,4.935) {forestay 529\,mm (jib sleeved on it)};
+\draw[gray] (6.720,3.360) -- (3.917,3.476);\node[anchor=west, font=\footnotesize, align=left] at (6.720,3.360) {shrouds 602\,mm each,\\hounds to the chainplate eyes};
+\draw[gray] (6.720,1.785) -- (5.675,0.782);\node[anchor=west, font=\footnotesize, align=left] at (6.720,1.785) {bridle legs 206\,mm each,\\bridle point to the bow loops};
+\node[anchor=south east, font=\footnotesize] at (1.659,1.050) {boom 207\,mm};
+\node[anchor=east, font=\footnotesize] at (0.966,0.725) {electronics box};\end{tikzpicture}\par\captionof{figure}{Rig from the side (bow to the right): stay lengths between the knots. The shrouds run down to both sides; only the near one is drawn.}\end{center}
 \begin{enumerate}
 \item Cut the 6\,mm tube to 799\,mm. Plug the top with epoxy. Mark the hounds (where the stays attach) 574\,mm above the mast foot and whip a tight binding of line there, glued with CA.
 \item Stand the mast in the socket on the box floor through the lid hole.
@@ -201,6 +280,15 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{the mast stands straight from the side and from behind; all stays are just tight.}
 
 \step{6. Sails}
+\begin{center}\begin{tikzpicture}\fill[blue!20] (-0.263,0) rectangle (0,7.497);
+\draw[thick, fill=blue!5] (0,0) -- (2.174,0.000) -- (2.143,0.750) -- (2.076,1.499) -- (1.978,2.249) -- (1.855,2.999) -- (1.708,3.749) -- (1.539,4.498) -- (1.349,5.248) -- (1.139,5.998) -- (0.909,6.747) -- (0.662,7.497) -- (0,7.497) -- cycle;
+\draw[thick] (-0.263,0) rectangle (0,7.497);
+\node[font=\footnotesize, anchor=east, align=right] at (-0.304,3.749) {25\,mm luff\\allowance: fold\\into the mast\\sleeve};
+\draw[line width=1.4pt, blue!70!black] (0.042,1.874) -- (1.989,1.874) node[right, font=\footnotesize, black] {185\,mm at 178\,mm};
+\draw[line width=1.4pt, blue!70!black] (0.042,3.749) -- (1.666,3.749) node[right, font=\footnotesize, black] {155\,mm at 357\,mm};
+\draw[line width=1.4pt, blue!70!black] (0.042,5.623) -- (1.204,5.623) node[right, font=\footnotesize, black] {111\,mm at 536\,mm};
+\node[font=\footnotesize, below] at (1.087,0) {foot 207\,mm};
+\node[font=\footnotesize, above] at (0.331,7.497) {head 63\,mm};\end{tikzpicture}\par\captionof{figure}{Mainsail laid flat: batten lengths and their heights above the foot. The 1:1 pattern has the full outline.}\end{center}
 \begin{enumerate}
 \item Print \texttt{mini/manual/sail\_patterns\_1to1.pdf} at 100\,\% (large-format print, or tile it). The 100\,mm scale bar must measure 100\,mm.
 \item Lay the Icarex on the pattern and cut the main and jib with a hot knife or scissors. The main needs the extra 25\,mm on the luff for the mast sleeve.
@@ -211,6 +299,16 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 
 \step{7. Sheets and drum}
 Both sheets end on the one drum, so one stick moves both sails.
+\begin{center}\begin{tikzpicture}\draw[thick, fill=gray!8] (1.920,0.880) rectangle (7.680,1.880);
+\node[font=\footnotesize, anchor=north] at (4.800,0.880) {electronics box (side view, bow to the right)};
+\draw[fill=gray!40] (5.800,0.960) rectangle (6.600,1.600);
+\draw[fill=orange!30] (5.900,1.600) rectangle (6.500,1.700);
+\draw[fill=orange!50] (6.038,1.700) rectangle (6.362,1.800);
+\draw[blue!70!black, thick] (5.900,1.650) -- (3.300,1.880) -- (3.300,3.080) node[above, font=\footnotesize, align=center] {to the boom end};
+\draw[red!70!black, thick] (6.362,1.750) -- (7.100,1.880) -- (7.700,3.080) node[above, font=\footnotesize, align=center] {to the jib clew};
+\fill (3.300,1.880) circle (1.6pt) node[above left, font=\footnotesize] {fairlead 165\,mm};
+\fill (7.100,1.880) circle (1.6pt) node[above left, font=\footnotesize] {fairlead 355\,mm};
+\node[font=\footnotesize, align=left, anchor=west] at (7.960,1.080) {stepped drum on the winch:\\30\,mm groove: mainsheet, pays out 153\,mm\\16.2\,mm groove: jib sheet, pays out 83\,mm\\both in 1.63 turns; wind both the same way};\end{tikzpicture}\par\captionof{figure}{Both sheets on the one drum. Fairlead distances are measured from the transoms.}\end{center}
 \begin{itemize}
 \item Mainsheet: from the boom end, down through the lid fairlead 165\,mm from the transom, to the \textbf{30\,mm groove}.
 \item Jib sheet: from the jib clew, down through the fairlead 355\,mm from the transom, to the \textbf{16.2\,mm groove}.

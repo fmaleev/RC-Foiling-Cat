@@ -4,6 +4,8 @@ import csv, json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, '..', '..', 'analysis')))
 import vpp
+sys.path.insert(0, HERE)
+import figures_mini as FIG
 WC, WS = vpp.WING_C * 1000, vpp.WING_SPAN * 1000
 EL_S = vpp.EL_SPAN * 1000
 EXT_MM = (vpp.Z_RUDDER - vpp.Z_EL) * 1000 - 7.0   # blade tip to the trim pod's top (cad_scripts/elevator_trim.py POD_HALF_H = 7 mm)
@@ -114,7 +116,8 @@ print_rows = '\n'.join(f"{esc(a)} & {b} & {c} & {d} & {esc(e)} \\\\" for a, b, c
 tex = r"""\documentclass[11pt]{article}
 \usepackage[letterpaper,margin=0.9in]{geometry}
 \usepackage{graphicx,booktabs,longtable,tabularx,array,enumitem,xcolor,fancyhdr}
-\usepackage{xurl}
+\usepackage{xurl,tikz,caption}
+\captionsetup{font=small}
 \usepackage[hidelinks]{hyperref}
 \usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}
 \definecolor{accent}{HTML}{1F4E79}
@@ -218,6 +221,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \begin{center}\includegraphics[width=0.55\textwidth]{../images/mini_layout_top.png}\\ \small Layout from above (lid and sails hidden): mast step, winch with stepped drum, battery, receiver, rudder servo, pushrod to the tie bar.\end{center}
 
 \step{1. Hulls}
+""" + FIG.hulls() + r"""
 \begin{enumerate}
 \item Sand the joint faces of the three segments of each hull flat on sandpaper laid on a table.
 \item Dry-fit: the segments must line up on the outside. Epoxy segment 1 to 2 and 2 to 3 face to face. Hold them against a straight edge (a steel rule taped to the table) while the epoxy cures.
@@ -227,6 +231,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{each finished hull weighs about """ + f"{HULL_G:.0f}" + r"""\,g (design value including glue) and floats level.}
 
 \step{2. Crossbeams and frame}
+""" + FIG.frame() + r"""
 \begin{enumerate}
 \item Cut the 10\,mm carbon tube into two 360\,mm beams (score around with a knife, then snap; wear a mask when sanding carbon).
 \item Epoxy both beams into the sockets of one hull. Slide the other hull on, lay the frame on a flat table and measure the two diagonals (front-left beam end to rear-right, and the reverse). Shift until they are equal within 1\,mm, then epoxy the second hull.
@@ -234,6 +239,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{hull centre lines are 340\,mm apart at both beams.}
 
 \step{3. Rudders and steering linkage}
+""" + FIG.steering() + r"""
 \begin{enumerate}
 \item Drill a 3.2\,mm hole down the pivot line of each rudder blade, 6.75\,mm behind the leading edge (25\,\% of the 27\,mm chord). This balanced pivot keeps the servo load tiny.
 \item Push a 0.125\,in music-wire stock through each blade and its gudgeon, epoxy the blade to the wire (not the gudgeon), and epoxy the gudgeon to the transom.
@@ -243,6 +249,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{with the servo centred both rudders point straight; full servo travel gives about $\pm$""" + f"{R['rudder_throw_deg']:.0f}" + r"""$^\circ$ of rudder.}
 
 \step{4. Electronics box}
+""" + FIG.wiring() + r"""
 \begin{enumerate}
 \item Epoxy the two box halves together, and separately the two lid halves.
 \item Lower the sail winch into the well between the front rails (output shaft up) until its mounting ears rest on the rails, and set the MG90S between the rear rails the same way. Lead each servo wire out sideways through the notch at the foot of a rail. Drill 1.5\,mm pilot holes through the ear holes and fix both servos with the screws supplied with them.
@@ -254,6 +261,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \end{enumerate}
 
 \step{5. Mast and standing rigging}
+""" + FIG.rig() + r"""
 \begin{enumerate}
 \item Cut the 6\,mm tube to """ + f"{rig['mast_length_mm']:.0f}" + r"""\,mm. Plug the top with epoxy. Mark the hounds (where the stays attach) """ + f"{rig['hounds_above_mast_foot_mm']:.0f}" + r"""\,mm above the mast foot and whip a tight binding of line there, glued with CA.
 \item Stand the mast in the socket on the box floor through the lid hole.
@@ -263,6 +271,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 \chk{the mast stands straight from the side and from behind; all stays are just tight.}
 
 \step{6. Sails}
+""" + FIG.mainsail() + r"""
 \begin{enumerate}
 \item Print \texttt{mini/manual/sail\_patterns\_1to1.pdf} at 100\,\% (large-format print, or tile it). The 100\,mm scale bar must measure 100\,mm.
 \item Lay the Icarex on the pattern and cut the main and jib with a hot knife or scissors. The main needs the extra """ + f"{25:.0f}" + r"""\,mm on the luff for the mast sleeve.
@@ -273,6 +282,7 @@ Files: \texttt{mini/stl/} (STL, one file per part), \texttt{mini/cad/RC\_Mini\_C
 
 \step{7. Sheets and drum}
 Both sheets end on the one drum, so one stick moves both sails.
+""" + FIG.sheets() + r"""
 \begin{itemize}
 \item Mainsheet: from the boom end, down through the lid fairlead """ + f"{rig['main_fairlead_x_mm']:.0f}" + r"""\,mm from the transom, to the \textbf{30\,mm groove}.
 \item Jib sheet: from the jib clew, down through the fairlead """ + f"{rig['jib_fairlead_x_mm']:.0f}" + r"""\,mm from the transom, to the \textbf{16.2\,mm groove}.
