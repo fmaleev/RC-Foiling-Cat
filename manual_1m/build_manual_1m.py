@@ -16,6 +16,7 @@ CAD, VR, MD, PL = J('analysis', 'cad_data.json'), J('analysis', 'vpp_results.jso
 TOW, CTL = J('analysis', 'takeoff_wind.json'), J('analysis', 'control_results.json')
 full = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_full_build_first.csv'))))
 foil = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_foiling_kit_v2.csv'))))
+alts = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_alternatives.csv'))))
 PETG = 1.27
 V = lambda cfg, twa, tws: [x for x in VR['vpp'][cfg][str(twa)] if x['tws_kn'] == tws][0]['V']
 D, F = CAD['displacement'], CAD['foiling']
@@ -37,6 +38,25 @@ total = lambda rows: sum(float(x['total_usd']) for x in rows)
 
 def bom_rows(rows):
     return '\n'.join(f"{esc(x['group'])} & {esc(x['item'])} & {esc(x['use'])} & {x['qty']} & {money(x['total_usd'])} \\\\" for x in rows)
+
+
+
+def alt_table(lists):
+    """Recommended parts with a cheaper or better option (bom/bom_alternatives.csv), for the parts of these lists."""
+    keys = [k for k in dict.fromkeys(r['base_key'] for r in alts) if any(l in [r for r in alts if r['base_key'] == k][0]['lists'] for l in lists)]
+    groups = []
+    for k in keys:
+        groups.append('\n'.join(f"{'Listed' if r['role'] == 'base' else esc(r['kind'])}: {esc(r['item'])} & {money(float(r['unit_usd']))} & {esc(r['pros'])} & {esc(r['cons'])} \\\\"
+                                for r in alts if r['base_key'] == k))
+    rows = ['\n\\midrule\n'.join(groups)]
+    return (r"""{\small
+\begin{longtable}{p{3.6cm}rp{5.2cm}p{5.2cm}}
+\toprule
+Option & Unit & Pros & Cons \\
+\midrule\endhead
+""" + '\n'.join(rows) + r"""
+\bottomrule
+\end{longtable}}""")
 
 
 def sources(rows):
@@ -92,7 +112,7 @@ Predicted, not yet measured: the build-first boat does """ + f"{V('displacement'
 \textbf{Build the 0.6\,m Mini Cat first} (its own manual). Many steps here assume you have done them once at that size.
 
 \section{What it costs}
-Build-first boat \textbf{""" + money(total(full)) + r"""}; foiling kit \textbf{""" + money(total(foil)) + r"""} more. Prices were read on retailer pages in September 2026 (sources at the end). Shipping, tax, a NiMH charger, the printer and hand tools (including a 0.9\,mm hex key for the elevator trim screws) are not included. The FS-i6X radio and 4xAA pack from the Mini Cat carry over.
+Build-first boat \textbf{""" + money(total(full)) + r"""}; foiling kit \textbf{""" + money(total(foil)) + r"""} more. Prices were read on retailer pages in September 2026 and re-checked on 4 October 2026 (sources at the end). Shipping, tax, a NiMH charger, the printer and hand tools (including a 0.9\,mm hex key for the elevator trim screws) are not included. The FS-i6X radio and 4xAA pack from the Mini Cat carry over.
 
 {\small
 \begin{longtable}{p{1.6cm}p{4.4cm}p{6.6cm}cr}
@@ -106,6 +126,9 @@ Group & Item & Use & Qty & Total \\
 """ + bom_rows(foil) + r"""
 \bottomrule
 \end{longtable}}
+
+\noindent\textbf{Choices.} Where a part has a cheaper or better option, the list uses the recommended one. The alternatives, with the pros and cons of each:
+""" + alt_table(['1 m', 'foiling kit']) + r"""
 
 \section{Printing}
 PETG throughout. The hull and pod segments are real 0.8\,mm skins with the bulkheads built in: slice them with 2 perimeters and 0\,\% infill, so each segment prints as a sealed compartment. Print the rudder blades, daggerboards, foil cores, flaps and trim pods solid (100\,\% infill is our recommendation for stiffness, not a tested setting). Filament below is for solid parts at 1.27\,g/cm$^3$ and for the skins as modelled.
@@ -229,7 +252,7 @@ The printed linkage gives them. The wand hub's horn is 8.25\,mm long, the bellcr
 
 \section*{Price sources (read September 2026)}
 {\small\begin{itemize}
-""" + sources(full + foil) + r"""
+""" + sources(full + foil + [r for r in alts if r['role'] != 'base' and ('1 m' in r['lists'] or 'foiling' in r['lists'])]) + r"""
 \end{itemize}}
 \end{document}
 """

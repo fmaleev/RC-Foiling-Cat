@@ -1,4 +1,6 @@
-"""Costed bills of materials (USD, prices read on retailer pages 2026-09-23; two re-read 2026-09-24). Writes CSV + LaTeX tables."""
+"""Costed bills of materials (USD, prices read on retailer pages 2026-09-23, re-checked 2026-10-04). Writes CSV + LaTeX tables,
+and bom_alternatives.csv: for parts with a cheaper or better option, the recommended base part, the option, and the pros and
+cons of each."""
 import csv, json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -10,12 +12,13 @@ KS = 'https://ksmetals.com/collections/12-long-music-wire'
 S = dict(
     gt2=(38.99, HT + '/flysky-fsgt2e-2channel-transmitter-w-fsa3-receiver-fsy-fs-gt2ea3/p1592822', 'HobbyTown (re-read 2026-09-24; now sold with the FS-A3 receiver)'),
     i6x=(69.99, HT + '/flysky-i6x-6channel-afhds-2a-air-radio-system-w-ia6b-receiver-fsy-i6xia6b/p1674181', 'HobbyTown'),
-    jx=(11.13, 'https://www.aliexpress.com/item/1005003265131874.html', 'AliExpress: listed $5.79 at 48% off; full price used'),
+    jx=(11.13, 'https://www.aliexpress.com/item/1005003265131874.html', 'AliExpress: listed $5.79 at 48% off; full price used (2026-09-23; on 2026-10-04 the page showed a bot check, not re-checked)'),
     mg90s=(2.59, 'https://www.waveshare.com/mg90s-servo.htm', 'Waveshare'),
     ecp640=(29.99, HT + '/ecopower-640t-13g-waterproof-metal-gear-digital-sub-micro-servo-ecp-640t/p859667', 'HobbyTown'),
     hs785=(56.99, 'https://hitecrcd.com/hs-785hb-karbonite-3-5-turn-winch-servo/', 'Hitec RCD'),
     fs5115=(32.06, 'https://www.pololu.com/product/3426', 'Pololu'),
-    enel_aa=(12.75, 'https://www.microbattery.com/panasonic-bk-3mcca4ba-eneloop-aa-2100-cycle-ni-mh-pre-charged-rechargeable-batteries-4-pack80.html', 'MicroBattery'),
+    enel_aa=(12.75, 'https://www.microbattery.com/panasonic-bk-3mcca4ba-eneloop-aa-2100-cycle-ni-mh-pre-charged-rechargeable-batteries-4-pack80.html', 'MicroBattery (out of stock on 2026-10-04)'),
+    enel_wm=(17.99, 'https://www.walmart.com/ip/Panasonic-Eneloop-BK-3MCCA4BA-Pre-Charged-Nickel-Metal-Hydride-AA-Rechargeable-Batteries-4-Battery-Pack/39111776', 'Walmart, sold by My Battery Supplier (BK-3MCCA4BA, in stock 2026-10-04)'),
     holder=(4.00, HT + '/traxxas-4cell-aa-battery-holder-w-switch-cover-tra1523/p49945', 'HobbyTown'),
     aa_alk=(2.99, HT + '/flysky-fsgt2e-2channel-transmitter-w-fsa3-receiver-fsy-fs-gt2ea3/p1592822', 'HobbyTown (EcoPower AA x4 add-on)'),
     petg=(13.99, 'https://us.elegoo.com/products/rapid-petg-filament-1-75mm-colored-1kg', 'Elegoo US'),
@@ -23,7 +26,8 @@ S = dict(
     cf6x4=(15.25, CST_T, 'CST CS-518 1M'),
     cf4=(8.49, CST_T, 'CST CS-508 1M'),
     cf10x8=(16.15, CST_T, 'CST CS-525 1M'),
-    cf16x14=(16.28, 'https://windcatcherrc.com/product/carbon-fiber-tube-16mm-x-14mm-x-1000mm/', 'Wind Catcher RC (price from search listing, page not reachable from here)'),
+    cf16x14=(16.28, 'https://windcatcherrc.com/product/carbon-fiber-tube-16mm-x-14mm-x-1000mm/', 'Wind Catcher RC (price from a search listing; the site blocked this connection on 2026-10-04)'),
+    cf16x14_rmrc=(27.46, 'https://www.readymaderc.com/products/details/86475-carbon-fiber-tube-16mm-x-14mm-1m-long', 'RMRC 16X14X1M-CF-TUBE (in stock 2026-10-04)'),
     cf12x10=(12.26, 'https://www.readymaderc.com/products/details/carbon-fiber-tube-12mm-x-10mm-1m-long', 'RMRC'),
     rod12_1m=(3.47, CST_R, 'CST CS-316 1M'),
     rod12_2m=(5.25, CST_R, 'CST CS-316 2M'),
@@ -33,12 +37,14 @@ S = dict(
     mw156=(4.99, KS, 'K&S 0.156 in x 12 in'),
     pushrod=(8.55, HT + '/dubro-pushrod-system-micro-dub847/p29360', 'HobbyTown'),
     m2set=(0.43, 'https://boltdepot.com/Product-Details?product=8697', 'Bolt Depot, per piece (read 2026-09-25)'),
-    icarex=(21.99, 'https://jonesairfoils.com/products/icarex', 'Jones Airfoils, per metre (138 cm wide)'),
-    tape10=(20.85, 'https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch', 'kiteboarding.com: $15.00 base + $5.85 for 10 ft'),
-    tape_half=(24.00, 'https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch', 'kiteboarding.com: $15.00 base + $9.00 half roll'),
+    icarex=(21.99, 'https://jonesairfoils.com/products/icarex', 'Jones Airfoils, per metre (138 cm wide); 1 m price read 2026-09-23 (on 2026-10-04 the page showed local currency; 5 m or more is $18.49/m)'),
+    tape10=(6.50, 'https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch', 'kiteboarding.com: 10 ft cut, $15.00 roll less $8.50 (2026-10-04)'),
+    tape_half=(9.65, 'https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch', 'kiteboarding.com: half roll (12.5 ft), $15.00 roll less $5.35 (2026-10-04)'),
     line=(14.43, 'https://www.walmart.com/ip/PowerPro-Braided-Fishing-Line-30lb-x-150yd-ylw-21100300150Y/17117880', 'Walmart, PowerPro 30 lb x 150 yd (read 2026-09-24; the original eBay listing had ended)'),
     epoxy45=(13.99, HT + '/bob-smith-industries-quickcure-5-minute-epoxy-4-1-2oz-bsi201/p37081', 'HobbyTown'),
     epoxy9=(22.99, HT + '/bob-smith-industries-quickcure-5-minute-epoxy-9o-bsi202/p37082', 'HobbyTown'),
+    epoxy30_45=(13.99, HT + '/bob-smith-industries-slowcure-30-minute-epoxy-4-1-2oz-bsi205/p37085', 'HobbyTown BSI205'),
+    epoxy30_9=(22.99, HT + '/bob-smith-industries-slowcure-30-minute-epoxy-9o-bsi206/p37086', 'HobbyTown BSI206'),
     ca=(4.79, HT + '/bob-smith-industries-instacure-gap-filling-ca-1-2oz-bsi106/p37055', 'HobbyTown'),
     ud12ft=(19.95, 'https://www.cstsales.com/heat_tack.html', 'CST CU-379: 2 in unidirectional carbon, 0.005 in, 12 ft'),
     el2=(20.70, 'https://www.easycomposites.us/el2-epoxy-laminating-resin', 'Easy Composites EL2, 500 g kit'),
@@ -50,7 +56,7 @@ MINI = [  # (group, item, what it is for, qty, source key)
     ('Radio', 'AA alkaline x4', 'transmitter power', 1, 'aa_alk'),
     ('Servos', 'JX W4505-2T sail winch servo', 'both sheets on the stepped drum', 1, 'jx'),
     ('Servos', 'MG90S metal-gear micro servo', 'rudders via pushrod + tie bar', 1, 'mg90s'),
-    ('Power', 'Panasonic eneloop AA 2000 mAh, 4-pack', 'receiver pack (4.8 V)', 1, 'enel_aa'),
+    ('Power', 'Panasonic eneloop AA 2000 mAh, 4-pack', 'receiver pack (4.8 V)', 1, 'enel_wm'),
     ('Power', 'Traxxas 4-cell AA holder with switch (TRA1523)', 'receiver battery box + on/off', 1, 'holder'),
     ('Printed', 'PETG filament 1 kg', 'hulls, box, lid, rudders, boards, drum (~470 g used)', 1, 'petg'),
     ('Carbon', 'Carbon tube 10 x 8 mm x 1 m', 'two 360 mm crossbeams', 1, 'cf10x8'),
@@ -64,11 +70,42 @@ MINI = [  # (group, item, what it is for, qty, source key)
     ('Sails', 'Icarex PC31 ripstop polyester, 1 m', 'main + jib (0.145 m2)', 1, 'icarex'),
     ('Sails', 'Ripstop sail tape 2 in, 10 ft', 'luff, batten pockets, corners', 1, 'tape10'),
     ('Rigging', 'Braided PE line 30 lb', 'stays, bridle, sheets', 1, 'line'),
-    ('Adhesives', 'BSI 5-minute epoxy 4.5 oz', 'hull segment joints, beams, fittings', 1, 'epoxy45'),
+    ('Adhesives', 'BSI 30-minute epoxy 4.5 oz', 'hull segment joints, beams, fittings', 1, 'epoxy30_45'),
     ('Adhesives', 'BSI gap-filling CA 1/2 oz', 'small parts, knots', 1, 'ca'),
 ]
-MINI_OPTIONS = [('Upgrade', 'EcoPower 640T waterproof micro servo', 'instead of MG90S', 1, 'ecp640'),
-                ('Budget', 'FlySky FS-GT2E + FS-A3 (car radio)', 'instead of FS-i6X; throttle trigger springs back to centre', 1, 'gt2')]
+# Parts with a cheaper or better option: base key -> (pros, cons of the base, [(kind, item, key, pros, cons), ...]).
+# The base is the recommended part and is the one in the lists above.
+ALT = {
+    'i6x': ('6 channels, so one radio runs both boats; the throttle stick stays where you leave it, which holds a sail trim',
+            '$31 more than the car radio',
+            [('Cheaper, Mini only', 'FlySky FS-GT2E + FS-A3 (car radio)', 'gt2',
+              '$31 less',
+              '2 channels, so it cannot run the 1 m boat (you would buy the FS-i6X later as well); the throttle trigger springs back to centre, so a sail trim has to be held by hand')]),
+    'mg90s': ('$2.59; the printed servo rails are drawn to its case',
+              'not waterproof; on the 1 m boat it sits under a printed cover aft of the rear beam, where spray reaches',
+              [('Upgrade', 'EcoPower 640T waterproof micro servo', 'ecp640',
+                'waterproof to 1 m and metal-geared (maker); rated 4.8-6.0 V, so it runs on the 4.8 V pack',
+                '$27.40 more; its case is 23.5 x 12.5 mm against the MG90S 22.8 x 12.2 mm, so it does not fit between the printed rails (23.4 mm gap) unless they are widened')]),
+    'enel_wm': ('in stock when checked (2026-10-04)',
+                '$5.24 more; sold by a third-party seller on Walmart',
+                [('Cheaper', 'The same eneloop 4-pack at MicroBattery', 'enel_aa',
+                  '$5.24 less', 'out of stock when checked (2026-10-04)')]),
+    'cf16x14_rmrc': ('price and stock confirmed on the page (2026-10-04); same store as the 12 x 10 mm mast tubes, so one order',
+                     '$22.36 more for the two tubes',
+                     [('Cheaper', '16 x 14 mm carbon tube at Wind Catcher RC', 'cf16x14',
+                       '$11.18 less per tube',
+                       'price from a search listing; the site blocked this connection, so price, stock and wall thickness are not confirmed; a separate order and shipping')]),
+    'epoxy30_45': ('the strongest of the BSI epoxies, waterproof and more heat resistant (maker); 30 minutes to line up hull segments and beams before it sets',
+                   'handle after 8 hours, full strength in 24 hours (maker)',
+                   [('Same price, faster', 'BSI 5-minute epoxy 4.5 oz', 'epoxy45',
+                     'sets in minutes: handy for small fittings',
+                     'weaker, and 5 minutes is short for lining up a long hull or beam joint')]),
+    'epoxy30_9': ('the strongest of the BSI epoxies, waterproof and more heat resistant (maker); 30 minutes to line up hull segments and beams before it sets',
+                  'handle after 8 hours, full strength in 24 hours (maker)',
+                  [('Same price, faster', 'BSI 5-minute epoxy 9 oz', 'epoxy9',
+                    'sets in minutes: handy for small fittings',
+                    'weaker, and 5 minutes is short for lining up a long hull or beam joint')]),
+}
 
 FULL = [
     ('Radio', 'FlySky FS-i6X + FS-iA6B receiver', '4 channels used: rudder, traveler, jib, mainsheet', 1, 'i6x'),
@@ -77,10 +114,10 @@ FULL = [
     ('Servos', 'JX W4505-2T sail winch servo', f"jib sheet (about {TRAVEL['jib_sheet_mm']:.0f} mm of sheet, rig model)", 1, 'jx'),
     ('Servos', 'Feetech FS5115M standard servo', 'mainsheet tension', 1, 'fs5115'),
     ('Servos', 'MG90S metal-gear micro servo', 'rudders via pushrod + tie bar', 1, 'mg90s'),
-    ('Power', 'Panasonic eneloop AA 2000 mAh, 4-pack', 'receiver pack (4.8 V)', 1, 'enel_aa'),
+    ('Power', 'Panasonic eneloop AA 2000 mAh, 4-pack', 'receiver pack (4.8 V)', 1, 'enel_wm'),
     ('Power', 'Traxxas 4-cell AA holder with switch (TRA1523)', 'receiver battery box + on/off', 1, 'holder'),
     ('Printed', 'PETG filament 1 kg', 'hulls, pod, lid, rudder-servo bracket and cover, rudders, boards, gudgeons, tracks, cars, mast fairing and fittings (~1.5 kg used, 1 m manual print list)', 2, 'petg'),
-    ('Carbon', 'Carbon tube 16 x 14 mm x 1 m', 'two 600 mm crossbeams', 2, 'cf16x14'),
+    ('Carbon', 'Carbon tube 16 x 14 mm x 1 m', 'two 600 mm crossbeams', 2, 'cf16x14_rmrc'),
     ('Carbon', 'Carbon tube 12 x 10 mm x 1 m', 'two-piece mast (1.3 m)', 2, 'cf12x10'),
     ('Carbon', 'Carbon tube 10 x 8 mm x 1 m', 'mast joiner spigot (150 mm) and pod beam (600 mm)', 1, 'cf10x8'),
     ('Carbon', 'Carbon tube 8 x 7 mm x 1 m', 'boom (345 mm)', 1, 'cf8x7'),
@@ -92,7 +129,7 @@ FULL = [
     ('Sails', 'Icarex PC31 ripstop polyester, 1 m', 'main + jib (0.40 m2)', 1, 'icarex'),
     ('Sails', 'Ripstop sail tape 2 in, half roll', 'luff, batten pockets, corners', 1, 'tape_half'),
     ('Rigging', 'Braided PE line 30 lb', 'stays, bridle, sheets', 1, 'line'),
-    ('Adhesives', 'BSI 5-minute epoxy 9 oz', 'hull joints, beams, fittings', 1, 'epoxy9'),
+    ('Adhesives', 'BSI 30-minute epoxy 9 oz', 'hull joints, beams, fittings', 1, 'epoxy30_9'),
     ('Adhesives', 'BSI gap-filling CA 1/2 oz', 'small parts', 1, 'ca'),
 ]
 
@@ -134,8 +171,25 @@ def write(name, items):
     return r, total
 
 
+def write_alternatives():
+    names = {k: name for lst in (MINI, FULL, FOIL) for _, name, _, _, k in lst}
+    lists = {k: '/'.join(n for n, lst in (('mini', MINI), ('1 m', FULL), ('foiling kit', FOIL)) if any(x[4] == k for x in lst)) for k in ALT}
+    out = []
+    for k, (pros, cons, alts) in ALT.items():
+        p, url, src = S[k]
+        out.append(dict(base_key=k, role='base', kind='recommended', item=names[k], lists=lists[k], unit_usd=p, pros=pros, cons=cons, source=src, url=url))
+        for kind, item, ak, apros, acons in alts:
+            p, url, src = S[ak]
+            out.append(dict(base_key=k, role='alternative', kind=kind, item=item, lists=lists[k], unit_usd=p, pros=apros, cons=acons, source=src, url=url))
+    with open(os.path.join(HERE, 'bom_alternatives.csv'), 'w', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=list(out[0].keys()))
+        w.writeheader(); w.writerows(out)
+    return out
+
+
 if __name__ == '__main__':
-    for name, items in (('bom_mini', MINI), ('bom_mini_options', MINI_OPTIONS), ('bom_full_build_first', FULL), ('bom_foiling_kit_v2', FOIL)):
+    print('alternatives', len(write_alternatives()))
+    for name, items in (('bom_mini', MINI), ('bom_full_build_first', FULL), ('bom_foiling_kit_v2', FOIL)):
         r, total = write(name, items)
         by = {}
         for x in r:

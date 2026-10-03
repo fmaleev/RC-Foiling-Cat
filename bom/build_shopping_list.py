@@ -8,7 +8,8 @@ load = lambda n: list(csv.DictReader(open(os.path.join(HERE, n + '.csv'))))
 STAGES = [('Stage 1: Mini Cat 600 (build first)', 'mini', load('bom_mini')),
           ('Stage 2: 1 m boat with daggerboards', 'full', load('bom_full_build_first')),
           ('Stage 3: foiling kit (v2.3 foils)', 'foil', load('bom_foiling_kit_v2'))]
-OPTIONS = load('bom_mini_options')
+ALTS = load('bom_alternatives')
+HAS_ALT = {r['item'] for r in ALTS if r['role'] == 'base'}
 CARRY = ('Radio', 'Power')          # the mini's radio and NiMH pack carry over to the 1 m boat (both build manuals)
 STORES = {'hobbytown.com': 'HobbyTown', 'aliexpress.com': 'AliExpress', 'waveshare.com': 'Waveshare', 'microbattery.com': 'MicroBattery',
           'us.elegoo.com': 'Elegoo US', 'cstsales.com': 'CST (cstsales.com)', 'ksmetals.com': 'K\\&S Metals', 'jonesairfoils.com': 'Jones Airfoils',
@@ -35,10 +36,30 @@ def ref(url):
 def rows(items, carry_note=False):
     out = []
     for r in items:
-        mark = r'$^\dagger$' if carry_note and r['group'] in CARRY else ''
+        mark = (r'$^\dagger$' if carry_note and r['group'] in CARRY else '') + (r'$^\ast$' if r['item'] in HAS_ALT else '')
         note = '' if esc(r['source']) == store(r['url']) else f"\\newline{{\\footnotesize\\itshape {esc(r['source'])}}}"
         out.append(f"{esc(r['item'])}{mark}{note} & {esc(r['use'])} & {r['qty']} & {money(float(r['unit_usd']))} & {money(float(r['total_usd']))} & "
                    f"{store(r['url'])} [{ref(r['url'])}] \\\\")
+    return '\n'.join(out)
+
+
+
+def alt_blocks():
+    out = []
+    for k in dict.fromkeys(r['base_key'] for r in ALTS):
+        grp = [r for r in ALTS if r['base_key'] == k]
+        base = grp[0]
+        body = '\n'.join(f"{'Recommended (listed)' if r['role'] == 'base' else esc(r['kind'])}: {esc(r['item'])}\\newline{{\\footnotesize {store(r['url'])} [{ref(r['url'])}]}} & {money(float(r['unit_usd']))} & {esc(r['pros'])} & {esc(r['cons'])} \\\\"
+                         for r in grp)
+        out.append(r"""\subsection*{""" + esc(base['item']) + r""" \normalfont\small (""" + esc(base['lists']) + r""")}
+{\small
+\begin{longtable}{L{3.6cm}rL{5.4cm}L{5.4cm}}
+\toprule
+Option & Unit & Pros & Cons \\
+\midrule
+""" + body + r"""
+\bottomrule
+\end{longtable}}""")
     return '\n'.join(out)
 
 
@@ -79,7 +100,7 @@ tex = r"""\documentclass[11pt]{article}
 \setlist{itemsep=2pt}
 \title{\textbf{RC Catamaran: What to Buy}\\\large Mini Cat, 1\,m boat and foiling kit}
 \author{Filip Maleev}
-\date{Prices read on retailer pages 23--25 September 2026}
+\date{Prices read on retailer pages 23--25 September 2026, re-checked 4 October 2026}
 \begin{document}
 \maketitle
 
@@ -100,15 +121,19 @@ Stage 3: foiling kit & """ + money(foil_t) + r""" & """ + money(foil_t) + r""" \
 \end{center}
 $^\dagger$ The radio, its AA cells and the NiMH pack bought for the Mini (""" + money(carry_t) + r""") move to the 1\,m boat. Leftover filament, epoxy, glue, sail cloth and line from one stage may cover part of the next; the lists assume new stock.
 
-Prices exclude shipping and tax. They were read on the retailers' pages on the dates above (the Mini's links were re-checked on 24 September). Check them before ordering. Under each item, in italics, is the listing the price came from, with the part number where there is one and a note where the price is uncertain.
+Prices exclude shipping and tax. They were read on the retailers' pages in September and re-checked on 4 October 2026; the two that could not be re-checked say so. Check them before ordering. Under each item, in italics, is the listing the price came from, with the part number where there is one and a note where the price is uncertain.
 
 \section*{Also needed, not priced above}
 \begin{itemize}
 \item \textbf{A 3D printer} that prints PETG, with a bed of at least 220\,x\,220\,mm. Every part is sized for that bed; two print diagonally (the 1\,m manual says which).
-\item \textbf{A NiMH charger} for the eneloop AA cells. One checked option: the Panasonic charger bundled with 4 more eneloop AA cells, \$32.09 at Walmart on 24 September 2026 [""" + str(ref('https://www.walmart.com/ip/Panasonic-Battery-Charger-with-4-eneloop-AA-Rechargeable-Batteries-4-Count/124706107')) + r"""].
+\item \textbf{A NiMH charger} for the eneloop AA cells. The Panasonic charger bundled with 4 more eneloop cells was \$32.09 at Walmart on 24 September 2026 [""" + str(ref('https://www.walmart.com/ip/Panasonic-Battery-Charger-with-4-eneloop-AA-Rechargeable-Batteries-4-Count/124706107')) + r"""] but out of stock on 4 October.
 \item \textbf{Hand tools}, assumed on hand: hobby knife and steel rule; drill bits 1.2, 1.5, 2, 2.5 and 3.2\,mm (a pin vise is enough); side cutters and round-nose pliers for the music wire; 240-grit sandpaper; masking tape; a fine-tip soldering iron or hot needle for holes in the sailcloth; small screwdrivers; a 0.9\,mm hex key for the elevator trim screws; a bucket or sink for leak tests; a kitchen scale.
 \item Servo screws come with the servos.
 \end{itemize}
+
+\section*{Choices: recommended parts and their alternatives}
+Where a part has a cheaper or better option, the lists use the recommended one (marked $^\ast$ in the lists). Swapping to the alternative changes the totals by the difference in price.
+""" + alt_blocks() + r"""
 
 \clearpage
 \section*{Order by store}
@@ -126,15 +151,6 @@ Store & Items & Subtotal & Stages \\
 
 \section*{Parts by stage}
 """ + tables + r"""
-\subsection*{Options for the Mini (not in its total)}
-{\small
-\begin{longtable}{L{4.1cm}L{4.5cm}crrl}
-\toprule
-Item & Used for & Qty & Unit & Total & Store [link] \\
-\midrule
-""" + rows(OPTIONS) + r"""
-\bottomrule
-\end{longtable}}
 
 \section*{Links}
 {\small

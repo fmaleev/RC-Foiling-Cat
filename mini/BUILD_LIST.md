@@ -1,5 +1,7 @@
 # RC Mini Cat 600 - Build List
 
+> **Prices superseded (2026-10-04):** the current parts, prices and alternatives are in `bom/bom_mini.csv`, `bom/bom_alternatives.csv` and `bom/RC_Catamaran_Shopping_List.pdf` (Mini total now $248.26, with 30-minute epoxy, the eneloop pack from Walmart and the cheaper 10 ft sail tape). The build steps below still apply.
+
 Compiled from `bom/make_bom.py`, `bom/bom_mini.csv`, `bom/bom_mini_options.csv`, `mini/manual/build_manual.py`,
 `mini/manual/RC_Mini_Cat_Build_Manual.tex` (the compiled text of `RC_Mini_Cat_Build_Manual.pdf`), `mini/manual/print_list.json`
 and `mini/manual_data.py`. Every purchased-part link below was checked today, 2026-09-24. The project's own baseline prices

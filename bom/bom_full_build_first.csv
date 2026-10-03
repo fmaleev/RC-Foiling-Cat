@@ -1,14 +1,14 @@
 group,item,use,qty,unit_usd,total_usd,source,url
 Radio,FlySky FS-i6X + FS-iA6B receiver,"4 channels used: rudder, traveler, jib, mainsheet",1,69.99,69.99,HobbyTown,https://www.hobbytown.com/flysky-i6x-6channel-afhds-2a-air-radio-system-w-ia6b-receiver-fsy-i6xia6b/p1674181
 Radio,AA alkaline x4,transmitter power,1,2.99,2.99,HobbyTown (EcoPower AA x4 add-on),https://www.hobbytown.com/flysky-fsgt2e-2channel-transmitter-w-fsa3-receiver-fsy-fs-gt2ea3/p1592822
-Servos,JX W4505-4T sail winch servo,"traveler (about 209 mm of car travel, rig model)",1,11.13,11.13,AliExpress: listed $5.79 at 48% off; full price used,https://www.aliexpress.com/item/1005003265131874.html
-Servos,JX W4505-2T sail winch servo,"jib sheet (about 82 mm of sheet, rig model)",1,11.13,11.13,AliExpress: listed $5.79 at 48% off; full price used,https://www.aliexpress.com/item/1005003265131874.html
+Servos,JX W4505-4T sail winch servo,"traveler (about 209 mm of car travel, rig model)",1,11.13,11.13,"AliExpress: listed $5.79 at 48% off; full price used (2026-09-23; on 2026-10-04 the page showed a bot check, not re-checked)",https://www.aliexpress.com/item/1005003265131874.html
+Servos,JX W4505-2T sail winch servo,"jib sheet (about 82 mm of sheet, rig model)",1,11.13,11.13,"AliExpress: listed $5.79 at 48% off; full price used (2026-09-23; on 2026-10-04 the page showed a bot check, not re-checked)",https://www.aliexpress.com/item/1005003265131874.html
 Servos,Feetech FS5115M standard servo,mainsheet tension,1,32.06,32.06,Pololu,https://www.pololu.com/product/3426
 Servos,MG90S metal-gear micro servo,rudders via pushrod + tie bar,1,2.59,2.59,Waveshare,https://www.waveshare.com/mg90s-servo.htm
-Power,"Panasonic eneloop AA 2000 mAh, 4-pack",receiver pack (4.8 V),1,12.75,12.75,MicroBattery,https://www.microbattery.com/panasonic-bk-3mcca4ba-eneloop-aa-2100-cycle-ni-mh-pre-charged-rechargeable-batteries-4-pack80.html
+Power,"Panasonic eneloop AA 2000 mAh, 4-pack",receiver pack (4.8 V),1,17.99,17.99,"Walmart, sold by My Battery Supplier (BK-3MCCA4BA, in stock 2026-10-04)",https://www.walmart.com/ip/Panasonic-Eneloop-BK-3MCCA4BA-Pre-Charged-Nickel-Metal-Hydride-AA-Rechargeable-Batteries-4-Battery-Pack/39111776
 Power,Traxxas 4-cell AA holder with switch (TRA1523),receiver battery box + on/off,1,4.0,4.0,HobbyTown,https://www.hobbytown.com/traxxas-4cell-aa-battery-holder-w-switch-cover-tra1523/p49945
 Printed,PETG filament 1 kg,"hulls, pod, lid, rudder-servo bracket and cover, rudders, boards, gudgeons, tracks, cars, mast fairing and fittings (~1.5 kg used, 1 m manual print list)",2,13.99,27.98,Elegoo US,https://us.elegoo.com/products/rapid-petg-filament-1-75mm-colored-1kg
-Carbon,Carbon tube 16 x 14 mm x 1 m,two 600 mm crossbeams,2,16.28,32.56,"Wind Catcher RC (price from search listing, page not reachable from here)",https://windcatcherrc.com/product/carbon-fiber-tube-16mm-x-14mm-x-1000mm/
+Carbon,Carbon tube 16 x 14 mm x 1 m,two 600 mm crossbeams,2,27.46,54.92,RMRC 16X14X1M-CF-TUBE (in stock 2026-10-04),https://www.readymaderc.com/products/details/86475-carbon-fiber-tube-16mm-x-14mm-1m-long
 Carbon,Carbon tube 12 x 10 mm x 1 m,two-piece mast (1.3 m),2,12.26,24.52,RMRC,https://www.readymaderc.com/products/details/carbon-fiber-tube-12mm-x-10mm-1m-long
 Carbon,Carbon tube 10 x 8 mm x 1 m,mast joiner spigot (150 mm) and pod beam (600 mm),1,16.15,16.15,CST CS-525 1M,https://www.cstsales.com/Carbon_Fiber_Tubes.html
 Carbon,Carbon tube 8 x 7 mm x 1 m,boom (345 mm),1,17.2,17.2,CST CS-529 1M,https://www.cstsales.com/Carbon_Fiber_Tubes.html
@@ -17,8 +17,8 @@ Carbon,Carbon rod 1.2 mm x 1 m,"the last batten, daggerboard joint rods (4 x 80 
 Hardware,Music wire 0.156 in,"rudder stocks, tie bar",2,4.99,9.98,K&S 0.156 in x 12 in,https://ksmetals.com/collections/12-long-music-wire
 Hardware,Music wire 0.093 in,"rudder pushrod, track end-stop turning pins, gooseneck pin, boom sheet eye",1,3.99,3.99,K&S 0.093 in x 12 in,https://ksmetals.com/collections/12-long-music-wire
 Hardware,Du-Bro micro pushrod system,clevises,1,8.55,8.55,HobbyTown,https://www.hobbytown.com/dubro-pushrod-system-micro-dub847/p29360
-Sails,"Icarex PC31 ripstop polyester, 1 m",main + jib (0.40 m2),1,21.99,21.99,"Jones Airfoils, per metre (138 cm wide)",https://jonesairfoils.com/products/icarex
-Sails,"Ripstop sail tape 2 in, half roll","luff, batten pockets, corners",1,24.0,24.0,kiteboarding.com: $15.00 base + $9.00 half roll,https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch
+Sails,"Icarex PC31 ripstop polyester, 1 m",main + jib (0.40 m2),1,21.99,21.99,"Jones Airfoils, per metre (138 cm wide); 1 m price read 2026-09-23 (on 2026-10-04 the page showed local currency; 5 m or more is $18.49/m)",https://jonesairfoils.com/products/icarex
+Sails,"Ripstop sail tape 2 in, half roll","luff, batten pockets, corners",1,9.65,9.65,"kiteboarding.com: half roll (12.5 ft), $15.00 roll less $5.35 (2026-10-04)",https://kiteboarding.com/proddetail.asp?prod=ripstop_2inch
 Rigging,Braided PE line 30 lb,"stays, bridle, sheets",1,14.43,14.43,"Walmart, PowerPro 30 lb x 150 yd (read 2026-09-24; the original eBay listing had ended)",https://www.walmart.com/ip/PowerPro-Braided-Fishing-Line-30lb-x-150yd-ylw-21100300150Y/17117880
-Adhesives,BSI 5-minute epoxy 9 oz,"hull joints, beams, fittings",1,22.99,22.99,HobbyTown,https://www.hobbytown.com/bob-smith-industries-quickcure-5-minute-epoxy-9o-bsi202/p37082
+Adhesives,BSI 30-minute epoxy 9 oz,"hull joints, beams, fittings",1,22.99,22.99,HobbyTown BSI206,https://www.hobbytown.com/bob-smith-industries-slowcure-30-minute-epoxy-9o-bsi206/p37086
 Adhesives,BSI gap-filling CA 1/2 oz,small parts,1,4.79,4.79,HobbyTown,https://www.hobbytown.com/bob-smith-industries-instacure-gap-filling-ca-1-2oz-bsi106/p37055

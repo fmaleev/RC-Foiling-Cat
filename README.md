@@ -21,11 +21,11 @@ All four documents are regenerated from the analysis results by `mini/manual/bui
 
 | Fusion design | What it is | Parts cost | Status |
 |---|---|---|---|
-| **RC Mini Cat 600 (simplified)** | 600 mm, 2 radio channels (rudder + one winch driving both sheets on a stepped drum), round mast, 3-batten main | **$257.37** | Build first |
-| **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$384.49** | Build second |
+| **RC Mini Cat 600 (simplified)** | 600 mm, 2 radio channels (rudder + one winch driving both sheets on a stepped drum), round mast, 3-batten main | **$248.26** | Build first |
+| **RC Catamaran v1.2 - Build First (rudders + daggerboards, no foils)** (latest version: v1.3 hulls, v1.4 pod) | 1 m, beach-cat rig with 3 sail controls, daggerboards | **$397.74** | Build second |
 | **RC Foiling Catamaran v1** (latest version: v1.3 hulls, v1.4 pod, v2.3 foils) | 1 m + L-foils, T-foil rudders on 18 mm longer foiling rudders, wand-driven flaps for ride-height control | foil kit **+$101.17** | Design stage |
 
-Prices were read on retailer pages on 2026-09-23, and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning pins, gooseneck pin and boom eye are cut from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
+Prices were read on retailer pages on 2026-09-23 and re-checked on 2026-10-04 (where a part has a cheaper or better option, the lists use the recommended one; `bom/bom_alternatives.csv` and the shopping list give the alternatives with pros and cons), and every mini part link was re-checked on 2026-09-24 (the rigging line was replaced after its listing ended; see [`mini/BUILD_LIST.md`](mini/BUILD_LIST.md)); sources and CSVs are in [`bom/`](bom/). Shipping, tax, a NiMH charger, the printer, hand tools, screws and zip ties are not included. On the 1 m boat the traveler and jib tracks and cars are printed, and the line turning pins, gooseneck pin and boom eye are cut from the listed music wire. The FS-i6X radio and the 4xAA pack bought for the mini carry over to the 1 m boat.
 
 ## Key results (model predictions, not yet measured on the water)
 

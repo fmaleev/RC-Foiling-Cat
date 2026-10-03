@@ -15,7 +15,7 @@ R = json.load(open(os.path.join(ROOT, 'mini', 'mini_results.json')))
 D = json.load(open(os.path.join(HERE, 'manual_data.json')))
 ST = R['statics']
 bom = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_mini.csv'))))
-opt = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_mini_options.csv'))))
+alts = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_alternatives.csv'))))
 full = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_full_build_first.csv'))))
 foil = list(csv.DictReader(open(os.path.join(ROOT, 'bom', 'bom_foiling_kit_v2.csv'))))
 PL = json.load(open(os.path.join(HERE, 'print_list.json')))
@@ -54,6 +54,25 @@ def groups(rows):
     for x in rows:
         g[x['group']] = g.get(x['group'], 0) + float(x['total_usd'])
     return g
+
+
+
+def alt_table(lists):
+    """Recommended parts with a cheaper or better option (bom/bom_alternatives.csv), for the parts of these lists."""
+    keys = [k for k in dict.fromkeys(r['base_key'] for r in alts) if any(l in [r for r in alts if r['base_key'] == k][0]['lists'] for l in lists)]
+    groups = []
+    for k in keys:
+        groups.append('\n'.join(f"{'Listed' if r['role'] == 'base' else esc(r['kind'])}: {esc(r['item'])} & {money(float(r['unit_usd']))} & {esc(r['pros'])} & {esc(r['cons'])} \\\\"
+                                for r in alts if r['base_key'] == k))
+    rows = ['\n\\midrule\n'.join(groups)]
+    return (r"""{\small
+\begin{longtable}{p{3.6cm}rp{5.2cm}p{5.2cm}}
+\toprule
+Option & Unit & Pros & Cons \\
+\midrule\endhead
+""" + '\n'.join(rows) + r"""
+\bottomrule
+\end{longtable}}""")
 
 
 def sources(rows):
@@ -161,9 +180,10 @@ Parts cost & """ + money(total(full)) + r""" & """ + money(T) + r""" \\
 \bottomrule
 \end{tabular}
 \end{center}
-Prices were read on the retailers' pages on 23 September 2026 and re-checked on 24 September 2026 (links in Appendix C). Not included: shipping (HobbyTown charges a \$3.99 flat rate; other stores vary), sales tax, a NiMH charger for the eneloop cells, the 3D printer, paint, and hand tools. The FS-i6X radio is the largest single item and is reused unchanged for the 1\,m boat.
+Prices were read on the retailers' pages on 23 September 2026 and re-checked on 4 October 2026 (links in Appendix C). Not included: shipping (HobbyTown charges a \$3.99 flat rate; other stores vary), sales tax, a NiMH charger for the eneloop cells, the 3D printer, paint, and hand tools. The FS-i6X radio is the largest single item and is reused unchanged for the 1\,m boat.
 
-\noindent Options: """ + '; '.join(f"{esc(x['item'])} ({money(x['total_usd'])}, {esc(x['use'])})" for x in opt) + r""".
+\noindent\textbf{Choices.} Where a part has a cheaper or better option, the list uses the recommended one. The alternatives, with the pros and cons of each:
+""" + alt_table(['mini']) + r"""
 
 \section{Parts list}
 {\small
@@ -340,7 +360,7 @@ The kit is sized for the """ + vpp.FOIL_VERSION + r""" foils in the CAD model: N
 \section{Price sources (read 23-24 September 2026)}
 {\small
 \begin{itemize}
-""" + sources(bom + opt + full + foil) + r"""
+""" + sources(bom + [r for r in alts if r['role'] != 'base'] + full + foil) + r"""
 \end{itemize}}
 Two prices carry extra uncertainty: the JX winch (AliExpress listed it on sale; the full price is used here) and the 16\,x\,14\,mm carbon tube (price taken from a search listing because the store's page was not reachable).
 \end{document}
